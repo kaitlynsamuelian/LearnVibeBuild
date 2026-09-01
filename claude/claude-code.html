@@ -21,6 +21,7 @@
           <a class="chip" href="#anatomy">The screen</a>
           <a class="chip" href="#permission">Permissions &amp; safety</a>
           <a class="chip" href="#modes">Permission modes</a>
+          <a class="chip" href="#seeing-edits">Seeing edits</a>
           <a class="chip" href="#memory">CLAUDE.md memory</a>
           <a class="chip" href="#slash">Slash commands</a>
           <a class="chip" href="#skills">Skills</a>
@@ -220,6 +221,64 @@
         <div class="callout tip">
           <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7c.6.5 1 1.3 1 2.1M15 16.8c0-.8.4-1.6 1-2.1A7 7 0 0012 2z"/></svg></span>
           <p><strong>Plan mode is the smart way to start anything big.</strong> You can also enter it by prefixing a message with <span class="mono">/plan</span>. Approving the plan switches Claude into an editing mode and it gets to work. (Advanced "auto" and "bypass" modes exist too, but skip those while learning.)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEEING EDITS -->
+    <section class="feature-block" id="seeing-edits">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Seeing the edits Claude makes</h2>
+          <p>A fair question if you're coming from an editor like Cursor: where do the changes actually show up? Claude Code doesn't have a separate "editor window" — but it always shows you its edits as a <strong style="color:var(--text)">diff</strong> (added lines in green, removed lines in red).</p>
+        </div>
+        <div class="split">
+          <div class="split-media">
+            <div class="window">
+              <div class="window-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="window-title">claude — editing index.html</span></div>
+              <div class="window-body">
+                <span class="code-line" style="color:var(--text-faint)">● Update index.html</span>
+                <span class="code-line">&nbsp;</span>
+                <span class="code-line" style="color:var(--text-faint)">&nbsp;&nbsp;&lt;main&gt;</span>
+                <span class="code-line add">+ &nbsp;&lt;footer&gt;© 2026 My Site&lt;/footer&gt;</span>
+                <span class="code-line" style="color:var(--accent-3)">- &nbsp;&lt;!-- footer goes here --&gt;</span>
+                <span class="code-line" style="color:var(--text-faint)">&nbsp;&nbsp;&lt;/main&gt;</span>
+                <span class="code-line">&nbsp;</span>
+                <span class="code-line">Apply this edit? <span class="str">[y]</span>es / [n]o</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <span class="feature-label">// The diff</span>
+            <h3 style="font-size:1.3rem;">Green is added, red is removed</h3>
+            <p>Before Claude changes a file, it prints the exact lines it wants to add and remove. You don't have to read every character — just skim to see if it looks right, then approve or reject.</p>
+            <ul class="check-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Green <span class="mono">+</span></strong> lines are being added.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Red <span class="mono">-</span></strong> lines are being removed.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Unchanged lines are shown for context.</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 style="margin-top:34px;">What you see depends on the mode</h3>
+        <div class="table-wrap reveal">
+          <table>
+            <thead><tr><th>Mode</th><th>What happens with edits</th></tr></thead>
+            <tbody>
+              <tr><td><span class="pill accent">Default</span> <span class="mono faint">⏸ manual</span></td><td>Shows the diff and <strong>asks before applying</strong>. You review every edit first. <em>(This is the default.)</em></td></tr>
+              <tr><td><span class="pill accent">Accept edits</span> <span class="mono faint">⏵⏵</span></td><td>Applies edits <strong>automatically</strong>, but still prints each diff in the transcript so you can scroll back and review.</td></tr>
+              <tr><td><span class="pill accent">Plan</span> <span class="mono faint">⏸ plan</span></td><td><strong>No edits at all</strong> — you get a written plan to approve first, then it switches to an editing mode.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout note">
+          <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 9h4M15 13h4"/></svg></span>
+          <p><strong>Want a Cursor-like view?</strong> Install the Claude Code <strong style="color:var(--text)">extension for VS Code</strong> (or a JetBrains IDE) and edits appear as full side-by-side diffs <em>inside the editor</em>, next to a Claude panel — the closest thing to Cursor's "files here, agent there" layout. The <a href="ways-to-use.html">Ways to Use page</a> lists these options.</p>
+        </div>
+        <div class="callout tip">
+          <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v6h6"/><path d="M3 13a9 9 0 103-7L3 9"/></svg></span>
+          <p><strong>Changed your mind after an edit?</strong> Press <kbd>Esc</kbd> <kbd>Esc</kbd> (or run <span class="mono">/rewind</span>) to roll back to an earlier checkpoint — and use <a href="glossary.html">Git</a> for a bulletproof undo in any mode.</p>
         </div>
       </div>
     </section>
