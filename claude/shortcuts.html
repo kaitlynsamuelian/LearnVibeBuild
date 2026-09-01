@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claude Code Shortcuts — Keyboard &amp; command cheat sheet for beginners</title>
+  <meta name="description" content="A friendly cheat sheet for Claude Code: the essential keyboard shortcuts, permission-mode switching, message editing, and the /  @  #  ! prompt prefixes." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c15f3c' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main id="main">
+    <div class="container">
+      <header class="page-head reveal">
+        <span class="eyebrow">Reference</span>
+        <h1>Claude Code Shortcuts</h1>
+        <p>These are for <strong>Claude Code</strong> (the terminal tool) — not the claude.ai chat. You don't need to memorize them; a handful quickly become second nature.</p>
+        <div class="chip-row">
+          <a class="chip" href="#essentials">Essentials</a>
+          <a class="chip" href="#control">Modes &amp; control</a>
+          <a class="chip" href="#writing">Writing a message</a>
+          <a class="chip" href="#prefixes">Prompt prefixes</a>
+          <a class="chip" href="#prompts">Permission prompts</a>
+        </div>
+      </header>
+    </div>
+
+    <section class="section-tight">
+      <div class="container">
+        <div class="callout note">
+          <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+          <p><strong>Two small notes.</strong> <kbd>Meta</kbd> means <kbd>Option</kbd> on Mac and <kbd>Alt</kbd> on Windows/Linux. And everything here is customizable — you can remap keys in <span class="mono">~/.claude/keybindings.json</span>, and type <span class="mono">/help</span> anytime to see current commands.</p>
+        </div>
+
+        <!-- ESSENTIALS -->
+        <h2 id="essentials" style="margin-top:32px;">The essentials</h2>
+        <div class="table-wrap reveal">
+          <table>
+            <thead><tr><th>Action</th><th>Keys</th></tr></thead>
+            <tbody>
+              <tr><td>Send your message</td><td><span class="keys"><kbd>Enter</kbd></span></td></tr>
+              <tr><td>Stop Claude / cancel what you're typing</td><td><span class="keys"><kbd>Esc</kbd></span></td></tr>
+              <tr><td>Interrupt a running task</td><td><span class="keys"><kbd>Ctrl</kbd> + <kbd>C</kbd></span></td></tr>
+              <tr><td>Rewind to an earlier checkpoint</td><td><span class="keys"><kbd>Esc</kbd> <kbd>Esc</kbd></span> &nbsp;or&nbsp; <span class="mono">/rewind</span></td></tr>
+              <tr><td>Redraw / clear the screen (keeps the chat)</td><td><span class="keys"><kbd>Ctrl</kbd> + <kbd>L</kbd></span></td></tr>
+              <tr><td>Exit Claude Code</td><td><span class="keys"><kbd>Ctrl</kbd> + <kbd>D</kbd></span> &nbsp;or&nbsp; <span class="mono">/exit</span></td></tr>
+              <tr><td>Show all commands &amp; help</td><td><span class="mono">/help</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- CONTROL -->
+        <h2 id="control" style="margin-top:36px;">Modes &amp; control</h2>
+        <div class="table-wrap reveal">
+          <table>
+            <thead><tr><th>Action</th><th>Keys</th></tr></thead>
+            <tbody>
+              <tr><td>Cycle permission modes (default → accept edits → plan)</td><td><span class="keys"><kbd>Shift</kbd> + <kbd>Tab</kbd></span></td></tr>
+              <tr><td>Jump straight into plan mode</td><td><span class="keys"><kbd>Shift</kbd> + <kbd>Tab</kbd></span> &nbsp;or&nbsp; <span class="mono">/plan</span></td></tr>
+              <tr><td>Open the model picker (Sonnet, Opus…)</td><td><span class="keys"><kbd>Meta</kbd> + <kbd>P</kbd></span> &nbsp;or&nbsp; <span class="mono">/model</span></td></tr>
+              <tr><td>Toggle extended thinking</td><td><span class="keys"><kbd>Meta</kbd> + <kbd>T</kbd></span></td></tr>
+              <tr><td>Toggle the to-do checklist</td><td><span class="keys"><kbd>Ctrl</kbd> + <kbd>T</kbd></span></td></tr>
+              <tr><td>Open the prompt/plan in your text editor</td><td><span class="keys"><kbd>Ctrl</kbd> + <kbd>G</kbd></span></td></tr>
+              <tr><td>Send a task to the background</td><td><span class="keys"><kbd>Ctrl</kbd> + <kbd>B</kbd></span></td></tr>
+              <tr><td>Start a fresh conversation (free up context)</td><td><span class="mono">/clear</span></td></tr>
+              <tr><td>Summarize the chat to save room</td><td><span class="mono">/compact</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- WRITING -->
+        <h2 id="writing" style="margin-top:36px;">Writing a message</h2>
+        <div class="table-wrap reveal">
+          <table>
+            <thead><tr><th>Action</th><th>Keys</th></tr></thead>
+            <tbody>
+              <tr><td>New line without sending</td><td><span class="keys"><kbd>Ctrl</kbd> + <kbd>J</kbd></span> &nbsp;or&nbsp; <span class="keys"><kbd>\\</kbd> then <kbd>Enter</kbd></span></td></tr>
+              <tr><td>New line (Mac terminals)</td><td><span class="keys"><kbd>Option</kbd> + <kbd>Enter</kbd></span></td></tr>
+              <tr><td>Autocomplete a file path</td><td><span class="keys"><kbd>Tab</kbd></span></td></tr>
+              <tr><td>Paste an image (e.g. a screenshot)</td><td><span class="keys"><kbd>Ctrl</kbd> + <kbd>V</kbd></span> <span class="faint">(Alt+V on Windows/WSL)</span></td></tr>
+              <tr><td>Previous / next message in history</td><td><span class="keys"><kbd>↑</kbd> / <kbd>↓</kbd></span></td></tr>
+              <tr><td>Search your history</td><td><span class="keys"><kbd>Ctrl</kbd> + <kbd>R</kbd></span></td></tr>
+              <tr><td>Undo last action</td><td><span class="keys"><kbd>Ctrl</kbd> + <kbd>_</kbd></span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- PREFIXES -->
+        <h2 id="prefixes" style="margin-top:36px;">Prompt prefixes (type these first)</h2>
+        <p class="muted">The character you start a line with changes what happens. These are the fastest way to steer Claude Code.</p>
+        <div class="grid grid-2">
+          <div class="card reveal"><h3><span class="mono" style="color:var(--accent)">/</span> &nbsp;Slash command</h3><p>Run a built-in command like <span class="mono">/clear</span>, <span class="mono">/model</span>, or <span class="mono">/help</span>.</p></div>
+          <div class="card reveal"><h3><span class="mono" style="color:var(--accent)">@</span> &nbsp;Mention a file</h3><p>Point Claude at a specific file or folder, e.g. <span class="mono">@index.html</span>, so it reads exactly that.</p></div>
+          <div class="card reveal"><h3><span class="mono" style="color:var(--accent)">#</span> &nbsp;Save to memory</h3><p>Start a line with <span class="mono">#</span> to add a note to your project's <span class="mono">CLAUDE.md</span> so Claude remembers it.</p></div>
+          <div class="card reveal"><h3><span class="mono" style="color:var(--accent)">!</span> &nbsp;Bash mode</h3><p>Run a raw terminal command yourself, e.g. <span class="mono">!ls</span>, without leaving Claude Code.</p></div>
+        </div>
+
+        <!-- PERMISSION PROMPTS -->
+        <h2 id="prompts" style="margin-top:36px;">When Claude asks permission</h2>
+        <div class="table-wrap reveal">
+          <table>
+            <thead><tr><th>Action</th><th>Keys</th></tr></thead>
+            <tbody>
+              <tr><td>Approve</td><td><span class="keys"><kbd>Y</kbd></span> &nbsp;or&nbsp; <span class="keys"><kbd>Enter</kbd></span></td></tr>
+              <tr><td>Decline</td><td><span class="keys"><kbd>N</kbd></span> &nbsp;or&nbsp; <span class="keys"><kbd>Esc</kbd></span></td></tr>
+              <tr><td>Move between options</td><td><span class="keys"><kbd>↑</kbd> / <kbd>↓</kbd></span></td></tr>
+              <tr><td>See an explanation of the command</td><td><span class="keys"><kbd>Ctrl</kbd> + <kbd>E</kbd></span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout tip" style="margin-top:32px;">
+          <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7c.6.5 1 1.3 1 2.1M15 16.8c0-.8.4-1.6 1-2.1A7 7 0 0012 2z"/></svg></span>
+          <p><strong>Start with just three:</strong> <kbd>Enter</kbd> to send, <kbd>Shift</kbd> + <kbd>Tab</kbd> to switch modes (especially into plan mode), and <kbd>Esc</kbd> to stop Claude if it's heading the wrong way. The rest will come naturally.</p>
+        </div>
+        <div class="callout warn">
+          <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.3L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.3a2 2 0 00-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></span>
+          <p>Claude Code updates often, so a key here and there may change. The current reference lives in the <a href="https://code.claude.com/docs/en/keybindings" target="_blank" rel="noopener">Claude Code keybindings docs</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta-band reveal">
+          <span class="eyebrow">Keep going</span>
+          <h2>Confused by a word? Look it up</h2>
+          <p>Agent, token, MCP, CLAUDE.md, terminal… our plain-English glossary defines every term, plus common questions.</p>
+          <a class="btn btn-primary" href="glossary.html">Open the Glossary &amp; FAQ
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

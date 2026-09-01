@@ -14,6 +14,7 @@
     { href: "claude-code.html", label: "Claude Code" },
     { href: "ways-to-use.html", label: "Ways to Use" },
     { href: "prompting.html", label: "Prompting Tips" },
+    { href: "shortcuts.html", label: "Shortcuts" },
     { href: "glossary.html", label: "Glossary & FAQ" },
   ];
 
@@ -72,6 +73,7 @@
           "</ul></div>" +
           '<div><h4>Reference</h4><ul>' +
             '<li><a href="prompting.html">Prompting Tips</a></li>' +
+            '<li><a href="shortcuts.html">Shortcuts</a></li>' +
             '<li><a href="glossary.html">Glossary &amp; FAQ</a></li>' +
             '<li><a href="../cursor/index.html">Learn Cursor \u2192</a></li>' +
           "</ul></div>" +

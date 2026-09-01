@@ -18,6 +18,7 @@ companion Cursor guide. Nothing to install — just open it in a browser.
 | Claude Code | `claude-code.html` | The agentic loop, permissions, CLAUDE.md, slash commands, Skills, subagents, hooks, MCP |
 | Ways to Use | `ways-to-use.html` | Web, desktop, mobile, Projects, editors, web, GitHub, API, Agent SDK |
 | Prompting Tips | `prompting.html` | How to ask Claude well, with weak-vs-strong examples |
+| Shortcuts | `shortcuts.html` | Claude Code keyboard & command cheat sheet (modes, prefixes, prompts) |
 | Glossary & FAQ | `glossary.html` | Plain-English definitions + common beginner questions |
 
 Shared assets live in `assets/css/styles.css` and `assets/js/main.js`
