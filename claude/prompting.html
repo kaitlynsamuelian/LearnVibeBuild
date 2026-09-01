@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prompting Tips for Claude — Ask well, get great answers</title>
+  <meta name="description" content="Simple, beginner-friendly habits for talking to Claude: give context, be specific, show examples, ask for a format, and iterate. Weak vs. strong prompt examples." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c15f3c' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main id="main">
+    <div class="container">
+      <header class="page-head reveal">
+        <span class="eyebrow">Chapter 5</span>
+        <h1>Prompting Tips</h1>
+        <p>A "prompt" is just your message to Claude. You don't need special words — you need clear ones. These habits turn okay answers into great ones.</p>
+      </header>
+    </div>
+
+    <!-- HABITS -->
+    <section class="section-tight">
+      <div class="container">
+        <h2>Six habits that make Claude shine</h2>
+        <div class="grid grid-2" style="margin-top:24px;">
+          <div class="card reveal">
+            <div class="card-icon"><span style="font-weight:800;">1</span></div>
+            <h3>Give context up front</h3>
+            <p>Tell Claude who it's for and why. "Explain compound interest <em>to a 12-year-old</em>" beats "explain compound interest." Context shapes everything.</p>
+          </div>
+          <div class="card reveal">
+            <div class="card-icon c2"><span style="font-weight:800;">2</span></div>
+            <h3>Be specific about the outcome</h3>
+            <p>Say what a good result looks like: length, tone, audience, format. "A friendly 100-word summary with 3 bullet points" gives Claude a clear target.</p>
+          </div>
+          <div class="card reveal">
+            <div class="card-icon c3"><span style="font-weight:800;">3</span></div>
+            <h3>Show an example</h3>
+            <p>If you have a style in mind, paste a short example. Claude is great at matching a pattern you show it — "write more like this."</p>
+          </div>
+          <div class="card reveal">
+            <div class="card-icon c4"><span style="font-weight:800;">4</span></div>
+            <h3>Ask for a format</h3>
+            <p>Want a table, a checklist, or steps? Just ask. "Put it in a table with columns for pros and cons" gets you exactly that.</p>
+          </div>
+          <div class="card reveal">
+            <div class="card-icon c5"><span style="font-weight:800;">5</span></div>
+            <h3>Let it think for hard problems</h3>
+            <p>For tricky questions, add "think it through step by step." Claude reasons more carefully and you can follow the logic.</p>
+          </div>
+          <div class="card reveal">
+            <div class="card-icon c6"><span style="font-weight:800;">6</span></div>
+            <h3>Iterate — it's a conversation</h3>
+            <p>Not quite right? Say "shorter," "more formal," "focus on the second point." You rarely nail it in one shot, and that's fine.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- BEFORE / AFTER -->
+    <section class="section-tight">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Weak prompt vs. strong prompt</h2>
+          <p>Same goal, very different results. The strong versions add context, specifics, and a format.</p>
+        </div>
+        <div class="grid grid-2">
+          <div class="card reveal" style="border-color:color-mix(in srgb,var(--accent-3) 40%,var(--border));">
+            <span class="pill" style="color:var(--accent-3);border-color:color-mix(in srgb,var(--accent-3) 35%,transparent);margin-bottom:14px;">✗ Vague</span>
+            <p class="mono" style="color:var(--text);">"write about dogs"</p>
+            <p class="faint" style="margin-top:10px;font-size:0.88rem;">Claude has to guess the length, angle, and audience.</p>
+          </div>
+          <div class="card reveal" style="border-color:color-mix(in srgb,var(--green) 40%,var(--border));">
+            <span class="pill" style="color:var(--green);border-color:color-mix(in srgb,var(--green) 35%,transparent);margin-bottom:14px;">✓ Specific</span>
+            <p class="mono" style="color:var(--text);">"Write a warm 150-word intro for a first-time dog owner's guide, in a friendly tone, ending with one reassuring sentence."</p>
+          </div>
+          <div class="card reveal" style="border-color:color-mix(in srgb,var(--accent-3) 40%,var(--border));">
+            <span class="pill" style="color:var(--accent-3);border-color:color-mix(in srgb,var(--accent-3) 35%,transparent);margin-bottom:14px;">✗ Vague</span>
+            <p class="mono" style="color:var(--text);">"help with my budget"</p>
+            <p class="faint" style="margin-top:10px;font-size:0.88rem;">No numbers, no goal — nothing to work with.</p>
+          </div>
+          <div class="card reveal" style="border-color:color-mix(in srgb,var(--green) 40%,var(--border));">
+            <span class="pill" style="color:var(--green);border-color:color-mix(in srgb,var(--green) 35%,transparent);margin-bottom:14px;">✓ Specific</span>
+            <p class="mono" style="color:var(--text);">"Here's my monthly income and expenses [paste]. Suggest a simple budget that saves 15%, as a table, and flag my two biggest costs."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- CLAUDE CODE PROMPTING -->
+    <section class="section-tight">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Prompting Claude Code (for building)</h2>
+          <p>The same habits apply, plus a few coding-specific ones.</p>
+        </div>
+        <div class="grid grid-2">
+          <div class="callout tip" style="margin:0;">
+            <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <p><strong>Work in small steps.</strong> Ask for one change, review it, then continue. Easier to check and undo than one giant request.</p>
+          </div>
+          <div class="callout tip" style="margin:0;">
+            <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <p><strong>Ask for a plan first.</strong> For anything big: "outline your plan before you change any files." You approve the approach, then it builds.</p>
+          </div>
+          <div class="callout tip" style="margin:0;">
+            <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <p><strong>Paste the exact error.</strong> The full error text usually lets Claude pinpoint the fix immediately.</p>
+          </div>
+          <div class="callout tip" style="margin:0;">
+            <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <p><strong>Save preferences in <span class="mono">CLAUDE.md</span>.</strong> Recurring instructions belong there so you don't repeat them each session.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- STARTERS -->
+    <section class="section-tight">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Copy-and-tweak starter prompts</h2>
+          <p>Steal these and adjust to your situation.</p>
+        </div>
+        <div class="grid grid-2">
+          <div class="card reveal"><p class="mono mb-0" style="color:var(--text);">"Explain [topic] to me like I'm completely new, with one everyday analogy."</p></div>
+          <div class="card reveal"><p class="mono mb-0" style="color:var(--text);">"Summarize this document in 5 bullet points, then list any action items." (attach a file)</p></div>
+          <div class="card reveal"><p class="mono mb-0" style="color:var(--text);">"Draft three subject-line options for this email, from formal to casual."</p></div>
+          <div class="card reveal"><p class="mono mb-0" style="color:var(--text);">"Review my writing for clarity and tone. Suggest edits, but keep my voice."</p></div>
+          <div class="card reveal"><p class="mono mb-0" style="color:var(--text);">"Outline a plan before changing any files, then wait for my approval." (Claude Code)</p></div>
+          <div class="card reveal"><p class="mono mb-0" style="color:var(--text);">"Here's an error I got: [paste]. Find the cause and propose a fix." (Claude Code)</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta-band reveal">
+          <span class="eyebrow">Last stop</span>
+          <h2>Confused by a word? Look it up</h2>
+          <p>LLM, token, agent, terminal, MCP… our plain-English glossary defines every term — plus answers to common questions.</p>
+          <a class="btn btn-primary" href="glossary.html">Open the Glossary &amp; FAQ
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

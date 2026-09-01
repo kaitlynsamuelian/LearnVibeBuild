@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claude Code — The agentic coding tool, explained for beginners</title>
+  <meta name="description" content="A plain-English deep dive into Claude Code: the agentic loop, editing files, running commands, CLAUDE.md memory, slash commands, subagents, hooks, Skills, plugins, and MCP." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c15f3c' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main id="main">
+    <div class="container">
+      <header class="page-head reveal">
+        <span class="eyebrow">Chapter 3</span>
+        <h1>Claude Code</h1>
+        <p>Claude Code is Claude with its sleeves rolled up. It works inside your project — reading, editing, and running things to get real tasks done. Here's how it works and the words you'll hear along the way.</p>
+        <div class="chip-row">
+          <a class="chip" href="#loop">The agentic loop</a>
+          <a class="chip" href="#does">What it can do</a>
+          <a class="chip" href="#permission">Permissions &amp; safety</a>
+          <a class="chip" href="#memory">CLAUDE.md memory</a>
+          <a class="chip" href="#slash">Slash commands</a>
+          <a class="chip" href="#skills">Skills</a>
+          <a class="chip" href="#subagents">Subagents</a>
+          <a class="chip" href="#hooks">Hooks</a>
+          <a class="chip" href="#mcp">MCP</a>
+        </div>
+      </header>
+    </div>
+
+    <!-- THE LOOP -->
+    <section class="feature-block" id="loop">
+      <div class="container">
+        <div class="split">
+          <div>
+            <span class="feature-label">// The core idea</span>
+            <h2>The "agentic loop"</h2>
+            <p>Regular chat gives you one answer at a time. Claude Code instead works in a <strong style="color:var(--text)">loop</strong>: it gathers context (reads your files), decides on a step, does it (edits a file or runs a command), looks at the result, and repeats — until your task is complete.</p>
+            <p>That's what "agentic" means: it can take a sequence of actions toward a goal, not just reply. You describe the destination; it figures out and takes the steps.</p>
+            <div class="callout note">
+              <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+              <p>You stay in the loop too — Claude Code shows its steps and checks in with you, especially before anything risky.</p>
+            </div>
+          </div>
+          <div class="split-media">
+            <div class="window">
+              <div class="window-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="window-title">the loop</span></div>
+              <div class="window-body" style="font-family:var(--font)">
+                <div style="display:grid;gap:10px;font-size:0.86rem;color:var(--text-muted);">
+                  <div>1. 📖 Read relevant files (gather context)</div>
+                  <div>2. 🧠 Decide the next step</div>
+                  <div>3. ✏️ Edit a file / ▶️ run a command</div>
+                  <div>4. 👀 Check the result</div>
+                  <div style="color:var(--accent);">↻ Repeat until the task is done</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT IT DOES -->
+    <section class="feature-block" id="does">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>What Claude Code can do</h2>
+          <p>The everyday superpowers, in plain terms.</p>
+        </div>
+        <div class="grid grid-3">
+          <div class="card reveal">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg></div>
+            <h3>Edit your files</h3>
+            <p>Create new files and change existing ones across your whole project — a small tweak or a big feature.</p>
+          </div>
+          <div class="card reveal">
+            <div class="card-icon c2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-6-6-6M12 19h8"/></svg></div>
+            <h3>Run commands</h3>
+            <p>Install tools, start your app, or run tests in the terminal — with your permission — and read the output.</p>
+          </div>
+          <div class="card reveal">
+            <div class="card-icon c3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></div>
+            <h3>Explore &amp; explain</h3>
+            <p>Understand an unfamiliar codebase, answer "where does X happen?", and explain code in beginner terms.</p>
+          </div>
+          <div class="card reveal">
+            <div class="card-icon c4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <h3>Fix bugs</h3>
+            <p>Paste an error, and it investigates the cause, proposes a fix, and can verify the fix worked.</p>
+          </div>
+          <div class="card reveal">
+            <div class="card-icon c5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="9" r="2"/><path d="M6 8v8M18 11a6 6 0 01-6 6"/></svg></div>
+            <h3>Work with Git</h3>
+            <p>Write commit messages, create commits, open pull requests, and help you manage versions of your work.</p>
+          </div>
+          <div class="card reveal">
+            <div class="card-icon c6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+            <h3>Handle whole tasks</h3>
+            <p>Given a goal like "add dark mode," it plans and carries out the many small steps to get there.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PERMISSIONS -->
+    <section class="feature-block" id="permission">
+      <div class="container">
+        <div class="split reverse">
+          <div class="split-media">
+            <div class="window">
+              <div class="window-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="window-title">claude</span></div>
+              <div class="window-body">
+                <span class="code-line" style="color:var(--text-faint)">● Claude wants to run:</span>
+                <span class="code-line"><span class="str">$</span> npm install</span>
+                <span class="code-line">&nbsp;</span>
+                <span class="code-line">Allow? <span class="str">[y]</span>es / [n]o / [a]lways</span>
+                <span class="code-line"><span class="str">&gt;</span> y</span>
+                <span class="code-line" style="color:var(--green)">✓ running…</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <span class="feature-label">// You're in control</span>
+            <h2>Permissions &amp; staying safe</h2>
+            <p>Claude Code <strong style="color:var(--text)">asks before it acts</strong> — before editing files or running commands. You can approve once, deny, or say "always allow" for something you trust. This is your safety valve.</p>
+            <ul class="check-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Read what it wants to do before saying yes.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Use <a href="glossary.html">Git</a> so you can always undo changes.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Start small while you build trust in it.</span></li>
+            </ul>
+            <div class="callout warn">
+              <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.3L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.3a2 2 0 00-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></span>
+              <p>There are faster, less-restricted modes for experienced users. As a beginner, keep the default "ask me" behavior on.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEMORY -->
+    <section class="feature-block" id="memory">
+      <div class="container">
+        <div class="split">
+          <div>
+            <span class="feature-label">// Project memory</span>
+            <h2>CLAUDE.md — your project's memory</h2>
+            <p><span class="mono">CLAUDE.md</span> is a plain text file you keep in your project. Think of it like a <strong style="color:var(--text)">README written for Claude</strong>: it holds standing notes — how the project is organized, commands to run, your preferences and coding style.</p>
+            <p>Claude Code reads it automatically each session, so you don't have to repeat yourself. Want it to "always use British spelling" or "run the tests with <span class="mono">npm test</span>"? Write it once in <span class="mono">CLAUDE.md</span>.</p>
+            <div class="callout tip">
+              <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7c.6.5 1 1.3 1 2.1M15 16.8c0-.8.4-1.6 1-2.1A7 7 0 0012 2z"/></svg></span>
+              <p>You can even ask Claude Code to create or update its own <span class="mono">CLAUDE.md</span> for you: "set up a CLAUDE.md describing this project."</p>
+            </div>
+          </div>
+          <div class="split-media">
+            <div class="window">
+              <div class="window-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="window-title">CLAUDE.md</span></div>
+              <div class="window-body">
+                <span class="code-line"><span class="com"># My Project</span></span>
+                <span class="code-line">&nbsp;</span>
+                <span class="code-line">## Commands</span>
+                <span class="code-line">- Start: <span class="str">npm run dev</span></span>
+                <span class="code-line">- Test: <span class="str">npm test</span></span>
+                <span class="code-line">&nbsp;</span>
+                <span class="code-line">## Style</span>
+                <span class="code-line">- Keep functions small</span>
+                <span class="code-line">- British spelling please</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLASH COMMANDS -->
+    <section class="feature-block" id="slash">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Slash commands</h2>
+          <p>Type <span class="mono">/</span> in Claude Code to run a built-in shortcut. These control the session — no coding needed.</p>
+        </div>
+        <div class="table-wrap reveal">
+          <table>
+            <thead><tr><th>Command</th><th>What it does</th></tr></thead>
+            <tbody>
+              <tr><td><span class="mono">/clear</span></td><td>Start a fresh conversation with a clean slate (clears the context).</td></tr>
+              <tr><td><span class="mono">/compact</span></td><td>Summarize the conversation so far to free up room while keeping the gist.</td></tr>
+              <tr><td><span class="mono">/model</span></td><td>Switch which Claude model you're using (Sonnet, Opus, etc.).</td></tr>
+              <tr><td><span class="mono">/mcp</span></td><td>View and manage connections to external tools (MCP servers).</td></tr>
+              <tr><td><span class="mono">/help</span></td><td>List available commands and get guidance.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout note">
+          <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+          <p>You can also create your own custom commands, and the exact built-in list grows over time — type <span class="mono">/help</span> anytime to see what's available.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="feature-block" id="skills">
+      <div class="container">
+        <div class="split reverse">
+          <div class="split-media">
+            <div class="window">
+              <div class="window-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="window-title">a skill</span></div>
+              <div class="window-body" style="font-family:var(--font)">
+                <div style="display:grid;gap:8px;font-size:0.84rem;color:var(--text-muted);">
+                  <div style="color:var(--accent);font-weight:600;">Skill: "release-notes"</div>
+                  <div>1. Read recent commits</div>
+                  <div>2. Group changes by type</div>
+                  <div>3. Write friendly release notes</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <span class="feature-label">// Reusable know-how</span>
+            <h2>Skills</h2>
+            <p>A <strong style="color:var(--text)">Skill</strong> is a packaged set of instructions for doing a specific multi-step task a consistent way. Instead of re-explaining "how we write release notes" every time, you save it as a Skill and Claude uses it when relevant.</p>
+            <p>Skills are the modern, recommended way to package repeatable workflows. Beginners don't need to build any at first — just know they're how power users teach Claude their routines.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUBAGENTS -->
+    <section class="feature-block" id="subagents">
+      <div class="container">
+        <div class="split">
+          <div>
+            <span class="feature-label">// Divide and conquer</span>
+            <h2>Subagents</h2>
+            <p>A <strong style="color:var(--text)">subagent</strong> is a helper Claude Code can spin up to handle a side task in its own separate workspace — while the main conversation keeps going. Great for parallel jobs like "go research how this library works and report back."</p>
+            <p>The subagent does its focused work independently and returns a summary, so the main agent (and you) don't lose your train of thought.</p>
+            <div class="callout note">
+              <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+              <p>Think of subagents as assistants your assistant can hire for specific errands.</p>
+            </div>
+          </div>
+          <div class="split-media">
+            <div class="window">
+              <div class="window-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="window-title">subagents</span></div>
+              <div class="window-body" style="font-family:var(--font)">
+                <div style="display:grid;gap:10px;font-size:0.82rem;">
+                  <div style="padding:8px 10px;border:1px solid var(--border);border-radius:8px;color:var(--text-muted);">Main agent — building the feature</div>
+                  <div style="padding:8px 10px;border:1px solid color-mix(in srgb,var(--accent) 40%,var(--border));border-radius:8px;color:var(--text-muted);">↳ Subagent — reading the docs</div>
+                  <div style="padding:8px 10px;border:1px solid color-mix(in srgb,var(--accent) 40%,var(--border));border-radius:8px;color:var(--text-muted);">↳ Subagent — running the tests</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOOKS + MCP -->
+    <section class="feature-block" id="hooks">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Hooks &amp; MCP — connecting Claude to your world</h2>
+          <p>Two more words you'll hear. You don't need them to start, but here's what they mean.</p>
+        </div>
+        <div class="grid grid-2">
+          <div class="card reveal">
+            <div class="card-icon c2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v12M18 9v12M6 15a6 6 0 006 6M18 9a6 6 0 00-6-6"/></svg></div>
+            <h3>Hooks</h3>
+            <p>Automatic actions that fire at set moments in Claude Code's lifecycle — like "run the formatter every time a file is edited," or "run the tests after each change." They make behavior <strong style="color:var(--text)">consistent and automatic</strong>, without you asking each time.</p>
+          </div>
+          <div class="card reveal" id="mcp">
+            <div class="card-icon c3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <h3>MCP (Model Context Protocol)</h3>
+            <p>A standard way to plug Claude into outside systems — GitHub, a database, your browser, a design tool. Add one and Claude can <strong style="color:var(--text)">use it as a tool</strong>. Think "apps for your agent." You add servers with <span class="mono">claude mcp add</span>.</p>
+          </div>
+        </div>
+        <div class="callout tip">
+          <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7c.6.5 1 1.3 1 2.1M15 16.8c0-.8.4-1.6 1-2.1A7 7 0 0012 2z"/></svg></span>
+          <p><strong>MCP is shared across the AI world.</strong> The same MCP idea appears in other tools (including Cursor) — learn it once, use it everywhere.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta-band reveal">
+          <span class="eyebrow">So many doorways</span>
+          <h2>Where can you actually use all this?</h2>
+          <p>Terminal, code editor, desktop, web, phone, the API, even GitHub. Let's map every way to reach Claude.</p>
+          <a class="btn btn-primary" href="ways-to-use.html">See the Ways to Use Claude
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

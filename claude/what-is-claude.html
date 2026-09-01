@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What is Claude? — The assistant, Claude Code, and the models</title>
+  <meta name="description" content="A beginner's overview of the Claude family: Claude the AI assistant, Claude Code the agentic coding tool, and the Claude models (Fable, Opus, Sonnet, Haiku)." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c15f3c' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main id="main">
+    <div class="container">
+      <header class="page-head reveal">
+        <span class="eyebrow">Chapter 1</span>
+        <h1>What is Claude?</h1>
+        <p>Claude is an AI assistant built by a company called Anthropic. "Claude" is also an umbrella for a small family of related things. Let's meet each one and see how they fit together.</p>
+        <div class="chip-row">
+          <a class="chip" href="#assistant">Claude, the assistant</a>
+          <a class="chip" href="#code">Claude Code</a>
+          <a class="chip" href="#models">The models</a>
+          <a class="chip" href="#anthropic">Who makes it</a>
+          <a class="chip" href="#safety">A note on trust</a>
+        </div>
+      </header>
+    </div>
+
+    <!-- ASSISTANT -->
+    <section class="section-tight">
+      <div class="container">
+        <div class="split">
+          <div>
+            <span class="eyebrow" style="color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent);border-color:color-mix(in srgb,var(--accent) 25%,transparent);">The main thing</span>
+            <h2 id="assistant" style="margin-top:16px;">Claude, the AI assistant</h2>
+            <p>When people say "Claude," they usually mean the assistant you <strong style="color:var(--text)">chat with</strong> at <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> (or in the Claude desktop and phone apps). You type a message; Claude replies. It's a conversation.</p>
+            <p>You can ask it almost anything: explain a concept, draft a message, summarize a PDF, brainstorm ideas, analyze a spreadsheet, plan a trip, or help with code. It remembers the conversation, so you can refine and follow up naturally.</p>
+            <ul class="check-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>No coding or setup — just type in plain language.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>You can attach files and images for Claude to read.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Great for writing, thinking, learning, and everyday tasks.</span></li>
+            </ul>
+          </div>
+          <div class="split-media">
+            <div class="window">
+              <div class="window-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="window-title">claude.ai</span></div>
+              <div class="window-body" style="font-family:var(--font);">
+                <div class="chat-mock">
+                  <div class="bubble user"><span class="tag">You</span>Explain what an API is, like I'm totally new.</div>
+                  <div class="bubble ai"><span class="tag">Claude</span>Sure! An API is like a waiter at a restaurant. You (an app) ask for something from the menu, the waiter carries your request to the kitchen, and brings back exactly what you ordered…</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- CLAUDE CODE -->
+    <section class="section-tight">
+      <div class="container">
+        <div class="split reverse">
+          <div class="split-media">
+            <div class="window">
+              <div class="window-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="window-title">Terminal — claude</span></div>
+              <div class="window-body">
+                <span class="code-line"><span class="str">✻</span> Welcome to Claude Code</span>
+                <span class="code-line">&nbsp;</span>
+                <span class="code-line"><span class="str">&gt;</span> add a contact form to my website</span>
+                <span class="code-line" style="color:var(--text-faint)">● I'll add a form to index.html and</span>
+                <span class="code-line" style="color:var(--text-faint)">&nbsp;&nbsp;wire up the submit handler…</span>
+                <span class="code-line" style="color:var(--green)">✓ Edited index.html, script.js</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <span class="eyebrow" style="color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent);border-color:color-mix(in srgb,var(--accent) 25%,transparent);">The builder</span>
+            <h2 id="code" style="margin-top:16px;">Claude Code, the agentic coding tool</h2>
+            <p>Claude Code is a separate tool that puts Claude to work <strong style="color:var(--text)">directly on your computer</strong>. Instead of just talking, it can read your project's files, make edits, run commands, and check its own work — looping until a task is done. That "takes actions on its own" quality is what people mean by <em>agentic</em>.</p>
+            <p>It mainly runs in the <a href="glossary.html">terminal</a> (a text-command window), but it also works inside code editors, a desktop app, and even on the web. It's aimed at building and changing software.</p>
+            <div class="callout note">
+              <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+              <p>Same Claude intelligence, different job. The assistant <em>chats</em>; Claude Code <em>does</em>. There's a whole <a href="claude-code.html">Claude Code chapter</a> when you're ready.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- MODELS -->
+    <section class="section-tight">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 id="models">The Claude models — the "brains" you can choose</h2>
+          <p>Under the hood, Claude runs on AI models. Anthropic offers a few, named by tiers, so you can trade off <strong style="color:var(--text)">capability, speed, and cost</strong>. You'll see these names in a dropdown when you use Claude.</p>
+        </div>
+        <div class="grid grid-4">
+          <div class="card reveal">
+            <span class="pill accent">Default</span>
+            <h3 style="margin-top:12px;">Sonnet</h3>
+            <p>The balanced everyday model — fast and smart. It's the default on the Free and Pro plans, and where most people should start.</p>
+          </div>
+          <div class="card reveal">
+            <span class="pill">Flagship</span>
+            <h3 style="margin-top:12px;">Opus</h3>
+            <p>The powerful workhorse for the hardest problems — complex reasoning and long, involved coding tasks.</p>
+          </div>
+          <div class="card reveal">
+            <span class="pill">Fastest</span>
+            <h3 style="margin-top:12px;">Haiku</h3>
+            <p>The quickest, lightest, lowest-cost model. Best when speed and volume matter more than maximum depth.</p>
+          </div>
+          <div class="card reveal">
+            <span class="pill">Frontier</span>
+            <h3 style="margin-top:12px;">Fable</h3>
+            <p>Anthropic's most capable widely-available model, reserved for the most demanding reasoning and agentic work.</p>
+          </div>
+        </div>
+        <div class="callout tip">
+          <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7c.6.5 1 1.3 1 2.1M15 16.8c0-.8.4-1.6 1-2.1A7 7 0 0012 2z"/></svg></span>
+          <p><strong>Simple rule:</strong> start with <strong style="color:var(--text)">Sonnet</strong>. Move up to Opus or Fable for the toughest tasks, or down to Haiku when you want speed and low cost. As a beginner, the default is perfect.</p>
+        </div>
+        <div class="callout warn">
+          <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.3L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.3a2 2 0 00-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></span>
+          <p>Model names carry a version number (for example "Sonnet 4.5" or "Opus 5") and Anthropic ships new versions often. The <em>tier names</em> — Haiku, Sonnet, Opus, Fable — are the stable part. Check <a href="https://docs.claude.com" target="_blank" rel="noopener">the docs</a> for today's exact lineup.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ANTHROPIC + SAFETY -->
+    <section class="section-tight">
+      <div class="container">
+        <div class="grid grid-2">
+          <div>
+            <h2 id="anthropic">Who makes Claude?</h2>
+            <p>Claude is built by <strong style="color:var(--text)">Anthropic</strong>, an AI safety and research company. Claude is named in the spirit of making AI feel approachable and human-friendly.</p>
+            <p>Anthropic puts a strong emphasis on making Claude <em>helpful, honest, and harmless</em> — which is part of why Claude tends to be careful, explains its reasoning, and pushes back when something seems off.</p>
+          </div>
+          <div>
+            <h2 id="safety">A quick note on trust</h2>
+            <p>Claude is impressively capable, but like all AI it can occasionally be wrong or "make things up" (called a <a href="glossary.html">hallucination</a>). Treat it as a brilliant, fast assistant — not an infallible oracle.</p>
+            <div class="callout tip" style="margin-top:0;">
+              <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+              <p>Double-check anything important, and ask Claude to show its reasoning or sources when it matters.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta-band reveal">
+          <span class="eyebrow">You've got the map</span>
+          <h2>Let's send your first message</h2>
+          <p>Next, we'll create an account and chat with Claude for the first time — then look at installing Claude Code.</p>
+          <a class="btn btn-primary" href="getting-started.html">Go to Getting Started
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
