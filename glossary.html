@@ -71,6 +71,10 @@
 
           <div class="term"><h3>Bug</h3><p>A mistake in code that makes a program behave incorrectly. "Debugging" means finding and fixing bugs — something Cursor can help with.</p></div>
 
+          <div class="term"><h3>Linter <span class="pill">red squiggles</span></h3><p>A helper that checks your code as you type and underlines likely mistakes in red or yellow. The squiggles are warnings, not a crash — hover to read them, or ask the AI to fix them.</p></div>
+
+          <div class="term"><h3>Composer</h3><p>The message box where you type requests to the AI, along with its surrounding buttons (mode selector, model picker, attach, send). "Composer" is an older name you may still see for the chat/agent input.</p></div>
+
           <div class="term"><h3>Checkpoint</h3><p>An automatic save point Cursor keeps so you can roll back to how things were before an AI request. Convenient, but not a replacement for Git.</p></div>
 
           <div class="term"><h3>Indexing</h3><p>Cursor quietly reading and mapping your project so the AI can find relevant files quickly. It happens in the background.</p></div>
@@ -137,6 +141,21 @@
           <div class="acc-item">
             <button class="acc-head" aria-expanded="false">What's the difference between Tab, Inline Edit, and the Agent?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
             <div class="acc-body"><div class="acc-body-inner"><p><strong>Tab</strong> finishes what you're typing. <strong>Inline Edit</strong> changes one specific piece of code you've selected. <strong>The Agent</strong> takes on a whole task — reading, planning, and editing across files. There's a handy comparison on the <a href="features.html#modes">Features page</a>.</p></div></div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-head" aria-expanded="false">What's the percentage next to my chat box?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+            <div class="acc-body"><div class="acc-body-inner"><p>That's the <strong style="color:var(--text)">context meter</strong> — it shows how full the current conversation's <a href="#glossary-heading">context window</a> is (how much the AI is holding in mind). As a chat grows longer, it climbs. When it gets high, answers can drift, so it's a good sign to start a fresh chat for your next task. See <a href="features.html#composer">the chat box breakdown</a> for every button around the composer.</p></div></div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-head" aria-expanded="false">Should I start a new chat or keep the same one?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+            <div class="acc-body"><div class="acc-body-inner"><p>Keep one chat while you're working on a single connected task — the AI remembers the conversation, which is helpful. Start a <strong style="color:var(--text)">new chat</strong> when you switch to something unrelated, or when a chat gets very long and starts to feel "off." A clean slate usually gives sharper answers.</p></div></div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-head" aria-expanded="false">Why did the AI ask to run a command in the terminal?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+            <div class="acc-body"><div class="acc-body-inner"><p>To finish some tasks the Agent needs to run a command — like installing a tool or starting your website. It shows you the exact command and waits for you to click <strong style="color:var(--text)">Run</strong>. That "ask first" step is a safety feature: read the command, and allow it if it looks reasonable. You're always in control.</p></div></div>
           </div>
 
           <div class="acc-item">
