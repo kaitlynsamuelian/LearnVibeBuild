@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learn Cursor — The friendly guide to the AI code editor</title>
+  <meta name="description" content="Just downloaded Cursor and never used AI before? Learn Cursor is a beginner-friendly guide that explains what Cursor is, every part of the app, and all the ways to use it." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237c5cff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 3l7 17 2.5-7L20 10z'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.2-6.3-4.6L5.7 21l2.3-7.2-6-4.4h7.6z"/></svg>
+          For people brand-new to AI coding
+        </span>
+        <h1>Understand <span class="grad">Cursor</span> from your very first launch.</h1>
+        <p class="lead">
+          You downloaded Cursor. Now what? This is a calm, jargon-free guide that
+          walks you through what Cursor is, every part of the app, and all the
+          different ways you can use it — even if you've never touched AI or written a line of code.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="getting-started.html">
+            Start from the beginning
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#tour">Take the quick tour</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHAT IS CURSOR ============ -->
+    <section class="section-tight">
+      <div class="container">
+        <div class="split reveal">
+          <div>
+            <span class="eyebrow" style="color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); border-color: color-mix(in srgb, var(--accent) 25%, transparent);">The one-minute version</span>
+            <h2 style="margin-top:16px;">So, what actually is Cursor?</h2>
+            <p>
+              Cursor is a <strong style="color:var(--text)">code editor</strong> — the kind of app
+              programmers use to write software — with a powerful <strong style="color:var(--text)">AI assistant</strong>
+              built right in. Think of it as a document editor for code, except you also have a
+              tireless helper sitting next to you that can explain things, write code for you,
+              fix mistakes, and even carry out whole tasks on your behalf.
+            </p>
+            <p>
+              It's built on top of a popular editor called VS Code, so it feels familiar to many
+              developers — but you don't need to know any of that. You can simply <em>describe what
+              you want in plain English</em>, and Cursor helps make it happen.
+            </p>
+            <div class="callout note">
+              <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+              <p><strong>No experience required.</strong> Every page here assumes you're starting from zero. We explain the words as we go, and there's a <a href="glossary.html">Glossary &amp; FAQ</a> for anything unfamiliar.</p>
+            </div>
+          </div>
+          <div class="split-media">
+            <div class="window">
+              <div class="window-bar">
+                <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+                <span class="window-title">welcome.py — Cursor</span>
+              </div>
+              <div class="window-body">
+                <span class="code-line"><span class="com"># You type a request in plain English:</span></span>
+                <span class="code-line">&nbsp;</span>
+                <span class="code-line"><span class="com"># "Write a function that greets a new user"</span></span>
+                <span class="code-line">&nbsp;</span>
+                <span class="code-line ghost"><span class="kw">def</span> <span class="fn">greet</span>(name):</span>
+                <span class="code-line ghost">&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> <span class="str">f"Welcome to Cursor, {name}!"</span></span>
+                <span class="code-line">&nbsp;</span>
+                <span class="code-line"><span class="com"># ↑ Cursor suggests this. Press Tab to accept.</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHY IT FEELS DIFFERENT ============ -->
+    <section>
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Why people love it</span>
+          <h2>It's a normal editor — plus a helper that never gets tired</h2>
+          <p>Here are the ideas that make Cursor click for new users. Don't worry about memorizing them; you'll meet each one hands-on later.</p>
+        </div>
+        <div class="grid grid-3">
+          <div class="card reveal">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div>
+            <h3>Autocomplete on steroids</h3>
+            <p>As you type, Cursor predicts your next edit and offers to write it for you. Accept with a single key. This is called <strong style="color:var(--text)">Tab</strong>.</p>
+          </div>
+          <div class="card reveal">
+            <div class="card-icon c2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a4 4 0 01-4 4H8l-5 3V6a4 4 0 014-4h10a4 4 0 014 4z"/></svg></div>
+            <h3>Just ask, in English</h3>
+            <p>Open the chat and type what you want — a question, a change, a whole feature. The <strong style="color:var(--text)">Agent</strong> can read your files and make the edits.</p>
+          </div>
+          <div class="card reveal">
+            <div class="card-icon c4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <h3>You're always in control</h3>
+            <p>Cursor proposes changes; <strong style="color:var(--text)">you review and approve them</strong>. Nothing is final until you say so, and you can undo anything.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TOUR / MAP OF THE SITE ============ -->
+    <section id="tour">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Your learning path</span>
+          <h2>Everything a new Cursor user wants to know</h2>
+          <p>Work through these in order, or jump to whatever you're curious about. Each one is written for absolute beginners.</p>
+        </div>
+        <div class="grid grid-3">
+
+          <a class="card reveal" href="getting-started.html">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3l14 9-14 9z"/></svg></div>
+            <h3>Getting Started</h3>
+            <p>Download, install, sign in, and open your first project. What to click first and what to ignore.</p>
+            <span class="card-more">Step-by-step setup <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+
+          <a class="card reveal" href="interface.html">
+            <div class="card-icon c2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 9h4M15 13h4"/></svg></div>
+            <h3>The Interface</h3>
+            <p>A guided tour of every panel: the editor, the file sidebar, the chat, the terminal, and the status bar.</p>
+            <span class="card-more">Tour the app <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+
+          <a class="card reveal" href="features.html">
+            <div class="card-icon c3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.2L12 16.9 5.7 21l2.3-7.2-6-4.4h7.6z"/></svg></div>
+            <h3>Core Features</h3>
+            <p>Tab, Agent, Ask, Plan, and Inline Edit — the four or five things you'll actually use every day, explained simply.</p>
+            <span class="card-more">Learn the tools <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+
+          <a class="card reveal" href="ways-to-use.html">
+            <div class="card-icon c4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></div>
+            <h3>Ways to Use Cursor</h3>
+            <p>The desktop app, the built-in terminal, the command-line tool, and cloud agents that work while you're away.</p>
+            <span class="card-more">Explore the options <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+
+          <a class="card reveal" href="prompting.html">
+            <div class="card-icon c5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a4 4 0 01-4 4H8l-5 3V6a4 4 0 014-4h10a4 4 0 014 4z"/></svg></div>
+            <h3>Prompting Tips</h3>
+            <p>How to ask for what you want and actually get it. Simple habits that make the AI dramatically more helpful.</p>
+            <span class="card-more">Write better requests <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+
+          <a class="card reveal" href="glossary.html">
+            <div class="card-icon c6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+            <h3>Glossary &amp; FAQ</h3>
+            <p>Every confusing word — LLM, prompt, token, repository, terminal — explained in one plain sentence. Plus common questions.</p>
+            <span class="card-more">Look up a term <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THREE MODES PREVIEW ============ -->
+    <section class="section-tight">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">The big idea</span>
+          <h2>Three ways the AI helps, and when to use each</h2>
+          <p>New users mix these up constantly. Here's the quick mental model — the <a href="features.html">Features page</a> covers each in depth.</p>
+        </div>
+        <div class="vs-grid">
+          <div class="vs-card reveal">
+            <h3><span class="pill accent">Tab</span></h3>
+            <p>Finishes the line or edit you're already making, right where your cursor is. Silent, instant, no chatting.</p>
+            <p class="when"><strong>Use when:</strong> you're typing and want a quick suggestion.</p>
+          </div>
+          <div class="vs-card reveal">
+            <h3><span class="pill accent">Inline Edit</span></h3>
+            <p>Select some code (or an empty spot), press a shortcut, and describe a change to that exact spot.</p>
+            <p class="when"><strong>Use when:</strong> you want to tweak one specific piece.</p>
+          </div>
+          <div class="vs-card reveal">
+            <h3><span class="pill accent">Agent (Chat)</span></h3>
+            <p>A full conversation. Describe a goal and the agent can read, plan, edit multiple files, and run commands for you.</p>
+            <p class="when"><strong>Use when:</strong> you want the AI to actually do a task.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA BAND ============ -->
+    <section>
+      <div class="container">
+        <div class="cta-band reveal">
+          <span class="eyebrow">Ready?</span>
+          <h2>Let's open Cursor for the first time</h2>
+          <p>We'll go slow. By the end of the next page you'll have Cursor installed, signed in, and a project open — ready to try your first AI request.</p>
+          <a class="btn btn-primary" href="getting-started.html">
+            Begin with Getting Started
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

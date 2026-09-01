@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glossary &amp; FAQ — Every Cursor and AI term explained for beginners</title>
+  <meta name="description" content="Plain-English definitions of AI and coding terms (LLM, prompt, token, repository, terminal, Git and more), plus answers to common beginner questions about Cursor." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237c5cff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 3l7 17 2.5-7L20 10z'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main id="main">
+    <div class="container">
+      <header class="page-head reveal">
+        <span class="eyebrow">Reference</span>
+        <h1>Glossary &amp; FAQ</h1>
+        <p>New tools come with new words. Here's every term you'll bump into, each explained in one plain sentence — plus answers to the questions almost every beginner asks.</p>
+      </header>
+    </div>
+
+    <!-- GLOSSARY -->
+    <section class="section-tight">
+      <div class="container">
+        <h2 id="glossary-heading">Glossary</h2>
+        <input type="text" id="glossarySearch" class="glossary-search" placeholder="Search terms… (e.g. token, repository, LLM)" aria-label="Search glossary terms" />
+        <div class="glossary-list" id="glossaryList">
+
+          <div class="term"><h3>AI <span class="pill">Artificial Intelligence</span></h3><p>Software that can perform tasks that usually need human intelligence — like understanding language, answering questions, and writing text or code.</p></div>
+
+          <div class="term"><h3>LLM <span class="pill">Large Language Model</span></h3><p>The "brain" behind AI chat tools. It's trained on huge amounts of text so it can predict and generate human-like language — including code. Cursor uses LLMs to power its features.</p></div>
+
+          <div class="term"><h3>Prompt</h3><p>The message or request you send to the AI. "Write a function that adds two numbers" is a prompt. Clearer prompts get better results.</p></div>
+
+          <div class="term"><h3>Context</h3><p>The information the AI can see when answering — your files, your question, attached docs. More relevant context usually means a better answer.</p></div>
+
+          <div class="term"><h3>Context window</h3><p>The maximum amount of information the AI can consider at once. Very large projects may not fit entirely, which is why pointing it at the right files matters.</p></div>
+
+          <div class="term"><h3>Token</h3><p>A small chunk of text (roughly a few characters or part of a word) that AI models read and count. Usage and limits are often measured in tokens.</p></div>
+
+          <div class="term"><h3>Agent</h3><p>An AI that can take actions on its own toward a goal — reading files, editing code, running commands — not just replying with text. Cursor's Agent is its most powerful mode.</p></div>
+
+          <div class="term"><h3>Autocomplete</h3><p>When the editor predicts and offers to finish what you're typing. In Cursor this is called <strong style="color:var(--text)">Tab</strong>, and it's smarter than traditional autocomplete.</p></div>
+
+          <div class="term"><h3>Inline Edit</h3><p>Cursor's feature for changing a specific selected piece of code by describing the change in a little box (opened with <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>K</kbd>).</p></div>
+
+          <div class="term"><h3>Code / Source code</h3><p>The written instructions that tell a computer what to do. It's just text, organized into files, following the rules of a programming language.</p></div>
+
+          <div class="term"><h3>Programming language</h3><p>A specific set of words and rules for writing code — like Python, JavaScript, or HTML. Each is suited to different kinds of tasks.</p></div>
+
+          <div class="term"><h3>File &amp; Folder</h3><p>A file holds a piece of your project (like one webpage); a folder groups related files together. Your whole project is one main folder.</p></div>
+
+          <div class="term"><h3>Editor / IDE</h3><p>The app you write code in. IDE ("Integrated Development Environment") is a fancy word for a powerful editor with extra tools built in. Cursor is one.</p></div>
+
+          <div class="term"><h3>Extension</h3><p>An add-on that gives your editor extra abilities — support for a language, a color theme, a helpful tool. Cursor supports VS Code extensions.</p></div>
+
+          <div class="term"><h3>Terminal / Command line</h3><p>A text box where you type commands to run programs directly, instead of clicking buttons. Powerful, and Cursor can write the commands for you.</p></div>
+
+          <div class="term"><h3>Command</h3><p>A single instruction you type into the terminal, like <span class="mono">npm install</span>, that tells the computer to do something.</p></div>
+
+          <div class="term"><h3>Repository (repo)</h3><p>A project's folder, especially when its history is tracked by Git. People often say "repo" to mean "the whole project."</p></div>
+
+          <div class="term"><h3>Git</h3><p>A widely used system that saves snapshots of your project over time, so you can track changes, undo mistakes, and collaborate. The professional "save history."</p></div>
+
+          <div class="term"><h3>GitHub</h3><p>A popular website for storing Git repositories online, sharing them, and working with others. Git is the tool; GitHub is a place to host it.</p></div>
+
+          <div class="term"><h3>Commit</h3><p>A saved snapshot of your project in Git, with a short note describing what changed. Like hitting "save version" with a label.</p></div>
+
+          <div class="term"><h3>Pull request (PR)</h3><p>A proposal to add your changes into a shared project, so others (or Bugbot) can review them before they're merged in.</p></div>
+
+          <div class="term"><h3>Diff</h3><p>A side-by-side or highlighted view of what changed — green for added lines, red for removed. Cursor shows edits as diffs so you can review them.</p></div>
+
+          <div class="term"><h3>Bug</h3><p>A mistake in code that makes a program behave incorrectly. "Debugging" means finding and fixing bugs — something Cursor can help with.</p></div>
+
+          <div class="term"><h3>Checkpoint</h3><p>An automatic save point Cursor keeps so you can roll back to how things were before an AI request. Convenient, but not a replacement for Git.</p></div>
+
+          <div class="term"><h3>Indexing</h3><p>Cursor quietly reading and mapping your project so the AI can find relevant files quickly. It happens in the background.</p></div>
+
+          <div class="term"><h3>Model</h3><p>A specific AI "brain" you can choose in Cursor. Different models trade off speed, depth, and cost. Beginners can stick with the default.</p></div>
+
+          <div class="term"><h3>Rules</h3><p>Standing instructions you save so the AI follows your preferences on every request in a project (e.g. coding style). Stored in files like <span class="mono">.cursor/rules</span> or <span class="mono">AGENTS.md</span>.</p></div>
+
+          <div class="term"><h3>Skill</h3><p>A packaged, reusable ability you can invoke to do a task a certain way. Skills also power Cursor's custom modes.</p></div>
+
+          <div class="term"><h3>Hook</h3><p>An automation that runs at a specific moment — for example, formatting your code every time the agent finishes editing.</p></div>
+
+          <div class="term"><h3>MCP <span class="pill">Model Context Protocol</span></h3><p>A standard way to connect Cursor's AI to outside tools and data (databases, design apps, trackers). Think "plugins for the agent."</p></div>
+
+          <div class="term"><h3>Cloud Agent</h3><p>An agent that runs on Cursor's servers instead of your computer, so it can keep working in the background even after you close the app. Formerly "Background Agent."</p></div>
+
+          <div class="term"><h3>Bugbot</h3><p>Cursor's automated code reviewer that reads your proposed changes and flags likely bugs and issues before they ship.</p></div>
+
+          <div class="term"><h3>Hallucination</h3><p>When an AI states something incorrect or made-up with confidence. It's why you always review AI output rather than trusting it blindly.</p></div>
+
+          <div class="term"><h3>Localhost</h3><p>Your own computer acting as a mini web server. When you run a website locally you'll often visit an address like <span class="mono">localhost:3000</span> to preview it.</p></div>
+
+        </div>
+        <p class="no-results" id="glossaryEmpty" style="display:none;">No terms match your search. Try a different word.</p>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- FAQ -->
+    <section class="section-tight">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 id="faq">Frequently asked questions</h2>
+          <p>The things new Cursor users wonder about most.</p>
+        </div>
+        <div class="accordion">
+
+          <div class="acc-item">
+            <button class="acc-head" aria-expanded="false">Do I need to know how to code to use Cursor?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+            <div class="acc-body"><div class="acc-body-inner"><p>No. You can describe what you want in plain English and let the AI write the code. That said, understanding a little bit helps you review the AI's work and catch mistakes — and Cursor is a great tool for <em>learning</em> to code as you go. Ask it to explain anything you don't understand.</p></div></div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-head" aria-expanded="false">Is Cursor free?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+            <div class="acc-body"><div class="acc-body-inner"><p>There's a free plan that lets you try it with a limited amount of AI usage, plus paid plans (Pro and above) that unlock more usage and more powerful models. Exact prices and limits change, so check <a href="https://cursor.com/pricing" target="_blank" rel="noopener">cursor.com/pricing</a> for the current details.</p></div></div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-head" aria-expanded="false">Will Cursor change my files without asking?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+            <div class="acc-body"><div class="acc-body-inner"><p>It shows you proposed changes as a diff and waits for you to accept them. You're always the one who approves. Even after accepting, you can undo, and Cursor keeps checkpoints you can roll back to. For extra safety on real projects, use Git.</p></div></div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-head" aria-expanded="false">Is Cursor the same as ChatGPT?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+            <div class="acc-body"><div class="acc-body-inner"><p>They're related but different. ChatGPT is a chat website. Cursor is a full code editor that has AI chat <em>plus</em> the ability to see your project, edit your files, and run commands for you — all in one place. Under the hood it can use similar AI models.</p></div></div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-head" aria-expanded="false">Do I have to use VS Code first?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+            <div class="acc-body"><div class="acc-body-inner"><p>Not at all. Cursor is built on VS Code, so people who know VS Code feel instantly at home, but you can start fresh with Cursor and never touch VS Code. Everything you need is built in.</p></div></div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-head" aria-expanded="false">What's the difference between Tab, Inline Edit, and the Agent?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+            <div class="acc-body"><div class="acc-body-inner"><p><strong>Tab</strong> finishes what you're typing. <strong>Inline Edit</strong> changes one specific piece of code you've selected. <strong>The Agent</strong> takes on a whole task — reading, planning, and editing across files. There's a handy comparison on the <a href="features.html#modes">Features page</a>.</p></div></div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-head" aria-expanded="false">Can the AI make mistakes?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+            <div class="acc-body"><div class="acc-body-inner"><p>Yes. AI is powerful but not perfect — it can misunderstand or confidently state something wrong (a "hallucination"). Always review changes before accepting, and test that things still work. When in doubt, ask it to explain its reasoning.</p></div></div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-head" aria-expanded="false">Is my code private?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+            <div class="acc-body"><div class="acc-body-inner"><p>Cursor offers privacy settings, including a Privacy Mode, that control how your code is handled. If you're working with sensitive material, review the privacy options in Settings and read the current policy on <a href="https://cursor.com" target="_blank" rel="noopener">cursor.com</a> to understand exactly what applies to your plan.</p></div></div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-head" aria-expanded="false">Where do I go if I'm stuck?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+            <div class="acc-body"><div class="acc-body-inner"><p>Three good places: ask Cursor itself (it can explain errors and concepts), read the official <a href="https://docs.cursor.com" target="_blank" rel="noopener">documentation</a>, or visit the <a href="https://forum.cursor.com" target="_blank" rel="noopener">community forum</a> where other users share tips and solutions.</p></div></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta-band reveal">
+          <span class="eyebrow">You've got this</span>
+          <h2>Ready to build something?</h2>
+          <p>You now know what Cursor is, where everything lives, what it can do, and how to ask for help. The best next step is simply to open Cursor and try.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="getting-started.html">Revisit Getting Started
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="btn btn-ghost" href="https://cursor.com" target="_blank" rel="noopener">Open cursor.com</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

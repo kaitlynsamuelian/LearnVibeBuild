@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Cursor Interface — A guided tour of every panel</title>
+  <meta name="description" content="A visual, beginner-friendly tour of the Cursor window: the editor, file explorer, AI chat panel, terminal, activity bar, tabs, and status bar." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237c5cff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 3l7 17 2.5-7L20 10z'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main id="main">
+    <div class="container">
+      <header class="page-head reveal">
+        <span class="eyebrow">Chapter 2</span>
+        <h1>The Interface</h1>
+        <p>The Cursor window can look busy at first. But it's really just a few panels, each with one job. Here's a map — once you know these six areas, nothing feels intimidating.</p>
+      </header>
+    </div>
+
+    <!-- ANNOTATED MOCK -->
+    <section class="section-tight">
+      <div class="container">
+        <div class="app-mock reveal">
+          <div class="app-titlebar">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <span class="window-title">my-first-project — Cursor</span>
+          </div>
+          <div class="app-body">
+            <!-- Activity bar -->
+            <div class="app-activity">
+              <span class="ai" title="Files"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h6l2 2h8v12H4z"/></svg></span>
+              <span class="ai" title="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></span>
+              <span class="ai" title="Source control"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="9" r="2"/><path d="M6 8v8M18 11a6 6 0 01-6 6"/></svg></span>
+              <span class="ai on" title="AI Chat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a4 4 0 01-4 4H8l-5 3V6a4 4 0 014-4h10a4 4 0 014 4z"/></svg></span>
+            </div>
+            <!-- Explorer -->
+            <div class="app-explorer">
+              <div class="head">Explorer</div>
+              <div class="file"><svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h6l2 2h8v12H4z"/></svg>my-first-project</div>
+              <div class="file active" style="margin-left:12px;"><svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h9l3 3v17H6z"/></svg>index.html</div>
+              <div class="file" style="margin-left:12px;"><svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h9l3 3v17H6z"/></svg>styles.css</div>
+              <div class="file" style="margin-left:12px;"><svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h9l3 3v17H6z"/></svg>script.js</div>
+            </div>
+            <!-- Editor -->
+            <div class="app-editor">
+              <div class="app-tabs">
+                <span class="tab active">index.html</span>
+                <span class="tab">styles.css</span>
+              </div>
+              <div class="app-code">
+                <div><span class="ln">1</span><span style="color:var(--accent)">&lt;h1&gt;</span>Hello, world<span style="color:var(--accent)">&lt;/h1&gt;</span></div>
+                <div><span class="ln">2</span><span style="color:var(--text-faint)">&lt;p&gt;Welcome to my page&lt;/p&gt;</span></div>
+                <div><span class="ln">3</span>&nbsp;</div>
+                <div><span class="ln">4</span><span style="color:var(--text-faint);opacity:.6">&lt;button&gt;Click me&lt;/button&gt;  ← Tab suggestion</span></div>
+              </div>
+              <div class="app-terminal">
+                <div class="head">Terminal</div>
+                <div><span class="prompt">➜  my-first-project</span> npm run dev</div>
+                <div style="color:var(--text-faint)">ready — served at http://localhost:3000</div>
+              </div>
+            </div>
+            <!-- Chat -->
+            <div class="app-chat">
+              <div class="head"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a4 4 0 01-4 4H8l-5 3V6a4 4 0 014-4h10a4 4 0 014 4z"/></svg>Chat</div>
+              <div class="body">
+                <div class="mini-bubble u">Add a button under the heading</div>
+                <div class="mini-bubble a">Done — I added a button to index.html. Review the change?</div>
+              </div>
+              <div class="composer"><span>Ask, edit, or build…</span><span class="mode">Agent</span></div>
+            </div>
+          </div>
+          <div class="app-status">
+            <span class="s"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="9" r="2"/><path d="M6 8v8"/></svg>main</span>
+            <span class="s">0 errors</span>
+            <span class="right"><span class="s">HTML</span><span class="s">Cursor Tab: on</span></span>
+          </div>
+        </div>
+        <p class="faint text-center" style="margin-top:14px;font-size:0.85rem;">A simplified illustration of the Cursor window. Your colors and layout may differ, but the pieces are the same.</p>
+      </div>
+    </section>
+
+    <!-- LEGEND -->
+    <section class="section-tight">
+      <div class="container">
+        <h2>The six areas, one at a time</h2>
+        <div class="grid grid-2">
+          <div>
+            <div class="legend">
+              <div class="legend-item reveal">
+                <span class="hot">1</span>
+                <div>
+                  <h3>The Editor (the big middle area)</h3>
+                  <p>Where your files open and where you read and write code. This is the heart of the app — like the page of a document. Each open file gets a <strong style="color:var(--text)">tab</strong> across the top.</p>
+                </div>
+              </div>
+              <div class="legend-item reveal">
+                <span class="hot">2</span>
+                <div>
+                  <h3>The File Explorer (left sidebar)</h3>
+                  <p>A list of all the files and folders in your project. Click any file to open it. This is how you navigate your project, like a folder view on your computer.</p>
+                </div>
+              </div>
+              <div class="legend-item reveal">
+                <span class="hot">3</span>
+                <div>
+                  <h3>The Activity Bar (far left icons)</h3>
+                  <p>Thin strip of icons to switch what the sidebar shows: <strong style="color:var(--text)">Files</strong>, <strong style="color:var(--text)">Search</strong>, <strong style="color:var(--text)">Source Control</strong> (Git), and more.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="legend">
+              <div class="legend-item reveal">
+                <span class="hot">4</span>
+                <div>
+                  <h3>The AI Chat / Agent panel (right)</h3>
+                  <p>Your conversation with the AI. Type a question or a task, pick a mode (Agent, Ask, Plan), and watch it respond. This is Cursor's signature feature — covered fully on the <a href="features.html">Features page</a>.</p>
+                </div>
+              </div>
+              <div class="legend-item reveal">
+                <span class="hot">5</span>
+                <div>
+                  <h3>The Terminal (bottom panel)</h3>
+                  <p>A place to type text commands that run programs — like starting your website or installing tools. Cursor's AI can even write and run these commands for you. New to terminals? <a href="glossary.html">See the glossary</a>.</p>
+                </div>
+              </div>
+              <div class="legend-item reveal">
+                <span class="hot">6</span>
+                <div>
+                  <h3>The Status Bar (very bottom strip)</h3>
+                  <p>A thin bar showing at-a-glance info: your current Git branch, error/warning counts, the file's language, and whether Cursor Tab is on. Handy signals, nothing you need to touch.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- TIPS -->
+    <section class="section-tight">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>A few things that trip up newcomers</h2>
+          <p>Small clarifications that save a lot of confusion.</p>
+        </div>
+        <div class="grid grid-2">
+          <div class="callout tip">
+            <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7c.6.5 1 1.3 1 2.1M15 16.8c0-.8.4-1.6 1-2.1A7 7 0 0012 2z"/></svg></span>
+            <p><strong>Panels can be hidden or resized.</strong> Don't see the sidebar or terminal? They can be toggled open and closed. Drag the borders between panels to resize them to your liking.</p>
+          </div>
+          <div class="callout tip">
+            <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7c.6.5 1 1.3 1 2.1M15 16.8c0-.8.4-1.6 1-2.1A7 7 0 0012 2z"/></svg></span>
+            <p><strong>The Command Palette is your search box for the whole app.</strong> Press <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> to search every command by name. Forgot how to do something? Start here.</p>
+          </div>
+          <div class="callout note">
+            <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+            <p><strong>Themes and font sizes are adjustable.</strong> Prefer a light background or bigger text? Open Settings and make it comfortable. This whole site has a light/dark toggle in the top-right, too.</p>
+          </div>
+          <div class="callout note">
+            <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+            <p><strong>You can't "break" anything by clicking around.</strong> Exploring panels is safe. The only things that change your files are edits you accept — and those can always be undone.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta-band reveal">
+          <span class="eyebrow">You know the map</span>
+          <h2>Time to meet the AI features</h2>
+          <p>Now that you know where everything lives, let's dig into what Cursor can actually do — Tab, Agent, Ask, Plan, and Inline Edit.</p>
+          <a class="btn btn-primary" href="features.html">Explore the Features
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cursor's Core Features — Tab, Agent, Ask, Plan &amp; Inline Edit explained</title>
+  <meta name="description" content="Plain-English explanations of Cursor's core AI features: Tab autocomplete, the Agent, Ask mode, Plan mode, Inline Edit (Cmd+K), context with @-symbols, and more." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237c5cff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 3l7 17 2.5-7L20 10z'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main id="main">
+    <div class="container">
+      <header class="page-head reveal">
+        <span class="eyebrow">Chapter 3</span>
+        <h1>Core Features</h1>
+        <p>These are the handful of tools you'll actually use in Cursor. Learn what each one does and — just as important — <em>when</em> to reach for it.</p>
+        <div class="chip-row">
+          <a class="chip" href="#tab">Tab (autocomplete)</a>
+          <a class="chip" href="#inline">Inline Edit</a>
+          <a class="chip" href="#agent">Agent</a>
+          <a class="chip" href="#ask">Ask</a>
+          <a class="chip" href="#plan">Plan</a>
+          <a class="chip" href="#modes">Which mode?</a>
+          <a class="chip" href="#context">Context &amp; @-symbols</a>
+          <a class="chip" href="#models">Models</a>
+          <a class="chip" href="#review">Reviewing &amp; undoing</a>
+        </div>
+      </header>
+    </div>
+
+    <!-- TAB -->
+    <section class="feature-block" id="tab">
+      <div class="container">
+        <div class="split">
+          <div>
+            <span class="feature-label">// Feature 01</span>
+            <h2>Tab — autocomplete that predicts your next move</h2>
+            <p>As you type, Cursor shows a faded preview of what it thinks you'll write next. Press <kbd>Tab</kbd> to accept it instantly. It's the single feature you'll use most, and it works quietly in the background.</p>
+            <p>Unlike plain autocomplete, Cursor's Tab can suggest <strong style="color:var(--text)">multi-line edits</strong> and even predict the <strong style="color:var(--text)">next place you'll want to change</strong>, jumping you there. Ignore a suggestion by just continuing to type, or press <kbd>Esc</kbd>.</p>
+            <ul class="check-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Accept:</strong> press <kbd>Tab</kbd></span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Reject:</strong> press <kbd>Esc</kbd> or keep typing</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>No chat required — it just appears as you work</span></li>
+            </ul>
+          </div>
+          <div class="split-media">
+            <div class="window">
+              <div class="window-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="window-title">app.js</span></div>
+              <div class="window-body">
+                <span class="code-line"><span class="kw">function</span> <span class="fn">total</span>(items) {</span>
+                <span class="code-line">&nbsp;&nbsp;<span class="kw">let</span> sum = <span class="str">0</span></span>
+                <span class="code-line ghost">&nbsp;&nbsp;for (const i of items) sum += i.price</span>
+                <span class="code-line ghost">&nbsp;&nbsp;return sum</span>
+                <span class="code-line">}</span>
+                <span class="code-line">&nbsp;</span>
+                <span class="code-line"><span class="com"># Grey text = Cursor's suggestion. Tab to accept.</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INLINE EDIT -->
+    <section class="feature-block" id="inline">
+      <div class="container">
+        <div class="split reverse">
+          <div class="split-media">
+            <div class="window">
+              <div class="window-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="window-title">Inline Edit (Cmd/Ctrl + K)</span></div>
+              <div class="window-body" style="font-family:var(--font)">
+                <div style="border:1px solid var(--border-strong);border-radius:9px;padding:10px 12px;color:var(--text-faint);margin-bottom:12px;">make this text bigger and center it</div>
+                <span class="code-line add">&lt;h1 style="font-size:3rem; text-align:center"&gt;</span>
+                <span class="code-line">&nbsp;&nbsp;Hello, world</span>
+                <span class="code-line add">&lt;/h1&gt;</span>
+                <div style="margin-top:12px;display:flex;gap:8px;">
+                  <span class="pill accent">Accept</span><span class="pill">Reject</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <span class="feature-label">// Feature 02</span>
+            <h2>Inline Edit — change one exact spot</h2>
+            <p>Select a chunk of code (or click an empty line), then press <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>K</kbd>. A little box appears where you describe the change you want, right there in the file.</p>
+            <p>It's perfect for focused tweaks: "rename this variable," "add error handling here," "translate these comments to Spanish." Cursor shows the change as a <strong style="color:var(--text)">diff</strong> (old vs. new) that you accept or reject.</p>
+            <div class="callout tip">
+              <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7c.6.5 1 1.3 1 2.1M15 16.8c0-.8.4-1.6 1-2.1A7 7 0 0012 2z"/></svg></span>
+              <p>Use Inline Edit when you know <em>exactly which lines</em> should change. For bigger, multi-file jobs, use the Agent instead.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AGENT -->
+    <section class="feature-block" id="agent">
+      <div class="container">
+        <div class="split">
+          <div>
+            <span class="feature-label">// Feature 03 — the star of the show</span>
+            <h2>Agent — describe a goal, it does the work</h2>
+            <p>The Agent lives in the chat panel. You give it a task in plain English and it can <strong style="color:var(--text)">read your files, plan an approach, edit multiple files, run terminal commands, and check its own work</strong> — looping until the job is done.</p>
+            <p>It's like handing a task to a capable teammate. You stay in charge: the Agent proposes changes and you review them. It'll often ask before doing anything risky.</p>
+            <ul class="check-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Great for real tasks: "add a contact form," "fix this bug," "add dark mode."</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Can run commands (with your permission) to install things or start your app.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Shows every change as a reviewable diff before it's permanent.</span></li>
+            </ul>
+          </div>
+          <div class="split-media">
+            <div class="window">
+              <div class="window-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="window-title">Agent</span></div>
+              <div class="window-body">
+                <div class="chat-mock">
+                  <div class="bubble user"><span class="tag">You</span>Add a dark mode toggle to my website.</div>
+                  <div class="bubble ai"><span class="tag">Agent</span>I'll add a toggle button, store the choice, and add dark styles. Editing <span class="mono">index.html</span>, <span class="mono">styles.css</span>, <span class="mono">script.js</span>…</div>
+                  <div class="bubble ai"><span class="tag">Agent</span>✓ Done. 3 files changed. Want me to open a preview?</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ASK -->
+    <section class="feature-block" id="ask">
+      <div class="container">
+        <div class="split reverse">
+          <div class="split-media">
+            <div class="window">
+              <div class="window-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="window-title">Ask</span></div>
+              <div class="window-body">
+                <div class="chat-mock">
+                  <div class="bubble user"><span class="tag">You</span>What does this file actually do?</div>
+                  <div class="bubble ai"><span class="tag">Ask</span>This file sets up your homepage. It defines a heading, a paragraph, and links to your styles. Nothing here talks to a server yet…</div>
+                </div>
+                <div style="margin-top:12px;"><span class="pill">Read-only · won't edit your files</span></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <span class="feature-label">// Feature 04</span>
+            <h2>Ask — a read-only Q&amp;A about your code</h2>
+            <p>Ask mode is for <strong style="color:var(--text)">understanding, not changing</strong>. It answers questions about your project without touching a single file. Perfect when you're curious or cautious.</p>
+            <p>Use it to learn: "What does this function do?", "Where is the login handled?", "Explain this error message to me like I'm new." It's the safest way to explore.</p>
+            <div class="callout note">
+              <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+              <p><strong>Ask never edits.</strong> If you want it to actually make the change it just described, switch to Agent mode and ask again.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLAN -->
+    <section class="feature-block" id="plan">
+      <div class="container">
+        <div class="split">
+          <div>
+            <span class="feature-label">// Feature 05</span>
+            <h2>Plan — think before building</h2>
+            <p>For anything bigger than a quick change, Plan mode is your friend. Instead of diving straight in, Cursor first <strong style="color:var(--text)">writes out a plan</strong> — the steps it intends to take — so you can review and adjust the approach <em>before</em> any code is written.</p>
+            <p>You read the plan, tweak it if needed, and then let the Agent carry it out. It dramatically reduces surprises on non-trivial tasks and helps you learn how the work breaks down.</p>
+            <div class="callout tip">
+              <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7c.6.5 1 1.3 1 2.1M15 16.8c0-.8.4-1.6 1-2.1A7 7 0 0012 2z"/></svg></span>
+              <p>Rule of thumb: if a task touches several files or you're not sure how it should work, start in Plan mode. It's the recommended path for anything non-trivial.</p>
+            </div>
+          </div>
+          <div class="split-media">
+            <div class="window">
+              <div class="window-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="window-title">Plan</span></div>
+              <div class="window-body" style="font-family:var(--font)">
+                <div style="color:var(--text);font-weight:600;margin-bottom:10px;">Plan: add a newsletter signup</div>
+                <div style="display:grid;gap:8px;color:var(--text-muted);font-size:0.85rem;">
+                  <div>1. Add an email input + button to the page</div>
+                  <div>2. Style it to match the site</div>
+                  <div>3. Add a message on successful signup</div>
+                  <div>4. Store submitted emails</div>
+                </div>
+                <div style="margin-top:14px;display:flex;gap:8px;"><span class="pill accent">Approve plan</span><span class="pill">Edit steps</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHICH MODE -->
+    <section class="feature-block" id="modes">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Which mode should I use?</h2>
+          <p>A cheat sheet for the moment you're staring at the mode selector wondering what to pick.</p>
+        </div>
+        <div class="table-wrap reveal">
+          <table>
+            <thead>
+              <tr><th>I want to…</th><th>Use this</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Finish the line I'm typing</td><td><span class="pill accent">Tab</span></td></tr>
+              <tr><td>Change one specific piece of code</td><td><span class="pill accent">Inline Edit</span> (<kbd>Cmd</kbd>/<kbd>Ctrl</kbd>+<kbd>K</kbd>)</td></tr>
+              <tr><td>Understand something without changing it</td><td><span class="pill accent">Ask</span></td></tr>
+              <tr><td>Have the AI actually build or fix something</td><td><span class="pill accent">Agent</span></td></tr>
+              <tr><td>Map out a bigger task before building</td><td><span class="pill accent">Plan</span></td></tr>
+              <tr><td>Troubleshoot a stubborn bug step-by-step</td><td><span class="pill accent">Debug</span> (a focused agent mode)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout note">
+          <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+          <p><strong>You can switch modes mid-conversation.</strong> Start in Ask to understand, then flip to Agent to make the change. Cursor also supports custom modes (powered by Skills) for advanced workflows.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTEXT -->
+    <section class="feature-block" id="context">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Context: how Cursor knows about <em>your</em> project</h2>
+          <p>"Context" just means the information the AI can see when it answers. The more relevant context, the better the result. Cursor gives you easy ways to point it at exactly the right things.</p>
+        </div>
+        <div class="grid grid-2">
+          <div class="card reveal">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 018-8v0a8 8 0 010 16H8"/><path d="M8 12h8M8 8h5"/></svg></div>
+            <h3>The <span class="mono">@</span> symbol</h3>
+            <p>Type <span class="tag-inline">@</span> in the chat to attach specific context. A menu pops up so you can pick exactly what the AI should look at.</p>
+          </div>
+          <div class="card reveal">
+            <div class="card-icon c2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h6l2 2h8v12H4z"/></svg></div>
+            <h3>Codebase indexing</h3>
+            <p>Cursor quietly builds a searchable map of your project so it can find relevant files on its own — even ones you didn't mention.</p>
+          </div>
+        </div>
+        <div class="table-wrap reveal" style="margin-top:22px;">
+          <table>
+            <thead><tr><th>You type…</th><th>It attaches…</th></tr></thead>
+            <tbody>
+              <tr><td><span class="mono">@Files</span> / <span class="mono">@Folders</span></td><td>A specific file or folder for the AI to read.</td></tr>
+              <tr><td><span class="mono">@Code</span></td><td>A specific function or snippet of code.</td></tr>
+              <tr><td><span class="mono">@Docs</span></td><td>Documentation for popular libraries and tools.</td></tr>
+              <tr><td><span class="mono">@Web</span></td><td>A live web search for up-to-date info.</td></tr>
+              <tr><td><span class="mono">@Git</span></td><td>Recent changes / commits in your project.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout warn">
+          <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.3L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.3a2 2 0 00-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></span>
+          <p>The exact list of <span class="mono">@</span> options changes over time as Cursor evolves. When in doubt, type <span class="tag-inline">@</span> and see what the menu offers — or check the <a href="https://docs.cursor.com" target="_blank" rel="noopener">official docs</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODELS -->
+    <section class="feature-block" id="models">
+      <div class="container">
+        <div class="split">
+          <div>
+            <span class="feature-label">// Under the hood</span>
+            <h2>Models — the "brain" you can swap</h2>
+            <p>The intelligence behind Cursor comes from large AI models (the same family of technology as ChatGPT and Claude). Cursor lets you <strong style="color:var(--text)">pick which model</strong> handles your request from a dropdown in the chat.</p>
+            <p>Different models have different strengths — some are faster, some are more thorough. As a beginner you can happily leave it on the default; experiment later once you're comfortable.</p>
+            <div class="callout note">
+              <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+              <p>The available models change frequently. The default is a solid all-rounder — no need to overthink it at first.</p>
+            </div>
+          </div>
+          <div class="split-media">
+            <div class="window">
+              <div class="window-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="window-title">Model picker</span></div>
+              <div class="window-body" style="font-family:var(--font)">
+                <div style="display:grid;gap:8px;">
+                  <div style="padding:9px 12px;border:1px solid var(--accent);border-radius:8px;color:var(--text);display:flex;justify-content:space-between;">Auto (recommended) <span class="pill accent">default</span></div>
+                  <div style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;color:var(--text-muted);">A fast, lightweight model</div>
+                  <div style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;color:var(--text-muted);">A deep-reasoning model</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEW -->
+    <section class="feature-block" id="review">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Reviewing, accepting &amp; undoing changes</h2>
+          <p>The golden rule of Cursor: <strong style="color:var(--text)">the AI suggests, you decide.</strong> Nothing is permanent until you accept it, and even then you can undo.</p>
+        </div>
+        <div class="grid grid-3">
+          <div class="card reveal">
+            <div class="card-icon c4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <h3>Read the diff</h3>
+            <p>Changes appear as green (added) and red (removed) lines. Skim them — you don't need to understand every line to accept obvious improvements.</p>
+          </div>
+          <div class="card reveal">
+            <div class="card-icon c2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h9"/></svg></div>
+            <h3>Accept or reject</h3>
+            <p>Keep what you like, reject what you don't — per change or all at once. If something looks off, reject it and ask for a different approach.</p>
+          </div>
+          <div class="card reveal">
+            <div class="card-icon c6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v6h6"/><path d="M3 13a9 9 0 103-7L3 9"/></svg></div>
+            <h3>Undo with checkpoints</h3>
+            <p>Cursor keeps checkpoints so you can roll back to how things were before a request. Handy for "actually, never mind."</p>
+          </div>
+        </div>
+        <div class="callout warn">
+          <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.3L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.3a2 2 0 00-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></span>
+          <p><strong>Checkpoints are a convenience, not a safety net.</strong> For real projects, also learn basic <a href="glossary.html">Git</a> — the standard way to save and restore versions of your work. It's the professional backup system.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta-band reveal">
+          <span class="eyebrow">You know the tools</span>
+          <h2>Now, all the ways to use them</h2>
+          <p>Cursor isn't just the desktop app. There's a terminal, a command-line tool, and cloud agents that work while you're away. Let's look at each.</p>
+          <a class="btn btn-primary" href="ways-to-use.html">See the Ways to Use Cursor
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

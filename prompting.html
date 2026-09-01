@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prompting Tips for Cursor — How to ask the AI and get great results</title>
+  <meta name="description" content="Simple, beginner-friendly habits for talking to Cursor's AI: be specific, give context, work in small steps, and review as you go." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237c5cff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 3l7 17 2.5-7L20 10z'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main id="main">
+    <div class="container">
+      <header class="page-head reveal">
+        <span class="eyebrow">Chapter 5</span>
+        <h1>Prompting Tips</h1>
+        <p>A "prompt" is just the message you send the AI. You don't need magic words — you need clear ones. These habits are the difference between "meh" and "wow, that's exactly what I wanted."</p>
+      </header>
+    </div>
+
+    <!-- CORE HABITS -->
+    <section class="section-tight">
+      <div class="container">
+        <h2>The five habits that matter most</h2>
+        <div class="grid grid-2" style="margin-top:24px;">
+          <div class="card reveal">
+            <div class="card-icon"><span style="font-weight:800;">1</span></div>
+            <h3>Be specific about the outcome</h3>
+            <p>Say what you want to end up with, not just the topic. "Make a button" is vague; "Add a blue Sign Up button under the heading that links to signup.html" gives the AI a target.</p>
+          </div>
+          <div class="card reveal">
+            <div class="card-icon c2"><span style="font-weight:800;">2</span></div>
+            <h3>Give context with <span class="mono">@</span></h3>
+            <p>Point the AI at the right files using the <span class="tag-inline">@</span> menu. Showing it the relevant file beats making it guess. Context is the number-one driver of good results.</p>
+          </div>
+          <div class="card reveal">
+            <div class="card-icon c3"><span style="font-weight:800;">3</span></div>
+            <h3>Work in small steps</h3>
+            <p>Ask for one change at a time, review it, then continue. Small steps are easier to check and easier to undo than one giant request.</p>
+          </div>
+          <div class="card reveal">
+            <div class="card-icon c4"><span style="font-weight:800;">4</span></div>
+            <h3>Share the full error</h3>
+            <p>Something broke? Paste the exact error message. The AI can usually pinpoint the fix when it can see the real text, instead of "it doesn't work."</p>
+          </div>
+          <div class="card reveal">
+            <div class="card-icon c5"><span style="font-weight:800;">5</span></div>
+            <h3>Iterate — it's a conversation</h3>
+            <p>Not quite right? Just say so: "close, but make it bigger" or "do that but without changing the colors." The AI remembers the conversation.</p>
+          </div>
+          <div class="card reveal">
+            <div class="card-icon c6"><span style="font-weight:800;">6</span></div>
+            <h3>Ask it to explain</h3>
+            <p>Don't understand a change? Ask "explain what you just did in simple terms." Cursor is a tutor as much as a builder — use it to learn.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- BEFORE / AFTER -->
+    <section class="section-tight">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Weak prompt vs. strong prompt</h2>
+          <p>Same goal, very different results. Notice how the stronger versions add specifics and context.</p>
+        </div>
+        <div class="grid grid-2">
+          <div class="card reveal" style="border-color:color-mix(in srgb,var(--accent-3) 40%,var(--border));">
+            <span class="pill" style="color:var(--accent-3);border-color:color-mix(in srgb,var(--accent-3) 35%,transparent);margin-bottom:14px;">✗ Vague</span>
+            <p class="mono" style="color:var(--text);">"make my site look better"</p>
+            <p class="faint" style="margin-top:10px;font-size:0.88rem;">The AI has to guess what "better" means and where.</p>
+          </div>
+          <div class="card reveal" style="border-color:color-mix(in srgb,var(--green) 40%,var(--border));">
+            <span class="pill" style="color:var(--green);border-color:color-mix(in srgb,var(--green) 35%,transparent);margin-bottom:14px;">✓ Specific</span>
+            <p class="mono" style="color:var(--text);">"In @index.html, add more spacing between sections, use a dark background, and make the heading font larger and bolder."</p>
+          </div>
+          <div class="card reveal" style="border-color:color-mix(in srgb,var(--accent-3) 40%,var(--border));">
+            <span class="pill" style="color:var(--accent-3);border-color:color-mix(in srgb,var(--accent-3) 35%,transparent);margin-bottom:14px;">✗ Vague</span>
+            <p class="mono" style="color:var(--text);">"it's broken, fix it"</p>
+            <p class="faint" style="margin-top:10px;font-size:0.88rem;">No error, no file — the AI is working blind.</p>
+          </div>
+          <div class="card reveal" style="border-color:color-mix(in srgb,var(--green) 40%,var(--border));">
+            <span class="pill" style="color:var(--green);border-color:color-mix(in srgb,var(--green) 35%,transparent);margin-bottom:14px;">✓ Specific</span>
+            <p class="mono" style="color:var(--text);">"When I click Submit I get this error: [paste error]. The form is in @contact.js. Can you find and fix the cause?"</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- MINDSET -->
+    <section class="section-tight">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>A healthy mindset for working with AI</h2>
+          <p>A few attitudes that keep you safe, effective, and learning.</p>
+        </div>
+        <div class="grid grid-3">
+          <div class="callout tip" style="margin:0;">
+            <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <p><strong>Review everything.</strong> The AI is fast and helpful, but not perfect. Skim its changes before accepting — you're the final editor.</p>
+          </div>
+          <div class="callout note" style="margin:0;">
+            <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+            <p><strong>It's okay to not understand yet.</strong> Ask "why?" freely. Every explanation you request is a mini lesson.</p>
+          </div>
+          <div class="callout warn" style="margin:0;">
+            <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.3L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.3a2 2 0 00-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></span>
+            <p><strong>Save your work.</strong> Learn basic <a href="glossary.html">Git</a> or keep backups. Checkpoints help, but they're not a substitute for real version control.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- STARTER PROMPTS -->
+    <section class="section-tight">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Copy-and-tweak starter prompts</h2>
+          <p>Stuck on how to phrase something? Steal these and adjust to your situation.</p>
+        </div>
+        <div class="grid grid-2">
+          <div class="card reveal"><p class="mono mb-0" style="color:var(--text);">"Explain what this project does, file by file, in plain English."</p></div>
+          <div class="card reveal"><p class="mono mb-0" style="color:var(--text);">"Add a simple contact form to @index.html with name, email, and message fields."</p></div>
+          <div class="card reveal"><p class="mono mb-0" style="color:var(--text);">"There's a bug: [describe what happens]. Investigate and propose a fix before changing anything."</p></div>
+          <div class="card reveal"><p class="mono mb-0" style="color:var(--text);">"Make this page responsive so it looks good on phones. Show me the changes first."</p></div>
+          <div class="card reveal"><p class="mono mb-0" style="color:var(--text);">"What does the word '[term]' mean in this code? Explain like I'm brand new."</p></div>
+          <div class="card reveal"><p class="mono mb-0" style="color:var(--text);">"Add comments to this file so a beginner could understand it."</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta-band reveal">
+          <span class="eyebrow">Move faster</span>
+          <h2>Learn the shortcuts you'll use daily</h2>
+          <p>A few keystrokes save you constant clicking. Here's a tidy cheat sheet for Mac, Windows, and Linux.</p>
+          <a class="btn btn-primary" href="shortcuts.html">Open the Shortcuts cheat sheet
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
