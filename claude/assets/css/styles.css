@@ -221,6 +221,24 @@ section { padding: 72px 0; }
 .icon-btn:hover { color: var(--text); border-color: var(--border-strong); }
 .icon-btn svg { width: 18px; height: 18px; }
 
+.home-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 13px;
+  border-radius: 9px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+.home-link:hover { color: var(--text); border-color: var(--border-strong); background: var(--bg-card-hover); }
+.home-link svg { width: 16px; height: 16px; }
+@media (max-width: 560px) { .home-link-label { display: none; } }
+
 .nav-toggle { display: none; }
 
 /* Mobile nav */
