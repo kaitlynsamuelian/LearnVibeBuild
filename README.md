@@ -10,6 +10,7 @@ little JavaScript) — nothing to install, no build step.
 | --- | --- | --- |
 | **Learn Cursor** | [`cursor/`](cursor/) | The AI code editor — interface tour, Tab, Agent, ways to use it, shortcuts, glossary |
 | **Learn Claude** | [`claude/`](claude/) | Anthropic's AI assistant **and** Claude Code — what they are, how they differ, how to use them |
+| **Audit Decoder** | [`audit/`](audit/) | Upload a degree-audit PDF; get done / in-progress / leftover plus Q&A |
 
 Each folder has its own `README.md` with a full page-by-page breakdown, its own
 design system under `assets/`, and its own theme:
@@ -36,6 +37,7 @@ Then:
 - Hub: <http://localhost:4321/>
 - Cursor guide: <http://localhost:4321/cursor/>
 - Claude guide: <http://localhost:4321/claude/>
+- Audit Decoder: <http://localhost:4321/audit/>
 
 ## Notes on accuracy
 

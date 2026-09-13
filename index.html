@@ -3,69 +3,164 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Learn AI Tools — Beginner guides to Cursor and Claude</title>
-  <meta name="description" content="Two friendly, beginner-first guides for people new to AI: Learn Cursor (the AI code editor) and Learn Claude (Anthropic's AI assistant & Claude Code)." />
+  <title>Learn, Vibe, Build — Kaitlyn's studio artifacts</title>
+  <meta name="description" content="A growing collection of things I build with AI for Learn, Vibe, Build (ATLAS, CU Boulder): beginner guides to Cursor and Claude, plus Audit Decoder, an interactive degree-audit explainer." />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237c5cff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 3l7 17 2.5-7L20 10z'/%3E%3C/svg%3E" />
   <style>
     :root{
-      --bg:#0c0c10; --card:#15151b; --card2:#191922; --border:#282833;
-      --text:#f3f3f6; --muted:#a6a6b4; --faint:#71717f;
-      --cursor:#7c5cff; --cursor2:#3ea6ff; --claude:#c15f3c; --claude2:#d9764f;
+      --paper:#efe7d6; --ink:#1c1a17; --ink2:#4a463d; --line:#1c1a17;
+      --cursor:#7c5cff; --claude:#d9614a; --audit:#f0b52e;
       --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     }
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;
-      display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;
-      background-image:radial-gradient(700px circle at 20% 0%,rgba(124,92,255,.16),transparent 45%),radial-gradient(700px circle at 85% 10%,rgba(193,95,60,.14),transparent 45%);}
-    .wrap{width:100%;max-width:920px;text-align:center}
-    .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:600;letter-spacing:.05em;
-      text-transform:uppercase;color:var(--muted);border:1px solid var(--border);background:var(--card);
-      padding:7px 15px;border-radius:999px;margin-bottom:24px}
-    h1{font-size:clamp(2rem,5vw,3.1rem);line-height:1.1;letter-spacing:-.02em;margin-bottom:16px}
-    h1 .g1{background:linear-gradient(120deg,#7c5cff,#3ea6ff);-webkit-background-clip:text;background-clip:text;color:transparent}
-    h1 .g2{background:linear-gradient(120deg,#d9764f,#c15f3c);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .lead{color:var(--muted);font-size:1.1rem;max-width:56ch;margin:0 auto 44px}
-    .cards{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-    @media(max-width:720px){.cards{grid-template-columns:1fr}}
-    .card{display:block;text-align:left;background:var(--card);border:1px solid var(--border);border-radius:18px;
-      padding:30px;text-decoration:none;color:inherit;transition:transform .18s ease,border-color .18s ease,background .18s ease}
-    .card:hover{transform:translateY(-4px);background:var(--card2)}
-    .card.cursor:hover{border-color:var(--cursor)}
-    .card.claude:hover{border-color:var(--claude)}
-    .mark{width:54px;height:54px;border-radius:14px;display:grid;place-items:center;margin-bottom:18px;color:#fff}
-    .cursor .mark{background:linear-gradient(120deg,#7c5cff,#3ea6ff);box-shadow:0 0 44px -12px rgba(124,92,255,.7)}
-    .claude .mark{background:linear-gradient(120deg,#d9764f,#c15f3c);box-shadow:0 0 44px -12px rgba(193,95,60,.7)}
-    .mark svg{width:28px;height:28px}
-    .card h2{font-size:1.4rem;letter-spacing:-.01em;margin-bottom:6px}
-    .card p{color:var(--muted);font-size:.96rem;margin-bottom:18px}
-    .go{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:.92rem}
-    .cursor .go{color:var(--cursor2)} .claude .go{color:var(--claude2)}
-    .go svg{width:16px;height:16px;transition:transform .15s ease}
-    .card:hover .go svg{transform:translateX(4px)}
-    .foot{margin-top:44px;color:var(--faint);font-size:.85rem}
-    .foot a{color:var(--muted)}
+    html,body{background:var(--paper);color:var(--ink);font-family:var(--font);line-height:1.55}
+    body{min-height:100vh;overflow-x:hidden;padding-bottom:60px}
+    ::selection{background:var(--cursor);color:#fff}
+
+    /* Marquee wall (echoes the folder-icon wall) */
+    .marquee{border-bottom:2px solid var(--line);overflow:hidden;padding:9px 0}
+    .marquee.alt{border-bottom:none;border-top:none}
+    .track{display:inline-flex;gap:10px;white-space:nowrap;will-change:transform;animation:scroll 34s linear infinite}
+    .track.rev{animation-direction:reverse}
+    .marquee:hover .track{animation-play-state:paused}
+    @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .chip{display:inline-flex;align-items:center;font-size:.82rem;font-weight:700;letter-spacing:.01em;
+      padding:5px 13px;border-radius:999px;border:1.5px solid var(--line)}
+    .chip.p{background:var(--cursor);color:#fff}
+    .chip.c{background:var(--claude);color:#fff}
+    .chip.a{background:var(--audit);color:#1c1a17}
+    .chip.k{background:transparent;color:var(--ink)}
+    @media(prefers-reduced-motion:reduce){.track{animation:none}}
+
+    .wrap{max-width:1060px;margin:0 auto;padding:0 22px}
+
+    /* Hero */
+    .hero{padding:64px 22px 40px;max-width:1060px;margin:0 auto}
+    .about-tag{display:inline-block;font-size:.8rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+      border:2px solid var(--line);border-radius:999px;padding:5px 14px;margin-bottom:26px}
+    h1{font-size:clamp(3rem,11vw,7rem);line-height:.92;letter-spacing:-.04em;font-weight:900;margin-bottom:22px}
+    h1 .l{color:var(--cursor)} h1 .v{color:var(--claude)} h1 .b{color:var(--audit);-webkit-text-stroke:2px var(--ink)}
+    .about{font-size:clamp(1.05rem,2.4vw,1.4rem);max-width:44ch;color:var(--ink);font-weight:500}
+    .about b{font-weight:800}
+    .by{margin-top:22px;font-size:.95rem;font-weight:700;color:var(--ink2)}
+    .by::before{content:"";display:inline-block;width:26px;height:2px;background:var(--ink2);vertical-align:middle;margin-right:10px}
+
+    /* Collection header */
+    .collhead{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;
+      max-width:1060px;margin:36px auto 18px;padding:0 22px}
+    .collhead h2{font-size:1.4rem;font-weight:900;letter-spacing:-.01em}
+    .collhead .count{font-size:.85rem;font-weight:700;color:var(--ink2)}
+
+    /* Artifact tiles */
+    .grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;max-width:1060px;margin:0 auto;padding:0 22px}
+    @media(max-width:860px){.grid{grid-template-columns:1fr}}
+    .tile{position:relative;display:flex;flex-direction:column;min-height:290px;border:2.5px solid var(--line);
+      border-radius:22px;padding:24px;text-decoration:none;color:var(--ink);overflow:hidden;
+      box-shadow:6px 6px 0 var(--line);transition:transform .16s ease,box-shadow .16s ease}
+    .tile:hover{transform:translate(-2px,-2px) rotate(-1deg);box-shadow:10px 10px 0 var(--line)}
+    .tile.cursor{background:var(--cursor);color:#fff}
+    .tile.claude{background:var(--claude);color:#fff}
+    .tile.audit{background:var(--audit);color:#1c1a17}
+    .badge{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:999px;border:2.5px solid currentColor;
+      display:grid;place-items:center;font-weight:900;font-size:.95rem}
+    .kind{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.85;margin-bottom:auto}
+    .glyph{width:56px;height:56px;margin:14px 0 14px;display:grid;place-items:center;
+      border:2.5px solid currentColor;border-radius:16px}
+    .glyph svg{width:30px;height:30px}
+    .tile h3{font-size:1.65rem;font-weight:900;letter-spacing:-.02em;line-height:1.05;margin-bottom:8px}
+    .tile p{font-size:.92rem;font-weight:500;opacity:.94;margin-bottom:16px}
+    .open{display:inline-flex;align-items:center;gap:7px;font-weight:800;font-size:.9rem;margin-top:auto}
+    .open svg{width:17px;height:17px;transition:transform .15s ease}
+    .tile:hover .open svg{transform:translateX(5px)}
+
+    /* About strip */
+    .note{max-width:1060px;margin:44px auto 0;padding:26px 24px;border:2.5px solid var(--line);border-radius:22px;
+      background:#f7f1e4;box-shadow:6px 6px 0 var(--line)}
+    .note h2{font-size:1.05rem;font-weight:900;margin-bottom:10px}
+    .note p{font-size:.97rem;color:var(--ink2);margin-bottom:10px}
+    .note p:last-child{margin-bottom:0}
+    .note b{color:var(--ink)}
+
+    .foot{max-width:1060px;margin:30px auto 0;padding:0 24px;color:var(--ink2);font-size:.82rem}
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <span class="eyebrow">Beginner guides to AI tools</span>
-    <h1>Learn <span class="g1">Cursor</span> &amp; <span class="g2">Claude</span></h1>
-    <p class="lead">Two calm, jargon-free guides for people who are brand-new to AI. Pick the tool you just downloaded and start from the very beginning.</p>
-    <div class="cards">
-      <a class="card cursor" href="cursor/index.html">
-        <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3l7 17 2.5-7L20 10z"/></svg></div>
-        <h2>Learn Cursor</h2>
-        <p>The AI code editor. Understand the interface, Tab, the Agent, and every way to use it.</p>
-        <span class="go">Open the Cursor guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
-      <a class="card claude" href="claude/index.html">
-        <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"/></svg></div>
-        <h2>Learn Claude</h2>
-        <p>Anthropic's AI assistant and Claude Code. Learn what they are, how they differ, and how to use them.</p>
-        <span class="go">Open the Claude guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
-    </div>
-    <p class="foot">Independent learning resources. Not affiliated with Cursor / Anysphere or Anthropic. Always check the official docs for the latest details.</p>
+  <!-- Marquee wall -->
+  <div class="marquee">
+    <div class="track" id="t1"></div>
   </div>
+  <div class="marquee alt">
+    <div class="track rev" id="t2"></div>
+  </div>
+
+  <header class="hero">
+    <span class="about-tag">About</span>
+    <h1><span class="l">Learn</span>,<br><span class="v">Vibe</span>,<br><span class="b">Build</span></h1>
+    <p class="about">Experimenting with AI-assisted development: a growing collection of things I build for class.</p>
+    <p class="by">Built by Kaitlyn Samuelian · ATLAS 4519, CU Boulder</p>
+  </header>
+
+  <div class="collhead">
+    <h2>The collection</h2>
+    <span class="count">3 artifacts · more each cycle</span>
+  </div>
+
+  <main class="grid">
+    <a class="tile cursor" href="cursor/index.html">
+      <span class="badge">01</span>
+      <span class="kind">Guide</span>
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3l7 17 2.5-7L20 10z"/></svg></span>
+      <h3>A guide to Cursor</h3>
+      <p>A full beginner site for the AI code editor — interface, Tab, the Agent, prompting, and every way to use it.</p>
+      <span class="open">Open artifact <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <a class="tile claude" href="claude/index.html">
+      <span class="badge">02</span>
+      <span class="kind">Guide</span>
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"/></svg></span>
+      <h3>A guide to Claude</h3>
+      <p>Anthropic's assistant and Claude Code, explained for a brand-new user — what they are and how to use them.</p>
+      <span class="open">Open artifact <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <a class="tile audit" href="audit/index.html">
+      <span class="badge">03</span>
+      <span class="kind">Interactive tool</span>
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 4h10v16H7z"/><path d="M10 8h4M10 12h4M10 16h3"/></svg></span>
+      <h3>Audit Decoder</h3>
+      <p>Drop in a CU degree-audit PDF and get a plain-English, done-vs-still-needed breakdown you can ask questions about.</p>
+      <span class="open">Open artifact <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+  </main>
+
+  <section class="note">
+    <h2>About this shelf</h2>
+    <p>This is my studio space for <b>Learn, Vibe, Build</b>, a class where I’ll be creating artifacts throughout the semester to grow my skills, experiment with AI, and learn through building.</p>
+    <p>Currently: 3 artifacts. Two are guides I created to better understand Cursor and Claude as tools and to keep as resources moving forward. The third, <b>Audit Decoder</b>, is a tool that takes a PDF export of your degree audit from Buff Portal and turns its messy, confusing text into a clear, digestible guide to your current degree progress.</p>
+    <p>New artifacts will land here as the semester goes on.</p>
+  </section>
+
+  <p class="foot">A student project for class. Not affiliated with Cursor / Anysphere, Anthropic, or the University of Colorado. Always confirm degree audits with a human advisor.</p>
+
+  <script>
+    // Build two scrolling marquee rows (duplicated for a seamless loop).
+    var wordsA = [
+      ["Cursor","p"],["Vibe coding","k"],["Claude","c"],["Degree audits","k"],["Agents","p"],
+      ["Prompting","k"],["Claude Code","c"],["PDF parsing","k"],["Audit Decoder","a"],["Tab, tab, tab","k"],
+      ["MCP","p"],["Local-first","k"],["Studio cycles","c"]
+    ];
+    var wordsB = [
+      ["Build","a"],["AI editor","k"],["What is a token?","p"],["Q&A","k"],["CU Boulder","c"],
+      ["Guides","k"],["Diffs","p"],["Learn","k"],["Ship it","a"],["ATLAS","c"],
+      ["Made in class","k"],["Try it →","p"],["Get weird","a"]
+    ];
+    function fill(el, words){
+      var html = words.map(function(w){ return '<span class="chip '+w[1]+'">'+w[0]+'</span>'; }).join("");
+      el.innerHTML = html + html; // duplicate for seamless -50% loop
+    }
+    fill(document.getElementById("t1"), wordsA);
+    fill(document.getElementById("t2"), wordsB);
+  </script>
 </body>
 </html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Audit Decoder — A plain-English explainer for your degree audit</title>
+  <meta name="description" content="Upload or paste a degree audit PDF and get a plain-English summary of what’s done, what’s in progress, and what’s still needed. Processing stays in your browser." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e3b341' stroke-width='2.2'%3E%3Cpath d='M4 4h16v16H4z'/%3E%3Cpath d='M8 8h8M8 12h8M8 16h5'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="index.html">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 4h10v16H7z"/><path d="M10 8h4M10 12h4M10 16h3"/></svg>
+      </span>
+      Audit Decoder
+    </a>
+    <nav class="top-links">
+      <a href="../index.html">All artifacts</a>
+      <a href="https://www.colorado.edu/registrar/students/degree-planning/audit/run" target="_blank" rel="noopener">How to run a CU audit</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section id="landing">
+      <span class="eyebrow">Studio cycle · more ambitious than a static site</span>
+      <h1>Your degree audit, in language a human can use.</h1>
+      <p class="lead">
+        Upload the PDF (or paste the text). This page reads it in your browser, then splits
+        what’s done, what’s in progress, and what’s still open — and you can ask it questions.
+        It is not an advisor and it does not replace Buff Portal.
+      </p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" type="button" id="sampleBtn">Try a sample audit</button>
+        <button class="btn" type="button" id="pasteBtn">Paste text instead</button>
+      </div>
+
+      <input class="hidden-file" id="fileInput" type="file" accept="application/pdf,.pdf" />
+      <div class="dropzone" id="dropzone" role="button" tabindex="0" aria-label="Upload a degree audit PDF">
+        <strong>Drop a degree audit PDF here</strong>
+        <p>or click to choose a file. Nothing is uploaded to a server — it stays on this computer.</p>
+      </div>
+      <p class="status-line" id="uploadStatus"></p>
+
+      <div class="paste-panel" id="pastePanel" hidden>
+        <textarea id="pasteBox" placeholder="Paste the text of your audit here…"></textarea>
+        <p style="margin:10px 0 0;"><button class="btn btn-primary" type="button" id="parsePaste">Explain this text</button></p>
+      </div>
+
+      <div class="tips">
+        <div class="tip">
+          <h3>1. Get a text PDF</h3>
+          <p>In CU’s degree audit, open Advanced Settings and set Format to PDF before you run it. That extracts much better than a screenshot.</p>
+        </div>
+        <div class="tip">
+          <h3>2. Keep it private</h3>
+          <p>Audits have your name and student ID. This tool doesn’t send the file anywhere unless you turn on an optional API key.</p>
+        </div>
+        <div class="tip">
+          <h3>3. Trust, but verify</h3>
+          <p>Green checks and red X’s sometimes vanish in PDF text. Always confirm leftovers with a human advisor before you change a plan.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="results" hidden>
+      <div class="results-head">
+        <div>
+          <span class="eyebrow">Decoded</span>
+          <h1>Here’s the plain-English version</h1>
+          <p class="source" id="sourceLabel"></p>
+        </div>
+        <button class="btn" type="button" id="resetBtn">Start over</button>
+      </div>
+
+      <p class="warn" id="scanWarn" hidden>Very little text came out of that file. It may be a scan or image-only PDF. Paste the text, or re-export from the audit system as a real PDF.</p>
+
+      <div class="plain">
+        <p class="meta" id="metaLine"></p>
+        <p id="plainEnglish"></p>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><b id="stat1">—</b><span id="stat1label">—</span></div>
+        <div class="stat"><b id="stat2">—</b><span id="stat2label">—</span></div>
+        <div class="stat"><b id="stat3">—</b><span id="stat3label">—</span></div>
+        <div class="stat"><b id="stat4">—</b><span id="stat4label">—</span></div>
+      </div>
+
+      <div class="cols">
+        <div class="col">
+          <h2><span id="col1label">Done</span> <span class="count" id="count1">0</span></h2>
+          <div id="list1"></div>
+        </div>
+        <div class="col">
+          <h2><span id="col2label">In progress</span> <span class="count" id="count2">0</span></h2>
+          <div id="list2"></div>
+        </div>
+        <div class="col">
+          <h2><span id="col3label">Still open</span> <span class="count" id="count3">0</span></h2>
+          <div id="list3"></div>
+        </div>
+      </div>
+
+      <div class="warn" id="modeNote" hidden></div>
+
+      <section class="qa">
+        <h2>Ask about this audit</h2>
+        <p class="lead" style="margin:0;font-size:0.95rem;">Answers come from the text on this page. Optional: add an API key if you want a model to rewrite them.</p>
+        <div class="chips">
+          <button class="chip" type="button" data-ask="What do I still need?">What do I still need?</button>
+          <button class="chip" type="button" data-ask="What’s in progress?">What’s in progress?</button>
+          <button class="chip" type="button" data-ask="How many credits do I still need?">Credits left</button>
+          <button class="chip" type="button" data-ask="What’s my GPA?">GPA</button>
+          <button class="chip" type="button" data-ask="What should I think about for next semester?">Next semester</button>
+          <button class="chip" type="button" data-ask="Anything about study abroad?">Study abroad</button>
+        </div>
+        <div class="chat" id="chatLog" aria-live="polite"></div>
+        <form class="ask-row" id="askForm">
+          <input id="askInput" type="text" placeholder="Ask in your own words…" autocomplete="off" />
+          <button class="btn btn-primary" type="submit">Ask</button>
+        </form>
+        <div class="api-row">
+          <label><input type="checkbox" id="useApi" /> Use a cloud model (sends audit text to that API)</label>
+          <div>
+            <select id="apiProvider">
+              <option value="anthropic">Anthropic (Claude)</option>
+              <option value="openai">OpenAI (ChatGPT)</option>
+            </select>
+            <input id="apiKey" type="password" placeholder="API key (stays in this tab only)" style="min-width:260px;margin-left:8px;" />
+          </div>
+          <p>Browser calls to Anthropic often get blocked by CORS. If that happens, use the button below instead — same idea as uploading the PDF to chat.</p>
+          <button class="btn" type="button" id="copyPrompt">Copy a prompt for Claude / ChatGPT</button>
+          <textarea id="promptFallback" hidden></textarea>
+        </div>
+      </section>
+
+      <details class="raw">
+        <summary>Show the extracted text (good for spotting what the PDF missed)</summary>
+        <pre id="rawText"></pre>
+      </details>
+    </section>
+
+    <footer class="foot">
+      <p>Unofficial student project. Not affiliated with the University of Colorado, the Registrar, or any college advising office. Degree audits can be wrong or incomplete; exceptions only show once they’re processed. Do not paste someone else’s audit. Processing is local unless you enable an API key.</p>
+    </footer>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="assets/js/sample-audit.js"></script>
+  <script src="assets/js/parser.js"></script>
+  <script src="assets/js/qa.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
