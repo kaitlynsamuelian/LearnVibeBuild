@@ -233,7 +233,7 @@ h1 { font-size: clamp(2rem, 4.4vw, 2.9rem); letter-spacing: -0.035em; line-heigh
 
 .req-head { margin-top: 36px; padding-top: 22px; border-top: 1px solid var(--border); }
 .req-head h2 { font-size: 1.25rem; margin: 0 0 6px; letter-spacing: -0.02em; }
-.req-head p { margin: 0; color: var(--muted); font-size: 0.9rem; line-height: 1.55; max-width: 72ch; }
+.req-head p { margin: 0; color: var(--muted); font-size: 0.92rem; line-height: 1.6; max-width: none; }
 
 .cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 18px; }
 @media (max-width: 900px) { .cols { grid-template-columns: 1fr; } }
@@ -367,4 +367,4 @@ details.raw pre {
   color: var(--faint);
   font-size: 0.82rem;
 }
-.foot p { max-width: 90ch; }
+.foot p { max-width: none; }
