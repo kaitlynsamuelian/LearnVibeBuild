@@ -247,6 +247,15 @@ h1 { font-size: clamp(2rem, 4.4vw, 2.9rem); letter-spacing: -0.035em; line-heigh
   color: var(--muted);
 }
 
+.col-subhead {
+  margin: 16px 0 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--faint);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
 .req-card {
   background: var(--card);
   border: 1px solid var(--border);

@@ -105,7 +105,7 @@
       '<article class="req-card">' +
         '<header><h3>Free / general elective credit</h3><span class="status-pill no">Still needed</span></header>' +
         "<ul><li><strong>~" + hrs + " hrs still to go</strong></li></ul>" +
-        '<p class="empty">Credit hours not tied to a specific named requirement — any approved course counts, to reach the ' +
+        '<p class="empty">Not tied to a specific named requirement. Any approved course counts toward the ' +
         (minHours ? minHours + "-hour" : "degree") + " minimum.</p>" +
       "</article>"
     );
@@ -172,12 +172,13 @@
       setCol(2, "In progress", s.ip.length, s.ip.map(renderSection).join(""), "No in-progress requirements.");
 
       var noHtml = s.no.map(renderSection).join("");
-      var noCount = s.no.length;
+      // The elective card is credit-hour reconciliation, not a requirement category,
+      // so it's shown as a "plus" add-on and NOT counted in the requirement badge.
       if (h.electiveRemaining && h.electiveRemaining > 0.5) {
+        noHtml += '<p class="col-subhead">Plus, to reach the ' + (h.minHours || 128) + "-hour minimum:</p>";
         noHtml += renderElectiveCard(h.electiveRemaining, h.minHours);
-        noCount += 1;
       }
-      setCol(3, "Still needed", noCount, noHtml, "Nothing flagged as still needed — confirm with your advisor.");
+      setCol(3, "Still needed", s.no.length, noHtml, "Nothing flagged as still needed — confirm with your advisor.");
     } else if (parsed.mode === "courses") {
       show("reqHead", false);
       show("cols", true);
