@@ -116,6 +116,12 @@
     $("stat" + i + "label").textContent = label;
   }
 
+  function setReqHead(title, descHtml) {
+    $("reqHeadTitle").textContent = title;
+    $("reqHeadDesc").innerHTML = descHtml;
+    show("reqHead", true);
+  }
+
   function setCol(i, label, count, html, emptyMsg) {
     $("col" + i + "label").textContent = label;
     $("count" + i).textContent = count;
@@ -143,11 +149,19 @@
 
     var note = $("modeNote");
     if (parsed.mode === "sections") {
+      setReqHead(
+        "Requirement progress",
+        "Each card below is a whole degree requirement — a category like writing, math, or capstone — marked " +
+        "<strong>satisfied</strong>, <strong>in progress</strong>, or <strong>still needed</strong>. This tracks " +
+        "requirement completion, <em>not</em> credit hours: you can take a full 12–18 credit semester and still not " +
+        "finish any single requirement, so something under “Still needed” doesn’t mean you’re behind — it’s just a " +
+        "category with hours left to fill."
+      );
       note.hidden = false;
       note.innerHTML = (h.gradEligible
         ? "✅ The audit says you’re <strong>eligible to apply for graduation</strong>. "
         : "") +
-        "This is the full <strong>requirements view</strong> — each card below is a degree requirement with what’s done, in progress, or still needed. Still unofficial: confirm with your advisor.";
+        "Still unofficial — confirm anything that affects your plan with your advisor.";
 
       setStat(1, h.earned, "Credits earned");
       setStat(2, h.inProgress, "Credits in progress");
@@ -166,6 +180,7 @@
       }
       setCol(3, "Still needed", noCount, noHtml, "Nothing flagged as still needed — confirm with your advisor.");
     } else if (parsed.mode === "courses") {
+      show("reqHead", false);
       note.hidden = false;
       note.innerHTML = "This is the <strong>Coursework History</strong> tab — it shows classes and grades, not requirement check-offs. " +
         "For a true “what’s left” list, run the audit’s <strong>requirements</strong> view (the one with green checks / red X’s) and upload that.";
@@ -182,6 +197,11 @@
       setCol(2, "In progress", b.ip.length, b.ip.map(renderCourse).join(""), "No in-progress (***) courses found.");
       setCol(3, "Worth a second look", b.flagged.length, b.flagged.map(renderCourse).join(""), "No withdrawals, D/F, or excluded attempts. Nice.");
     } else {
+      setReqHead(
+        "Requirement progress",
+        "Each card below is a degree requirement block marked <strong>done</strong>, <strong>in progress</strong>, or " +
+        "<strong>still open</strong> — this reflects requirement completion, not raw credit hours."
+      );
       note.hidden = true;
       var hrs = parsed.hours;
       setStat(1, hrs.applied, "Hours applied");

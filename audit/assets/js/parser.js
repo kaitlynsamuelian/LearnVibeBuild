@@ -26,6 +26,14 @@
 
   function round(n) { return Math.round(n * 10) / 10; }
 
+  // How many more semesters the remaining hours imply, assuming a 12–18 credit load.
+  function semestersLeft(needs) {
+    if (needs == null || needs <= 0) return null;
+    var low = Math.ceil(needs / 18);   // heaviest load → fewest semesters
+    var high = Math.ceil(needs / 12);  // lightest load → most semesters
+    return { low: low, high: high, text: low === high ? String(low) : low + "\u2013" + high };
+  }
+
   /* ---------- Course line ---------- */
   function classify(grade, flags) {
     var g = grade.toUpperCase();
@@ -466,6 +474,7 @@
       hdr.electiveRemaining = (hdr.summaryNeeds != null)
         ? Math.max(0, round(hdr.summaryNeeds - namedRemaining))
         : null;
+      hdr.semesters = semestersLeft(hdr.summaryNeeds);
     } else if (mode === "requirements") {
       result.header = { programs: [], overallStatus: /HAS NOT BEEN SATISFIED/i.test(flat) ? "incomplete" : null };
       result.requirements = reqs;
@@ -518,6 +527,12 @@
       if (h.summaryNeeds != null) creditBits.push((h.neededApprox ? "about " : "") + h.summaryNeeds + " still needed" + (h.neededApprox ? " (estimated)" : ""));
       if (h.minHours) creditBits.push("of " + h.minHours + " required");
       if (creditBits.length) bits.push("Credit hours: " + creditBits.join(", ") + ".");
+      if (h.semesters) {
+        var plural = h.semesters.high === 1 ? "semester" : "semesters";
+        var tail = h.inProgress ? " beyond the courses you\u2019re taking now" : " of coursework";
+        bits.push("Assuming a full-time semester is 12\u201318 credit hours, that\u2019s about " +
+          h.semesters.text + " more " + plural + tail + ".");
+      }
       if (h.overallGpa != null) bits.push("Cumulative GPA: " + h.overallGpa + ".");
       var s = parsed.summary;
       bits.push("Across " + parsed.sections.length + " requirement groups: " + s.ok.length + " look satisfied, " +

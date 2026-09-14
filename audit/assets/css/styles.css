@@ -206,7 +206,11 @@ h1 { font-size: clamp(1.9rem, 4vw, 2.7rem); letter-spacing: -0.03em; line-height
 .stat b { display: block; font-size: 1.85rem; letter-spacing: -0.03em; font-weight: 700; color: var(--text); }
 .stat span { color: var(--muted); font-size: 0.8rem; font-weight: 500; }
 
-.cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 26px; }
+.req-head { margin-top: 30px; }
+.req-head h2 { font-size: 1.2rem; margin: 0 0 6px; letter-spacing: -0.02em; }
+.req-head p { margin: 0; color: var(--muted); font-size: 0.92rem; max-width: 90ch; }
+
+.cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 16px; }
 @media (max-width: 900px) { .cols { grid-template-columns: 1fr; } }
 .col h2 { font-size: 1.05rem; margin: 0 0 12px; display: flex; align-items: center; gap: 8px; }
 .count {

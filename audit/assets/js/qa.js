@@ -154,7 +154,13 @@
       if (h.inProgress != null) parts.push(h.inProgress + " in progress");
       if (h.summaryNeeds != null) parts.push(h.summaryNeeds + " still needed");
       if (h.minHours) parts.push("toward a " + h.minHours + "-hour minimum");
-      return parts.length ? "Credit hours: " + parts.join(", ") + "." : "I couldn’t read the credit-hour totals.";
+      var sem = "";
+      if (h.semesters) {
+        var pl = h.semesters.high === 1 ? "semester" : "semesters";
+        sem = " Assuming a 12–18 credit load, that’s about " + h.semesters.text + " more " + pl +
+          (h.inProgress ? " beyond the courses you’re taking now." : " of coursework.");
+      }
+      return parts.length ? "Credit hours: " + parts.join(", ") + "." + sem : "I couldn’t read the credit-hour totals.";
     }
     if (/graduat|done|finish|eligible/.test(q)) {
       return (h.gradEligible ? "The audit says you ARE eligible to apply for graduation" : "The audit doesn’t show graduation eligibility yet") +
