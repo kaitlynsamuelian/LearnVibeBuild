@@ -112,10 +112,73 @@
   /* ---------- Sections (view A) ---------- */
   var HEADING_EXCLUDE = /^(Complete|SELECT|Grade of|For a|All |Additional|Note|NOTE|Here is|This |A minimum|A cumulative|Only|Listing|Students|The |Credit|GPA|EARNED|NEEDS|IN |IN-?P|\d|\*|AP:|PROCESSED|>>|>|Program|Admission|Prepared|University|To earn|Requirements subject|Overall|At least|-|\u25c4|~|Open All|Download|Copyright|Explanation)/i;
 
-  function isHeading(line) {
+  /* ---------- Per-college adapters ----------
+     Every CU audit comes out of the same CollegeSource engine, so one generic
+     parser does most of the work. Colleges differ in small ways (default credit
+     minimums, a few section headings that should be treated as dividers, phrases
+     that look like headings but aren't). Each profile can layer those tweaks on
+     top of the generic engine. Add a college by dropping a new object in the list. */
+  var SCHOOL_PROFILES = [
+    {
+      id: "engineering",
+      label: "College of Engineering & Applied Science",
+      test: /Engineering and Applied Science|EN[A-Z]{2,}-[A-Z]{3,}|ENGRU/i,
+      minHoursDefault: 128,
+      extraDividers: [],
+      extraHeadingExcludes: []
+    },
+    {
+      id: "arts-sciences",
+      label: "College of Arts & Sciences",
+      test: /College of Arts and Sciences|Arts and Sciences|ASGRU|A&S GPA/i,
+      minHoursDefault: 120,
+      extraDividers: [],
+      extraHeadingExcludes: []
+    },
+    {
+      id: "business",
+      label: "Leeds School of Business",
+      test: /Leeds School of Business|BUSU|Leeds/i,
+      minHoursDefault: 120,
+      extraDividers: [],
+      extraHeadingExcludes: []
+    },
+    {
+      id: "music",
+      label: "College of Music",
+      test: /College of Music|MUSU/i,
+      minHoursDefault: 120,
+      extraDividers: [],
+      extraHeadingExcludes: []
+    }
+  ];
+
+  var GENERIC_PROFILE = {
+    id: "generic",
+    label: null,
+    minHoursDefault: null,
+    extraDividers: [],
+    extraHeadingExcludes: []
+  };
+
+  function detectSchool(flat) {
+    for (var i = 0; i < SCHOOL_PROFILES.length; i++) {
+      if (SCHOOL_PROFILES[i].test.test(flat)) return SCHOOL_PROFILES[i];
+    }
+    return GENERIC_PROFILE;
+  }
+
+  function isHeading(line, profile) {
     if (!HOURS_SUFFIX.test(line)) return false;
     if (HEADING_EXCLUDE.test(line)) return false;
     if (new RegExp("^" + TERM + "\\d{2}\\b").test(line)) return false;
+    // A line ending in a conjunction is part of a combined descriptor, not a standalone requirement.
+    if (/\b(?:and|or)\s*$/i.test(line.trim())) return false;
+    if (profile && profile.extraHeadingExcludes) {
+      for (var i = 0; i < profile.extraHeadingExcludes.length; i++) {
+        if (profile.extraHeadingExcludes[i].test(line)) return false;
+      }
+    }
     var before = line.split("(")[0].trim();
     if (before.length < 3 || before.length > 72) return false;
     return /[A-Za-z]/.test(before);
@@ -136,12 +199,20 @@
   }
 
   // Sub-blocks that end the current requirement section (but don't start a new one).
-  function isDivider(line) {
-    return /GPA\s+(?:FA|SP|SU|WI)\d{4}$/i.test(line) ||
+  function isDivider(line, profile) {
+    // A GPA sub-block heading, e.g. "Aerospace Engineering Sciences GPA" or "... GPA FA2023"
+    // (but NOT a stat line like "EARNED: 15.0 HOURS 2.080 GPA").
+    if (/^[A-Za-z][A-Za-z &/'\-]+GPA(?:\s+(?:FA|SP|SU|WI)\d{4})?$/.test(line) ||
       /^Overall .*(Requirement|GPA)/i.test(line) ||
       /Residency$/i.test(line) ||
       /:\s*Math Requirements$/i.test(line) ||
-      /Requirement Term$/i.test(line);
+      /Requirement Term$/i.test(line)) return true;
+    if (profile && profile.extraDividers) {
+      for (var i = 0; i < profile.extraDividers.length; i++) {
+        if (profile.extraDividers[i].test(line)) return true;
+      }
+    }
+    return false;
   }
 
   function computeSectionStatus(sec) {
@@ -164,21 +235,28 @@
     sec.doneHours = round(doneHours);
     sec.ipHours = round(ipHours);
 
+    var covered = Math.max(sec.earnedHours || 0, sec.added || 0, sec.doneHours) + sec.ipHours;
+
     if (sec.needs != null && sec.needs > 0) sec.status = "no";
     else if (ipTok || hasIpCourse) sec.status = "ip";
     else sec.status = "ok";
 
-    // Informational shortfall (never overrides the audit's explicit signal).
     if (sec.target && sec.target.min && !sec.target.elective) {
-      var covered = Math.max(sec.earnedHours || 0, sec.added || 0, sec.doneHours) + sec.ipHours;
-      if (covered < sec.target.min - 0.5) sec.shortfall = round(sec.target.min - covered);
+      // An "ok" block with essentially nothing applied isn't satisfied — it's still needed.
+      if (sec.status === "ok" && covered < 0.5) {
+        sec.status = "no";
+        if (sec.needs == null) sec.needs = sec.target.min;
+      } else if (covered < sec.target.min - 0.5) {
+        // Informational shortfall (never overrides an explicit EARNED/NEEDS signal).
+        sec.shortfall = round(sec.target.min - covered);
+      }
     }
   }
 
-  function parseSections(lines) {
+  function parseSections(lines, profile) {
     var startIdx = 0;
     for (var i = 0; i < lines.length; i++) {
-      if (/SUMMARY$/.test(lines[i])) { startIdx = i; break; }
+      if (/SUMMARY$/.test(lines[i]) || /Summary\s*\(/i.test(lines[i])) { startIdx = i; break; }
     }
     var endIdx = lines.length;
     for (var j = startIdx + 1; j < lines.length; j++) {
@@ -196,10 +274,10 @@
     var sections = [];
     var cur = null;
     merged.forEach(function (l) {
-      if (isHeading(l)) {
+      if (isHeading(l, profile)) {
         cur = { title: cleanTitle(l), target: parseTarget(l), lines: [], courses: [], select: [] };
         sections.push(cur);
-      } else if (isDivider(l)) {
+      } else if (isDivider(l, profile)) {
         cur = null;
       } else if (cur) {
         cur.lines.push(l);
@@ -214,7 +292,8 @@
     var byTitle = {};
     var ordered = [];
     sections.forEach(function (s) {
-      var key = s.title.toLowerCase();
+      // Normalize so "Technical Elective" and "Technical Electives" merge into one card.
+      var key = s.title.toLowerCase().replace(/\s+/g, " ").trim().replace(/s$/, "");
       if (byTitle[key]) {
         var t = byTitle[key];
         t.lines = t.lines.concat(s.lines);
@@ -229,7 +308,8 @@
     return ordered;
   }
 
-  function extractSectionsHeader(lines, flat) {
+  function extractSectionsHeader(lines, flat, profile) {
+    profile = profile || GENERIC_PROFILE;
     var name = (flat.match(/^([A-Z][A-Za-z'\-]+,\s*[A-Z][A-Za-z'\- ]+?)(?:\s+[A-Z][a-z])/) || [])[1];
     var plan = null;
     // The plan name is usually the second non-empty line.
@@ -240,16 +320,29 @@
     var gpa = (flat.match(/POINTS\s*([\d.]+)\s*GPA/) || [])[1];
     var minHours = (flat.match(/minimum total of (\d+)/) || flat.match(/at least (\d+)/) || [])[1];
 
-    // Summary NEEDS: first NEEDS right after a SUMMARY heading.
+    // Summary NEEDS: a NEEDS that belongs to the summary block itself —
+    // i.e. it appears before the first requirement heading after the summary.
     var summaryNeeds = null;
     for (var i = 0; i < lines.length; i++) {
-      if (/SUMMARY$/.test(lines[i])) {
-        for (var k = i; k < Math.min(i + 8, lines.length); k++) {
+      if (/SUMMARY$/.test(lines[i]) || /Summary\s*\(/i.test(lines[i])) {
+        for (var k = i + 1; k < Math.min(i + 12, lines.length); k++) {
+          if (isHeading(lines[k], profile)) break; // stop before a requirement's own NEEDS
           var nm = lines[k].match(/NEEDS:\s*([\d.]+)\s*HOURS/i);
           if (nm) { summaryNeeds = parseFloat(nm[1]); break; }
         }
         break;
       }
+    }
+
+    // Fallback: if the audit didn't print a total NEEDS, estimate from the minimum
+    // (using the college's default credit floor when the audit omits one).
+    var earnedN = earned != null ? parseFloat(earned) : null;
+    var inProgN = inProgress != null ? parseFloat(inProgress) : null;
+    var minN = minHours != null ? parseInt(minHours, 10) : (profile.minHoursDefault != null ? profile.minHoursDefault : null);
+    var neededApprox = false;
+    if (summaryNeeds == null && minN != null && earnedN != null) {
+      summaryNeeds = Math.max(0, Math.round((minN - earnedN - (inProgN || 0)) * 10) / 10);
+      neededApprox = true;
     }
 
     var programs = [];
@@ -268,8 +361,11 @@
       earned: earned != null ? parseFloat(earned) : null,
       inProgress: inProgress != null ? parseFloat(inProgress) : null,
       overallGpa: gpa != null ? parseFloat(gpa) : null,
-      minHours: minHours != null ? parseInt(minHours, 10) : null,
+      minHours: minN,
+      minHoursApprox: minHours == null && minN != null,
+      college: profile.label,
       summaryNeeds: summaryNeeds,
+      neededApprox: neededApprox,
       overallStatus: overallStatus,
       gradEligible: /eligible to Apply for Graduation/i.test(flat)
     };
@@ -316,11 +412,12 @@
     var flat = normalize(raw);
     var lines = raw.split(/\r?\n/).map(function (l) { return l.replace(/\s+/g, " ").trim(); }).filter(Boolean);
 
+    var profile = detectSchool(flat);
     var courses = dedupeCourses(extractCourses(flat));
     var termGpas = extractTermGpas(flat);
     var totals = courseTotals(courses, flat);
 
-    var sections = (lines.length > 15 && /NEEDS:/i.test(flat) && /EARNED:/i.test(flat)) ? parseSections(lines) : [];
+    var sections = (lines.length > 15 && /NEEDS:/i.test(flat) && /EARNED:/i.test(flat)) ? parseSections(lines, profile) : [];
     var reqs = parseRequirements(raw);
 
     var mode = sections.length >= 3 ? "sections" : (reqs.length >= 3 ? "requirements" : "courses");
@@ -332,11 +429,12 @@
       courses: courses,
       termGpas: termGpas,
       totals: totals,
+      school: { id: profile.id, label: profile.label },
       thin: flat.length < 60
     };
 
     if (mode === "sections") {
-      result.header = extractSectionsHeader(lines, flat);
+      result.header = extractSectionsHeader(lines, flat, profile);
       result.sections = sections;
       result.summary = {
         ok: sections.filter(function (s) { return s.status === "ok"; }),
@@ -392,7 +490,7 @@
       var creditBits = [];
       if (h.earned != null) creditBits.push(h.earned + " earned");
       if (h.inProgress != null) creditBits.push(h.inProgress + " in progress");
-      if (h.summaryNeeds != null) creditBits.push(h.summaryNeeds + " still needed");
+      if (h.summaryNeeds != null) creditBits.push((h.neededApprox ? "about " : "") + h.summaryNeeds + " still needed" + (h.neededApprox ? " (estimated)" : ""));
       if (h.minHours) creditBits.push("of " + h.minHours + " required");
       if (creditBits.length) bits.push("Credit hours: " + creditBits.join(", ") + ".");
       if (h.overallGpa != null) bits.push("Cumulative GPA: " + h.overallGpa + ".");

@@ -122,6 +122,7 @@
     if (parsed.mode === "sections") {
       if (h.student) metaParts.push(h.student);
       if (h.plan) metaParts.push(h.plan);
+      if (h.college) metaParts.push(h.college);
       if (h.catalogYear) metaParts.push("Catalog " + h.catalogYear);
     } else {
       if (h.programs && h.programs.length) metaParts.push(h.programs.join(", "));
@@ -139,7 +140,7 @@
 
       setStat(1, h.earned, "Credits earned");
       setStat(2, h.inProgress, "Credits in progress");
-      setStat(3, h.summaryNeeds, "Credits still needed");
+      setStat(3, h.summaryNeeds, h.neededApprox ? "Credits still needed (est.)" : "Credits still needed");
       setStat(4, h.overallGpa, "Cumulative GPA");
 
       var s = parsed.summary;
