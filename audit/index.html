@@ -24,12 +24,15 @@
 
   <main class="wrap">
     <section id="landing">
-      <span class="eyebrow">Studio cycle · more ambitious than a static site</span>
+      <span class="badge-trust">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+        Runs entirely in your browser
+      </span>
       <h1>Your degree audit, in language a human can use.</h1>
       <p class="lead">
-        Upload the PDF (or paste the text). This page reads it in your browser, then splits
-        what’s done, what’s in progress, and what’s still open — and you can ask it questions.
-        It is not an advisor and it does not replace Buff Portal.
+        Upload the PDF or paste the text. Audit Decoder reads it on your device and lays out
+        what’s done, what’s in progress, and what’s still needed, then answers your questions in
+        plain English. It doesn’t replace your advisor or Buff Portal.
       </p>
       <div class="hero-actions">
         <button class="btn btn-primary" type="button" id="sampleBtn">Try a sample audit</button>
@@ -38,8 +41,11 @@
 
       <input class="hidden-file" id="fileInput" type="file" accept="application/pdf,.pdf" />
       <div class="dropzone" id="dropzone" role="button" tabindex="0" aria-label="Upload a degree audit PDF">
+        <span class="dropzone-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M5 16v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2"/></svg>
+        </span>
         <strong>Drop a degree audit PDF here</strong>
-        <p>or click to choose a file. Nothing is uploaded to a server — it stays on this computer.</p>
+        <p>or click to choose a file. Nothing is uploaded to a server; it stays on this computer.</p>
       </div>
       <p class="status-line" id="uploadStatus"></p>
 

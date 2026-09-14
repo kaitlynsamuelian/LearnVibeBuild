@@ -157,7 +157,7 @@
       );
       note.hidden = false;
       note.innerHTML = (h.gradEligible
-        ? "✅ The audit says you’re <strong>eligible to apply for graduation</strong>. "
+        ? "The audit says you’re <strong>eligible to apply for graduation</strong>. "
         : "") +
         "Still unofficial. Confirm anything that affects your plan with your advisor.";
 
