@@ -178,6 +178,8 @@
 
   function isHeading(line, profile) {
     if (!HOURS_SUFFIX.test(line)) return false;
+    // "+ Complete ..." / "- Complete ..." are sub-requirements of the current block, not headings.
+    if (/^[+\u2022\-]\s/.test(line.trim())) return false;
     if (HEADING_EXCLUDE.test(line)) return false;
     if (new RegExp("^" + TERM + "\\d{2}\\b").test(line)) return false;
     // A line ending in a conjunction is part of a combined descriptor, not a standalone requirement.
@@ -204,6 +206,8 @@
 
   function cleanTitle(line) {
     var t = line.replace(/\s*\((?:up to\s*)?\d+(?:\s*[-\u2013]\s*\d+)?\s*(?:hours|hrs|credit hrs|credit hours)\s*\).*$/i, "").trim();
+    // The native PDF export prefixes each requirement with its status code (OK/NO/IP).
+    t = t.replace(/^(?:OK|NO|IP)\s+/, "").trim();
     // The print/paste view labels blocks "Requirement: Title" and repeats the title.
     t = t.replace(/^Requirement:\s*/i, "").trim();
     var dbl = t.match(/^(.+?)\s+\1$/); // collapse an exact doubled title "Foo Foo" -> "Foo"
@@ -257,6 +261,18 @@
     var min = (sec.target && sec.target.min && !sec.target.elective) ? sec.target.min : null;
     sec.remaining = null; // hours you still have to register for (beyond what's in progress)
 
+    // The native export states each requirement's status (OK/NO/IP) directly — trust it.
+    if (sec.code) {
+      sec.status = sec.code;
+      if (sec.code === "no") {
+        sec.remaining = (sec.needs != null && sec.needs > 0)
+          ? sec.needs
+          : (min != null ? round(Math.max(0, min - coveredAfterIp)) : null);
+        if (sec.needs == null && sec.remaining != null) sec.needs = sec.remaining;
+      }
+      return;
+    }
+
     if (sec.needs != null && sec.needs > 0) {
       // The registrar printed an explicit shortfall — treat it as authoritative.
       sec.status = "no";
@@ -298,7 +314,9 @@
     var cur = null;
     merged.forEach(function (l) {
       if (isHeading(l, profile)) {
-        cur = { title: cleanTitle(l), target: parseTarget(l), lines: [], courses: [], select: [] };
+        var codeM = l.match(/^(OK|NO|IP)\s+/);
+        var code = codeM ? (codeM[1] === "OK" ? "ok" : codeM[1] === "IP" ? "ip" : "no") : null;
+        cur = { title: cleanTitle(l), target: parseTarget(l), lines: [], courses: [], select: [], code: code };
         sections.push(cur);
       } else if (isDivider(l, profile)) {
         cur = null;
@@ -445,13 +463,6 @@
 
     var mode = sections.length >= 3 ? "sections" : (reqs.length >= 3 ? "requirements" : "courses");
 
-    // The audit system's built-in "PDF" format exports with a scrambled reading order
-    // (paginated "Page N of M", standalone OK/NO/IP status codes, stats above headings).
-    // We can still trust the top-line totals, but the requirement breakdown is unreliable.
-    var pageMarker = /--\s*\d+\s*of\s*\d+\s*--/.test(raw) || /\bPage\s+\d+\s+of\s+\d+\b/.test(raw);
-    var statusLines = (raw.match(/^\s*(?:OK|NO|IP)\s*$/gm) || []).length;
-    var scrambled = pageMarker && statusLines >= 3;
-
     var result = {
       raw: raw,
       flat: flat,
@@ -460,7 +471,6 @@
       termGpas: termGpas,
       totals: totals,
       school: { id: profile.id, label: profile.label },
-      scrambled: scrambled,
       thin: flat.length < 60
     };
 
