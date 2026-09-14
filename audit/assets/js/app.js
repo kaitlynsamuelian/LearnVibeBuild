@@ -151,17 +151,15 @@
     if (parsed.mode === "sections") {
       setReqHead(
         "Requirement progress",
-        "Each card below is a whole degree requirement — a category like writing, math, or capstone — marked " +
-        "<strong>satisfied</strong>, <strong>in progress</strong>, or <strong>still needed</strong>. This tracks " +
-        "requirement completion, <em>not</em> credit hours: you can take a full 12–18 credit semester and still not " +
-        "finish any single requirement, so something under “Still needed” doesn’t mean you’re behind — it’s just a " +
-        "category with hours left to fill."
+        "Each card is one degree requirement, a category like writing, math, or capstone. " +
+        "It shows <strong>category completion</strong>, not credit hours. A full semester of classes " +
+        "may not finish any single requirement, so a “Still needed” tag doesn’t mean you’re behind."
       );
       note.hidden = false;
       note.innerHTML = (h.gradEligible
         ? "✅ The audit says you’re <strong>eligible to apply for graduation</strong>. "
         : "") +
-        "Still unofficial — confirm anything that affects your plan with your advisor.";
+        "Still unofficial. Confirm anything that affects your plan with your advisor.";
 
       setStat(1, h.earned, "Credits earned");
       setStat(2, h.inProgress, "Credits in progress");
@@ -199,8 +197,8 @@
     } else {
       setReqHead(
         "Requirement progress",
-        "Each card below is a degree requirement block marked <strong>done</strong>, <strong>in progress</strong>, or " +
-        "<strong>still open</strong> — this reflects requirement completion, not raw credit hours."
+        "Each card is a degree requirement block marked <strong>done</strong>, <strong>in progress</strong>, or " +
+        "<strong>still open</strong>. It shows requirement completion, not raw credit hours."
       );
       note.hidden = true;
       var hrs = parsed.hours;

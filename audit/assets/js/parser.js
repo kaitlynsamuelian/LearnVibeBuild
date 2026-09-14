@@ -518,8 +518,10 @@
     var h = parsed.header;
 
     if (parsed.mode === "sections") {
-      var name = h.student ? h.student.split(",")[0] : null;
-      bits.push((name ? name + ", this" : "This") + " is your full requirements audit" +
+      // Student is stored "Last, First" — greet with the first name.
+      var parts = h.student ? h.student.split(",") : [];
+      var name = parts.length > 1 ? parts[1].trim() : (parts[0] ? parts[0].trim() : null);
+      bits.push((name ? "Hi " + name + ". This" : "This") + " is your full requirements audit" +
         (h.plan ? " for " + h.plan : "") + (h.catalogYear ? " (catalog " + h.catalogYear + ")" : "") + ".");
       var creditBits = [];
       if (h.earned != null) creditBits.push(h.earned + " earned");
@@ -554,9 +556,9 @@
           bits.push("Those " + h.summaryNeeds + " hours break down as: " + pieces.join("; ") + ".");
         }
       }
-      if (h.gradEligible) bits.push("Good news — the audit says you are eligible to apply for graduation.");
-      if (h.overallStatus === "incomplete") bits.push("The header still reads \u201cat least one requirement has not been satisfied,\u201d which usually clears once in-progress and remaining courses are done.");
-      bits.push("This is a reading of the PDF, not an official registrar decision \u2014 confirm anything high-stakes with your advisor.");
+      if (h.gradEligible) bits.push("Good news: the audit says you are eligible to apply for graduation.");
+      if (h.overallStatus === "incomplete") bits.push("The header still reads \u201cat least one requirement has not been satisfied,\u201d which usually clears once your in-progress and remaining courses are done.");
+      bits.push("This is a reading of the PDF, not an official registrar decision. Confirm anything high-stakes with your advisor.");
       return bits.join(" ");
     }
 
