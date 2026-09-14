@@ -101,7 +101,8 @@
   function sectionLine(s) {
     var bits = [];
     if (s.target) bits.push(s.target.elective ? "elective, up to " + s.target.max + " hrs" : (s.target.min === s.target.max ? s.target.min : s.target.min + "-" + s.target.max) + " hrs required");
-    if (s.needs != null && s.needs > 0) bits.push(s.needs + " still to go");
+    var stillToGo = s.remaining != null ? s.remaining : s.needs;
+    if (stillToGo != null && stillToGo > 0) bits.push(stillToGo + " still to go");
     if (s.ipHours) bits.push(s.ipHours + " in progress");
     if (s.select && s.select.length) bits.push("choose from: " + s.select.join(", ").slice(0, 80));
     return "• " + s.title + (bits.length ? " (" + bits.join("; ") + ")" : "");
@@ -129,6 +130,9 @@
     if (/what.*(left|remain|still need|to take|missing|do i need)|leftover|not satisf|not met|not done/.test(q)) {
       var out = "Here’s what still needs attention:\n\n";
       out += s.no.length ? s.no.map(sectionLine).join("\n") : "Nothing is explicitly flagged as unmet.";
+      if (h.electiveRemaining && h.electiveRemaining > 0.5) {
+        out += "\n• Free / general elective credit (~" + h.electiveRemaining + " hrs to reach " + (h.minHours || "the minimum") + ")";
+      }
       if (s.ip.length) out += "\n\nIn progress (finishes these terms):\n" + s.ip.map(sectionLine).join("\n");
       if (h.summaryNeeds != null) out += "\n\nOverall the audit says you still need about " + h.summaryNeeds + " credit hours to reach " + (h.minHours || "the minimum") + ".";
       out += "\n\nThis is from the PDF, not the registrar — confirm with your advisor.";

@@ -100,6 +100,17 @@
     );
   }
 
+  function renderElectiveCard(hrs, minHours) {
+    return (
+      '<article class="req-card">' +
+        '<header><h3>Free / general elective credit</h3><span class="status-pill no">Still needed</span></header>' +
+        "<ul><li><strong>~" + hrs + " hrs still to go</strong></li></ul>" +
+        '<p class="empty">Credit hours not tied to a specific named requirement — any approved course counts, to reach the ' +
+        (minHours ? minHours + "-hour" : "degree") + " minimum.</p>" +
+      "</article>"
+    );
+  }
+
   function setStat(i, value, label) {
     $("stat" + i).textContent = value == null || value === "" ? "—" : value;
     $("stat" + i + "label").textContent = label;
@@ -146,7 +157,14 @@
       var s = parsed.summary;
       setCol(1, "Satisfied", s.ok.length, s.ok.map(renderSection).join(""), "Nothing marked satisfied yet.");
       setCol(2, "In progress", s.ip.length, s.ip.map(renderSection).join(""), "No in-progress requirements.");
-      setCol(3, "Still needed", s.no.length, s.no.map(renderSection).join(""), "Nothing flagged as still needed — confirm with your advisor.");
+
+      var noHtml = s.no.map(renderSection).join("");
+      var noCount = s.no.length;
+      if (h.electiveRemaining && h.electiveRemaining > 0.5) {
+        noHtml += renderElectiveCard(h.electiveRemaining, h.minHours);
+        noCount += 1;
+      }
+      setCol(3, "Still needed", noCount, noHtml, "Nothing flagged as still needed — confirm with your advisor.");
     } else if (parsed.mode === "courses") {
       note.hidden = false;
       note.innerHTML = "This is the <strong>Coursework History</strong> tab — it shows classes and grades, not requirement check-offs. " +

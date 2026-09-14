@@ -195,7 +195,12 @@
   }
 
   function cleanTitle(line) {
-    return line.replace(/\s*\((?:up to\s*)?\d+(?:\s*[-\u2013]\s*\d+)?\s*(?:hours|hrs|credit hrs|credit hours)\s*\).*$/i, "").trim();
+    var t = line.replace(/\s*\((?:up to\s*)?\d+(?:\s*[-\u2013]\s*\d+)?\s*(?:hours|hrs|credit hrs|credit hours)\s*\).*$/i, "").trim();
+    // The print/paste view labels blocks "Requirement: Title" and repeats the title.
+    t = t.replace(/^Requirement:\s*/i, "").trim();
+    var dbl = t.match(/^(.+?)\s+\1$/); // collapse an exact doubled title "Foo Foo" -> "Foo"
+    if (dbl) t = dbl[1].trim();
+    return t;
   }
 
   // Sub-blocks that end the current requirement section (but don't start a new one).
@@ -235,21 +240,31 @@
     sec.doneHours = round(doneHours);
     sec.ipHours = round(ipHours);
 
-    var covered = Math.max(sec.earnedHours || 0, sec.added || 0, sec.doneHours) + sec.ipHours;
+    // Hours that definitely count now, vs. hours once in-progress courses finish.
+    var covered = Math.max(sec.earnedHours || 0, sec.added || 0, sec.doneHours);
+    var coveredAfterIp = round(covered + sec.ipHours);
+    sec.coveredHours = round(covered);
+    sec.hasIp = ipTok || hasIpCourse;
 
-    if (sec.needs != null && sec.needs > 0) sec.status = "no";
-    else if (ipTok || hasIpCourse) sec.status = "ip";
-    else sec.status = "ok";
+    var min = (sec.target && sec.target.min && !sec.target.elective) ? sec.target.min : null;
+    sec.remaining = null; // hours you still have to register for (beyond what's in progress)
 
-    if (sec.target && sec.target.min && !sec.target.elective) {
-      // An "ok" block with essentially nothing applied isn't satisfied — it's still needed.
-      if (sec.status === "ok" && covered < 0.5) {
-        sec.status = "no";
-        if (sec.needs == null) sec.needs = sec.target.min;
-      } else if (covered < sec.target.min - 0.5) {
-        // Informational shortfall (never overrides an explicit EARNED/NEEDS signal).
-        sec.shortfall = round(sec.target.min - covered);
-      }
+    if (sec.needs != null && sec.needs > 0) {
+      // The registrar printed an explicit shortfall — treat it as authoritative.
+      sec.status = "no";
+      sec.remaining = sec.needs;
+    } else if (min != null && coveredAfterIp < min - 0.5) {
+      // Even after in-progress courses finish, this requirement is still short:
+      // you have to register for more (e.g. a second capstone course). Still needed.
+      sec.status = "no";
+      sec.remaining = round(min - coveredAfterIp);
+      if (sec.needs == null) sec.needs = sec.remaining;
+    } else if (sec.hasIp && !(min != null && covered >= min - 0.5)) {
+      // In progress and the in-progress hours bring it up to the bar (or no target):
+      // it clears once those grades post.
+      sec.status = "ip";
+    } else {
+      sec.status = "ok";
     }
   }
 
@@ -441,6 +456,16 @@
         ip: sections.filter(function (s) { return s.status === "ip"; }),
         no: sections.filter(function (s) { return s.status === "no"; })
       };
+      // Reconcile the big "credits still needed" number with the flagged requirements.
+      // Total still-needed = hours from named requirements + leftover free/elective hours.
+      var namedRemaining = 0;
+      result.summary.no.forEach(function (s) { namedRemaining += (s.remaining || 0); });
+      namedRemaining = round(namedRemaining);
+      var hdr = result.header;
+      hdr.namedRemaining = namedRemaining;
+      hdr.electiveRemaining = (hdr.summaryNeeds != null)
+        ? Math.max(0, round(hdr.summaryNeeds - namedRemaining))
+        : null;
     } else if (mode === "requirements") {
       result.header = { programs: [], overallStatus: /HAS NOT BEEN SATISFIED/i.test(flat) ? "incomplete" : null };
       result.requirements = reqs;
@@ -499,8 +524,20 @@
         s.ip.length + " in progress, and " + s.no.length + " still need attention.");
       if (s.no.length) {
         bits.push("Still open: " + s.no.map(function (x) {
-          return x.title + (x.needs != null ? " (needs " + x.needs + " hrs)" : "");
+          return x.title + (x.remaining != null ? " (needs " + x.remaining + " hrs)" : "");
         }).join("; ") + ".");
+      }
+      // Reconcile the total-hours number with the individual requirements above.
+      if (h.summaryNeeds != null && h.summaryNeeds > 0) {
+        var pieces = s.no.filter(function (x) { return x.remaining != null; }).map(function (x) {
+          return x.remaining + " for " + x.title;
+        });
+        if (h.electiveRemaining && h.electiveRemaining > 0.5) {
+          pieces.push("about " + h.electiveRemaining + " of free/elective credit to reach " + (h.minHours || "the minimum"));
+        }
+        if (pieces.length > 1) {
+          bits.push("Those " + h.summaryNeeds + " hours break down as: " + pieces.join("; ") + ".");
+        }
       }
       if (h.gradEligible) bits.push("Good news — the audit says you are eligible to apply for graduation.");
       if (h.overallStatus === "incomplete") bits.push("The header still reads \u201cat least one requirement has not been satisfied,\u201d which usually clears once in-progress and remaining courses are done.");
