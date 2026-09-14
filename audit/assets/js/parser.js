@@ -445,6 +445,13 @@
 
     var mode = sections.length >= 3 ? "sections" : (reqs.length >= 3 ? "requirements" : "courses");
 
+    // The audit system's built-in "PDF" format exports with a scrambled reading order
+    // (paginated "Page N of M", standalone OK/NO/IP status codes, stats above headings).
+    // We can still trust the top-line totals, but the requirement breakdown is unreliable.
+    var pageMarker = /--\s*\d+\s*of\s*\d+\s*--/.test(raw) || /\bPage\s+\d+\s+of\s+\d+\b/.test(raw);
+    var statusLines = (raw.match(/^\s*(?:OK|NO|IP)\s*$/gm) || []).length;
+    var scrambled = pageMarker && statusLines >= 3;
+
     var result = {
       raw: raw,
       flat: flat,
@@ -453,6 +460,7 @@
       termGpas: termGpas,
       totals: totals,
       school: { id: profile.id, label: profile.label },
+      scrambled: scrambled,
       thin: flat.length < 60
     };
 

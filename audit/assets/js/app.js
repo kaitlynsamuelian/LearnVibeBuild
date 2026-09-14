@@ -116,6 +116,21 @@
     $("stat" + i + "label").textContent = label;
   }
 
+  function scrambledSummary(parsed) {
+    var h = parsed.header, b = [];
+    var name = h.student ? (h.student.split(",")[1] || h.student.split(",")[0] || "").trim() : "";
+    b.push((name ? "Hi " + name + ". " : "") + "I read the totals from this audit, but this file is the system’s built-in PDF export, which comes out scrambled.");
+    var parts = [];
+    if (h.earned != null) parts.push(h.earned + " earned");
+    if (h.inProgress != null) parts.push(h.inProgress + " in progress");
+    if (h.summaryNeeds != null) parts.push(h.summaryNeeds + " still needed");
+    if (h.minHours) parts.push("of " + h.minHours + " required");
+    if (parts.length) b.push("Credit hours: " + parts.join(", ") + ".");
+    if (h.overallGpa != null) b.push("Cumulative GPA: " + h.overallGpa + ".");
+    b.push("For the requirement-by-requirement breakdown, run the audit as HTML and use your browser’s Print, Save as PDF, then upload that. This is a reading of the PDF, not an official registrar decision.");
+    return b.join(" ");
+  }
+
   function setReqHead(title, descHtml) {
     $("reqHeadTitle").textContent = title;
     $("reqHeadDesc").innerHTML = descHtml;
@@ -132,7 +147,7 @@
     state.parsed = parsed;
     state.sourceLabel = label;
     $("sourceLabel").textContent = label;
-    $("plainEnglish").textContent = window.plainEnglish(parsed);
+    $("plainEnglish").textContent = parsed.scrambled ? scrambledSummary(parsed) : window.plainEnglish(parsed);
 
     var h = parsed.header;
     var metaParts = [];
@@ -148,7 +163,21 @@
     $("metaLine").textContent = metaParts.join(" · ") || "Program details weren’t labeled clearly in the text.";
 
     var note = $("modeNote");
-    if (parsed.mode === "sections") {
+    if (parsed.scrambled) {
+      // Only the top-line totals are trustworthy from the scrambled export.
+      setStat(1, h.earned, "Credits earned");
+      setStat(2, h.inProgress, "Credits in progress");
+      setStat(3, h.summaryNeeds, h.neededApprox ? "Credits still needed (est.)" : "Credits still needed");
+      setStat(4, h.overallGpa, "Cumulative GPA");
+      show("reqHead", false);
+      show("cols", false);
+      note.hidden = false;
+      note.innerHTML = "<strong>Heads up:</strong> this is the audit system’s built-in PDF format, which exports " +
+        "with a scrambled reading order, so the requirement-by-requirement breakdown can’t be read reliably " +
+        "(your credit totals above are still correct). For the full breakdown, run the audit as HTML, then use your " +
+        "browser’s <strong>Print, Save as PDF</strong> and upload that instead.";
+    } else if (parsed.mode === "sections") {
+      show("cols", true);
       setReqHead(
         "Requirement progress",
         "Each card is one degree requirement, a category like writing, math, or capstone. " +
@@ -179,6 +208,7 @@
       setCol(3, "Still needed", noCount, noHtml, "Nothing flagged as still needed — confirm with your advisor.");
     } else if (parsed.mode === "courses") {
       show("reqHead", false);
+      show("cols", true);
       note.hidden = false;
       note.innerHTML = "This is the <strong>Coursework History</strong> tab — it shows classes and grades, not requirement check-offs. " +
         "For a true “what’s left” list, run the audit’s <strong>requirements</strong> view (the one with green checks / red X’s) and upload that.";
@@ -195,6 +225,7 @@
       setCol(2, "In progress", b.ip.length, b.ip.map(renderCourse).join(""), "No in-progress (***) courses found.");
       setCol(3, "Worth a second look", b.flagged.length, b.flagged.map(renderCourse).join(""), "No withdrawals, D/F, or excluded attempts. Nice.");
     } else {
+      show("cols", true);
       setReqHead(
         "Requirement progress",
         "Each card is a degree requirement block marked <strong>done</strong>, <strong>in progress</strong>, or " +
@@ -218,7 +249,8 @@
 
     $("chatLog").innerHTML = "";
     var greeting = "Ask me about leftovers, GPA, credits, or a course code. I only know what’s in this audit.";
-    if (parsed.mode === "sections") greeting = "Ask what’s left, what’s in progress, about a specific requirement (e.g. “capstone”, “math”), credits, or GPA.";
+    if (parsed.scrambled) greeting = "I can read your credit totals and GPA from this file, but the requirement breakdown needs a cleaner export (Print, Save as PDF). Ask me about credits or GPA.";
+    else if (parsed.mode === "sections") greeting = "Ask what’s left, what’s in progress, about a specific requirement (e.g. “capstone”, “math”), credits, or GPA.";
     else if (parsed.mode === "courses") greeting = "Ask about your classes, credits, in-progress courses, or a course code. Heads up: this tab can’t tell which requirements are met.";
     addChat("assistant", greeting);
 
