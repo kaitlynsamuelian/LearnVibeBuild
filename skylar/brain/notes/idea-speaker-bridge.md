@@ -22,9 +22,17 @@ without buying new Auracast hardware. Hard part remains cross-device sync/latenc
   "cool tech" more than "real need."
 
 ## Open questions for research (see [[capstone-research-log]])
-- How do existing multi-room/whole-home audio systems bridge ecosystems (AirPlay,
-  Chromecast, Bluetooth, DLNA)? Where do they fall short?
-- The hard part: audio sync/latency across different devices.
+Focus: the CROSS-BRAND, already-owned-speakers framing (JBL + Bose, etc.), NOT the
+"bridge one old speaker into a modern system" commodity version.
+- **Latency-compensation approaches:** how do people sync audio across devices with
+  different, unknown Bluetooth/processing delays? (per-device delay calibration, NTP-style
+  clock sync, buffering, measuring round-trip latency, etc.)
+- **Hardware vs. app — which is realistic for a student?** e.g. a single transmitter box
+  with multiple synced Bluetooth outputs, vs. a phone app coordinating multiple speakers.
+  What are the real technical blockers for each (BT profiles, one-source-one-sink limits)?
+- **How hard is cross-brand sync really for a one-semester capstone?** What's the minimum
+  viable version (e.g. 2 speakers, "good enough" sync) vs. the ideal? Where do hobby
+  projects / open-source attempts (e.g. snapcast, Auracast dev kits) get stuck?
 - Who actually has this problem and how much do they care?
 
 ## Research so far (2026-09-15)
