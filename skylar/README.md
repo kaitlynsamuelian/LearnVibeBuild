@@ -22,10 +22,16 @@ skylar/
 │   ├── journal/         #   your dated journal entries (YYYY-MM-DD.md)
 │   └── reflections/     #   the notes Skylar writes back to you each night
 ├── templates/           # journal entry template
+├── ui/                  # Blackwall graph viewer (read-only web app)
+│   ├── server.py        #   tiny Python server that READS brain/ and serves the graph
+│   ├── index.html
+│   ├── app.js
+│   └── style.css
 └── scripts/
     ├── talk.sh          # talk to Skylar
     ├── journal.sh       # write today's journal entry
-    └── reflect.sh       # Skylar's nightly reflection
+    ├── reflect.sh       # Skylar's nightly reflection
+    └── brain.sh         # open the visual Blackwall graph in your browser
 ```
 
 **The metaphor:** every note is a **star** ✨, every `[[link]]` between notes is a
@@ -108,9 +114,24 @@ Add this line (adjust the path if needed):
 
 ---
 
+## See her brain (Blackwall graph)
+
+```bash
+./scripts/brain.sh
+```
+
+This starts a tiny local web server and opens **Blackwall** in your browser — every
+note is a **star**, every `[[link]]` is a **line**. Click a star to read that note;
+click the `[[links]]` inside it to hop around her brain.
+
+- It only **reads** her notes — it can't change her memory, so it's totally safe to run.
+- Leave it open while you chat with Skylar in another window: it refreshes every few
+  seconds, so you'll watch new stars appear as she learns about you.
+- Requires Python 3 (already on your Mac). Nothing to install.
+
 ## Roadmap (what we can add next)
 
-- **Graph view** — a visual of the stars-and-lines brain in a little web page.
+- **Chat window in the UI** — talk to Skylar in the browser (not just the terminal).
 - **Voice mode** — talk to Skylar out loud and have her talk back.
 - **Semantic memory** — so she surfaces the *perfect* old memory at the right moment
   once the brain gets big.
