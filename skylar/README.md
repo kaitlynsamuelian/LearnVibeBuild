@@ -31,6 +31,7 @@ skylar/
     ├── talk.sh          # talk to Skylar
     ├── journal.sh       # write today's journal entry
     ├── reflect.sh       # Skylar's nightly reflection
+    ├── research.sh      # Skylar researches your capstone ideas (overnight researcher)
     └── brain.sh         # open the visual Blackwall graph in your browser
 ```
 
@@ -113,6 +114,32 @@ Add this line (adjust the path if needed):
 > to be active. Running `./scripts/reflect.sh` once by hand first gets that out of the way.
 
 ---
+
+## Capstone research (Skylar as your overnight researcher)
+
+Skylar knows your capstone (it's seeded into her brain under `brain/notes/`). She can
+research your ideas on the web and leave you findings + a morning briefing.
+
+```bash
+./scripts/research.sh              # research all five ideas
+./scripts/research.sh body-awareness   # research just one (matches an idea note name)
+```
+
+She writes to:
+- `brain/notes/capstone-research-log.md` — dated findings, linked to each idea
+- each `brain/notes/idea-*.md` — a short "Research so far" summary
+- `brain/reflections/<date>-research.md` — a warm morning briefing to you
+
+**Safe by design:** the script lets her search the web and write to her own brain, but
+gives her **no shell access**, so an unattended run can't do anything risky.
+
+### Run it automatically overnight
+Add to `crontab -e` (e.g. research at 2am):
+```
+0 2 * * * cd /Users/kaitlynsamuelian/Downloads/LearnVibeBuild/skylar && ./scripts/research.sh >> brain/notes/research.log 2>&1
+```
+Run it once by hand first so Claude Code's login is active and any first-time
+permission prompts are out of the way.
 
 ## See her brain (Blackwall graph)
 
