@@ -47,4 +47,22 @@ for a problem the market already sells a cheap fix for — worth pressure-testin
 she'd actually attempt the hard cross-ecosystem-sync version or the easier "solved
 already" version before committing.
 
+**Deep-dive update (2026-09-15, same day, follow-up):** dug into the sharpened
+questions — latency compensation, hardware-vs-app, and semester feasibility. Real
+prior art exists at almost exactly her scope: [BlueBox](https://github.com/innotech-insa/innotech-mvp),
+a French engineering-student project, built a Raspberry Pi hub with up to 4 USB
+Bluetooth dongles (one per speaker) syncing playback across speakers, controlled by a
+phone app — and even they needed a dedicated latency-optimization effort, proving this
+is real but student-tractable work. [Snapcast](https://github.com/snapcast/snapcast)
+shows the sync algorithm that would generalize (NTP-style clock sync + per-sample
+speed correction), though it's built for software clients, not raw Bluetooth output,
+so she'd need to adapt the idea to Bluetooth's own latency variance. Auracast needs new
+silicon on both ends (confirmed: doesn't help gear people already own). The soft spot
+is still demand — I couldn't find people actively asking for this as a live complaint;
+it reads as an accepted limitation people route around, not a burning need. **My
+current take:** a "hub + one dongle per speaker + good-enough 2-speaker sync" MVP is a
+legit, well-scoped, technically rich semester build with real precedent — but before
+committing, she should validate that people actually *want* this (not just that it's
+buildable), since priority #2 is still the shakiest leg here.
+
 Linked: [[senior-capstone]], [[capstone-skills]], [[capstone-goals]]

@@ -22,17 +22,18 @@ skylar/
 │   ├── journal/         #   your dated journal entries (YYYY-MM-DD.md)
 │   └── reflections/     #   the notes Skylar writes back to you each night
 ├── templates/           # journal entry template
-├── ui/                  # Blackwall graph viewer (read-only web app)
-│   ├── server.py        #   tiny Python server that READS brain/ and serves the graph
+├── ui/                  # the Skylar web app (Talk / Brain / Journal / Reading)
+│   ├── server.py        #   local Python server: graph API + chat + journal
 │   ├── index.html
 │   ├── app.js
 │   └── style.css
 └── scripts/
-    ├── talk.sh          # talk to Skylar
-    ├── journal.sh       # write today's journal entry
+    ├── app.sh           # open the Skylar web app in your browser  ← main way to use her
+    ├── talk.sh          # talk to Skylar in the terminal
+    ├── journal.sh       # write today's journal entry (terminal)
     ├── reflect.sh       # Skylar's nightly reflection
     ├── research.sh      # Skylar researches your capstone ideas (overnight researcher)
-    └── brain.sh         # open the visual Blackwall graph in your browser
+    └── brain.sh         # alias for app.sh
 ```
 
 **The metaphor:** every note is a **star** ✨, every `[[link]]` between notes is a
@@ -141,20 +142,28 @@ Add to `crontab -e` (e.g. research at 2am):
 Run it once by hand first so Claude Code's login is active and any first-time
 permission prompts are out of the way.
 
-## See her brain (Blackwall graph)
+## The Skylar app (the main way to use her)
 
 ```bash
-./scripts/brain.sh
+./scripts/app.sh
 ```
 
-This starts a tiny local web server and opens **Blackwall** in your browser — every
-note is a **star**, every `[[link]]` is a **line**. Click a star to read that note;
-click the `[[links]]` inside it to hop around her brain.
+Opens Skylar in your browser at `http://127.0.0.1:4173/` with four views:
 
-- It only **reads** her notes — it can't change her memory, so it's totally safe to run.
-- Leave it open while you chat with Skylar in another window: it refreshes every few
-  seconds, so you'll watch new stars appear as she learns about you.
+- **💬 Talk** — chat with Skylar right in the browser. This runs Claude Code under the
+  hood (your Pro plan), so she stays in character *and* updates her own brain as you talk.
+- **🌌 Brain** — the live Blackwall graph. Every note is a **star**, every `[[link]]` a
+  **line**. Click a star to read it; click `[[links]]` to hop around. Chat with her, then
+  come here and watch new stars appear.
+- **📓 Journal** — write today's entry and browse past ones.
+- **📖 Reading** — read Skylar's reflections and capstone research briefings.
+
+Notes:
 - Requires Python 3 (already on your Mac). Nothing to install.
+- If **Talk** says she isn't logged in, run `claude` in the `skylar/` folder once and
+  sign in with your Pro account (see setup above).
+- The browser chat keeps its own conversation; the terminal (`talk.sh`) is still there
+  if you prefer it. Both share the same brain.
 
 ## Roadmap (what we can add next)
 

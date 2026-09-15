@@ -3,34 +3,88 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Skylar · Blackwall</title>
+  <title>Skylar</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div id="app">
-    <header id="topbar">
-      <div class="brand">
-        <span class="star">✦</span>
-        <span class="name">Blackwall</span>
-        <span class="sub">Skylar's brain</span>
-      </div>
-      <div class="legend">
-        <span class="dot core"></span> memory
-        <span class="dot note"></span> notes
-        <span class="dot journal"></span> journal
-        <span class="dot reflection"></span> reflections
-      </div>
-      <div class="stats" id="stats"></div>
-    </header>
+    <!-- Sidebar -->
+    <nav id="sidebar">
+      <div class="logo"><span class="star">✦</span> Skylar</div>
+      <button class="nav active" data-view="talk">💬 Talk</button>
+      <button class="nav" data-view="brain">🌌 Brain</button>
+      <button class="nav" data-view="journal">📓 Journal</button>
+      <button class="nav" data-view="reading">📖 Reading</button>
+      <div class="sidebar-foot" id="sidebar-foot">her brain: <span id="brainstats">…</span></div>
+    </nav>
 
-    <main id="stage">
-      <canvas id="graph"></canvas>
-      <div id="empty" class="empty hidden">
-        <p>Skylar's brain is empty right now.</p>
-        <p class="muted">Chat with her or journal, then refresh — the stars will appear here.</p>
-      </div>
+    <!-- Main area -->
+    <main id="main">
+      <!-- TALK -->
+      <section class="view active" id="view-talk">
+        <div id="chat-log">
+          <div class="msg skylar">
+            <div class="who">Skylar</div>
+            <div class="bubble">Hey — I'm here. Talk to me about anything: your day, your capstone,
+            whatever's on your mind. I'll remember it.</div>
+          </div>
+        </div>
+        <form id="chat-form">
+          <textarea id="chat-input" rows="1" placeholder="Talk to Skylar…  (Enter to send, Shift+Enter for newline)"></textarea>
+          <button type="submit" id="chat-send">Send</button>
+        </form>
+      </section>
+
+      <!-- BRAIN -->
+      <section class="view" id="view-brain">
+        <div class="brain-topbar">
+          <div class="legend">
+            <span class="dot core"></span> memory
+            <span class="dot note"></span> notes
+            <span class="dot journal"></span> journal
+            <span class="dot reflection"></span> reflections
+          </div>
+          <div class="stats" id="graphstats"></div>
+        </div>
+        <div class="brain-stage">
+          <canvas id="graph"></canvas>
+          <div id="empty" class="empty hidden">
+            <p>Her brain is empty right now.</p>
+            <p class="muted">Talk to her or journal — the stars will appear here.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- JOURNAL -->
+      <section class="view" id="view-journal">
+        <div class="panel-head">
+          <h2>Today's journal</h2>
+          <span class="muted" id="journal-date"></span>
+        </div>
+        <textarea id="journal-input" placeholder="How are you? What happened today? What's on your mind?"></textarea>
+        <div class="row">
+          <button id="journal-save">Save entry</button>
+          <span id="journal-status" class="muted"></span>
+        </div>
+        <h3>Past entries</h3>
+        <ul id="journal-list" class="entry-list"></ul>
+      </section>
+
+      <!-- READING -->
+      <section class="view" id="view-reading">
+        <div class="reading-cols">
+          <div class="reading-side">
+            <h3>Skylar's reflections</h3>
+            <ul id="reflection-list" class="entry-list"></ul>
+          </div>
+          <div class="reading-body" id="reading-body">
+            <p class="muted">Pick a reflection or research note to read.</p>
+          </div>
+        </div>
+      </section>
     </main>
 
+    <!-- Note reader (shared, used by Brain graph clicks) -->
     <aside id="panel" class="panel hidden">
       <button id="panel-close" aria-label="Close">×</button>
       <div id="panel-body"></div>
