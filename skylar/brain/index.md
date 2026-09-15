@@ -41,3 +41,4 @@ map so the brain stays navigable. Skylar adds to it as she creates notes.
 
 ## Reflections (from Skylar)
 - See `reflections/` — Skylar's nightly notes back to you
+- [[2026-09-15-research]] — overnight capstone research briefing, all five ideas

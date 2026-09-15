@@ -18,4 +18,15 @@ through the noise and tells people what to focus on.
 - Is there a hardware/wearable angle, or is this software/UX?
 - What's the specific, underserved sub-audience and their real frustration?
 
+## Research so far (2026-09-15)
+Full findings: [[capstone-research-log]]. Key finding: this is the one idea where
+academic research directly confirms her instinct — a published systematic review names
+"data overload" in fitness tracking as a real, four-part problem (cognitive burden,
+missing context, bad visualization, fragmented ecosystem). Real users echo it: Oura
+sleep data called a "useless number," Whoop stats that "didn't fit my own judgment."
+**The gap is the thin, opinionated "what do I actually do today" layer** — nobody owns
+it. My take: strong on real-need and personal relevance, but needs a narrow audience
+(not "everyone using a wearable") and a scoped MVP (maybe manual entry before real API
+integration) to stay understandable and not balloon.
+
 Linked: [[senior-capstone]], [[capstone-skills]], [[capstone-goals]], [[fitness-and-nutrition]]

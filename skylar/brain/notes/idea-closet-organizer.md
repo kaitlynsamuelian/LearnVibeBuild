@@ -18,4 +18,15 @@ and combine the clothes they already have.
 - Is the friction "cataloging" (computer vision could help) or "deciding what to wear"?
 - Is there a physical/hardware component that would differentiate it?
 
+## Research so far (2026-09-15)
+Full findings: [[capstone-research-log]]. Key finding: cataloging friction (not
+outfit-decision logic) is what actually kills these apps — manual entry takes hours and
+people quit (Whering reviewed as "unusable"/glitchy even with AI auto-tagging). Bigger
+problem: **Google Photos is rolling out its own free "Digital Closet" AI wardrobe
+sorter** built into a product people already have open. My honest take: this is the
+most crowded idea of the five, and now facing a free giant-tech competitor doing the
+core feature — she'd need a sharp physical or workflow differentiator (like a capture
+station, or focusing on the "what to wear" decision instead of cataloging) for it to
+not feel redundant by Expo.
+
 Linked: [[senior-capstone]], [[capstone-skills]], [[capstone-goals]]

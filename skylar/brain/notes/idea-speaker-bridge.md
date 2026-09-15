@@ -4,6 +4,15 @@ A capstone idea for [[senior-capstone]]. **Problem:** people own speakers/audio 
 from different generations and ecosystems that can't easily play together. **Vision:**
 something that lets mismatched speakers play the same audio.
 
+**Kaitlyn's clarified framing (2026-09-15):** she specifically means connecting
+*different-brand* speakers people already own — e.g. her JBL + a friend's Bose — to play
+the same audio in sync. Important reality: this does NOT work natively today. Party modes
+are same-brand only (JBL↔JBL PartyBoost, Bose↔Bose SimpleSync, etc.). Phone "dual audio"
+(Samsung) is a limited/laggy cross-brand hack. Auracast (Bluetooth LE Audio) is the
+industry's real fix but needs NEW speakers that support it — the mixed/older gear people
+already own doesn't. So the real gap = syncing already-owned, mixed-brand speakers
+without buying new Auracast hardware. Hard part remains cross-device sync/latency.
+
 - **Target audience:** music listeners, college students, households with multiple
   speakers, people with older audio equipment.
 - **Why it fits her:** hardware/software integration + audio tech + [[capstone-skills]]
@@ -17,5 +26,17 @@ something that lets mismatched speakers play the same audio.
   Chromecast, Bluetooth, DLNA)? Where do they fall short?
 - The hard part: audio sync/latency across different devices.
 - Who actually has this problem and how much do they care?
+
+## Research so far (2026-09-15)
+Full findings: [[capstone-research-log]]. Key finding: the easy version of this idea —
+bridge one old/mismatched speaker into a modern ecosystem — is already a solved,
+commodity product (WiiM Pro, $149, does almost exactly this; Bluetooth dongles do a
+cheaper version for $15-50). The genuinely unsolved problem is **synchronized playback
+across closed ecosystems at once** (Sonos + Bluetooth + Chromecast speakers all in
+sync) — a real clock-drift/networking problem, but a big lift for one semester. My
+honest take: technically the richest idea here, but real risk of building cool tech
+for a problem the market already sells a cheap fix for — worth pressure-testing whether
+she'd actually attempt the hard cross-ecosystem-sync version or the easier "solved
+already" version before committing.
 
 Linked: [[senior-capstone]], [[capstone-skills]], [[capstone-goals]]
