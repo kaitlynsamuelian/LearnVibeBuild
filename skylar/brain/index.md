@@ -26,6 +26,7 @@ map so the brain stays navigable. Skylar adds to it as she creates notes.
 - [[capstone-goals]] — her goals & priorities (proud of it, real need, deep understanding)
 - [[capstone-skills]] — skills she has + wants to grow, and tech she's drawn to
 - [[capstone-research-log]] — where research on the ideas lands
+- [[capstone-opportunity-hunt]] — brief for the broad hunt for NEW opportunities
 - Ideas she's weighing:
   - [[idea-drying-rack]] — wall-mount collapsible clothes drying rack
   - [[idea-speaker-bridge]] — bridging disconnected speaker ecosystems
