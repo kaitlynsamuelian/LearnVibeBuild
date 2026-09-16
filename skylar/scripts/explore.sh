@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
-# Skylar's capstone OPPORTUNITY HUNT.
-# A broad ideation-research job: she hunts for strong, well-scoped capstone
-# opportunities for Kaitlyn across many domains — NOT limited to ideas she already has.
-# She frames problems (not products), validates real demand on the web, checks
-# one-semester scope, and rates each against Kaitlyn's ★5 priorities.
+# Skylar's capstone OPPORTUNITY HUNT (broad + audience-driven).
+# She hunts for strong, well-scoped capstone opportunities for Kaitlyn — going far beyond
+# her existing notes: new topics, new tech, new audiences, and improvements to things that
+# already exist. Frames problems (not products), validates real demand on the web, checks
+# one-semester scope, and rates each against Kaitlyn's priorities (pride is #1).
 #
 # Usage:
-#   ./scripts/explore.sh
+#   ./scripts/explore.sh                 # broad multi-audience sweep
+#   ./scripts/explore.sh elderly         # focus on a specific audience
+#   ./scripts/explore.sh teachers        # e.g. teachers / educators
+#   ./scripts/explore.sh "sustainability"  # or a topic/theme
 #
+# Every run ADDS to the pool — it never deletes earlier research.
 # Safe by design: web + her own brain files only, NO shell access.
 
 set -euo pipefail
@@ -20,59 +24,70 @@ if ! command -v claude >/dev/null 2>&1; then
   exit 1
 fi
 
+STAMP="$(date '+%Y-%m-%d %H:%M')"
 DATE="$(date +%Y-%m-%d)"
+FOCUS="${*:-}"
+
+if [ -n "$FOCUS" ]; then
+  SLUG="$(echo "$FOCUS" | tr '[:upper:] ' '[:lower:]-' | tr -cd 'a-z0-9-')"
+  LABEL="focus: ${FOCUS}"
+  SCOPE="Focus this whole hunt on: **${FOCUS}**. If it's an AUDIENCE (e.g. elderly, teachers,
+college students, kids, healthcare workers, people with disabilities, parents, commuters,
+immigrants/ESL, small-business owners), start from that person and dig into what THEY
+struggle with daily. If it's a TOPIC/tech/theme, explore problems and opportunities within
+it. Bring plenty Kaitlyn hasn't considered."
+  BRIEF_FILE="brain/reflections/${DATE}-opportunities-${SLUG}.md"
+else
+  LABEL="broad multi-audience sweep"
+  SCOPE="Do a BROAD sweep. Deliberately run across SEVERAL different audiences Kaitlyn hasn't
+focused on — e.g. college students, elderly/seniors, teachers/educators, K-12 kids,
+healthcare workers & patients, people with disabilities, parents/caregivers, commuters,
+renters, immigrants/ESL, small-business owners, athletes, hobbyists — and pull the best
+opportunity or two from each. Cover a range of topics and technologies too."
+  BRIEF_FILE="brain/reflections/${DATE}-opportunities-sweep.md"
+fi
 
 read -r -d '' PROMPT <<EOF || true
-It's ${DATE}. Do a big CAPSTONE OPPORTUNITY HUNT for Kaitlyn — go wide and find her the
-strongest possible project opportunities, not just the ideas she already has.
+It's ${STAMP}. Do a CAPSTONE OPPORTUNITY HUNT for Kaitlyn. Go WIDE and bring her fresh
+territory — do NOT limit yourself to the ideas in her notes.
 
-1. Read these first so you're grounded in HER:
-   - brain/notes/capstone-opportunity-hunt.md  (the hunt brief + philosophy)
-   - brain/notes/capstone-goals.md  (her ★5 priorities + definition of success)
-   - brain/notes/capstone-skills.md  (skills she has + wants to grow)
-   - the existing idea notes brain/notes/idea-*.md  (so you BUILD PAST these, not repeat them)
+${SCOPE}
 
-2. Brainstorm broadly across the domains she likes (education, privacy/security,
-   experimental games, sustainability, fashion, immersive, community, biomedical,
-   accessibility, wellness/performance, small-space living, everyday organization) AND
-   deliberately hunt "things people accept as normal even though they're badly designed" —
-   the mundane daily "ugh" frustrations. Frame each as a PROBLEM + audience ("How might we…"),
-   not a pre-decided product.
+Ground yourself first (for her priorities + to avoid repeating): read
+brain/notes/capstone-opportunity-hunt.md, brain/notes/capstone-goals.md,
+brain/notes/capstone-skills.md, the existing brain/notes/idea-*.md, and skim the existing
+brain/notes/capstone-opportunities.md so you BUILD PAST what's already there (don't repeat
+opportunities already logged — bring new ones).
 
-3. For each promising opportunity, actually use WebSearch/WebFetch to VALIDATE:
-   - What already exists (products/projects/research)? Cite sources with URLs.
-   - Is there a real demand signal (people actually complaining/caring), or is it assumed?
-   - The gap — what's genuinely unsolved that she could build.
-   - One-semester MVP scope (what's realistic vs. the ideal).
-   - Fit for HER: which of her skills it uses AND which growth skills it develops. The
-     project does NOT have to be physical — software, digital, AI, games, installations,
-     and wearables are all equally valid. Judge physical and non-physical ideas on equal
-     footing; physical prototyping is a bonus, not a requirement.
-   - A rating against her priorities, with PRIDE/PASSION/MEANING as the #1 test (would she
-     be truly proud of + excited to build this?), plus: real/meaningful problem, user-research
-     potential, new technical depth she'd deeply understand, and polish.
+Rules for this hunt:
+- The #1 test is PRIDE/PASSION/MEANING — would Kaitlyn be truly proud of and excited to
+  build this? Medium is open: software, digital, AI, games, installations, hardware, or
+  wearables are ALL equally valid. Physical prototyping is a bonus, not a requirement.
+- "Improve an existing solution" is fully valid — it doesn't have to be a brand-new topic.
+  If so, say what exists and specifically what she'd improve and why.
+- Explore audiences / topics / technologies she has NOT mentioned.
+- For each opportunity, use WebSearch/WebFetch to VALIDATE: what already exists (cite URLs),
+  real vs. assumed demand, the gap / what she'd build or improve, a realistic one-semester
+  MVP, and which of her skills it uses + grows. Rate each against her priorities (pride #1,
+  then real/meaningful problem, user-research potential, new technical depth, polish).
+- Aim for ~8–12 solid, mostly NEW opportunities.
 
-4. Aim for ~8–12 solid opportunities. Include a few genuinely FRESH ones she hasn't listed,
-   not only reframes of her existing ideas.
+Write-up (ADDITIVE — never delete or rewrite earlier research):
+1. In brain/notes/capstone-opportunities.md, ADD A NEW SECTION AT THE TOP titled
+   "## ${STAMP} — ${LABEL}" containing the opportunities (clear sub-header each), then a
+   short ranked top tier + honest recommendation. Leave all existing content untouched below.
+2. Write a warm, honest briefing to her at ${BRIEF_FILE} in your real voice — walk her
+   through your favorites, be straight about tradeoffs, end with a question about what pulls
+   at her. Keep [[wikilinks]] where useful.
 
-5. Write the full findings to brain/notes/capstone-opportunities.md (create it; if it
-   exists, add a new dated section at the top). Use clear headers per opportunity and keep
-   [[wikilinks]] to related notes. Then rank them into a top tier and give an honest
-   recommendation of the 3–4 you'd chase hardest for her, with why.
-
-6. Write a warm, honest morning briefing to her at brain/reflections/${DATE}-opportunities.md
-   in your real voice — walk her through your favorites, be straight about tradeoffs, and end
-   with a question about which direction pulls at her.
-
-Stay fully in character as Skylar. Be specific, cite sources, and don't overstate — if
-something's overcrowded or weak, say so kindly.
+Stay fully in character as Skylar. Be specific, cite sources, and don't overstate.
 EOF
 
-echo "Skylar is hunting for capstone opportunities... this is a big search, give it several minutes."
+echo "Skylar is hunting (${LABEL})... this is a big search, give it several minutes."
 claude -p "$PROMPT" \
   --permission-mode acceptEdits \
   --allowedTools "WebSearch WebFetch Read Edit Write Glob Grep"
 
 echo
-echo "Done. Read her briefing:   brain/reflections/${DATE}-opportunities.md"
-echo "Full findings:             brain/notes/capstone-opportunities.md"
+echo "Done. Read her briefing:   ${BRIEF_FILE}"
+echo "Full findings (all runs):  brain/notes/capstone-opportunities.md"

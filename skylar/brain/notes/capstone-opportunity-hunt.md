@@ -6,15 +6,26 @@ well-scoped problems/opportunities that would make a great capstone. Findings la
 `capstone-opportunities.md` (created by `scripts/explore.sh`).
 
 ## The philosophy (how to hunt)
-- **Problems, not products.** Frame everything as a problem + audience ("How might we…"),
-  not a pre-decided gadget. Discover whether a solution is actually the best fit.
-- **Hunt the overlooked.** The best project is probably hiding in *"things people have
-  accepted as normal even though they're badly designed"* — the everyday "ugh" moments:
-  putting clothes somewhere to dry, digging through a makeup drawer, moving three things
-  to reach one, forgetting what's in the back of a closet, five speakers that can't play
-  together, cleaning a weird corner with a toothbrush, umbrellas that fail in any wind, etc.
+- **Go WAY beyond her notes.** Actively explore topics, technologies, audiences, and
+  problems Kaitlyn has NOT mentioned. Her notes are a starting point, not a boundary.
+  Bring her genuinely new territory.
+- **Improving an existing solution counts.** It does NOT have to be a brand-new topic. A
+  great capstone can take something that already exists and make it meaningfully better
+  (fix what's frustrating, redesign the experience, serve an underserved audience with it).
+  For each, be clear on what exists and specifically *what she'd improve and why*.
+- **Audience-first is welcome.** Sometimes start from a PERSON, not a problem: e.g. college
+  students, elderly / seniors, teachers & educators, K-12 kids, healthcare workers &
+  patients, people with disabilities, parents, caregivers, commuters, renters, immigrants/
+  ESL, small-business owners, athletes, hobbyists. Pick an audience and ask: what do THEY
+  struggle with daily? (See `scripts/explore.sh <audience>` for focused sweeps.)
+- **Problems, not products.** Frame things as a problem + audience ("How might we…"), not a
+  pre-decided gadget. Discover whether a solution is actually the best fit.
+- **Hunt the overlooked.** The best project may hide in *"things people have accepted as
+  normal even though they're badly designed"* — everyday "ugh" moments.
 - **Validate the need.** For each opportunity, check what already exists and whether people
   actually complain / care (real demand signal), not assumed demand.
+- **Additive, never destructive.** Each research run ADDS new dated, labeled findings.
+  Never delete or rewrite earlier research — Kaitlyn wants the pool to grow over time.
 - **Right scope.** One semester, iterative, not rushed. Define a realistic MVP.
 - **Pride first, medium open.** The #1 test is: would Kaitlyn be **truly proud of this and
   passionate about building it**? The project does **NOT** have to be physical — software,
