@@ -44,10 +44,13 @@ strongest possible project opportunities, not just the ideas she already has.
    - Is there a real demand signal (people actually complaining/caring), or is it assumed?
    - The gap — what's genuinely unsolved that she could build.
    - One-semester MVP scope (what's realistic vs. the ideal).
-   - Fit for HER: which of her skills it uses AND which growth skills it forces; lean toward
-     the physical-product × technology × real-human-need intersection over screen-only apps.
-   - A rating against her ★5 (real validated problem / physical prototyping+product design /
-     user-research potential / new technical depth / pride + polish).
+   - Fit for HER: which of her skills it uses AND which growth skills it develops. The
+     project does NOT have to be physical — software, digital, AI, games, installations,
+     and wearables are all equally valid. Judge physical and non-physical ideas on equal
+     footing; physical prototyping is a bonus, not a requirement.
+   - A rating against her priorities, with PRIDE/PASSION/MEANING as the #1 test (would she
+     be truly proud of + excited to build this?), plus: real/meaningful problem, user-research
+     potential, new technical depth she'd deeply understand, and polish.
 
 4. Aim for ~8–12 solid opportunities. Include a few genuinely FRESH ones she hasn't listed,
    not only reframes of her existing ideas.

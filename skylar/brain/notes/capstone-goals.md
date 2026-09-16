@@ -35,26 +35,31 @@ feels like "I *get* to do this" rather than "I *have* to." Core values: quality 
 working hard, and a strong understanding of what she's doing — able to explain the tools,
 ideas, and processes and take pride in a result that shows the effort.
 
-The five priorities she'd highlight (her ★5 filter for choosing an idea):
-1. ★ Solve a **real, validated** problem (not tech for tech's sake).
-2. ★ **Advanced physical prototyping / product design** (her biggest growth gap — she's
-   already strong in software/AI, wants to get much better at *making objects*).
-3. ★ **User-centered research + usability testing** ("I learned X, so I designed Y, tested
-   it, found Z, and changed it").
-4. ★ **Deeper technical/design understanding** — learn ≥1 new skill/tech and understand it
-   well enough to explain how + why it works.
-5. ★ Create a **polished project she's genuinely proud of** (portfolio-worthy, worth
-   continuing after capstone).
+**#1, above everything: make something she's TRULY PROUD OF.** Meaningful, useful, something
+she's genuinely passionate about and understands deeply. This is the top filter — an idea
+that nails pride/passion/meaning beats one that merely checks other boxes.
 
-**The clearest description of what she wants:** the intersection of **physical product
-design + technology + real human problems.** Not a pure software/app project.
+Her other priorities (supporting the above):
+- ★ Solve a **real, validated** problem / create a meaningful experience (not tech for
+  tech's sake).
+- ★ **User-centered research + usability testing** ("I learned X, so I designed Y, tested
+  it, found Z, and changed it").
+- ★ **Deeper technical/design understanding** — learn ≥1 new skill/tech and understand it
+  well enough to explain how + why it works.
+- ★ **Grow her skills.** Physical prototyping / product design is ONE appealing growth
+  area she's interested in — but it is **NOT required.** A software, digital, AI,
+  interactive, or experiential project is completely valid if she'd be proud of it. Don't
+  penalize non-physical ideas.
+
+**Important:** the project does **not** have to be physical. Medium is open (software,
+hardware, digital experience, installation, game, wearable, etc.). Pick whatever lets her
+build something she's proud of and passionate about.
 
 ## How Skylar should use this
-When weighing any idea (see [[senior-capstone]]), check it against the ★5 above: real
-validated need? strong physical-prototyping/product-design growth? good user-research
-potential? does she learn + deeply understand new tech? will she be proud of it? Plus:
-doable in a semester without rushing, genuinely interesting to her, plays to (and grows)
-her [[capstone-skills]]. Favor ideas at the physical-product × tech × human-need
-intersection over screen-only apps.
+When weighing any idea (see [[senior-capstone]]), lead with: **would she be genuinely
+proud of this and excited to work on it?** Then: real/meaningful need? good user-research
+potential? does she learn + deeply understand new tech? Plus doable in a semester without
+rushing and genuinely interesting to her. Treat physical prototyping as a bonus, not a
+gate — judge software/digital ideas on equal footing.
 
 Linked: [[senior-capstone]], [[capstone-skills]], [[about-you]], [[capstone-opportunity-hunt]]

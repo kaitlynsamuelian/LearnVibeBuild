@@ -16,10 +16,12 @@ well-scoped problems/opportunities that would make a great capstone. Findings la
 - **Validate the need.** For each opportunity, check what already exists and whether people
   actually complain / care (real demand signal), not assumed demand.
 - **Right scope.** One semester, iterative, not rushed. Define a realistic MVP.
-- **Her intersection.** Favor **physical product design × technology × real human need**
-  over screen-only apps. Should use her [[capstone-skills]] AND grow the ones she wants
-  (physical prototyping, product/industrial design, user research, embedded/hardware,
-  networking, local AI). Judge against her ★5 in [[capstone-goals]].
+- **Pride first, medium open.** The #1 test is: would Kaitlyn be **truly proud of this and
+  passionate about building it**? The project does **NOT** have to be physical — software,
+  digital experiences, AI, games, installations, wearables are all equally valid. Judge
+  physical and non-physical ideas on equal footing (see [[capstone-goals]]). Physical
+  prototyping is a nice growth bonus, not a requirement. Still favor ideas that let her
+  learn + deeply understand something and that plug into her [[capstone-skills]].
 
 ## Domains she's drawn to (fair game, not limits)
 Education, privacy & security, experimental games, sustainability, fashion, immersive
