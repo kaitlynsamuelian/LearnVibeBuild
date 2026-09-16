@@ -23,12 +23,18 @@ map so the brain stays navigable. Skylar adds to it as she creates notes.
 
 ## Capstone
 - [[senior-capstone]] — hub note for everything capstone
+- [[capstone-master]] — ⭐ START HERE: master doc consolidating ALL research (her 5
+  original ideas + both wide hunts = 23 ideas), grouped by theme with a combined ranking
 - [[capstone-goals]] — her goals & priorities (proud of it, real need, deep understanding)
 - [[capstone-skills]] — skills she has + wants to grow, and tech she's drawn to
 - [[capstone-research-log]] — where research on the ideas lands
 - [[capstone-opportunity-hunt]] — brief for the broad hunt for NEW opportunities
 - [[capstone-opportunities]] — the wide hunt results: 8 validated fresh opportunities
-  beyond her five ideas, ranked, top pick = the behavior-insight/procrastination system
+  beyond her five ideas, ranked, top pick = the behavior-insight/procrastination system.
+  Plus a 2026-09-16 second sweep: 10 more opportunities across seniors, disability,
+  teachers, healthcare+immigrants, caregivers, renters, small business, K-12, and
+  college/sustainability — top picks = adaptive kitchen tools, multilingual aftercare
+  instructions, and a classroom version of [[idea-body-awareness]]
 - Ideas she's weighing:
   - [[idea-drying-rack]] — wall-mount collapsible clothes drying rack
   - [[idea-speaker-bridge]] — bridging disconnected speaker ecosystems
@@ -46,3 +52,5 @@ map so the brain stays navigable. Skylar adds to it as she creates notes.
 - See `reflections/` — Skylar's nightly notes back to you
 - [[2026-09-15-research]] — overnight capstone research briefing, all five ideas
 - [[2026-09-16-opportunities]] — the wide capstone opportunity hunt, 8 fresh ideas ranked
+- [[2026-09-16-opportunities-sweep]] — second, broader multi-audience sweep, 10 more
+  fresh ideas ranked
