@@ -36,6 +36,10 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="8" r="2"/><circle cx="16" cy="7" r="2.2"/><circle cx="12" cy="16" r="2.4"/><path d="M8.7 9.3 11 14.2M14.2 8.8 12.8 13.8M9 8.2h5"/></svg>
           Brain
         </button>
+        <button class="nav" data-view="ideas">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5.5" r="2"/><circle cx="6" cy="14" r="2"/><circle cx="18" cy="14" r="2"/><circle cx="12" cy="18.5" r="1.6"/><path d="M10.4 6.8 7.6 12.2M13.6 6.8l2.8 5.4M8 15.2l3.2 2.4M16 15.2l-3.2 2.4"/></svg>
+          Ideas
+        </button>
         <button class="nav" data-view="journal">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5h10A1.5 1.5 0 0 1 18.5 6v13l-3-1.5-3 1.5-3-1.5-3 1.5V6A1.5 1.5 0 0 1 7 4.5Z"/><path d="M9 9h6M9 12.5h6"/></svg>
           Journal
@@ -72,19 +76,30 @@
 
       <section class="view" id="view-brain">
         <div class="brain-topbar">
-          <div class="legend">
-            <span class="dot core"></span> memory
-            <span class="dot note"></span> notes
-            <span class="dot journal"></span> journal
-            <span class="dot reflection"></span> reflections
-          </div>
+          <div class="legend" id="brain-legend"></div>
           <div class="stats" id="graphstats"></div>
         </div>
+        <p class="map-hint">Her life, in districts. Click a chip to focus one region.</p>
         <div class="brain-stage">
-          <canvas id="graph"></canvas>
-          <div id="empty" class="empty hidden">
+          <canvas id="graph-brain"></canvas>
+          <div id="empty-brain" class="empty hidden">
             <p>Her mind is quiet.</p>
             <p class="muted">Talk to her or journal — the map fills in.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="view-ideas">
+        <div class="brain-topbar">
+          <div class="legend" id="ideas-legend"></div>
+          <div class="stats" id="ideasstats"></div>
+        </div>
+        <p class="map-hint">Capstone ideas, grouped by theme — separate from the rest of her brain.</p>
+        <div class="brain-stage">
+          <canvas id="graph-ideas"></canvas>
+          <div id="empty-ideas" class="empty hidden">
+            <p>No ideas mapped yet.</p>
+            <p class="muted">Research will show up here as stars.</p>
           </div>
         </div>
       </section>

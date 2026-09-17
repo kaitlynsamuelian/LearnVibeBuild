@@ -5,23 +5,35 @@ map so the brain stays navigable. Skylar adds to it as she creates notes.
 
 ## Core
 - [[about-you]] — who you are (Skylar's living memory)
+- [[welcome]] — the first star, what Blackwall is (meta note, not a life fact — off the Brain map)
+
+## You
+- [[values]] — compassion, empathy, mastery/depth, family
+- [[creative-technology-and-design]] — her major at CU Boulder
 
 ## People
 - [[mom]], [[dad]], [[brother]] — family
 - [[chloe]] — her dog
 - [[sasha]], [[riley]] — college roommates
 
-## Interests & things you love
-- [[fitness-and-nutrition]] — lifting, running, nutrition (ex club/HS soccer player)
-
 ## Goals & projects
+- [[goals]] — hub for the Goals district on the Brain map
 - [[senior-capstone]] — senior capstone class/project (early stage, still figuring it out)
-- [[creative-technology-and-design]] — her major at CU Boulder
+- [[fitness-and-nutrition]] — lifting, running, nutrition (ex club/HS soccer player)
 - [[procrastination]] — working on procrastination + screen time
 - [[nervous-system-regulation]] — working on regulating her nervous system + more control of conscious mind
-- [[values]] — compassion, empathy, mastery/depth, family
+
+## Doing
+- [[doing]] — hub for the Doing district (empty on purpose until something is in motion)
+
+## Worries
+- [[worries]] — hub for the Worries district (empty until something keeps coming back)
+
+## Learning
+- [[learning]] — hub for the Learning district (empty until something lands)
 
 ## Capstone
+- The exploded idea constellation lives on the **Ideas** map in the app (separate from Brain).
 - [[senior-capstone]] — hub note for everything capstone
 - [[capstone-master]] — ⭐ START HERE: master doc consolidating ALL research (her 5
   original ideas + both wide hunts = 23 ideas), grouped by theme with a combined ranking
@@ -54,3 +66,5 @@ map so the brain stays navigable. Skylar adds to it as she creates notes.
 - [[2026-09-16-opportunities]] — the wide capstone opportunity hunt, 8 fresh ideas ranked
 - [[2026-09-16-opportunities-sweep]] — second, broader multi-audience sweep, 10 more
   fresh ideas ranked
+- [[2026-09-17-tend]] — housekeeping day: filed notes into life districts, refreshed
+  the index, no new facts invented

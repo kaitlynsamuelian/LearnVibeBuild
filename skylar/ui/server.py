@@ -36,6 +36,30 @@ PORT = 4173
 
 GROUPS = {"notes": "note", "journal": "journal", "reflections": "reflection"}
 WIKILINK_RE = re.compile(r"\[\[([^\]]+)\]\]")
+FRONTMATTER_RE = re.compile(r"^---\s*\n(.*?)\n---\s*\n", re.S)
+
+# Life districts for the Brain map (not file-type). Journal stays in Journal;
+# capstone ideas explode on the separate Ideas map.
+BRAIN_SECTIONS = [
+    {"id": "you", "label": "You", "color": "#e8c48a"},
+    {"id": "people", "label": "People", "color": "#9db7ff"},
+    {"id": "goals", "label": "Goals", "color": "#c9b8ff"},
+    {"id": "doing", "label": "Doing", "color": "#8ad4bc"},
+    {"id": "worries", "label": "Worries", "color": "#f0a0a8"},
+    {"id": "learning", "label": "Learning", "color": "#7ec8e8"},
+]
+YOU_STEMS = {"about-you", "values", "creative-technology-and-design", "welcome"}
+PEOPLE_STEMS = {"mom", "dad", "brother", "chloe", "sasha", "riley"}
+GOALS_STEMS = {
+    "goals", "senior-capstone", "procrastination",
+    "nervous-system-regulation", "fitness-and-nutrition",
+}
+DOING_STEMS = {"doing"}
+WORRIES_STEMS = {"worries"}
+LEARNING_STEMS = {"learning"}
+HIDDEN_STEMS = {"index"}
+# These live on the Ideas map, not the life map (except senior-capstone = bridge).
+CAPSTONE_PREFIXES = ("idea-", "capstone-")
 
 # Tools Skylar may use when chatting from the UI (NO Bash / shell).
 CHAT_TOOLS = "Read,Edit,Write,Glob,Grep,WebSearch,WebFetch"
@@ -66,18 +90,62 @@ def _group_for(path: Path) -> str:
     return "core"
 
 
+def _frontmatter(text: str) -> dict:
+    m = FRONTMATTER_RE.match(text or "")
+    if not m:
+        return {}
+    meta = {}
+    for line in m.group(1).splitlines():
+        if ":" in line:
+            k, v = line.split(":", 1)
+            meta[k.strip().lower()] = v.strip().strip("\"'")
+    return meta
+
+
+def _slug(s: str) -> str:
+    s = re.sub(r"[^a-z0-9]+", "-", (s or "").lower()).strip("-")
+    return s[:48] or "idea"
+
+
+def _section_for(path: Path, text: str):
+    """Life-district for the Brain map, or None to hide from that map."""
+    rel = path.relative_to(BRAIN_DIR)
+    stem = path.stem
+    if stem in HIDDEN_STEMS:
+        return None
+    if rel.parts and rel.parts[0] in ("journal", "reflections"):
+        return None
+    meta = _frontmatter(text)
+    if meta.get("section") in {s["id"] for s in BRAIN_SECTIONS}:
+        return meta["section"]
+    if stem in YOU_STEMS:
+        return "you"
+    if stem in PEOPLE_STEMS:
+        return "people"
+    if stem in GOALS_STEMS:
+        return "goals"
+    if stem in DOING_STEMS:
+        return "doing"
+    if stem in WORRIES_STEMS:
+        return "worries"
+    if stem in LEARNING_STEMS:
+        return "learning"
+    if stem.startswith(CAPSTONE_PREFIXES):
+        return None
+    return "learning"
+
+
 def collect_markdown_files():
     if not BRAIN_DIR.exists():
         return []
     return sorted(p for p in BRAIN_DIR.rglob("*.md"))
 
 
-def build_graph():
+def _read_files():
     files = collect_markdown_files()
+    file_text = {}
     nodes = []
     alias_to_id = {}
-    file_text = {}
-
     for path in files:
         try:
             text = path.read_text(encoding="utf-8", errors="replace")
@@ -86,38 +154,219 @@ def build_graph():
         file_text[path] = text
         nid = _node_id(path)
         title = _title(path, text)
-        nodes.append(
-            {"id": nid, "title": title, "group": _group_for(path),
-             "path": str(path.relative_to(SKYLAR_DIR))}
-        )
+        nodes.append({
+            "id": nid,
+            "title": title,
+            "group": _group_for(path),
+            "section": _section_for(path, text),
+            "kind": "hub" if path.stem in {
+                "about-you", "goals", "doing", "worries", "learning", "senior-capstone",
+            } else "note",
+            "path": str(path.relative_to(SKYLAR_DIR)),
+        })
         for alias in {nid, path.stem, title}:
             alias_to_id[alias.lower()] = nid
+    return nodes, file_text, alias_to_id
 
-    links = []
-    seen = set()
+
+def _links_among(file_text, alias_to_id, allowed_ids):
+    links, seen = [], set()
     for path, text in file_text.items():
         src = _node_id(path)
+        if src not in allowed_ids:
+            continue
         for match in WIKILINK_RE.findall(text):
             target = match.split("|")[0].strip()
             tid = alias_to_id.get(target.lower())
-            if tid and tid != src and (src, tid) not in seen:
+            if tid and tid in allowed_ids and tid != src and (src, tid) not in seen:
                 seen.add((src, tid))
                 links.append({"source": src, "target": tid})
+    return links
 
-    return {"nodes": nodes, "links": links}
+
+def build_brain_graph():
+    all_nodes, file_text, alias_to_id = _read_files()
+    nodes = [n for n in all_nodes if n.get("section")]
+    allowed = {n["id"] for n in nodes}
+    return {
+        "map": "brain",
+        "sections": BRAIN_SECTIONS,
+        "nodes": nodes,
+        "links": _links_among(file_text, alias_to_id, allowed),
+    }
+
+
+def parse_capstone_master():
+    path = BRAIN_DIR / "notes" / "capstone-master.md"
+    if not path.exists():
+        return []
+    text = path.read_text(encoding="utf-8", errors="replace")
+    clusters, cluster, idea, buf = [], None, None, []
+
+    def flush_idea():
+        nonlocal idea, buf
+        if cluster is not None and idea is not None:
+            idea["markdown"] = "\n".join(buf).strip()
+            cluster["ideas"].append(idea)
+        idea, buf = None, []
+
+    def flush_cluster():
+        flush_idea()
+        nonlocal cluster
+        if cluster is not None:
+            clusters.append(cluster)
+        cluster = None
+
+    for line in text.splitlines():
+        m = re.match(r"^## Cluster \d+ — (.+)$", line)
+        if m:
+            flush_cluster()
+            full = m.group(1).strip()
+            short = full.split(",")[0].split(" / ")[0].split("(")[0].strip()
+            cluster = {
+                "id": "cluster/" + _slug(short),
+                "title": short,
+                "full": full,
+                "ideas": [],
+            }
+            continue
+        if line.startswith("## ") and cluster is not None:
+            flush_cluster()
+            continue
+        if cluster is not None and line.startswith("### "):
+            flush_idea()
+            raw = line[4:].strip()
+            body_title = re.sub(r"\s*\*.*$", "", raw).strip()
+            wikis = WIKILINK_RE.findall(raw)
+            file_id = None
+            if wikis:
+                target = wikis[0].split("|")[0].strip()
+                cand = BRAIN_DIR / "notes" / (target + ".md")
+                if cand.exists():
+                    file_id = _node_id(cand)
+            idea = {
+                "id": file_id or ("capstone/" + _slug(body_title)),
+                "title": body_title,
+                "file": bool(file_id),
+            }
+            buf = [line]
+            continue
+        if idea is not None:
+            buf.append(line)
+    flush_cluster()
+    return clusters
+
+
+def excerpt_from_master(node_id: str):
+    for cluster in parse_capstone_master():
+        if cluster["id"] == node_id:
+            return {
+                "id": node_id,
+                "title": cluster["title"],
+                "markdown": f"# {cluster['full']}\n\nCapstone idea cluster. Open a node inside it to read the idea.",
+                "path": "brain/notes/capstone-master.md",
+            }
+        for idea in cluster["ideas"]:
+            if idea["id"] == node_id:
+                return {
+                    "id": node_id,
+                    "title": idea["title"],
+                    "markdown": idea.get("markdown") or f"# {idea['title']}",
+                    "path": "brain/notes/capstone-master.md",
+                }
+    return None
+
+
+def build_capstone_graph():
+    all_nodes, file_text, alias_to_id = _read_files()
+    by_id = {n["id"]: n for n in all_nodes}
+    nodes, links, seen = [], [], set()
+    sections = []
+
+    def add_node(node):
+        if node["id"] not in {n["id"] for n in nodes}:
+            nodes.append(node)
+
+    def add_link(a, b):
+        if a != b and (a, b) not in seen and (b, a) not in seen:
+            seen.add((a, b))
+            links.append({"source": a, "target": b})
+
+    research_id = "cluster/research"
+    sections.append({"id": "research", "label": "Research", "color": "#e8c48a"})
+    add_node({
+        "id": research_id, "title": "Research", "section": "research",
+        "kind": "hub", "group": "core", "path": "brain/notes/capstone-master.md",
+    })
+    for stem in ("senior-capstone", "capstone-master", "capstone-goals",
+                 "capstone-skills", "capstone-research-log"):
+        nid = f"notes/{stem}"
+        if nid in by_id:
+            n = dict(by_id[nid])
+            n["section"] = "research"
+            if stem == "senior-capstone":
+                n["kind"] = "hub"
+                n["section"] = "research"
+            add_node(n)
+            add_link(research_id, nid)
+
+    colors = ["#9db7ff", "#c9b8ff", "#8ad4bc", "#f0a0a8", "#7ec8e8", "#e8c48a", "#d4a8ff"]
+    for i, cluster in enumerate(parse_capstone_master()):
+        sid = cluster["id"].split("/", 1)[-1]
+        color = colors[i % len(colors)]
+        sections.append({"id": sid, "label": cluster["title"], "color": color})
+        add_node({
+            "id": cluster["id"], "title": cluster["title"], "section": sid,
+            "kind": "hub", "group": "note", "path": "brain/notes/capstone-master.md",
+        })
+        add_link(research_id, cluster["id"])
+        for idea in cluster["ideas"]:
+            if idea["file"] and idea["id"] in by_id:
+                n = dict(by_id[idea["id"]])
+            else:
+                n = {
+                    "id": idea["id"], "title": idea["title"], "kind": "idea",
+                    "group": "note", "path": "brain/notes/capstone-master.md",
+                }
+            n["section"] = sid
+            add_node(n)
+            add_link(cluster["id"], n["id"])
+
+    allowed = {n["id"] for n in nodes}
+    for extra in _links_among(file_text, alias_to_id, allowed):
+        add_link(extra["source"], extra["target"])
+
+    return {"map": "capstone", "sections": sections, "nodes": nodes, "links": links}
+
+
+def build_graph(kind: str = "brain"):
+    if kind in ("capstone", "ideas"):
+        return build_capstone_graph()
+    return build_brain_graph()
 
 
 def read_note(node_id: str):
-    candidate = (BRAIN_DIR / (node_id + ".md")).resolve()
-    try:
-        candidate.relative_to(BRAIN_DIR.resolve())
-    except ValueError:
-        return None
-    if not candidate.exists():
-        return None
-    text = candidate.read_text(encoding="utf-8", errors="replace")
-    return {"id": node_id, "title": _title(candidate, text),
-            "markdown": text, "path": str(candidate.relative_to(SKYLAR_DIR))}
+    if node_id.startswith("capstone/") or node_id.startswith("cluster/"):
+        found = excerpt_from_master(node_id)
+        if found:
+            return found
+        if node_id == "cluster/research":
+            return read_note("notes/capstone-master")
+    relatives = [node_id + ".md"]
+    if "/" not in node_id:
+        relatives.append("notes/" + node_id + ".md")
+    for rel in relatives:
+        candidate = (BRAIN_DIR / rel).resolve()
+        try:
+            candidate.relative_to(BRAIN_DIR.resolve())
+        except ValueError:
+            continue
+        if not candidate.exists():
+            continue
+        text = candidate.read_text(encoding="utf-8", errors="replace")
+        return {"id": _node_id(candidate), "title": _title(candidate, text),
+                "markdown": text, "path": str(candidate.relative_to(SKYLAR_DIR))}
+    return None
 
 
 def list_entries(kind: str):
@@ -223,7 +472,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         qs = urllib.parse.parse_qs(parsed.query)
 
         if parsed.path == "/api/graph":
-            return self._json(build_graph())
+            kind = (qs.get("map") or ["brain"])[0]
+            return self._json(build_graph(kind))
         if parsed.path == "/api/note":
             note = read_note((qs.get("id") or [""])[0])
             return self._json(note or {"error": "not found"}, 200 if note else 404)
@@ -252,9 +502,13 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         pass
 
 
+class ThreadedServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
+    allow_reuse_address = True
+    daemon_threads = True
+
+
 def main():
-    socketserver.TCPServer.allow_reuse_address = True
-    with socketserver.TCPServer(("127.0.0.1", PORT), Handler) as httpd:
+    with ThreadedServer(("127.0.0.1", PORT), Handler) as httpd:
         print("Skylar is running.")
         print(f"Open this in your browser:  http://127.0.0.1:{PORT}/")
         print("Press Ctrl+C to stop.")

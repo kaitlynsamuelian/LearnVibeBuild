@@ -1,3 +1,6 @@
+---
+section: goals
+---
 # Procrastination & screen time
 
 Something Kaitlyn is self-aware about and actively working on — she procrastinates

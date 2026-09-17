@@ -1,3 +1,6 @@
+---
+section: goals
+---
 # Nervous system regulation
 
 Something Kaitlyn is actively working on: regulating her nervous system in a healthy

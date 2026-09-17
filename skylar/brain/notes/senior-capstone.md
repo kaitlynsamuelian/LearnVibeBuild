@@ -1,3 +1,6 @@
+---
+section: goals
+---
 # Senior Capstone
 
 Kaitlyn's senior capstone class for her [[creative-technology-and-design]] degree at

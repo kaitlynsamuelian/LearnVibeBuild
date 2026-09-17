@@ -32,6 +32,7 @@ skylar/
     ├── talk.sh          # talk to Skylar in the terminal
     ├── journal.sh       # write today's journal entry (terminal)
     ├── reflect.sh       # Skylar's nightly reflection
+    ├── tend.sh          # she walks ALL notes and reorganizes (districts, links, index)
     ├── research.sh      # Skylar researches your capstone ideas (overnight researcher)
     └── brain.sh         # alias for app.sh
 ```
@@ -116,6 +117,34 @@ Add this line (adjust the path if needed):
 
 ---
 
+## Tending the brain (reorganize as life changes)
+
+Reflection writes *new* memories from today. **Tending** is the pass where Skylar
+walks *every* note and keeps the structure honest — which is what moves stars around
+on the Brain and Ideas maps.
+
+```bash
+./scripts/tend.sh
+```
+
+She will:
+- file notes into life districts (`you`, `people`, `goals`, `doing`, `worries`, `learning`)
+- pull buried people / worries / to-dos out of `about-you` or the journal into their own notes
+- add missing `[[wikilinks]]`
+- refresh `brain/index.md`
+- leave a log in `brain/reflections/YYYY-MM-DD-tend.md`
+
+She does **not** delete research or journal entries. Capstone idea files stay on the
+Ideas map. After a tend, refresh the app and the districts should look more true.
+
+Weekly is plenty (nightly is overkill unless the brain is growing fast):
+
+```
+0 21 * * 0 cd /Users/kaitlynsamuelian/Downloads/LearnVibeBuild/skylar && ./scripts/tend.sh >> brain/reflections/tend.log 2>&1
+```
+
+---
+
 ## Capstone research (Skylar as your overnight researcher)
 
 Skylar knows your capstone (it's seeded into her brain under `brain/notes/`). She can
@@ -148,15 +177,13 @@ permission prompts are out of the way.
 ./scripts/app.sh
 ```
 
-Opens Skylar in your browser at `http://127.0.0.1:4173/` with four views:
+Opens Skylar in your browser at `http://127.0.0.1:4173/`:
 
-- **💬 Talk** — chat with Skylar right in the browser. This runs Claude Code under the
-  hood (your Pro plan), so she stays in character *and* updates her own brain as you talk.
-- **🌌 Brain** — the live Blackwall graph. Every note is a **star**, every `[[link]]` a
-  **line**. Click a star to read it; click `[[links]]` to hop around. Chat with her, then
-  come here and watch new stars appear.
-- **📓 Journal** — write today's entry and browse past ones.
-- **📖 Reading** — read Skylar's reflections and capstone research briefings.
+- **Talk** — chat with Skylar in the browser. Runs Claude Code (your Pro plan).
+- **Brain** — life map in six districts (You, People, Goals, Doing, Worries, Learning).
+- **Ideas** — capstone idea constellation, separate from the life map.
+- **Journal** — write today's entry and browse past ones.
+- **Reading** — Skylar's reflections and research briefings.
 
 Notes:
 - Requires Python 3 (already on your Mac). Nothing to install.

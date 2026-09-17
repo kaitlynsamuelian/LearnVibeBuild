@@ -1,3 +1,6 @@
+---
+section: goals
+---
 # Fitness & Nutrition
 
 Kaitlyn played club and high school soccer growing up; now she's into lifting and

@@ -1,3 +1,6 @@
+---
+section: you
+---
 # Values
 
 Core things that drive Kaitlyn:

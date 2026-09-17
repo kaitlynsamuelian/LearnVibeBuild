@@ -1,3 +1,6 @@
+---
+section: people
+---
 # Mom
 
 Kaitlyn's mom. Part of a close, supportive family — Kaitlyn describes her parents as

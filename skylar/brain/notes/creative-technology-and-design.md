@@ -1,3 +1,6 @@
+---
+section: you
+---
 # Creative Technology and Design
 
 Kaitlyn's major at CU Boulder — housed in the College of Engineering, not a

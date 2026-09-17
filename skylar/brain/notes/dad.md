@@ -1,3 +1,6 @@
+---
+section: people
+---
 # Dad
 
 Kaitlyn's dad. Same family path as [[mom]] — California, then Texas, now Bend, Oregon.

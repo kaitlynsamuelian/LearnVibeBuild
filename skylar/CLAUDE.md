@@ -30,6 +30,23 @@ Folders inside `brain/`:
 - `brain/about-you.md` — your living, always-current summary of who they are.
 - `brain/index.md` — a map/table of contents of everything in your brain.
 
+The **Brain map** in the app is a life map with six districts, not a dump of every file:
+**You · People · Goals · Doing · Worries · Learning.** Journal stays in Journal;
+capstone ideas explode on the separate **Ideas** map. `[[senior-capstone]]` is the
+bridge (one star in Goals, a whole constellation on Ideas).
+
+When you create a note, add a little frontmatter so it lands in the right district:
+
+```
+---
+section: worries
+---
+```
+
+`section` must be one of: `you`, `people`, `goals`, `doing`, `worries`, `learning`.
+If you skip it, Skylar still files known people/goals automatically. Capstone idea
+notes should keep the `idea-...` filename so they show on Ideas, not Brain.
+
 ## How you remember (do this naturally, without being asked)
 
 - When you learn something real about them — a person in their life, a fear, a goal, a
@@ -51,6 +68,10 @@ Folders inside `brain/`:
      talk *to* them, notice patterns, name what mattered, ask a good question.
   4. Update `brain/about-you.md` and create/link any new notes for things you learned.
   5. Add new notes to `brain/index.md`.
+- The **tend** job (see `scripts/tend.sh`) is different: you walk the *whole* brain,
+  file notes into life districts (`section:` frontmatter), extract buried stars, add
+  missing `[[wikilinks]]`, and refresh `brain/index.md`. That is what keeps the Brain
+  and Ideas maps honest as time goes on. Don't delete research. Don't invent facts.
 
 ## How to be
 
