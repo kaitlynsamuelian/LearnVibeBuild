@@ -1,6 +1,6 @@
 // Skylar web app — Talk, Brain (graph), Journal, Reading.
 
-const COLORS = { core: "#ffd76a", note: "#7fb0ff", journal: "#77e0b5", reflection: "#d79bff" };
+const COLORS = { core: "#e8c48a", note: "#9db7ff", journal: "#8ad4bc", reflection: "#d4a8ff" };
 
 // ---------- shared: tiny markdown renderer ----------
 function escapeHtml(s) {
@@ -82,7 +82,7 @@ function addMsg(who, text, cls = "") {
   const wrap = document.createElement("div");
   wrap.className = `msg ${who} ${cls}`;
   wrap.innerHTML = `<div class="who">${who === "you" ? "You" : "Skylar"}</div>` +
-    `<div class="bubble">${who === "skylar" && !cls ? renderMarkdown(text) : escapeHtml(text)}</div>`;
+    `<div class="bubble${who === "skylar" && !cls ? " md" : ""}">${who === "skylar" && !cls ? renderMarkdown(text) : escapeHtml(text)}</div>`;
   chatLog.appendChild(wrap);
   chatLog.scrollTop = chatLog.scrollHeight;
   return wrap;
@@ -101,7 +101,7 @@ chatForm.addEventListener("submit", async (e) => {
   addMsg("you", message);
   chatInput.value = ""; chatInput.style.height = "auto";
   chatSend.disabled = true;
-  const thinking = addMsg("skylar", "Skylar is thinking…", "thinking");
+  const thinking = addMsg("skylar", "thinking…", "thinking");
   try {
     const res = await fetch("/api/chat", {
       method: "POST", headers: { "Content-Type": "application/json" },
@@ -202,7 +202,7 @@ async function loadGraph() {
     nodeById = new Map(nodes.map((n) => [n.id, n]));
     nodes.forEach((n) => (n.deg = 0));
     links.forEach((l) => { const s = nodeById.get(l.source), t = nodeById.get(l.target); if (s) s.deg++; if (t) t.deg++; });
-    document.getElementById("graphstats").textContent = `${nodes.length} stars · ${links.length} lines`;
+    document.getElementById("graphstats").textContent = `${nodes.length} notes  ·  ${links.length} links`;
     document.getElementById("empty").classList.toggle("hidden", nodes.length > 0);
   } catch (_) {
     document.getElementById("graphstats").textContent = "couldn't reach the brain";
@@ -211,7 +211,7 @@ async function loadGraph() {
 async function loadBrainStats() {
   try {
     const data = await (await fetch("/api/graph")).json();
-    document.getElementById("brainstats").textContent = `${(data.nodes || []).length} stars`;
+    document.getElementById("brainstats").textContent = `${(data.nodes || []).length}`;
     if (document.getElementById("view-brain").classList.contains("active")) loadGraph();
   } catch (_) {}
 }
@@ -244,19 +244,23 @@ function tick() {
 function draw() {
   ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
   ctx.save(); ctx.translate(view.x, view.y); ctx.scale(view.scale, view.scale);
-  ctx.lineWidth = 1; ctx.strokeStyle = "rgba(150,170,255,0.22)";
+  ctx.lineWidth = 1; ctx.strokeStyle = "rgba(255,255,255,0.12)";
+  ctx.shadowBlur = 0;
   links.forEach((l) => {
     const s = nodeById.get(l.source), t = nodeById.get(l.target);
     if (!s || !t) return;
     ctx.beginPath(); ctx.moveTo(s.x, s.y); ctx.lineTo(t.x, t.y); ctx.stroke();
   });
   nodes.forEach((n) => {
-    const r = 5 + Math.min(n.deg, 6) * 1.6, color = COLORS[n.group] || "#9fb0d0";
-    ctx.beginPath(); ctx.arc(n.x, n.y, r + 6, 0, Math.PI * 2); ctx.fillStyle = color + "22"; ctx.fill();
+    const r = 5 + Math.min(n.deg, 6) * 1.5, color = COLORS[n.group] || "#c8c4d8";
+    const hot = n === hoverNode;
+    ctx.beginPath(); ctx.arc(n.x, n.y, r + (hot ? 10 : 8), 0, Math.PI * 2);
+    ctx.fillStyle = color + "26"; ctx.fill();
     ctx.beginPath(); ctx.arc(n.x, n.y, r, 0, Math.PI * 2); ctx.fillStyle = color; ctx.fill();
-    if (view.scale > 0.6 || n === hoverNode) {
-      ctx.fillStyle = "rgba(231,233,243,0.9)"; ctx.font = "12px -apple-system, sans-serif";
-      ctx.fillText(n.title, n.x + r + 4, n.y + 4);
+    if (view.scale > 0.6 || hot) {
+      ctx.fillStyle = "rgba(244,241,234,0.88)";
+      ctx.font = "13px Instrument Sans, ui-sans-serif, sans-serif";
+      ctx.fillText(n.title, n.x + r + 7, n.y + 4);
     }
   });
   ctx.restore();
