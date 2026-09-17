@@ -208,7 +208,7 @@ function padHull(pts, pad) {
   });
 }
 
-function createMap({ canvasId, emptyId, statsId, legendId, map, viewId }) {
+function createMap({ canvasId, emptyId, statsId, legendId, map, viewId, centerSection }) {
   const canvas = document.getElementById(canvasId);
   const ctx = canvas.getContext("2d");
   const emptyEl = document.getElementById(emptyId);
@@ -226,13 +226,20 @@ function createMap({ canvasId, emptyId, statsId, legendId, map, viewId }) {
   function visible(n) { return !focus || n.section === focus; }
 
   function layoutAnchors(W, H) {
-    const n = Math.max(sections.length, 1);
-    const R = Math.min(W, H) * 0.32;
-    sections.forEach((s, i) => {
+    const around = centerSection
+      ? sections.filter((s) => s.id !== centerSection)
+      : sections;
+    const n = Math.max(around.length, 1);
+    const R = Math.min(W, H) * (centerSection ? 0.38 : 0.34);
+    around.forEach((s, i) => {
       const a = -Math.PI / 2 + (i / n) * Math.PI * 2;
       s.ax = W / 2 + Math.cos(a) * R;
       s.ay = H / 2 + Math.sin(a) * R;
     });
+    if (centerSection) {
+      const c = sections.find((s) => s.id === centerSection);
+      if (c) { c.ax = W / 2; c.ay = H / 2; }
+    }
   }
   function resize() {
     const r = canvas.getBoundingClientRect();
@@ -292,7 +299,7 @@ function createMap({ canvasId, emptyId, statsId, legendId, map, viewId }) {
       for (let j = i + 1; j < shown.length; j++) {
         const b = shown[j];
         let dx = a.x - b.x, dy = a.y - b.y, d2 = dx * dx + dy * dy || 0.01;
-        const d = Math.sqrt(d2), f = (a.section === b.section ? 1400 : 2800) / d2;
+        const d = Math.sqrt(d2), f = (a.section === b.section ? 900 : 4200) / d2;
         const fx = (dx / d) * f, fy = (dy / d) * f;
         a.vx += fx; a.vy += fy; b.vx -= fx; b.vy -= fy;
       }
@@ -301,15 +308,16 @@ function createMap({ canvasId, emptyId, statsId, legendId, map, viewId }) {
       const s = nodeById.get(l.source), t = nodeById.get(l.target);
       if (!s || !t || !visible(s) || !visible(t)) return;
       let dx = t.x - s.x, dy = t.y - s.y, d = Math.sqrt(dx * dx + dy * dy) || 0.01;
-      const rest = s.section === t.section ? 70 : 140;
-      const f = (d - rest) * 0.02, fx = (dx / d) * f, fy = (dy / d) * f;
+      const rest = s.section === t.section ? 58 : 240;
+      const f = (d - rest) * (s.section === t.section ? 0.025 : 0.008);
+      const fx = (dx / d) * f, fy = (dy / d) * f;
       s.vx += fx; s.vy += fy; t.vx -= fx; t.vy -= fy;
     });
     shown.forEach((n) => {
       if (n === dragNode) return;
       const sec = sections.find((s) => s.id === n.section);
       const ax = sec ? sec.ax : W / 2, ay = sec ? sec.ay : H / 2;
-      const pull = n.kind === "hub" ? 0.04 : 0.018;
+      const pull = n.kind === "hub" ? 0.05 : 0.028;
       n.vx += (ax - n.x) * pull; n.vy += (ay - n.y) * pull;
       n.vx *= 0.82; n.vy *= 0.82; n.x += n.vx; n.y += n.vy;
     });
@@ -323,16 +331,27 @@ function createMap({ canvasId, emptyId, statsId, legendId, map, viewId }) {
       if (focus && focus !== sec.id) return;
       const pts = nodes.filter((n) => n.section === sec.id).map((n) => ({ x: n.x, y: n.y }));
       if (!pts.length) return;
-      const hull = padHull(pts.length >= 3 ? convexHull(pts) : pts, 36);
       ctx.beginPath();
-      if (hull.length === 1) ctx.arc(hull[0].x, hull[0].y, 48, 0, Math.PI * 2);
-      else if (hull.length === 2) {
-        ctx.arc(hull[0].x, hull[0].y, 36, 0, Math.PI * 2);
-        ctx.moveTo(hull[1].x + 36, hull[1].y);
-        ctx.arc(hull[1].x, hull[1].y, 36, 0, Math.PI * 2);
+      if (pts.length < 3) {
+        const cx = pts.reduce((s, p) => s + p.x, 0) / pts.length;
+        const cy = pts.reduce((s, p) => s + p.y, 0) / pts.length;
+        let r = 34;
+        if (pts.length === 2) {
+          r = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y) / 2 + 28;
+        }
+        ctx.arc(cx, cy, r, 0, Math.PI * 2);
       } else {
-        ctx.moveTo(hull[0].x, hull[0].y);
-        hull.slice(1).forEach((p) => ctx.lineTo(p.x, p.y));
+        const hull = padHull(convexHull(pts), 26);
+        const mids = hull.map((p, i) => {
+          const q = hull[(i + 1) % hull.length];
+          return { x: (p.x + q.x) / 2, y: (p.y + q.y) / 2 };
+        });
+        ctx.moveTo(mids[0].x, mids[0].y);
+        for (let i = 0; i < hull.length; i++) {
+          const p = hull[(i + 1) % hull.length];
+          const m = mids[(i + 1) % mids.length];
+          ctx.quadraticCurveTo(p.x, p.y, m.x, m.y);
+        }
         ctx.closePath();
       }
       ctx.fillStyle = sec.color + "18";
@@ -340,11 +359,11 @@ function createMap({ canvasId, emptyId, statsId, legendId, map, viewId }) {
       ctx.strokeStyle = sec.color + "55";
       ctx.lineWidth = 1;
       ctx.stroke();
-      const cx = pts.reduce((s, p) => s + p.x, 0) / pts.length;
-      const cy = Math.min(...pts.map((p) => p.y)) - 28;
+      const lx = pts.reduce((s, p) => s + p.x, 0) / pts.length;
+      const ly = Math.min(...pts.map((p) => p.y)) - 22;
       ctx.fillStyle = sec.color;
       ctx.font = "600 13px Instrument Sans, ui-sans-serif, sans-serif";
-      ctx.fillText(sec.label, cx - ctx.measureText(sec.label).width / 2, cy);
+      ctx.fillText(sec.label, lx - ctx.measureText(sec.label).width / 2, ly);
     });
 
     ctx.lineWidth = 1; ctx.strokeStyle = "rgba(255,255,255,0.14)";
@@ -362,7 +381,9 @@ function createMap({ canvasId, emptyId, statsId, legendId, map, viewId }) {
       ctx.beginPath(); ctx.arc(n.x, n.y, r + (hot ? 10 : 7), 0, Math.PI * 2);
       ctx.fillStyle = color + "30"; ctx.fill();
       ctx.beginPath(); ctx.arc(n.x, n.y, r, 0, Math.PI * 2); ctx.fillStyle = color; ctx.fill();
-      if (hub || view.scale > 0.7 || hot) {
+      const sec = sections.find((s) => s.id === n.section);
+      const sameName = sec && n.title.trim().toLowerCase() === sec.label.trim().toLowerCase();
+      if (!sameName && (hub || view.scale > 0.7 || hot)) {
         ctx.fillStyle = "rgba(244,241,234,0.92)";
         ctx.font = (hub ? "600 " : "") + "13px Instrument Sans, ui-sans-serif, sans-serif";
         ctx.fillText(n.title, n.x + r + 7, n.y + 4);
@@ -420,6 +441,7 @@ const brainMap = createMap({
 const ideasMap = createMap({
   canvasId: "graph-ideas", emptyId: "empty-ideas", statsId: "ideasstats",
   legendId: "ideas-legend", map: "capstone", viewId: "view-ideas",
+  centerSection: "research",
 });
 
 function frame() {

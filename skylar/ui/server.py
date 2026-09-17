@@ -292,12 +292,8 @@ def build_capstone_graph():
             seen.add((a, b))
             links.append({"source": a, "target": b})
 
-    research_id = "cluster/research"
     sections.append({"id": "research", "label": "Research", "color": "#e8c48a"})
-    add_node({
-        "id": research_id, "title": "Research", "section": "research",
-        "kind": "hub", "group": "core", "path": "brain/notes/capstone-master.md",
-    })
+    research_ids = []
     for stem in ("senior-capstone", "capstone-master", "capstone-goals",
                  "capstone-skills", "capstone-research-log"):
         nid = f"notes/{stem}"
@@ -306,20 +302,18 @@ def build_capstone_graph():
             n["section"] = "research"
             if stem == "senior-capstone":
                 n["kind"] = "hub"
-                n["section"] = "research"
             add_node(n)
-            add_link(research_id, nid)
+            research_ids.append(nid)
+    for a, b in zip(research_ids, research_ids[1:]):
+        add_link(a, b)
 
     colors = ["#9db7ff", "#c9b8ff", "#8ad4bc", "#f0a0a8", "#7ec8e8", "#e8c48a", "#d4a8ff"]
     for i, cluster in enumerate(parse_capstone_master()):
         sid = cluster["id"].split("/", 1)[-1]
         color = colors[i % len(colors)]
         sections.append({"id": sid, "label": cluster["title"], "color": color})
-        add_node({
-            "id": cluster["id"], "title": cluster["title"], "section": sid,
-            "kind": "hub", "group": "note", "path": "brain/notes/capstone-master.md",
-        })
-        add_link(research_id, cluster["id"])
+        prev = None
+        first = None
         for idea in cluster["ideas"]:
             if idea["file"] and idea["id"] in by_id:
                 n = dict(by_id[idea["id"]])
@@ -330,7 +324,15 @@ def build_capstone_graph():
                 }
             n["section"] = sid
             add_node(n)
-            add_link(cluster["id"], n["id"])
+            if first is None:
+                first = n["id"]
+            if prev:
+                add_link(prev, n["id"])
+            prev = n["id"]
+        # Every theme belongs to the capstone — hunt-only ideas have no file wikilinks,
+        # so give the cluster one bridge to the Research hub.
+        if first:
+            add_link(first, "notes/senior-capstone")
 
     allowed = {n["id"] for n in nodes}
     for extra in _links_among(file_text, alias_to_id, allowed):
