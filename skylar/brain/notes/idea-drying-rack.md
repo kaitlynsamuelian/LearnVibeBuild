@@ -19,14 +19,26 @@ methods.
 - Mechanisms for collapsible/expandable + removable wall mounting (without damaging walls).
 - Materials, load capacity, price points people will pay.
 
-## Research so far (2026-09-15)
-Full findings: [[capstone-research-log]]. Key finding: this category is mature, cheap
-($20-40), and well-reviewed (4.6/5 stars typical) — but every rack rated for real
-laundry loads (60-80 lb) assumes screws into studs. True no-drill/renter-safe mounts
-(Command strips, adhesive rails) cap around 15-40 lb, well under a wet load. **The gap
-is a genuinely damage-free mount that's actually rated for real wet-laundry weight** —
-a scoped, honest mechanical-engineering problem, not a reskin. My take: solid but not
-the deepest of the five unless she commits hard to solving that specific mount problem —
-otherwise it risks feeling like "a nicer version of a thing that already exists."
+## Research so far
+Full findings: [[capstone-research-log]] (2026-09-15 + 2026-09-19).
+
+**2026-09-15:** category is mature, cheap ($20-40), well-reviewed — but every rack
+rated for real loads (60-80 lb) assumes screws into studs. Adhesive/no-drill caps
+~15-40 lb.
+
+**2026-09-19 (deeper pass):** the market split is now clearer.
+- **High capacity = drill.** Woolite / ZMBESUP-style accordions (~60 lb) still need
+  studs. This is the "it actually dries a load" product.
+- **No-drill = door hook, not wall.** BAKON over-door (~20 lb/rack), BLACK+DECKER
+  telescopic door rack (11 lb), Brabantia door airer (17 lb). Smart structurally
+  (the door *is* the stud) but still far under a wet load, and they occupy a door.
+- **True adhesive:** Command Large strips are officially **15 lb** (picture load,
+  not a cantilevered rack). Command folding hanger ~7.5 lb. Not a laundry mount.
+
+**The gap holds, sharper now:** nobody ships "renter-safe AND wet-load-rated."
+The interesting build is the *mount and load path* (spread force, use the door
+honestly, or a hybrid that only loads the wall when open) — not a prettier
+accordion. Still a real everyday problem; still shallow if she only reskins
+Woolite.
 
 Linked: [[senior-capstone]], [[capstone-skills]], [[capstone-goals]]
