@@ -13,6 +13,13 @@ the relevant idea note.
 
 ## Findings
 
+### 2026-09-19 — [[idea-drying-rack]] (correction: Polder Mountain Lock)
+- A review of the inspiration-log framing caught an overclaim: "every renter-safe option is too weak for wet laundry." That is not true.
+- Precedent: [Polder Mountain Lock Dryer (DRY-9816)](https://polder.com/products/over-the-door-mountain-lock-dryer) — over-the-door hooks (doors ≤ 1.8"), no drill required, patented lock, aluminum, **16 ft of drying space, official 40 lb / 18.1 kg**. Screws included for *optional* wall-mount. ~$35–57 retail.
+- 40 lb is real-laundry territory, not delicates-only (unlike BAKON ~20 lb, Black+Decker 11 lb, Brabantia 17 lb). So renter-safe + high-capacity is a solved *door* problem.
+- **Reframed gap (keep this):** wall racks that hold a lot still want studs; renter-safe racks that hold a lot take the **door or the floor**. Opportunity = high-capacity + collapsible + renter-safe **without** occupying the floor or taking over a door.
+- Add this as inspiration in the log. Do not keep the "every renter-safe option is too weak" sentence.
+
 ### 2026-09-19 — [[idea-drying-rack]] (deeper: door-hook vs stud-mount vs adhesive)
 - Update to the 09-15 finding: the "no-drill" market did not stay empty — it moved **onto the door**. [BAKON over-door](https://www.apartmenttherapy.com/bakon-over-door-hanger-drying-rack-review-37557389) (Apartment Therapy, ~$17/2-pack, ~20 lb each, no tools, door ≤~1.8"). [BLACK+DECKER BD0328 telescopic over-door](https://eeb4.be/products/blackdecker-over-the-door-expandable-telescopic-drying-rack-clothes-organizer-towel-hanger-laundry-collapsible-silver/219290296/) expands to 24", folds to 3.5", **11 lb max**. [Brabantia over-door](https://www.homedepot.com/p/Brabantia-Over-the-Door-15-ft-4-5m-Hanging-Drying-Rack-102769/306374154) is the nicer-designed version at **17 lb** (7.5 kg).
 - Stud-mount still owns real capacity: [2026 wall-mount roundups](https://homygear.com/best-wall-mounted-drying-rack/) keep putting ZMBESUP-class racks at **~60 lb** and treating that as the serious option.

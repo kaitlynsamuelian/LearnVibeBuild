@@ -35,10 +35,14 @@ rated for real loads (60-80 lb) assumes screws into studs. Adhesive/no-drill cap
 - **True adhesive:** Command Large strips are officially **15 lb** (picture load,
   not a cantilevered rack). Command folding hanger ~7.5 lb. Not a laundry mount.
 
-**The gap holds, sharper now:** nobody ships "renter-safe AND wet-load-rated."
-The interesting build is the *mount and load path* (spread force, use the door
-honestly, or a hybrid that only loads the wall when open) — not a prettier
-accordion. Still a real everyday problem; still shallow if she only reskins
-Woolite.
+**Correction (feedback, 2026-09-19):** "every renter-safe option is too weak"
+overstated it. [Polder Mountain Lock Dryer](https://polder.com/products/over-the-door-mountain-lock-dryer)
+is over-the-door, no-drill, **40 lb official**, 16 ft of line; wall-mount is optional.
+Renter-safe + wet-load-capable already exists — it just **lives on the door**
+(or the floor, for standing airers).
+
+**Sharper gap:** high-capacity wall racks exist (studs). Renter-safe / high-capacity
+options exist (Polder). What's thin is: **high-capacity + collapsible + renter-safe
+AND not the floor AND not the door** — a wall solution that doesn't drill.
 
 Linked: [[senior-capstone]], [[capstone-skills]], [[capstone-goals]]
