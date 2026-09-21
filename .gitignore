@@ -1,0 +1,6 @@
+# Personal companion + capstone research — local only
+skylar/
+
+# Python cache from the Skylar app
+**/__pycache__/
+*.pyc
