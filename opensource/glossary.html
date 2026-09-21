@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glossary &amp; FAQ — Learn Open Source</title>
+  <meta name="description" content="Plain-English words for open-source AI: weights, local, Ollama, hallucination, and common first-try questions." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232f9e6b' stroke-width='2.4'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M8 12h8M12 8v8'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main id="main">
+    <div class="container">
+      <header class="page-head reveal">
+        <span class="eyebrow">Reference</span>
+        <h1>Glossary &amp; FAQ</h1>
+        <p>The words this guide uses, plus the questions people ask after their first local chat feels worse than ChatGPT.</p>
+      </header>
+    </div>
+
+    <section class="section-tight">
+      <div class="container">
+        <h2>Glossary</h2>
+        <input type="text" id="glossarySearch" class="glossary-search" placeholder="Search terms… (e.g. weights, Ollama, local)" aria-label="Search glossary terms" />
+        <div class="glossary-list" id="glossaryList">
+          <div class="term"><h3>Open source</h3><p>Software whose source code you can read and usually change. Does not automatically mean the AI <em>model</em> is free to download.</p></div>
+          <div class="term"><h3>Weights / open weights</h3><p>The trained numbers that make a model work. “Open weights” means you can download that file and run it yourself (license permitting).</p></div>
+          <div class="term"><h3>Local</h3><p>Running on your computer, not a company’s server. Privacy win. Hardware cost.</p></div>
+          <div class="term"><h3>Hosted</h3><p>Someone else runs the model. HuggingChat is hosted even when the model is open-weight.</p></div>
+          <div class="term"><h3>LLM</h3><p>Large language model — the brain that predicts the next words. ChatGPT, Claude, Llama are all LLMs (different ones).</p></div>
+          <div class="term"><h3>Ollama</h3><p>An app that downloads and serves models on your machine. The usual first local install.</p></div>
+          <div class="term"><h3>Inference</h3><p>The model generating an answer. “Training” already happened. You’re just running it.</p></div>
+          <div class="term"><h3>Hallucination</h3><p>A confident wrong answer. Open and closed models both do this. Local ones often do it more.</p></div>
+          <div class="term"><h3>Context window</h3><p>How much text the model can see at once. Small local models forget the start of a long chat faster.</p></div>
+          <div class="term"><h3>Quantization</h3><p>A compressed model so it fits in RAM. A bit dumber, much smaller. Ollama usually picks this for you.</p></div>
+          <div class="term"><h3>API</h3><p>A way for programs to talk to a model. Ollama’s is often <code>localhost:11434</code>. ChatGPT’s is on the internet and usually costs money.</p></div>
+          <div class="term"><h3>Agent</h3><p>A setup that can take actions (edit files, run commands), not only chat. Cline and Cursor Agent are this shape.</p></div>
+        </div>
+        <p id="glossaryEmpty" style="display:none">No terms match. Try “local” or “weights.”</p>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section class="section-tight">
+      <div class="container">
+        <h2>FAQ</h2>
+        <div class="acc-item">
+          <button class="acc-head" aria-expanded="false">Is this as good as ChatGPT?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+          <div class="acc-body"><div class="acc-body-inner"><p>Usually no. That’s not a reason to skip the experiment. It’s a reason not to switch your whole class workflow on day one.</p></div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head" aria-expanded="false">Is HuggingChat private?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+          <div class="acc-body"><div class="acc-body-inner"><p>No. Open model, still their servers. Local Ollama is the private one.</p></div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head" aria-expanded="false">My fan got loud and the reply is slow.<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+          <div class="acc-body"><div class="acc-body-inner"><p>The model is using your CPU/GPU. Pick a smaller model. Close Chrome tabs. This is normal.</p></div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head" aria-expanded="false">Can I use this for graded work?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+          <div class="acc-body"><div class="acc-body-inner"><p>Follow your class AI policy the same as ChatGPT. “It ran on my laptop” does not make it not-AI. Also check it — local models invent citations.</p></div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head" aria-expanded="false">Should I delete ChatGPT?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+          <div class="acc-body"><div class="acc-body-inner"><p>No. Stack them. Closed tools for hard / public work. Local for private drafts and learning how the stack works.</p></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

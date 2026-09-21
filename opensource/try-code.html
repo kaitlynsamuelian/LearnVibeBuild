@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Use open tools for code — Learn Open Source</title>
+  <meta name="description" content="Point Cline or Aider at a local Ollama model. How this compares to Cursor, and the Continue.dev caveat." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232f9e6b' stroke-width='2.4'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M8 12h8M12 8v8'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main id="main">
+    <div class="container">
+      <header class="page-head reveal">
+        <span class="eyebrow">Chapter 4</span>
+        <h1>Use it for code (without Cursor’s cloud)</h1>
+        <p>You already have a local model from the last chapter. Now you point an editor at it. This will feel like a rougher Cursor — that’s the point of the experiment.</p>
+      </header>
+    </div>
+
+    <section class="section-tight">
+      <div class="container">
+        <h2>Do this only after Ollama works</h2>
+        <p>If <code>ollama run llama3.2</code> already chats, you’re ready. If not, go back. Don’t debug two new tools at once.</p>
+        <p>Pull a coding-flavored model if you have 16 GB RAM:</p>
+        <div class="window">
+          <div class="window-body">
+            <span class="code-line">ollama pull qwen2.5-coder:7b</span>
+          </div>
+        </div>
+        <p>Smaller machine? Try <code>qwen2.5-coder:1.5b</code> for autocomplete only. Don’t expect it to rewrite a whole app.</p>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section class="section-tight">
+      <div class="container">
+        <h2>Option 1 — Cline in VS Code (or Cursor)</h2>
+        <p>Cline is an open-source agent extension. It can read files and propose edits. You can point it at Ollama instead of a paid API.</p>
+        <ol class="steps">
+          <li>Install <a href="https://code.visualstudio.com" target="_blank" rel="noopener">VS Code</a> if you don’t have it. (Cursor works too — you’re just swapping the brain.)</li>
+          <li>Extensions: search <strong style="color:var(--text)">Cline</strong>, install the official one.</li>
+          <li>In Cline’s settings, set the provider to <strong style="color:var(--text)">Ollama</strong>. Base URL is usually <code>http://localhost:11434</code>.</li>
+          <li>Pick the model you pulled. Ask it to explain one file you already understand, so you can tell if it’s lying.</li>
+        </ol>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section class="section-tight">
+      <div class="container">
+        <h2>Option 2 — Aider in the terminal</h2>
+        <p><a href="https://aider.chat" target="_blank" rel="noopener">Aider</a> is a chat that edits your repo from the command line. Pair it with Ollama if you want local. Pair it with a paid API if you want it to actually finish the task.</p>
+        <p>Good first use: “explain this folder, don’t edit yet.” Then a tiny, safe edit on a copy of a project.</p>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section class="section-tight">
+      <div class="container">
+        <h2>The Continue.dev footnote</h2>
+        <p>You’ll see a hundred tutorials that say “install Continue + Ollama.” Continue was a popular open-source coding assistant. In 2026 it was acquired and the original repo went read-only. The last release can still work. It may not get fixes. If a tutorial from 2024 is your only map, prefer <strong style="color:var(--text)">Cline</strong> or <strong style="color:var(--text)">Aider</strong> instead.</p>
+        <div class="callout note">
+          <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+          <p><strong>Keep Cursor for the hard stuff.</strong> Local agents miss files, invent APIs, and stall. Use this path to learn the stack — not to finish a graded project the night before.</p>
+        </div>
+        <p style="margin-top:28px"><a class="btn btn-primary" href="tools.html">See the whole shelf</a></p>
+      </div>
+    </section>
+  </main>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

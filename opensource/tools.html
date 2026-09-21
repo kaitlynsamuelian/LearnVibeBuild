@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tool shelf — Learn Open Source</title>
+  <meta name="description" content="A short shelf of open-source and local AI tools: chat, local runners, coding agents, and model families. What to try first." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232f9e6b' stroke-width='2.4'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M8 12h8M12 8v8'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main id="main">
+    <div class="container">
+      <header class="page-head reveal">
+        <span class="eyebrow">Reference</span>
+        <h1>The tool shelf</h1>
+        <p>Not a directory of everything. The ones worth a first weekend. Names and sites change — click through before you depend on a step.</p>
+      </header>
+    </div>
+
+    <section class="section-tight">
+      <div class="container">
+        <h2>Chat in a browser</h2>
+        <div class="grid grid-2">
+          <div class="card reveal">
+            <h3>HuggingChat</h3>
+            <p>Open-weight models in a normal chat UI. Still hosted. Start here. <a href="https://huggingface.co/chat" target="_blank" rel="noopener">huggingface.co/chat</a></p>
+          </div>
+          <div class="card reveal">
+            <h3>Chatbot Arena</h3>
+            <p>Blind A/B of two models. Curiosity, not a daily driver. <a href="https://lmarena.ai" target="_blank" rel="noopener">lmarena.ai</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section class="section-tight">
+      <div class="container">
+        <h2>Run locally</h2>
+        <div class="grid grid-2">
+          <div class="card reveal">
+            <h3>Ollama</h3>
+            <p>Best first local install. Terminal + menu-bar app. <a href="https://ollama.com" target="_blank" rel="noopener">ollama.com</a></p>
+          </div>
+          <div class="card reveal">
+            <h3>LM Studio</h3>
+            <p>Same idea with a desktop window. Pick if Terminal scares you. <a href="https://lmstudio.ai" target="_blank" rel="noopener">lmstudio.ai</a></p>
+          </div>
+          <div class="card reveal">
+            <h3>Jan</h3>
+            <p>Another local chat app. Try only if Ollama/LM Studio didn’t click. <a href="https://jan.ai" target="_blank" rel="noopener">jan.ai</a></p>
+          </div>
+          <div class="card reveal">
+            <h3>Open WebUI</h3>
+            <p>A ChatGPT-like website on your machine, usually sitting on top of Ollama. Extra setup. Nice later.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section class="section-tight">
+      <div class="container">
+        <h2>Code</h2>
+        <div class="grid grid-2">
+          <div class="card reveal">
+            <h3>Cline</h3>
+            <p>VS Code / Cursor extension. Can use Ollama. Agent-shaped. <a href="https://github.com/cline/cline" target="_blank" rel="noopener">github.com/cline/cline</a></p>
+          </div>
+          <div class="card reveal">
+            <h3>Aider</h3>
+            <p>Terminal pair programmer. Local or paid API. <a href="https://aider.chat" target="_blank" rel="noopener">aider.chat</a></p>
+          </div>
+          <div class="card reveal">
+            <h3>Continue</h3>
+            <p>Used to be the default “open Copilot.” Frozen after acquisition. Tutorials still mention it. Prefer Cline/Aider for new setups.</p>
+          </div>
+          <div class="card reveal">
+            <h3>Cursor / Claude Code</h3>
+            <p>Not open. Still the better tools for finishing work. This guide is the other door, not a loyalty test. See <a href="../cursor/index.html">Learn Cursor</a> and <a href="../claude/index.html">Learn Claude</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section class="section-tight">
+      <div class="container">
+        <h2>Model families you’ll see</h2>
+        <p>These are brands of <em>brains</em>, not apps. Ollama/HuggingChat let you pick among them.</p>
+        <div class="grid grid-3">
+          <div class="card reveal"><h3>Llama</h3><p>Meta. Common default. Fine general chat.</p></div>
+          <div class="card reveal"><h3>Qwen</h3><p>Alibaba. Strong coding sizes. Popular with Ollama + Cline.</p></div>
+          <div class="card reveal"><h3>Mistral / Gemma / DeepSeek</h3><p>Other open-weight lines. Try one if your first pick is dull. Don’t collect all of them.</p></div>
+        </div>
+        <p style="margin-top:28px"><a class="btn btn-primary" href="glossary.html">Glossary &amp; FAQ</a></p>
+      </div>
+    </section>
+  </main>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

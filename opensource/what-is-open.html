@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What “open” means — Learn Open Source</title>
+  <meta name="description" content="Open software, open weights, and local AI are not the same thing. A plain-English breakdown before you install anything." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232f9e6b' stroke-width='2.4'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M8 12h8M12 8v8'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main id="main">
+    <div class="container">
+      <header class="page-head reveal">
+        <span class="eyebrow">Chapter 1</span>
+        <h1>What “open” actually means</h1>
+        <p>People say “open source AI” like it’s one product. It’s three different promises. If you mix them up, you’ll think you installed privacy and still sent your homework to a server.</p>
+        <div class="chip-row">
+          <a class="chip" href="#three">The three layers</a>
+          <a class="chip" href="#not">What this is not</a>
+          <a class="chip" href="#why">Why bother</a>
+        </div>
+      </header>
+    </div>
+
+    <section class="section-tight" id="three">
+      <div class="container">
+        <h2>Three layers</h2>
+        <div class="grid grid-3">
+          <div class="card reveal">
+            <h3>Open software</h3>
+            <p>You can read (and usually change) the <em>app</em> — the chat window, the installer, the editor plugin. Ollama’s app, Aider, Cline: software. ChatGPT’s website: not this.</p>
+          </div>
+          <div class="card reveal">
+            <h3>Open weights</h3>
+            <p>You can download the <em>brain</em> (the model file). Llama, Mistral, Gemma, Qwen, DeepSeek have downloadable versions. GPT-4 and Claude do not.</p>
+          </div>
+          <div class="card reveal">
+            <h3>Local</h3>
+            <p>It runs on <em>your</em> machine. Messages stay here. Needs RAM and disk. Usually worse than the cloud models you already pay for.</p>
+          </div>
+        </div>
+        <div class="callout note">
+          <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+          <p><strong>A common trap:</strong> a pretty “open” chat site that still sends your prompt to a company API. That’s open <em>skin</em>, closed <em>brain</em>. Ask: where does the text go when I hit send?</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section class="section-tight" id="not">
+      <div class="container">
+        <h2>What this guide is not promising</h2>
+        <p class="lead">If you need the same quality as ChatGPT or Cursor Agent, stay there for the hard work. Use open tools to learn, to keep a journal private, or to draft when you’re offline.</p>
+        <ul class="steps">
+          <li><strong>Not always free forever.</strong> Hosted “open model” chats can rate-limit you or add a login.</li>
+          <li><strong>Not always legal to use any way you want.</strong> Some model licenses block commercial use. Read the card if it matters.</li>
+          <li><strong>Not “the code is the model.”</strong> Open weights are a big file of numbers, not a readable novel.</li>
+        </ul>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section class="section-tight" id="why">
+      <div class="container">
+        <h2>Why people still try</h2>
+        <div class="grid grid-2">
+          <div class="card reveal">
+            <h3>Privacy</h3>
+            <p>A local model does not need your essay, code, or medical notes to leave the laptop.</p>
+          </div>
+          <div class="card reveal">
+            <h3>Cost / offline</h3>
+            <p>After the download, you can chat on a plane. No per-message bill.</p>
+          </div>
+          <div class="card reveal">
+            <h3>Learning</h3>
+            <p>You see that “AI” is a file + a program. That makes Cursor and Claude less magic and more choosable.</p>
+          </div>
+          <div class="card reveal">
+            <h3>Control</h3>
+            <p>You pick the model. You can delete it. Nobody changes the product under you overnight — except when they do, which we’ll flag.</p>
+          </div>
+        </div>
+        <p style="margin-top:28px"><a class="btn btn-primary" href="try-chat.html">Next: try a chat in the browser</a></p>
+      </div>
+    </section>
+  </main>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

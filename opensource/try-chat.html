@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Try a chat (no install) — Learn Open Source</title>
+  <meta name="description" content="Use HuggingChat to talk to an open model in your browser. No download. Compare it to ChatGPT in one sitting." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232f9e6b' stroke-width='2.4'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M8 12h8M12 8v8'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main id="main">
+    <div class="container">
+      <header class="page-head reveal">
+        <span class="eyebrow">Chapter 2 · 15 minutes</span>
+        <h1>Try a chat without installing anything</h1>
+        <p>This is the “should I even care?” test. If the replies feel useless, you can stop. If they’re “good enough,” then local is worth the extra hour.</p>
+      </header>
+    </div>
+
+    <section class="section-tight">
+      <div class="container">
+        <h2>Path A — HuggingChat</h2>
+        <p class="lead">Hugging Face hosts a chat UI that talks to <strong style="color:var(--text)">open-weight models</strong> (the downloadable brains). You still send text to <em>their</em> servers — this is not local privacy. It is a real open-model taste.</p>
+        <ol class="steps">
+          <li>Open <a href="https://huggingface.co/chat" target="_blank" rel="noopener">huggingface.co/chat</a>.</li>
+          <li>Make a free account if it asks. Use school email if you want it separate from ChatGPT.</li>
+          <li>Look for a model picker. Pick something with a name like Llama, Mistral, Gemma, Qwen, or DeepSeek — not a mystery “auto” if you can avoid it.</li>
+          <li>Paste the <em>same</em> prompt you last used in ChatGPT. A homework explainer, a rewrite, a recipe. Don’t go easy on it.</li>
+          <li>Write two lines in a note: what was worse, what was fine. That’s the whole experiment.</li>
+        </ol>
+        <div class="callout note">
+          <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+          <p><strong>Same prompt, two tabs.</strong> ChatGPT on the left, HuggingChat on the right. You’re comparing <em>models</em>, not “AI vs not AI.”</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section class="section-tight">
+      <div class="container">
+        <h2>A starter prompt (steal this)</h2>
+        <div class="window">
+          <div class="window-bar">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <span class="window-title">compare.txt</span>
+          </div>
+          <div class="window-body">
+            <span class="code-line">Explain how a clothes dryer works in 8 sentences</span>
+            <span class="code-line">for a college student who has never opened one.</span>
+            <span class="code-line">Then list 3 things that usually go wrong</span>
+            <span class="code-line">and how to check them safely.</span>
+          </div>
+        </div>
+        <p>If the open model rambles, invents parts, or hedges more, that’s normal. Smaller / open models hallucinate in different ways. Don’t trust either one on safety-critical stuff.</p>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section class="section-tight">
+      <div class="container">
+        <h2>If you want to compare lots of models</h2>
+        <p><a href="https://lmarena.ai" target="_blank" rel="noopener">lmarena.ai</a> (Chatbot Arena) lets you vote on two anonymous replies. Good for curiosity. Easy to lose an hour. Not required.</p>
+        <p style="margin-top:28px"><a class="btn btn-primary" href="try-local.html">Next: run one on your laptop</a></p>
+      </div>
+    </section>
+  </main>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
