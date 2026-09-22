@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Run Hermes or OpenClaw — Learn Personal Assistants</title>
+  <meta name="description" content="First weekend with Hermes Agent or OpenClaw: official install, one working chat, then a messaging gateway. Laptop sleep caveat." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c75b8a' stroke-width='2.4'%3E%3Cpath d='M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main id="main">
+    <div class="container">
+      <header class="page-head reveal">
+        <span class="eyebrow">Chapter 3</span>
+        <h1>Run your own (Hermes or OpenClaw)</h1>
+        <p>Same shape: a gateway on a machine you control, a model you pick, then optional Telegram. Do not install both this weekend. Do not add cron until one chat works.</p>
+      </header>
+    </div>
+
+    <section class="section-tight">
+      <div class="container">
+        <h2>Pick one</h2>
+        <div class="grid grid-2">
+          <div class="card reveal">
+            <h3>Hermes Agent</h3>
+            <p>From <strong style="color:var(--text)">Nous Research</strong> (the lab behind the Hermes <em>models</em> — the agent is the app). CLI + desktop. Skills, memory, cron, a gateway to Telegram / Discord / Slack / WhatsApp / etc. Official docs: <a href="https://hermes-agent.nousresearch.com/docs/" target="_blank" rel="noopener">hermes-agent.nousresearch.com/docs</a>.</p>
+          </div>
+          <div class="card reveal">
+            <h3>OpenClaw</h3>
+            <p>Open-source assistant + gateway. MIT. Stewarded by a nonprofit foundation (not an OpenAI product, even if OpenAI donates). WhatsApp, Telegram, Slack, Discord, Signal, iMessage… Official: <a href="https://openclaw.ai" target="_blank" rel="noopener">openclaw.ai</a> · docs at <a href="https://docs.openclaw.ai" target="_blank" rel="noopener">docs.openclaw.ai</a>.</p>
+          </div>
+        </div>
+        <p style="margin-top:18px">Both still need a <em>brain</em>. That’s usually a paid API or a subscription login, not a free magic local 7B that books flights. Local models need a huge context window for tool-calling — Hermes’s docs say <strong style="color:var(--text)">64K minimum</strong> or it refuses to start.</p>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section class="section-tight">
+      <div class="container">
+        <h2>Path — Hermes (typical first self-host)</h2>
+        <ol class="steps">
+          <li>Use the <strong style="color:var(--text)">official</strong> path: Desktop installer on Mac/Windows from their site, <em>or</em> the install command on <a href="https://hermes-agent.nousresearch.com/docs/getting-started/quickstart" target="_blank" rel="noopener">their quickstart</a>. Read the script URL before you pipe it to bash.</li>
+          <li>Run <code>hermes setup</code> (or Quick Setup / Nous Portal if you want the no-key OAuth path). Then <code>hermes</code> or <code>hermes --tui</code>.</li>
+          <li>Ask something checkable: “What’s in this folder?” If that fails, stop. <code>hermes doctor</code> then <code>hermes model</code>. Do not add Telegram on a broken chat.</li>
+          <li>Only then: <code>hermes gateway setup</code> for one channel. Allowlist your own user id.</li>
+        </ol>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section class="section-tight">
+      <div class="container">
+        <h2>Path — OpenClaw</h2>
+        <ol class="steps">
+          <li>Download the app from <a href="https://openclaw.ai" target="_blank" rel="noopener">openclaw.ai</a> or follow their current install one-liner. They support Mac, Windows, Linux.</li>
+          <li>Onboard until a Control UI chat replies. That’s the whole first win.</li>
+          <li>Add <em>one</em> channel. Their docs talk about locking down who can DM the bot (<code>allowFrom</code>-style allowlists). Do that before you tell anyone the username.</li>
+        </ol>
+        <div class="callout note">
+          <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+          <p><strong>Laptop closed = assistant dead</strong> unless you put the gateway on a VPS or a machine that stays on. That’s the whole “always-on” pitch. Don’t schedule a 7am briefing on a MacBook that sleeps.</p>
+        </div>
+        <p style="margin-top:28px"><a class="btn btn-primary" href="telegram.html">Next: Telegram as a doorway</a></p>
+      </div>
+    </section>
+  </main>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

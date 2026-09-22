@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learn, Vibe, Build — Kaitlyn's studio artifacts</title>
-  <meta name="description" content="A growing collection of things I build with AI for Learn, Vibe, Build (ATLAS, CU Boulder): beginner guides to Cursor, Claude, and open-source AI tools, plus Audit Decoder." />
+  <meta name="description" content="A growing collection of things I build with AI for Learn, Vibe, Build (ATLAS, CU Boulder): guides to Cursor, Claude, open-source tools, and personal AI assistants, plus Audit Decoder." />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237c5cff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 3l7 17 2.5-7L20 10z'/%3E%3C/svg%3E" />
   <style>
     :root{
       --paper:#efe7d6; --ink:#1c1a17; --ink2:#4a463d; --line:#1c1a17;
-      --cursor:#7c5cff; --claude:#d9614a; --audit:#f0b52e; --open:#2f9e6b;
+      --cursor:#7c5cff; --claude:#d9614a; --audit:#f0b52e; --open:#2f9e6b; --assist:#c75b8a;
       --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     }
     *{box-sizing:border-box;margin:0;padding:0}
@@ -30,6 +30,7 @@
     .chip.c{background:var(--claude);color:#fff}
     .chip.a{background:var(--audit);color:#1c1a17}
     .chip.o{background:var(--open);color:#fff}
+    .chip.s{background:var(--assist);color:#fff}
     .chip.k{background:transparent;color:var(--ink)}
     @media(prefers-reduced-motion:reduce){.track{animation:none}}
 
@@ -63,6 +64,7 @@
     .tile.claude{background:var(--claude);color:#fff}
     .tile.audit{background:var(--audit);color:#1c1a17}
     .tile.opensrc{background:var(--open);color:#fff}
+    .tile.assist{background:var(--assist);color:#fff}
     .badge{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:999px;border:2.5px solid currentColor;
       display:grid;place-items:center;font-weight:900;font-size:.95rem}
     .kind{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.85;margin-bottom:auto}
@@ -104,7 +106,7 @@
 
   <div class="collhead">
     <h2>The collection</h2>
-    <span class="count">4 artifacts · more each cycle</span>
+    <span class="count">5 artifacts · more each cycle</span>
   </div>
 
   <main class="grid">
@@ -143,27 +145,36 @@
       <p>Try AI that isn’t only ChatGPT — what “open” means, a no-install chat, then Ollama on your laptop.</p>
       <span class="open">Open artifact <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </a>
+
+    <a class="tile assist" href="assistants/index.html">
+      <span class="badge">05</span>
+      <span class="kind">Guide</span>
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><path d="M8 9h8M8 13h5"/></svg></span>
+      <h3>Personal AI assistants</h3>
+      <p>Muse, Hermes, OpenClaw, Telegram agents — AIs that live in your chats and try to do the task, not just answer.</p>
+      <span class="open">Open artifact <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
   </main>
 
   <section class="note">
     <h2>About this shelf</h2>
     <p>This is my studio space for <b>Learn, Vibe, Build</b>, a class where I’ll be creating artifacts throughout the semester to grow my skills, experiment with AI, and learn through building.</p>
-    <p>Currently: 4 artifacts. Two are guides I created to better understand Cursor and Claude as tools and to keep as resources moving forward. The third, <b>Audit Decoder</b>, is a tool that takes a PDF export of your degree audit from Buff Portal and turns its messy, confusing text into a clear, digestible guide to your current degree progress. The fourth is a beginner guide to <b>open-source and local AI</b> — how to try HuggingChat, Ollama, and editor tools instead of only the closed apps.</p>
+    <p>Currently: 5 artifacts. Two are guides I created to better understand Cursor and Claude as tools and to keep as resources moving forward. The third, <b>Audit Decoder</b>, is a tool that takes a PDF export of your degree audit from Buff Portal and turns its messy, confusing text into a clear, digestible guide to your current degree progress. The fourth is a beginner guide to <b>open-source and local AI</b>. The fifth is about <b>personal AI assistants</b> — Muse, Hermes, OpenClaw, and Telegram agents that live in your chats and try to act, not only reply.</p>
     <p>New artifacts will land here as the semester goes on.</p>
   </section>
 
-  <p class="foot">A student project for class. Not affiliated with Cursor / Anysphere, Anthropic, Meta, Hugging Face, Ollama, or the University of Colorado. Always confirm degree audits with a human advisor.</p>
+  <p class="foot">A student project for class. Not affiliated with Cursor / Anysphere, Anthropic, Meta, Nous Research, OpenClaw, Hugging Face, Ollama, or the University of Colorado. Always confirm degree audits with a human advisor.</p>
 
   <script>
     // Build two scrolling marquee rows (duplicated for a seamless loop).
     var wordsA = [
       ["Cursor","p"],["Vibe coding","k"],["Claude","c"],["Degree audits","k"],["Agents","p"],
       ["Prompting","k"],["Claude Code","c"],["PDF parsing","k"],["Audit Decoder","a"],["Tab, tab, tab","k"],
-      ["MCP","p"],["Ollama","o"],["Open source","o"],["Local-first","k"],["Studio cycles","c"]
+      ["MCP","p"],["Ollama","o"],["Open source","o"],["Muse","s"],["Hermes","s"],["Local-first","k"],["Studio cycles","c"]
     ];
     var wordsB = [
       ["Build","a"],["AI editor","k"],["What is a token?","p"],["Q&A","k"],["CU Boulder","c"],
-      ["Guides","k"],["Diffs","p"],["Learn","k"],["Ship it","a"],["ATLAS","c"],
+      ["Guides","k"],["OpenClaw","s"],["Telegram agents","s"],["Learn","k"],["Ship it","a"],["ATLAS","c"],
       ["HuggingChat","o"],["Made in class","k"],["Try it →","p"],["Get weird","a"]
     ];
     function fill(el, words){

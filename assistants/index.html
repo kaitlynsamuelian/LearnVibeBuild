@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learn Personal Assistants — Muse, Hermes, OpenClaw, Telegram</title>
+  <meta name="description" content="A beginner guide to personal AI assistants that live in your chats and actually do things — Meta Muse, Hermes Agent, OpenClaw, and Telegram agents." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c75b8a' stroke-width='2.4'%3E%3Cpath d='M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">For people who only know ChatGPT in a browser tab</span>
+        <h1>Some AIs live in your <span class="grad">texts</span> and do the thing.</h1>
+        <p class="lead">
+          This is a calm map of <em>personal</em> AI assistants — Muse, Hermes, OpenClaw,
+          Telegram bots — the ones that remember you, sit in WhatsApp or iMessage, and
+          try to send the email, not just draft it. It will not pretend they are magic butlers.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="try-hosted.html">
+            Try a hosted one first
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="side-note.html">Sept 21 side note: going further</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <div class="split reveal">
+          <div>
+            <span class="eyebrow" style="color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); border-color: color-mix(in srgb, var(--accent) 25%, transparent);">The honest version</span>
+            <h2 style="margin-top:16px;">ChatGPT answers. These try to act.</h2>
+            <p>
+              Cursor writes code. Claude talks in a tab. A <strong style="color:var(--text)">personal assistant</strong>
+              is supposed to live where you already message people, keep a memory of you,
+              and take actions — calendar, inbox, a booking — after you say yes.
+            </p>
+            <div class="callout note">
+              <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+              <p><strong>Two doors.</strong> Hosted (Muse, some Telegram bots): easy, someone else’s computer. Self-hosted (Hermes, OpenClaw): you run the gateway. Telegram is usually the <em>hallway</em>, not the product.</p>
+            </div>
+          </div>
+          <div class="split-media">
+            <div class="window">
+              <div class="window-bar">
+                <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+                <span class="window-title">telegram — you</span>
+              </div>
+              <div class="window-body">
+                <span class="code-line ghost">you: remind me about the critique at 4</span>
+                <span class="code-line ghost">you: don’t email my prof yet</span>
+                <span class="code-line">&nbsp;</span>
+                <span class="code-line"><span class="com"># A personal agent can ping you at 3:50.</span></span>
+                <span class="code-line"><span class="com"># Sending the email is a different, scarier permission.</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <span class="eyebrow">Map of this guide</span>
+        <h2 style="margin-top:12px;">Three ways in, in order</h2>
+        <div class="grid grid-3">
+          <a class="card reveal" href="try-hosted.html" style="text-decoration:none;color:inherit">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+            <h3>1. Hosted</h3>
+            <p>Meta Muse if you’re in the US. Or a Telegram-hosted bot. No VPS. They see the chat.</p>
+          </a>
+          <a class="card reveal" href="try-selfhost.html" style="text-decoration:none;color:inherit">
+            <div class="card-icon c2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></div>
+            <h3>2. Your machine</h3>
+            <p>Hermes Agent or OpenClaw. Install, one chat that works, <em>then</em> plug in Telegram.</p>
+          </a>
+          <a class="card reveal" href="telegram.html" style="text-decoration:none;color:inherit">
+            <div class="card-icon c4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></div>
+            <h3>3. The chat apps</h3>
+            <p>Telegram, WhatsApp, Discord — doorways. Lock who can message the bot.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta-band reveal">
+          <span class="eyebrow">Sept 21 notes</span>
+          <h2>Beyond the isolated chat</h2>
+          <p>If the goal is an ongoing assistant — Hermes runtime, then memory, then an agent that coordinates others — here’s the ladder, the paths, and what to consider before skipping rungs.</p>
+          <a class="btn btn-primary" href="side-note.html">
+            Open the side note
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta-band reveal">
+          <span class="eyebrow">Start small</span>
+          <h2>Do not give it send-mail on day one</h2>
+          <p>Ask it a question you already know the answer to. If that works, add a reminder. Email, money, and “message my professor” wait until you trust the permissions screen.</p>
+          <a class="btn btn-primary" href="what-they-are.html">
+            What these things are
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glossary &amp; FAQ — Learn Personal Assistants</title>
+  <meta name="description" content="Gateway, channel, allowlist, Muse, Hermes, OpenClaw — plain-English words plus first-try questions." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c75b8a' stroke-width='2.4'%3E%3Cpath d='M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main id="main">
+    <div class="container">
+      <header class="page-head reveal">
+        <span class="eyebrow">Reference</span>
+        <h1>Glossary &amp; FAQ</h1>
+        <p>The words this guide uses, plus the questions after someone DMs a bot your Gmail.</p>
+      </header>
+    </div>
+
+    <section class="section-tight">
+      <div class="container">
+        <h2>Glossary</h2>
+        <input type="text" id="glossarySearch" class="glossary-search" placeholder="Search terms… (e.g. gateway, Muse, allowlist)" aria-label="Search glossary terms" />
+        <div class="glossary-list" id="glossaryList">
+          <div class="term"><h3>Personal assistant / personal agent</h3><p>An AI setup meant to know you over time and take actions (remind, email, book), usually through a chat app — not only answer questions in a browser tab.</p></div>
+          <div class="term"><h3>Gateway</h3><p>The always-on program that holds sessions, tools, and connections to Telegram/WhatsApp/etc. Hermes and OpenClaw both have one.</p></div>
+          <div class="term"><h3>Channel</h3><p>Where you talk to it: Telegram, WhatsApp, Discord, iMessage, a custom app. Not the intelligence.</p></div>
+          <div class="term"><h3>Muse</h3><p>Meta’s hosted personal agent (US, 2026). App, muse.ai, WhatsApp. Closed. Powered by Muse Spark.</p></div>
+          <div class="term"><h3>Hermes Agent</h3><p>Open-source agent from Nous Research. CLI/desktop + messaging gateway. Different from “Hermes” the model family, same lab.</p></div>
+          <div class="term"><h3>OpenClaw</h3><p>Open-source self-hosted assistant/gateway (MIT, foundation-stewarded). Lobster branding. Not an OpenAI product.</p></div>
+          <div class="term"><h3>Allowlist</h3><p>A list of people (phone numbers, Telegram ids) who are allowed to talk to your bot. Turn this on before the username leaks.</p></div>
+          <div class="term"><h3>BotFather</h3><p>Telegram’s official bot for creating bot tokens. The token is a password.</p></div>
+          <div class="term"><h3>Sentinel (Muse)</h3><p>Meta’s name for a second process that has to approve Muse before it talks to the internet. Marketing word — still their cloud.</p></div>
+          <div class="term"><h3>Cron / scheduled job</h3><p>A task that runs later (“brief me at 8am”). Needs a machine that is actually on.</p></div>
+          <div class="term"><h3>Skill</h3><p>A saved how-to (often a SKILL.md) the agent loads for a specific job. Hermes uses these a lot.</p></div>
+          <div class="term"><h3>Hosted vs self-hosted</h3><p>Their computer vs yours. Hosted is easier. Self-hosted is more work and still often calls a hosted model.</p></div>
+        </div>
+        <p id="glossaryEmpty" style="display:none">No terms match. Try “gateway” or “Muse.”</p>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section class="section-tight">
+      <div class="container">
+        <h2>FAQ</h2>
+        <div class="acc-item">
+          <button class="acc-head" aria-expanded="false">Is this better than ChatGPT?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+          <div class="acc-body"><div class="acc-body-inner"><p>Different job. ChatGPT is a strong chat. These are about memory + actions + a channel. They can be worse at writing and more dangerous at “send.”</p></div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head" aria-expanded="false">Can I use this for class work?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+          <div class="acc-body"><div class="acc-body-inner"><p>Same AI policy as ChatGPT. “It lives in Telegram” does not make it not-AI. Don’t let it email faculty without you reading the draft.</p></div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head" aria-expanded="false">Muse isn’t available for me.<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+          <div class="acc-body"><div class="acc-body-inner"><p>That’s expected outside the US. Use a hosted Telegram bot you actually researched, or spend the weekend on Hermes/OpenClaw. Don’t treat a VPN as a product review.</p></div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head" aria-expanded="false">Which one should I install?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+          <div class="acc-body"><div class="acc-body-inner"><p>Want zero terminal? Muse or a hosted chat bot. Want to see the insides? Hermes <em>or</em> OpenClaw — not both this week. Hermes if you like a polished CLI/desktop. OpenClaw if you want the nonprofit / MIT / “no paid tier” story.</p></div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head" aria-expanded="false">Will it spend my money?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+          <div class="acc-body"><div class="acc-body-inner"><p>API keys can burn a surprising amount if a group chat finds your bot. Allowlist. Caps on the provider dashboard. Do not connect payments until you have watched it do something small correctly.</p></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

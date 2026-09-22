@@ -12,6 +12,7 @@ JavaScript) — nothing to install, no build step.
 | **Learn Claude** | [`claude/`](claude/) | Anthropic's AI assistant **and** Claude Code — what they are, how they differ, how to use them |
 | **Audit Decoder** | [`audit/`](audit/) | Upload a degree-audit PDF; get done / in-progress / leftover plus Q&A |
 | **Learn Open Source** | [`opensource/`](opensource/) | Open vs local AI — HuggingChat, Ollama / LM Studio, then Cline or Aider for code |
+| **Learn Personal Assistants** | [`assistants/`](assistants/) | Muse, Hermes, OpenClaw, Telegram agents — AIs that live in your chats and act |
 
 Each folder has its own `README.md` with a full page-by-page breakdown, its own
 design system under `assets/`, and its own theme:
@@ -19,6 +20,7 @@ design system under `assets/`, and its own theme:
 - **Cursor** — a dark, techy theme (purple/blue).
 - **Claude** — a warm, editorial theme (cream + coral, serif headings).
 - **Open Source** — a dark theme with green accents.
+- **Personal Assistants** — a dark theme with rose accents.
 
 The guide sites cross-link to each other in their footers.
 
@@ -41,6 +43,7 @@ Then:
 - Claude guide: <http://localhost:4321/claude/>
 - Audit Decoder: <http://localhost:4321/audit/>
 - Open source guide: <http://localhost:4321/opensource/>
+- Personal assistants: <http://localhost:4321/assistants/>
 
 ## Notes on accuracy
 
@@ -55,4 +58,5 @@ the original repo is frozen — prefer Cline or Aider for new coding setups.
 ## Disclaimer
 
 Independent learning resources. Not affiliated with or endorsed by
-Cursor / Anysphere, Anthropic, Meta, Hugging Face, Ollama, or LM Studio.
+Cursor / Anysphere, Anthropic, Meta, Nous Research, OpenClaw, Hugging Face,
+Ollama, or LM Studio.

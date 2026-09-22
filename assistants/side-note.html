@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Side note · Sept 21 — beyond isolated chats</title>
+  <meta name="description" content="Sept 21 studio notes: paths from isolated chatbot conversations toward an ongoing personal assistant, a Hermes runtime, a memory layer, and an agent that coordinates other agents." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c75b8a' stroke-width='2.4'%3E%3Cpath d='M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main id="main">
+    <div class="container">
+      <header class="page-head reveal">
+        <span class="eyebrow">Side note · September 21</span>
+        <h1>If I wanted to leave isolated chatbot conversations</h1>
+        <p>Class notes, turned into a map. Not a claim that I already built this. Isolated chat = new tab, no memory, no one texting you first. The next things people name are: an <em>ongoing</em> personal assistant, a Hermes-style <em>runtime</em>, a <em>memory layer</em>, then an agent that <em>coordinates other agents</em>.</p>
+        <div class="chip-row">
+          <a class="chip" href="#ladder">The ladder</a>
+          <a class="chip" href="#paths">Whole paths</a>
+          <a class="chip" href="#consider">Things to consider</a>
+        </div>
+      </header>
+    </div>
+
+    <section class="section-tight" id="ladder">
+      <div class="container">
+        <h2>The ladder (don’t skip rungs)</h2>
+        <p>Each step is a different product. You can stop anywhere. Coordinating other agents on day one is how you get a mess and a bill.</p>
+
+        <h3 style="margin-top:28px">0 — Isolated chatbot</h3>
+        <p>ChatGPT, Claude, Gemini in a tab. You start over. You paste context. Nothing runs when you close the laptop. Fine for drafts. Not a personal assistant.</p>
+        <p><strong style="color:var(--text)">Options:</strong> stay here · pin one project chat · dump notes into a doc you paste back in.</p>
+        <p><strong style="color:var(--text)">Consider:</strong> if this already works, you don’t owe anyone a runtime.</p>
+
+        <h3>1 — Ongoing personal assistant</h3>
+        <p>Same person/thread over days. It can message you. It has permission to do a small, boring job (reminder, “what’s tomorrow”) without you opening a site.</p>
+        <div class="grid grid-2" style="margin-top:16px">
+          <div class="card reveal">
+            <h3>Hosted</h3>
+            <p>Muse (US), folk, a Telegram bot. Fast. Their computer. Their memory. See <a href="try-hosted.html">try hosted</a>.</p>
+          </div>
+          <div class="card reveal">
+            <h3>You-run-it</h3>
+            <p>Hermes or OpenClaw + one channel (Telegram). You own the process. Lid closed = dead unless it’s on a box that stays on. See <a href="try-selfhost.html">run your own</a>.</p>
+          </div>
+        </div>
+        <p style="margin-top:16px"><strong style="color:var(--text)">Consider:</strong> “ongoing” is uptime + one channel + you actually using it for a week. Not a logo.</p>
+
+        <h3>2 — Hermes agent runtime</h3>
+        <p>A <em>runtime</em> is the loop: take a message → pick tools → do steps → come back. Hermes Agent is one of those loops (CLI, desktop, gateway). OpenClaw is another. Cursor / Claude Code are runtimes for <em>code</em>, not for “text me at 8am.”</p>
+        <p><strong style="color:var(--text)">Options on this rung:</strong></p>
+        <ol class="steps">
+          <li><strong style="color:var(--text)">Use Hermes as-is.</strong> Official install → one chat that works → <code>hermes gateway setup</code> for one app. Don’t add cron yet.</li>
+          <li><strong style="color:var(--text)">Use OpenClaw as-is.</strong> Same shape, different brand. Pick one runtime this month.</li>
+          <li><strong style="color:var(--text)">Stay in Cursor/Claude Code</strong> if the “assistant” is really “keep working on my repo.” Wrong tool if you want Telegram.</li>
+          <li><strong style="color:var(--text)">Hosted Muse</strong> if you want a runtime you never install. You don’t get to see the loop.</li>
+        </ol>
+        <p><strong style="color:var(--text)">Consider:</strong> Hermes still needs a brain (API / Portal / local 64K+). Runtime ≠ model. Confirm steps on <a href="https://hermes-agent.nousresearch.com/docs/" target="_blank" rel="noopener">their docs</a>.</p>
+
+        <h3>3 — A memory layer</h3>
+        <p>Without this, a runtime is still a goldfish with tools. Memory is “what should survive this chat.”</p>
+        <div class="grid grid-3" style="margin-top:16px">
+          <div class="card reveal">
+            <h3>Files you can read</h3>
+            <p>Markdown notes, <code>USER.md</code> / <code>MEMORY.md</code> (Hermes), a folder of people/goals. You can open it. You can delete a lie. Slow to search when it gets huge.</p>
+          </div>
+          <div class="card reveal">
+            <h3>What the runtime already has</h3>
+            <p>Hermes: on-disk notes + search over old sessions + nudges to write facts down. Turn that on before you invent a database.</p>
+          </div>
+          <div class="card reveal">
+            <h3>A separate store</h3>
+            <p>Vector DB, Honcho-style user model, a wiki. Only if files + session search actually failed. Extra moving part.</p>
+          </div>
+        </div>
+        <p style="margin-top:16px"><strong style="color:var(--text)">Options:</strong> let Hermes write memory · keep a small “about me” file you edit · paste a weekly recap yourself (ugly, honest) · hosted Muse memory (you can’t export easily).</p>
+        <p><strong style="color:var(--text)">Consider:</strong> memory that is wrong is worse than no memory. Who can edit it? Does it sit in the prompt every time (cost + stale) or get searched when needed? Don’t store passwords. Don’t let it “remember” a grade or a diagnosis you didn’t check.</p>
+
+        <h3>4 — An agent that coordinates other agents</h3>
+        <p>One “chief” that hands work to specialists: researcher, writer, coder. Hermes can spawn subagents. OpenClaw has guided multi-agent setup. This is the last rung, not the first.</p>
+        <p><strong style="color:var(--text)">Options:</strong></p>
+        <ol class="steps">
+          <li><strong style="color:var(--text)">One agent, many skills.</strong> Same Hermes, extra SKILL.md files. Coordination is “it picks a skill.” Cheapest.</li>
+          <li><strong style="color:var(--text)">One runtime, isolated subagents.</strong> Built into Hermes (delegate / parallel). Still one machine, one bill.</li>
+          <li><strong style="color:var(--text)">Different tools, you are the coordinator.</strong> Cursor for code, Claude for prose, Hermes for Telegram. You route. Boring. Works.</li>
+          <li><strong style="color:var(--text)">A team product.</strong> OpenClaw specialist setup, or some hosted “team of agents.” More moving parts, more ways to spend money talking to each other.</li>
+        </ol>
+        <p><strong style="color:var(--text)">Consider:</strong> two agents will disagree and both sound sure. You need a human checkpoint on anything that leaves the machine (email, git push, money). Subagents multiply API cost. If you can’t explain what each one is for in one sentence, you don’t need it.</p>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section class="section-tight" id="paths">
+      <div class="container">
+        <h2>Whole paths (pick one story)</h2>
+        <div class="grid grid-2">
+          <div class="card reveal">
+            <h3>Path A — Consumer, this week</h3>
+            <p>Isolated chat → Muse or a hosted Telegram bot. Memory is theirs. No coordinator. Good for feeling the difference. Bad for class “I can explain the insides.”</p>
+          </div>
+          <div class="card reveal">
+            <h3>Path B — Hermes ladder (the notes path)</h3>
+            <p>Chat that works → gateway on one channel → use Hermes memory as-is for two weeks → then one skill → then maybe a subagent. Stop when the last step wasn’t useful.</p>
+          </div>
+          <div class="card reveal">
+            <h3>Path C — Files first</h3>
+            <p>Keep a markdown “brain” you already understand. Point Cursor or Claude Code at it when you work. Add Hermes later if you want it to text you. Memory stays yours even if the runtime changes.</p>
+          </div>
+          <div class="card reveal">
+            <h3>Path D — You stay the router</h3>
+            <p>Never coordinate agents automatically. ChatGPT / Claude / Cursor / maybe Hermes each have a job. A note in your phone is the memory layer. Least magical. Least on fire.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section class="section-tight" id="consider">
+      <div class="container">
+        <h2>Things to consider no matter the path</h2>
+        <ol class="steps">
+          <li><strong style="color:var(--text)">Uptime.</strong> Ongoing means a machine that doesn’t sleep, or a hosted product. Cron on a MacBook is a lie.</li>
+          <li><strong style="color:var(--text)">Who sees the text.</strong> Hosted = they do. Self-host + Claude/GPT API = they still see prompts. Local model = weaker, more private.</li>
+          <li><strong style="color:var(--text)">Permissions.</strong> Reminders ≠ send email ≠ terminal on your laptop. Climb one at a time. Allowlist the Telegram bot.</li>
+          <li><strong style="color:var(--text)">Cost.</strong> Always-on + tools + subagents is not the ChatGPT free tier. Cap the key.</li>
+          <li><strong style="color:var(--text)">Correctness.</strong> Memory and multi-agent both amplify mistakes. Read what it wrote down. Don’t let two agents “agree” without a source.</li>
+          <li><strong style="color:var(--text)">Class vs life.</strong> Same AI policy as a chatbot. “My Hermes sent it” is still you.</li>
+          <li><strong style="color:var(--text)">One win you can show.</strong> A reminder that actually fired, or a note it remembered tomorrow, beats a slide about orchestration.</li>
+        </ol>
+        <div class="callout note" style="margin-top:22px">
+          <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+          <p><strong>If I did Path B next:</strong> Hermes install (official docs) → one boring chat → Telegram to myself only → let it write one memory I can open as a file → no subagents until that file is true. That’s the whole experiment.</p>
+        </div>
+        <p style="margin-top:28px"><a class="btn btn-primary" href="try-selfhost.html">Hermes / OpenClaw try path</a></p>
+      </div>
+    </section>
+  </main>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
