@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buff Trivia — 8 CU Boulder questions, then a roast</title>
+  <meta name="description" content="Eight CU Boulder questions. A score. A roast at the end. How Boulder are you, actually?" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23cfb87c' stroke-width='2.2'%3E%3Cpath d='M4 17l4-10 4 6 4-6 4 10'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="index.html">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l4-10 4 6 4-6 4 10"/></svg>
+      </span>
+      Buff Trivia
+    </a>
+    <nav class="top-links">
+      <a href="../index.html">All artifacts</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <p id="live" class="visually-hidden" aria-live="polite"></p>
+
+    <section id="start">
+      <span class="eyebrow">Interactive · 8 questions</span>
+      <h1>How Boulder are you, <em>actually</em>?</h1>
+      <p class="lead">
+        Eight questions about campus, Ralphie, and the things everyone pretends they know.
+        Then we roast you.
+      </p>
+      <button class="btn" type="button" id="start-btn">
+        Start the quiz
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </section>
+
+    <section id="quiz" hidden>
+      <div class="quiz-head">
+        <span id="progress">Question 1 of 8</span>
+        <span class="score-chip">
+          <span id="live-score">0 / 8</span>
+          <span id="plus-one" aria-hidden="true">+1</span>
+        </span>
+      </div>
+      <div class="bar" aria-hidden="true"><span id="progress-bar"></span></div>
+      <h2 id="question"></h2>
+      <div class="choices" id="choices"></div>
+      <p class="fact" id="fact" hidden></p>
+      <div class="quiz-actions">
+        <button class="btn" type="button" id="next-btn" hidden>Next question</button>
+      </div>
+    </section>
+
+    <section id="result" hidden>
+      <span class="eyebrow">Your verdict</span>
+      <p class="result-score" id="score">0 / 8</p>
+      <h2 id="roast-title"></h2>
+      <p id="roast"></p>
+      <ol class="recap" id="recap"></ol>
+      <button class="btn" type="button" id="again-btn">Play again</button>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="inner">
+      Unofficial student project for Learn, Vibe, Build. Not affiliated with the University of Colorado.
+      Campus facts drift — this is a joke with a pulse check, not a tour.
+    </div>
+  </footer>
+
+  <script src="assets/js/questions.js"></script>
+  <script src="assets/js/game.js"></script>
+</body>
+</html>

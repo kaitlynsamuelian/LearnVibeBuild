@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learn, Vibe, Build — Kaitlyn's studio artifacts</title>
-  <meta name="description" content="A growing collection of things I build with AI for Learn, Vibe, Build (ATLAS, CU Boulder): guides to Cursor, Claude, open-source tools, and personal AI assistants, plus Audit Decoder." />
+  <meta name="description" content="A growing collection of things I build with AI for Learn, Vibe, Build (ATLAS, CU Boulder): guides, Audit Decoder, Buff Trivia, and Campus Thread." />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237c5cff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 3l7 17 2.5-7L20 10z'/%3E%3C/svg%3E" />
   <style>
     :root{
       --paper:#efe7d6; --ink:#1c1a17; --ink2:#4a463d; --line:#1c1a17;
-      --cursor:#7c5cff; --claude:#d9614a; --audit:#f0b52e; --open:#2f9e6b; --assist:#c75b8a;
+      --cursor:#7c5cff; --claude:#d9614a; --audit:#f0b52e; --open:#2f9e6b; --assist:#c75b8a; --trivia:#1c1a17; --thread:#3a4fb0;
       --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     }
     *{box-sizing:border-box;margin:0;padding:0}
@@ -31,6 +31,8 @@
     .chip.a{background:var(--audit);color:#1c1a17}
     .chip.o{background:var(--open);color:#fff}
     .chip.s{background:var(--assist);color:#fff}
+    .chip.t{background:var(--trivia);color:#cfb87c}
+    .chip.n{background:var(--thread);color:#fff}
     .chip.k{background:transparent;color:var(--ink)}
     @media(prefers-reduced-motion:reduce){.track{animation:none}}
 
@@ -65,6 +67,8 @@
     .tile.audit{background:var(--audit);color:#1c1a17}
     .tile.opensrc{background:var(--open);color:#fff}
     .tile.assist{background:var(--assist);color:#fff}
+    .tile.trivia{background:var(--trivia);color:#cfb87c}
+    .tile.thread{background:var(--thread);color:#fff}
     .badge{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:999px;border:2.5px solid currentColor;
       display:grid;place-items:center;font-weight:900;font-size:.95rem}
     .kind{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.85;margin-bottom:auto}
@@ -106,7 +110,7 @@
 
   <div class="collhead">
     <h2>The collection</h2>
-    <span class="count">5 artifacts · more each cycle</span>
+    <span class="count">7 artifacts · more each cycle</span>
   </div>
 
   <main class="grid">
@@ -154,12 +158,30 @@
       <p>Muse, Hermes, OpenClaw, Telegram agents — AIs that live in your chats and try to do the task, not just answer.</p>
       <span class="open">Open artifact <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </a>
+
+    <a class="tile trivia" href="trivia/index.html">
+      <span class="badge">06</span>
+      <span class="kind">Game</span>
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l4-10 4 6 4-6 4 10"/></svg></span>
+      <h3>Buff Trivia</h3>
+      <p>Eight CU Boulder questions. A running score. A roast at the end — how Boulder are you, actually?</p>
+      <span class="open">Open artifact <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <a class="tile thread" href="thread/index.html">
+      <span class="badge">07</span>
+      <span class="kind">Play</span>
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span>
+      <h3>Campus Thread</h3>
+      <p>ATLAS, Norlin, C4C, and the Flatirons are in a group chat. Let them talk. Then text them as a student.</p>
+      <span class="open">Open artifact <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
   </main>
 
   <section class="note">
     <h2>About this shelf</h2>
     <p>This is my studio space for <b>Learn, Vibe, Build</b>, a class where I’ll be creating artifacts throughout the semester to grow my skills, experiment with AI, and learn through building.</p>
-    <p>Currently: 5 artifacts. Two are guides I created to better understand Cursor and Claude as tools and to keep as resources moving forward. The third, <b>Audit Decoder</b>, is a tool that takes a PDF export of your degree audit from Buff Portal and turns its messy, confusing text into a clear, digestible guide to your current degree progress. The fourth is a beginner guide to <b>open-source and local AI</b>. The fifth is about <b>personal AI assistants</b> — Muse, Hermes, OpenClaw, and Telegram agents that live in your chats and try to act, not only reply.</p>
+    <p>Currently: 7 artifacts. Two are guides I created to better understand Cursor and Claude as tools and to keep as resources moving forward. The third, <b>Audit Decoder</b>, is a tool that takes a PDF export of your degree audit from Buff Portal and turns its messy, confusing text into a clear, digestible guide to your current degree progress. The fourth is a beginner guide to <b>open-source and local AI</b>. The fifth is about <b>personal AI assistants</b> — Muse, Hermes, OpenClaw, and Telegram agents that live in your chats and try to act, not only reply. The sixth is <b>Buff Trivia</b> — eight CU Boulder questions and a roast when you finish. The seventh is <b>Campus Thread</b> — ATLAS, Norlin, C4C, and the Flatirons in a group chat that will not help you.</p>
     <p>New artifacts will land here as the semester goes on.</p>
   </section>
 
@@ -170,12 +192,14 @@
     var wordsA = [
       ["Cursor","p"],["Vibe coding","k"],["Claude","c"],["Degree audits","k"],["Agents","p"],
       ["Prompting","k"],["Claude Code","c"],["PDF parsing","k"],["Audit Decoder","a"],["Tab, tab, tab","k"],
-      ["MCP","p"],["Ollama","o"],["Open source","o"],["Muse","s"],["Hermes","s"],["Local-first","k"],["Studio cycles","c"]
+      ["MCP","p"],["Ollama","o"],["Open source","o"],["Muse","s"],["Hermes","s"],["Local-first","k"],["Studio cycles","c"],
+      ["Buff Trivia","t"],["Ralphie","t"],["Campus Thread","n"],["ATLAS","n"]
     ];
     var wordsB = [
       ["Build","a"],["AI editor","k"],["What is a token?","p"],["Q&A","k"],["CU Boulder","c"],
       ["Guides","k"],["OpenClaw","s"],["Telegram agents","s"],["Learn","k"],["Ship it","a"],["ATLAS","c"],
-      ["HuggingChat","o"],["Made in class","k"],["Try it →","p"],["Get weird","a"]
+      ["HuggingChat","o"],["Made in class","k"],["Try it →","p"],["Get weird","a"],["The Hill","t"],["Roast","t"],
+      ["Norlin","n"],["Let them talk","n"]
     ];
     function fill(el, words){
       var html = words.map(function(w){ return '<span class="chip '+w[1]+'">'+w[0]+'</span>'; }).join("");

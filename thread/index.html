@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campus Thread — the buildings have a group chat</title>
+  <meta name="description" content="ATLAS, Norlin, C4C, and the Flatirons are in a group chat. Let them talk. Then text them as a student." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b7cff' stroke-width='2.2'%3E%3Cpath d='M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <div class="stars" aria-hidden="true"></div>
+
+  <header class="top">
+    <a class="brand" href="index.html">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      </span>
+      Campus Thread
+    </a>
+    <nav class="top-links">
+      <a href="../index.html">All artifacts</a>
+    </nav>
+  </header>
+
+  <p id="live" class="visually-hidden" aria-live="polite"></p>
+
+  <main class="page">
+    <section class="intro">
+      <span class="eyebrow">Interactive · a tiny play</span>
+      <h1>The buildings have a <em>group chat</em>.</h1>
+      <p class="lead">
+        ATLAS, Norlin, C4C, and the Flatirons are texting. They will not be helpful.
+        Hit play, then say one thing as a student.
+      </p>
+      <ul class="cast">
+        <li><span class="av atlas">A</span> ATLAS — already opening a folder</li>
+        <li><span class="av norlin">N</span> Norlin — overdue, whispering</li>
+        <li><span class="av c4c">C</span> C4C — fluorescent, soggy coats</li>
+        <li><span class="av flatirons">F</span> Flatirons — ancient, last word</li>
+      </ul>
+      <button class="btn" type="button" id="play-btn">
+        Let them talk
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+      <p class="hint" style="margin-top:14px">Try: “do I have to go to class” or “I’m hungry.”</p>
+    </section>
+
+    <section class="phone" aria-label="Campus group chat">
+      <div class="island" aria-hidden="true"><b></b></div>
+      <div class="status"><span id="clock">9:41 PM</span><span>campus</span></div>
+      <div class="chat-head">
+        <div class="faces" aria-hidden="true">
+          <span class="av atlas">A</span>
+          <span class="av norlin">N</span>
+          <span class="av c4c">C</span>
+          <span class="av flatirons">F</span>
+        </div>
+        <div>
+          <h2>campus (4)</h2>
+          <p>ATLAS, Norlin, C4C, Flatirons</p>
+        </div>
+      </div>
+      <div id="thread">
+        <p class="sys">Tonight. Four buildings. Nobody is typing yet.</p>
+      </div>
+      <form id="composer">
+        <label class="visually-hidden" for="student-input">Message the buildings</label>
+        <input id="student-input" type="text" maxlength="140" placeholder="Text them as a student…" autocomplete="off" />
+        <button id="send-btn" type="submit" aria-label="Send">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="foot">
+    Unofficial student project for Learn, Vibe, Build. Not affiliated with the University of Colorado
+    or any building that would prefer to stay quiet.
+  </footer>
+
+  <script src="assets/js/voices.js"></script>
+  <script src="assets/js/chat.js"></script>
+</body>
+</html>

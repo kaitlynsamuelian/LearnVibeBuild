@@ -13,6 +13,8 @@ JavaScript) — nothing to install, no build step.
 | **Audit Decoder** | [`audit/`](audit/) | Upload a degree-audit PDF; get done / in-progress / leftover plus Q&A |
 | **Learn Open Source** | [`opensource/`](opensource/) | Open vs local AI — HuggingChat, Ollama / LM Studio, then Cline or Aider for code |
 | **Learn Personal Assistants** | [`assistants/`](assistants/) | Muse, Hermes, OpenClaw, Telegram agents — AIs that live in your chats and act |
+| **Buff Trivia** | [`trivia/`](trivia/) | 8 CU Boulder questions, a score, and a roast at the end |
+| **Campus Thread** | [`thread/`](thread/) | ATLAS, Norlin, C4C, and the Flatirons in a group chat |
 
 Each folder has its own `README.md` with a full page-by-page breakdown, its own
 design system under `assets/`, and its own theme:
@@ -21,6 +23,8 @@ design system under `assets/`, and its own theme:
 - **Claude** — a warm, editorial theme (cream + coral, serif headings).
 - **Open Source** — a dark theme with green accents.
 - **Personal Assistants** — a dark theme with rose accents.
+- **Buff Trivia** — black + CU gold.
+- **Campus Thread** — night indigo, iMessage-ish.
 
 The guide sites cross-link to each other in their footers.
 
@@ -44,6 +48,8 @@ Then:
 - Audit Decoder: <http://localhost:4321/audit/>
 - Open source guide: <http://localhost:4321/opensource/>
 - Personal assistants: <http://localhost:4321/assistants/>
+- Buff Trivia: <http://localhost:4321/trivia/>
+- Campus Thread: <http://localhost:4321/thread/>
 
 ## Notes on accuracy
 
