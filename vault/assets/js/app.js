@@ -200,6 +200,111 @@
       ${footer()}`;
   }
 
+  function bindNotesPads(root, key) {
+    const pads = Array.from(root.querySelectorAll(".notes-pad"));
+    if (!pads.length) return;
+
+    const status = document.createElement("p");
+    status.className = "notes-status";
+    status.textContent = "Notes save as you type.";
+    root.appendChild(status);
+
+    function padId(el) {
+      return el.getAttribute("data-notes-id") || "pad";
+    }
+
+    function readPads() {
+      const o = {};
+      pads.forEach((el) => {
+        o[padId(el)] = el.innerHTML;
+      });
+      return o;
+    }
+
+    function localKey(id) {
+      return `vault-notes:${key}:${id}`;
+    }
+
+    function writeLocal(obj) {
+      pads.forEach((el) => {
+        const id = padId(el);
+        try {
+          localStorage.setItem(localKey(id), obj[id] || "");
+        } catch (err) {}
+      });
+    }
+
+    function apply(obj) {
+      pads.forEach((el) => {
+        const html = obj[padId(el)];
+        if (html) el.innerHTML = html;
+      });
+    }
+
+    function saveDisk() {
+      const obj = readPads();
+      writeLocal(obj);
+      const body = JSON.stringify({ key: key, pads: obj });
+      fetch("api/notes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: body,
+      })
+        .then((r) => {
+          status.textContent = r.ok
+            ? "Saved to your project folder."
+            : "Saved in this browser only. Restart with python3 serve.py to write a file.";
+        })
+        .catch(() => {
+          status.textContent =
+            "Saved in this browser only. Restart with python3 serve.py to write a file.";
+        });
+    }
+
+    let timer = null;
+    function onInput() {
+      writeLocal(readPads());
+      status.textContent = "Saving…";
+      clearTimeout(timer);
+      timer = setTimeout(saveDisk, 200);
+    }
+
+    fetch(`content/${key}.session.json`)
+      .then((r) => (r.ok ? r.json() : null))
+      .catch(() => null)
+      .then((data) => {
+        const fromFile = data && data.pads ? data.pads : {};
+        const merged = {};
+        pads.forEach((el) => {
+          const id = padId(el);
+          let local = "";
+          try {
+            local = localStorage.getItem(localKey(id)) || "";
+          } catch (err) {}
+          merged[id] = fromFile[id] || local;
+        });
+        apply(merged);
+        pads.forEach((el) => el.addEventListener("input", onInput));
+        window.addEventListener("beforeunload", function () {
+          try {
+            navigator.sendBeacon(
+              "api/notes",
+              new Blob([JSON.stringify({ key: key, pads: readPads() })], {
+                type: "application/json",
+              })
+            );
+          } catch (err) {
+            saveDisk();
+          }
+        });
+        document.addEventListener("visibilitychange", function () {
+          if (document.visibilityState === "hidden") saveDisk();
+        });
+        if (Object.keys(merged).some((id) => merged[id])) saveDisk();
+        else status.textContent = "Type in a box. Notes save to a file in this project.";
+      });
+  }
+
   function renderEntry() {
     const project = projectById(params.get("project"));
     const section = sectionById(params.get("section"));
@@ -237,6 +342,7 @@
       })
       .then((html) => {
         $("#body").innerHTML = html;
+        bindNotesPads($("#body"), `${project.id}/${section.id}/${entry.id}`);
       })
       .catch(() => {
         $("#body").innerHTML = `<p>${esc(entry.blurb)}</p><p>No file at <code>${esc(src)}</code> yet. Add one to fill this card.</p>`;

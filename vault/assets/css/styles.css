@@ -149,7 +149,7 @@ h1 {
   font-size: 0.95rem;
 }
 
-.entry { padding: 28px 0 64px; max-width: 720px; }
+.entry { padding: 28px 0 64px; max-width: 860px; }
 .entry .source { font-size: 0.85rem; color: var(--muted); margin-bottom: 22px; }
 .entry h1 { margin-bottom: 8px; }
 .prose p { margin: 0 0 14px; color: var(--ink); }
@@ -173,6 +173,45 @@ h1 {
   font-size: 0.92rem;
 }
 .prose a { color: var(--sage); }
+.prose figure { margin: 0 0 22px; }
+.prose img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+.prose figcaption {
+  font-size: 0.85rem;
+  color: var(--soft);
+  margin-top: 8px;
+  line-height: 1.45;
+}
+.prose .notes-pad {
+  min-height: 140px;
+  margin: 0 0 18px;
+  padding: 14px 16px;
+  background: var(--white);
+  border: 1px dashed var(--line);
+  border-radius: 2px;
+  color: var(--ink);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  outline: none;
+}
+.prose .notes-pad:focus {
+  border-color: var(--sage);
+  border-style: solid;
+}
+.prose .notes-pad:empty::before {
+  content: attr(data-placeholder);
+  color: var(--muted);
+}
+.prose .notes-status {
+  margin: -6px 0 22px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
 
 .how {
   margin: 8px 0 56px;

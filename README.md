@@ -15,6 +15,7 @@ JavaScript) — nothing to install, no build step.
 | **Learn Personal Assistants** | [`assistants/`](assistants/) | Muse, Hermes, OpenClaw, Telegram agents — AIs that live in your chats and act |
 | **Buff Trivia** | [`trivia/`](trivia/) | 8 CU Boulder questions, a score, and a roast at the end |
 | **Campus Thread** | [`thread/`](thread/) | ATLAS, Norlin, C4C, and the Flatirons in a group chat |
+| **My Boop** | [`boop/`](boop/) | A tiny virtual pet — feed, bathe, minigames, hats |
 
 Each folder has its own `README.md` with a full page-by-page breakdown, its own
 design system under `assets/`, and its own theme:
@@ -25,6 +26,7 @@ design system under `assets/`, and its own theme:
 - **Personal Assistants** — a dark theme with rose accents.
 - **Buff Trivia** — black + CU gold.
 - **Campus Thread** — night indigo, iMessage-ish.
+- **My Boop** — peach paper, a round blob, candy-pink chrome.
 
 The guide sites cross-link to each other in their footers.
 
@@ -38,7 +40,7 @@ The root `index.html` is a small hub that links to all artifacts.
 this folder and open <http://localhost:4321>:
 
 ```bash
-python3 -m http.server 4321
+python3 serve.py
 ```
 
 Then:
@@ -50,6 +52,7 @@ Then:
 - Personal assistants: <http://localhost:4321/assistants/>
 - Buff Trivia: <http://localhost:4321/trivia/>
 - Campus Thread: <http://localhost:4321/thread/>
+- My Boop: <http://localhost:4321/boop/>
 
 ## Notes on accuracy
 

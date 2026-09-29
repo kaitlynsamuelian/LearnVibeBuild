@@ -2,7 +2,7 @@
 
 Questions, not findings. After a run, file the answer under `vault/content/drying-rack/` and mark the ticket DONE.
 
-**Idea we are testing:** one core frame + interchangeable installation modules. Geometry later. Attachments parked.
+**Idea we are testing:** one portal core + floor and stud-wall modules. Geometry is stored versus open inside a fixed envelope. Attachments parked.
 
 **Already settled. Do not redo unless something new breaks it.**
 
@@ -200,7 +200,7 @@ How much / what form / what function / where it is held. We are testing where it
 ### C2. What we will not claim
 Status: OPEN
 
-No “every renter-safe rack is weak.” No WallFix on drywall. Deliverable stays 1 core + 2 installs.
+No “every renter-safe rack is weak.” No WallFix on drywall. Deliverable stays 1 portal core + floor and stud-wall + stored-versus-open fold.
 
 ---
 

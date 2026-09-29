@@ -16,7 +16,7 @@ If it could go in two places: the Polder product page is precedents. Notes from 
 From the LearnVibeBuild folder:
 
 ```bash
-python3 -m http.server 4321
+python3 serve.py
 ```
 
 Then open <http://localhost:4321/vault/>

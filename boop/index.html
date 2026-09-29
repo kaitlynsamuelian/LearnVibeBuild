@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Boop — a tiny virtual pet</title>
+  <meta name="description" content="Feed, bathe, sleep, play minigames, and dress a tiny blob. Inspired by My Boo, built for class." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cellipse cx='20' cy='22' rx='6' ry='8' fill='%23ffb3c7'/%3E%3Cellipse cx='44' cy='22' rx='6' ry='8' fill='%23ffb3c7'/%3E%3Ccircle cx='32' cy='36' r='20' fill='%237ad4ff'/%3E%3Ccircle cx='25' cy='33' r='5' fill='%23fff'/%3E%3Ccircle cx='39' cy='33' r='5' fill='%23fff'/%3E%3Ccircle cx='26' cy='34' r='2.4' fill='%231c1a17'/%3E%3Ccircle cx='40' cy='34' r='2.4' fill='%231c1a17'/%3E%3Cpath d='M28 43c2 3 4 3 6 0c2 3 4 3 6 0' fill='none' stroke='%231c1a17' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body class="introing">
+  <div id="intro" class="intro" role="dialog" aria-label="Boop says hello">
+    <div class="intro-glow"></div>
+    <div class="intro-bits" aria-hidden="true">
+      <span>✦</span><span>♡</span><span>✧</span><span>✦</span><span>♡</span>
+    </div>
+    <div class="intro-stage">
+      <div class="intro-pet" id="intro-pet" data-color="sky" data-hat="none" data-mood="happy"></div>
+      <p class="intro-hi">hello.</p>
+      <p class="intro-title">My Boop</p>
+    </div>
+    <button type="button" class="intro-skip" id="intro-skip">Skip</button>
+  </div>
+
+  <template id="pet-markup">
+    <svg class="pet-svg" viewBox="0 0 240 240" aria-hidden="true">
+      <ellipse class="shadow" cx="120" cy="216" rx="46" ry="8"/>
+      <g class="body-group">
+        <ellipse class="ear left" cx="76" cy="80" rx="20" ry="24"/>
+        <ellipse class="ear right" cx="164" cy="80" rx="20" ry="24"/>
+        <ellipse class="ear-in left" cx="78" cy="86" rx="10" ry="12"/>
+        <ellipse class="ear-in right" cx="162" cy="86" rx="10" ry="12"/>
+        <ellipse class="body" cx="120" cy="138" rx="82" ry="76"/>
+        <ellipse class="shine" cx="92" cy="104" rx="24" ry="14"/>
+        <ellipse class="belly" cx="120" cy="162" rx="40" ry="28"/>
+        <g class="arm-wrap left"><ellipse class="arm left" cx="42" cy="150" rx="16" ry="12"/></g>
+        <g class="arm-wrap right"><ellipse class="arm right" cx="198" cy="150" rx="16" ry="12"/></g>
+        <ellipse class="foot left" cx="94" cy="206" rx="17" ry="9"/>
+        <ellipse class="foot right" cx="146" cy="206" rx="17" ry="9"/>
+        <g class="face">
+          <ellipse class="blush left" cx="72" cy="150" rx="18" ry="10"/>
+          <ellipse class="blush right" cx="168" cy="150" rx="18" ry="10"/>
+          <g class="eyes-open">
+            <ellipse class="eye-white" cx="96" cy="128" rx="17" ry="19"/>
+            <ellipse class="eye-white" cx="144" cy="128" rx="17" ry="19"/>
+            <circle class="pupil" cx="99" cy="132" r="7.4"/>
+            <circle class="pupil" cx="147" cy="132" r="7.4"/>
+            <circle class="glint" cx="93" cy="122" r="4.4"/>
+            <circle class="glint" cx="141" cy="122" r="4.4"/>
+            <circle class="glint tiny" cx="103" cy="138" r="1.7"/>
+            <circle class="glint tiny" cx="151" cy="138" r="1.7"/>
+          </g>
+          <g class="eyes-closed">
+            <path d="M82 130c9 10 18 10 28 0"/>
+            <path d="M130 130c9 10 18 10 28 0"/>
+          </g>
+          <path class="mouth smile" d="M106 158c5 9 10 9 14 0c5 9 10 9 14 0"/>
+          <path class="mouth sad" d="M110 168c6-9 14-9 20 0"/>
+          <ellipse class="mouth o" cx="120" cy="160" rx="7" ry="8"/>
+          <circle class="tear" cx="170" cy="138" r="4"/>
+        </g>
+        <g class="dirt-spots">
+          <circle cx="68" cy="176" r="6"/>
+          <circle cx="170" cy="180" r="5"/>
+          <circle cx="98" cy="190" r="4"/>
+        </g>
+        <g class="hats">
+          <g class="hat-party">
+            <path d="M94 64 L120 6 L146 64 Z"/>
+            <circle cx="120" cy="6" r="7"/>
+          </g>
+          <g class="hat-sprout">
+            <path d="M120 52 C120 28 140 24 142 40 C128 38 124 48 120 52"/>
+            <path d="M120 52 C120 26 98 22 96 40 C110 36 116 48 120 52"/>
+          </g>
+          <g class="hat-beanie">
+            <path d="M68 88c10-36 94-36 104 0"/>
+            <rect x="66" y="84" width="108" height="16" rx="8"/>
+            <circle cx="170" cy="74" r="8"/>
+          </g>
+          <g class="hat-bow">
+            <ellipse cx="98" cy="54" rx="16" ry="12"/>
+            <ellipse cx="142" cy="54" rx="16" ry="12"/>
+            <circle cx="120" cy="54" r="8"/>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </template>
+  <header class="top">
+    <a class="brand" href="index.html">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="13" r="7"/><circle cx="9.2" cy="11.4" r="1.15" fill="#fff"/><circle cx="14.8" cy="11.4" r="1.15" fill="#fff"/></svg>
+      </span>
+      My Boop
+    </a>
+    <nav class="top-links">
+      <a href="../index.html">All artifacts</a>
+    </nav>
+  </header>
+
+  <p id="live" class="visually-hidden" aria-live="polite"></p>
+
+  <main class="shell">
+    <div class="phone" id="phone">
+      <div class="status-row">
+        <div class="who">
+          <button type="button" class="name-btn" id="name-btn" title="Rename">Boop</button>
+          <span class="age" id="age">just hatched</span>
+        </div>
+        <div class="coins" id="coins" aria-label="Coins">◎ 40</div>
+      </div>
+
+      <div class="meters" aria-label="Care meters">
+        <div class="meter">
+          <span>Hunger</span>
+          <div class="track"><i id="bar-hunger"></i></div>
+        </div>
+        <div class="meter">
+          <span>Clean</span>
+          <div class="track"><i id="bar-clean"></i></div>
+        </div>
+        <div class="meter">
+          <span>Energy</span>
+          <div class="track"><i id="bar-energy"></i></div>
+        </div>
+        <div class="meter">
+          <span>Happy</span>
+          <div class="track"><i id="bar-happy"></i></div>
+        </div>
+      </div>
+
+      <section id="home" class="screen">
+        <div class="room" id="room" data-room="day">
+          <div class="sky"></div>
+          <div class="stars" aria-hidden="true"></div>
+          <div class="floor"></div>
+          <p class="bubble" id="bubble">boop.</p>
+          <button type="button" class="pet-hit" id="pet-hit" aria-label="Boop your pet">
+            <div class="pet" id="pet" data-color="sky" data-hat="none" data-mood="happy">
+              <div class="zzz" aria-hidden="true">z z z</div>
+              <div class="sparkles" aria-hidden="true"></div>
+            </div>
+          </button>
+          <div class="snack-fly" id="snack-fly" hidden>🍓</div>
+        </div>
+
+        <div class="care">
+          <button type="button" class="care-btn" id="feed-btn">
+            <span class="emoji">🍓</span>
+            Feed
+          </button>
+          <button type="button" class="care-btn" id="bath-btn">
+            <span class="emoji">🫧</span>
+            Bathe
+          </button>
+          <button type="button" class="care-btn" id="sleep-btn">
+            <span class="emoji">🌙</span>
+            Sleep
+          </button>
+        </div>
+      </section>
+
+      <section id="games" class="screen" hidden>
+        <h2>Play with Boop</h2>
+        <p class="lede">Win coins. Make them happier. Three tiny games.</p>
+        <div class="game-list">
+          <button type="button" class="game-card" data-game="catch">
+            <span class="emoji">🍓</span>
+            <strong>Snack Catch</strong>
+            <em>Tap falling snacks before they hit the floor.</em>
+          </button>
+          <button type="button" class="game-card" data-game="memory">
+            <span class="emoji">🃏</span>
+            <strong>Memory</strong>
+            <em>Match three pairs. Boop has a short attention span.</em>
+          </button>
+          <button type="button" class="game-card" data-game="hop">
+            <span class="emoji">👆</span>
+            <strong>Boop Hop</strong>
+            <em>They bounce. You tap. That’s the whole sport.</em>
+          </button>
+        </div>
+      </section>
+
+      <section id="play" class="screen" hidden>
+        <div class="play-head">
+          <button type="button" class="back" id="play-back">← Games</button>
+          <span id="play-title">Snack Catch</span>
+          <span class="play-stat" id="play-stat">0</span>
+        </div>
+        <div class="playfield" id="playfield"></div>
+        <p class="play-hint" id="play-hint"></p>
+      </section>
+
+      <section id="stories" class="screen" hidden>
+        <h2>Boop stories</h2>
+        <p class="lede">Little days that feel like mine. Two so far — more later.</p>
+        <div class="game-list">
+          <button type="button" class="game-card story-card" id="story-hail">
+            <span class="emoji">🧊</span>
+            <strong>hail on the hill</strong>
+            <em>sun and shorts up 13th, four minutes of hail, then sun again like nothing happened.</em>
+          </button>
+          <button type="button" class="game-card story-card" id="story-atlas">
+            <span class="emoji">⛰</span>
+            <strong>Late to ATLAS</strong>
+            <em>A weekday morning. A walk across campus. The Flatirons do a thing.</em>
+          </button>
+        </div>
+      </section>
+
+      <section id="story" class="screen story-screen" hidden>
+        <div class="story-stage" id="story-stage"></div>
+        <div class="story-controls">
+          <button type="button" class="back" id="story-back">← Stories</button>
+          <button type="button" class="back" id="story-skip">Skip</button>
+        </div>
+      </section>
+
+      <section id="shop" class="screen" hidden>
+        <h2>Closet</h2>
+        <p class="lede">Spend coins on colors, hats, and a new room.</p>
+        <div class="shop-block">
+          <h3>Color</h3>
+          <div class="shop-row" id="shop-colors"></div>
+        </div>
+        <div class="shop-block">
+          <h3>Hat</h3>
+          <div class="shop-row" id="shop-hats"></div>
+        </div>
+        <div class="shop-block">
+          <h3>Room</h3>
+          <div class="shop-row" id="shop-rooms"></div>
+        </div>
+        <button type="button" class="ghost" id="reset-btn">Start over</button>
+      </section>
+
+      <nav class="tabs" aria-label="App sections">
+        <button type="button" class="tab on" data-tab="home">Home</button>
+        <button type="button" class="tab" data-tab="games">Games</button>
+        <button type="button" class="tab" data-tab="stories">Stories</button>
+        <button type="button" class="tab" data-tab="shop">Shop</button>
+      </nav>
+    </div>
+
+    <aside class="aside">
+      <span class="eyebrow">Artifact 08 · Game</span>
+      <h1>My Boop</h1>
+      <p>A tiny virtual pet in the spirit of My Boo: feed it, wash it, put it to bed, play games, dress it up — and watch little campus stories starring your Boop.</p>
+      <ul>
+        <li>Needs drift while you’re away</li>
+        <li>Stories is the “more me” page. Start with Late to ATLAS.</li>
+        <li>No account. Just local save.</li>
+      </ul>
+    </aside>
+  </main>
+
+  <div class="toast" id="toast" hidden></div>
+
+  <footer class="foot">
+    <div class="inner">
+      Unofficial student project for Learn, Vibe, Build. Inspired by My Boo — not affiliated with Tapps Games.
+    </div>
+  </footer>
+
+  <script src="assets/js/game.js"></script>
+  <script src="assets/js/stories.js"></script>
+</body>
+</html>

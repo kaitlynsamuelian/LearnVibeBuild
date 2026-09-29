@@ -216,6 +216,12 @@ window.VAULT = {
         ],
         making: [
           {
+            id: "chopra-notes",
+            title: "Notes for sitting with Aidan",
+            date: "2026-09-29",
+            blurb: "Open-on-the-laptop notes: how the idea started, what already exists, space to catch his take.",
+          },
+          {
             id: "how-to-file",
             title: "How to file something you made",
             date: "2026-09-28",
