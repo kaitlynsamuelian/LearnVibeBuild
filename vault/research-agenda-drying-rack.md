@@ -2,7 +2,14 @@
 
 Questions, not findings. After a run, file the answer under `vault/content/drying-rack/` and mark the ticket DONE.
 
-**Idea we are testing:** one portal core + floor and stud-wall modules. Geometry is stored versus open inside a fixed envelope. Attachments parked.
+**Idea we are testing: a dual track, not one concept.**
+
+1. **Is reconfiguration even wanted?** Does a person actually want to change the rack's shape or install per load, or is that a new chore? Install modularity and reconfigurable geometry are on trial here, not assumed.
+2. **Can the rack itself dry faster via airflow?** Air distributed through the structure (hollow or perforated rods, holes aimed at the garment) rather than a fan on the floor.
+
+Install modularity is no longer the only idea and is not locked. Attachments stay parked, with one exception: if the custom clip-for-rod experiment comes back from the airflow track, attachments reopen.
+
+Observe, then validate, then experiment, then pick which problem is the capstone.
 
 **Already settled. Do not redo unless something new breaks it.**
 
@@ -11,7 +18,13 @@ Questions, not findings. After a run, file the answer under `vault/content/dryin
 - Woolite W-84156: do not quote 60 lb as official.
 - Market split: high capacity usually means drill. No-drill usually means door. Adhesive is not laundry-scale.
 - SKÅDIS is the logic (one core, one interface), not the same load.
-- Pitch concept is install + geometry. Do not promise five mounts as the deliverable.
+- **Chopra, 29 Sep 2026.** Reconfiguration may be a chore rather than a feature. The goal is easy and passive. Observe six real loads before locking any geometry. Airflow is a separate experiment that does not wait on the reconfiguration answer. Write-up: `vault/content/drying-rack/online/chopra-feedback.html`.
+- Do not promise five mounts as the deliverable, and do not present reconfigurable geometry as a validated need.
+- Air-through-perforated-rods is old: US 5,642,462 (Huff, 1997). Fan-on-a-rack ships today (NuBreeze, Foxydry). Heated bars ship today (Dry:Soon). Nothing found on sale pushes air out through the rods.
+- **30 Sep 2026 precedent pass.** Cost is not the first constraint. Research question for the pass: how can a drying system actively improve air-drying through airflow, materials, geometry, or integrated mechanisms, while fitting naturally into a living space? Six named precedents filed: `dyson-air-multiplier`, `samsung-airdresser`, `lg-styler`, `drying-pod`, `heated-airer-plus`, `perforated-duct`. Optional seventh filed: `live-with-it` (Sheila Maid). Synthesis: `online/premium-airflow-precedents.html`. Assignment framing: `online/change-from-last-week.html`. The dual track still stands, and this pass does not close R1. Six loads are still required.
+- Evenness is the industry's stated goal, not ours alone. Samsung's own AirDresser page says an upper JetAir and a lower HeatPump "improve the internal circulation of air and dry clothes evenly." That supports A6 but is not our measurement.
+- Exit geometry outranks fan size, sourced. Dyson's US 8,092,166 gives a nozzle mouth spacing of 0.5 mm to 10 mm, and Maîtrejean et al 2024 (arXiv 2406.03305) report the discharge ratio increasing threefold when slit thickness drops from 1.5 mm to 0.25 mm. Start A5 at the slot, not at the fan.
+- Manifold rules to test, not to claim: keep total hole area well under the tube bore (practitioner guidance, forum-sourced, area ratio below 0.5), filed fabric-diffuser open areas run about 5% to 25% (US 5,782,689), and taper or compensate to even out discharge along a length.
 
 ---
 
@@ -24,6 +37,163 @@ Questions, not findings. After a run, file the answer under `vault/content/dryin
 **Nightly:** Pick 2 OPEN tickets marked NIGHTLY that we have not touched in a week.
 
 **Whole pass:** Every OPEN ticket, in order. Stop after each section. If you cannot find it, say NOT FOUND.
+
+---
+
+## R. Reconfiguration wanted? (track one)
+
+### R1. Do the six loads show anyone wanting a different layout
+Status: OPEN
+
+Primary evidence. Six real loads, hung normally, photographed. Placement and reason per garment type. Whether the frame's shape was ever the thing that was wrong.
+
+Protocol: `vault/content/drying-rack/in-person/six-loads.html`.
+
+Output: yes / no / partly, with photo evidence. This ticket outranks every online pass on this question.
+
+### R2. Does anyone say it in their own words
+Status: OPEN
+
+Survey Q11 and interview Q9, both written as a memory ("have you ever wished") rather than a preference. Scripts: `in-person/survey.html`, `in-person/interview-script.html`.
+
+Output: count of people who can name an actual moment, plus their words.
+
+### R3. Online evidence pass
+Status: DONE 2026-09-30
+
+Findings: `online/reconfiguration-skepticism.html`. People have a stable garment-to-tier habit on fixed frames, setup takes about 20 seconds so it is not the pain point, and the rearranging they resent happens mid-dry because of uneven drying. NOT FOUND: anyone describing deliberately changing a rack's geometry between loads.
+
+Does not close R1 or R2. One online pass is not a verdict.
+
+### R4. Is folding away even a behaviour
+Status: OPEN
+
+Our stored-versus-open fold assumed people put the rack away. Survey Q7 and interview Q7 test it.
+
+Output: put-away vs left-out split. If most people leave it out, the fold is not the feature.
+
+### R5. If reconfiguration is not wanted, what replaces it
+Status: OPEN
+
+Depends on R1 and R2. The fallback is one fixed frame with well-differentiated zones (light low, heavy high, long on the ends, something for sheets) that we decide once so the user never has to.
+
+Output: one paragraph, sketch-level, of the fixed geometry.
+
+---
+
+## A. Airflow (track two)
+
+### A1. Who already sells active airflow
+Status: DONE 2026-09-30
+
+Findings: `online/airflow-drying.html`. Precedents filed: `dry-soon` (heat, no fan, 300W, £199.99), `nubreeze` (cool fan, "up to 50% faster" seller claim), `foxydry-air` (two 44W fans, ceiling, $599.70; Pro adds 750W heated air), `dryguy-force-dry` (forced air through hollow posts into footwear), `huff-air-bars` (1997 patent, air out of perforated bars).
+
+NOT FOUND: a product on sale that pushes air out through the drying rods themselves.
+
+### A2. Physics, sourced only
+Status: DONE 2026-09-30
+
+Conservation physics (Bengtsson, Segel, Havsteen-Mikkelsen, Padfield, 2004): the limiting step in the long phase is sweeping saturated air off the cloth surface, not heat. That makes drying rate a geometry question. Indoor Environments 2025 paper gives water emission rate for an indoor load (abstract only, full text 403, verify before citing).
+
+No dry-time table. We have a seller claim, one reviewer's hours and a lab emission rate, and they do not combine.
+
+### A3. First prototype: fan + PVC + holes
+Status: OPEN · NEXT
+
+Plan written: `experiments/airflow-experiment.html`. Three-way bench test. Airflow rod vs plain rod vs plain rod with a desk fan pointed at it. The desk fan is the incumbent and the only control that matters.
+
+Output: weight-loss table with room conditions, tissue-strip flow map with and without fabric, uncalibrated noise reading, every failed run kept.
+
+### A4. Does fabric choke the manifold
+Status: OPEN
+
+The most likely way the idea dies. Fabric seals the holes and flow collapses. The Huff patent used ribs between slots to hold cloth off the vents. Test with and without standoff.
+
+Output: go / no-go on through-the-rod geometry specifically.
+
+### A5. Rod variables
+Status: OPEN
+
+Diameter, cross-section (round, square, flat, oval), material, hole size, hole spacing, hole aim, distribution along the length. One at a time.
+
+Output: which two or three variables actually move the result.
+
+### A6. Evenness, not average speed
+Status: OPEN
+
+The user complaint is damp patches and going back to poke at it, not the average hour count. Measure the contact surface separately from the exposed surface.
+
+Output: whether airflow fixes evenness even where it does not win on totals. This is probably the real finding.
+
+### A7. Noise and liveability
+Status: OPEN
+
+An appliance that runs six hours in a studio has to be liveable. Noise is already the named complaint against the one cool-air rack on the market. No published dB spec exists for NuBreeze or Foxydry.
+
+Output: uncalibrated phone reading at 1 m, plus the subjective version (could you sleep, could you talk).
+
+### A8. Safety, no heat in version one
+Status: OPEN
+
+Unheated room air, low-voltage certified fan, nothing wired to mains. Condensation is the real hazard of the low-risk build. UK regulator recalled a heated winged airer in Jan 2025 for overheating (2501-0138). A heated airer is not the same device as a fan in a tube.
+
+Output: one paragraph we can say in class about why version one has no heating element.
+
+### A9. Custom clip for the rod
+Status: PARKED until A3 returns
+
+The one attachment worth reopening, because it would belong to the airflow system rather than being a generic accessory. Needs a bar worth designing a clip for first.
+
+### A10. If Dyson made a drying rack
+Status: DONE 2026-09-30
+
+Dyson never made a drying rack or airer. Only laundry appliance was the CR01 Contrarotator washing machine (community-wiki sourced, dates approximate). So the phrase is a brief, not a precedent. Analogs as design logic only: Supersonic, Airblade, DryGuy Force Dry DX.
+
+The trap: Dyson sells a motor and we cannot build a motor. Our defensible differentiator is the air path, which is drawable and testable.
+
+Added 30 Sep 2026: the Dyson file now exists as a precedent in its own right, built from the patent rather than from marketing. `precedents/dyson-air-multiplier.html`.
+
+### A11. Slot width before fan size
+Status: OPEN · NEXT after A3
+
+Added 30 Sep 2026 from `precedents/dyson-air-multiplier.html`. Two independent sources say exit geometry dominates: the Dyson patent's 0.5 mm to 10 mm mouth spacing, and the 2024 parametric study's threefold discharge-ratio gain from 1.5 mm down to 0.25 mm slit thickness. Both are open-air results with no fabric present.
+
+Output: for our rod, whether a narrow slot beats round holes of the same total area at the same fan setting, measured at the cloth.
+
+### A12. Area ratio and taper on the bench
+Status: OPEN
+
+Added 30 Sep 2026 from `precedents/perforated-duct.html`. Test the practitioner rule that maldistribution stays under about 5% when total hole area is below half the bore, and test Huff's taper against a straight bore of the same length. Note the drip-irrigation alternative (compensate at each outlet) as the manufacturer's version we are not building.
+
+Output: a flow map along the length for two or three area ratios, tapered and untapered. Feeds A4 and A6.
+
+### A13. How little enclosure is enough
+Status: OPEN
+
+Added 30 Sep 2026 from `precedents/drying-pod.html`. The pod works because the air cannot leave before it touches cloth, and it is unliveable because it is a zip-up bag. Test partial containment: a skirt on one side, a back panel, a shroud on the bar itself.
+
+Output: weight loss for open rack vs partial containment vs fully covered, plus a note on what each version looks like in a room. Add containment as a fourth condition in `experiments/airflow-experiment.html`.
+
+### A14. Is the hanger part of the air path
+Status: OPEN
+
+Added 30 Sep 2026 from `precedents/samsung-airdresser.html`. Samsung's Air Hanger appears to carry air into the inside of the garment, described in review and search-summary language that still needs verifying against the manual. If true, the last few centimetres of the air path may be the hanger rather than the bar.
+
+Output: verify the Samsung claim from an official manual, then decide whether A9 (custom clip) should become a hanger instead of a clip.
+
+### A15. Motion without a motor
+Status: OPEN · LOW PRIORITY
+
+Added 30 Sep 2026 from `precedents/lg-styler.html`. LG moves the garment mechanically through six motions and pays for it in noise and complexity. Question: can airflow alone move a garment enough to break the fixed contact line, with no moving parts?
+
+Output: observation only at this stage. Does a hanging item lift, flutter or stay still at the flow rates we can produce.
+
+### A16. Liveability benchmark exists now
+Status: OPEN
+
+Added 30 Sep 2026. The Dry:Soon Drying Pod is claimed at "less than 52 decibels," the only decibel figure on the shelf. Nothing published for NuBreeze, Foxydry or the Styler that we could verify. Stand our own A7 reading next to that claim and say which is which.
+
+Output: one comparison line we can defend in class.
 
 ---
 
@@ -174,14 +344,22 @@ Target height so pants / dresses do not hit the floor.
 ## U. People (write now, do later)
 
 ### U1. Interview script
-Status: OPEN
+Status: DONE 2026-09-30
 
-10 questions. Do not lead with “modular.” File under in-person when done.
+Filed: `vault/content/drying-rack/in-person/interview-script.html`. 10 questions. Full laundry sequence first, living in the space second, layout ninth, speed tenth. Does not lead with "modular" and never says it.
+
+Survey also written: `in-person/survey.html`. Neither document contains the words modular or airflow.
 
 ### U2. Who to book
-Status: OPEN
+Status: OPEN · UPDATED 2026-09-30
 
-Renters, dorm, Polder owners, floor-rack owners. Five first conversations.
+Original list: renters, dorm, Polder owners, floor-rack owners.
+
+Chopra update, and this is now the priority: **more women**, and anyone who hang-dries a wider variety of garments (bras, delicates, knits, activewear, not just the occasional sweater). Apartments and dorms over houses. People who air-dry as a routine rather than an emergency.
+
+Note from `online/laundry-mode.html`: YouGov 2025 says only 7% of US adults air-dry everything, and ACI 2026 says 29% of households use a line or rack at all. NOT FOUND in either: a gender or housing breakdown. That gap is exactly what U2 has to close in person.
+
+Five first conversations, then reassess.
 
 ### U3. Store walk
 Status: OPEN
@@ -198,19 +376,28 @@ Status: OPEN
 How much / what form / what function / where it is held. We are testing where it is held.
 
 ### C2. What we will not claim
-Status: OPEN
+Status: OPEN · UPDATED 2026-09-30
 
-No “every renter-safe rack is weak.” No WallFix on drywall. Deliverable stays 1 portal core + floor and stud-wall + stored-versus-open fold.
+No “every renter-safe rack is weak.” No WallFix on drywall. No Woolite 60 lb.
+
+Added after Chopra: do not claim reconfiguration is wanted until R1 and R2 answer it. Do not claim a dry-time improvement we have not measured ourselves. Do not present a seller's "up to 50% faster" as a fact. Do not imply Dyson made a drying rack. Do not describe a fan in a tube using heated-airer safety language.
+
+The deliverable is no longer fixed. It is one of two tracks, chosen at step 5 of the run order.
 
 ---
 
-## Run order if we only do a little
+## Run order
 
-1. P5 (does space even change)
-2. I1 (does the product exist)
-3. L1 (wet weight)
-4. I2 + I3 (can one joint be real)
-5. I7 (skip door?)
-6. P4 (would anyone pay for a system)
+New order as of 29 Sep 2026. Observe, validate, experiment, then choose.
 
-Nightly rotation: I1, P1, L1, I3.
+1. **Six loads.** R1. Hang normally, photograph everything, log it. Primary evidence, and nothing about geometry gets locked before this.
+2. **User talks and survey.** R2, R4, U2. Five conversations plus the form out. Especially women and wider-variety hang-dryers.
+3. **Reconfiguration evidence, assembled.** Read R1 and R2 together against R3 and answer the question: is reconfiguration wanted, yes or no.
+4. **First airflow prototype.** A3, A4, A6. Runs in parallel and does not wait on steps 1 to 3.
+5. **Pick the capstone.** Which of the two problems is the more interesting opportunity. Then, and only then, spend time on install and joint detail.
+
+The old install tickets (P, I, L, G) stay OPEN. Nothing found since the pitch has closed them, and whichever track wins, the rack still has to stand up and hold a wet load. Run them when they serve step 5, not before.
+
+Nightly rotation, if we are doing a little each night: A1, P1, L1, I3.
+
+Parked until step 5: I4, I7, I8, I9, I10, C2. Reopen A9 (custom clip) only if A3 comes back positive.

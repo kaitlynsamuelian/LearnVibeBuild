@@ -1,0 +1,97 @@
+<p>Test plan, written 2026-09-30. This is a plan. There are no results in this file, and nothing below should be repeated as a finding until it has been run. Background and sourcing for the idea live in <code>vault/content/drying-rack/online/airflow-drying.html</code>.</p>
+
+<h2>What this test is for</h2>
+<p>One question: does air leaving holes in a rod actually reach the surface of a garment that is draped over that rod, and does it dry that garment faster than the same garment on a plain bar?</p>
+<p>That is a mechanism check, not a product test. The reason it is worth doing first is in the physics source: the slow phase of drying is limited by sweeping saturated air off the cloth surface, and the surface pressed against a bar is the surface the room never reaches. If air out of the rod does not get to that surface, the whole direction is dead and we find out for about thirty dollars.</p>
+
+<h2>Three things must be on the bench, not two</h2>
+<ul>
+  <li><strong>A.</strong> Wet swatch on the perforated airflow rod, fan on.</li>
+  <li><strong>B.</strong> Wet swatch on a plain rod of the same diameter, no air. This is the do-nothing control.</li>
+  <li><strong>C.</strong> Wet swatch on a plain rod with a desk fan pointed at it from across the table. <strong>This is the incumbent.</strong> People already do this, so beating B proves nothing on its own. The claim only means something against C.</li>
+</ul>
+<p>Run all three at once, in the same room, same air, same start time. Separate them far enough that the fan in C is not helping A or B, and note the spacing you used.</p>
+
+<h2>Build</h2>
+<ul>
+  <li>PVC pipe, plain white, from the hardware store. Buy at least two diameters so diameter is a variable rather than an assumption. Half inch, three quarter inch and one inch nominal is a reasonable first spread, plus one length left undrilled for the control.</li>
+  <li>An end cap for the far end of the manifold, so air has to leave through the holes rather than out the end.</li>
+  <li>A reducing coupler, a taped cardboard shroud, or a 3D-printed adapter to get from the fan outlet to the pipe. Tape is fine for version one. Note how leaky the joint is, because a leaky joint quietly ruins the comparison.</li>
+  <li>A commercial, already-certified low-voltage fan with its own plug or USB adapter. A USB desk fan or a PC case fan on a USB adapter. Do not wire anything to mains. Do not open an appliance.</li>
+  <li>A second, identical fan for the C control, so the two fans are the same fan.</li>
+  <li>Drill bits in two or three sizes. Deburr every hole so it cannot snag fabric.</li>
+</ul>
+
+<h2>Variables, one at a time</h2>
+<p>Do not change two things in one run. Record every setting even when it is the default.</p>
+<ul>
+  <li><strong>Rod diameter.</strong> Bigger pipe means lower internal velocity for the same fan. Smaller pipe means higher velocity but less flow. There is a wrong answer at both ends and we do not know where it is.</li>
+  <li><strong>Hole size and spacing.</strong> Many small holes versus fewer large ones, for the same total open area.</li>
+  <li><strong>Hole aim.</strong> Straight up, straight down, two rows at forty five degrees, one row along each side. This is probably the most important variable, because the garment hangs on both sides of the rod.</li>
+  <li><strong>Distribution along the length.</strong> Uniform holes will dump most of the air near the inlet. Test uniform against holes that get larger, or more frequent, toward the far end. The Huff patent solved this with a tapering internal cross-section and slots that shorten along the tube, which is a hint worth testing rather than copying.</li>
+  <li><strong>Rod cross-section.</strong> Round first, because it is what the store sells. Then square, flat and oval if you can source or print them. A flat or oval rod changes how much of the garment is in contact and where the air is trapped.</li>
+  <li><strong>Fan strength.</strong> Two speeds minimum, or two different fans, so the result is not specific to one fan.</li>
+  <li><strong>Fabric.</strong> A thin cotton, a heavy cotton (towel or denim), and one synthetic. These hold and release water differently.</li>
+  <li><strong>Standoff.</strong> Ribs, spacers or a textured surface that hold the fabric slightly off the holes. The patent does this deliberately. Test with and without, because fabric sealing against a hole is the obvious failure mode.</li>
+</ul>
+
+<h2>Method</h2>
+<ol>
+  <li>Cut identical swatches from the same garment or the same fabric. Same size, same weight dry. Weigh each one dry on a kitchen scale and write the number down.</li>
+  <li>Soak all swatches together in the same water. Wring or spin all of them the same way for the same time, so they start at comparable wetness.</li>
+  <li>Weigh each one wet, immediately, and write it down. Wet minus dry is the water in that swatch.</li>
+  <li>Hang A, B and C at the same moment. Start a timer.</li>
+  <li>Weigh each swatch at fixed intervals. Every fifteen minutes for the first hour, then every thirty. Put it back in the same orientation every time.</li>
+  <li>Stop when all three reach their original dry weight, or at a fixed cutoff you decide in advance and record.</li>
+  <li>Log room temperature and humidity at start, middle and end. A cheap hygrometer is enough. Drying results are meaningless without the room conditions, and the room changes <em>because</em> of the test.</li>
+  <li>Repeat the whole run at least twice. A single run of anything this sensitive to room conditions is an anecdote.</li>
+</ol>
+
+<h2>Measuring where the air actually goes</h2>
+<p>Weight loss tells you whether it worked. These tell you why.</p>
+<ul>
+  <li>Tape a short strip of light tissue or thread at intervals along the rod, run the fan with no fabric, and photograph or film which strips move. That is your free flow-distribution map.</li>
+  <li>Repeat with the fabric on. If the strips stop moving once fabric is draped, the garment is choking the manifold and that is the headline finding.</li>
+  <li>Feel along the rod with the back of your hand and mark on the pipe with tape where you can and cannot feel air. Crude, honest, photographable.</li>
+  <li>If an anemometer is available in the ATLAS shop, take readings at fixed points and say what instrument it was. If not, do not put a number on airflow. Write NOT MEASURED.</li>
+</ul>
+
+<h2>Noise</h2>
+<ul>
+  <li>Measure with a phone sound meter at one metre, fan running, rod attached, and again with the fan bare. The manifold may be louder than the fan.</li>
+  <li>Label every reading as uncalibrated phone measurement. Do not publish it as a dB spec.</li>
+  <li>Also record the subjective version: could you sleep in this room, could you have a conversation. Noise is already the named complaint against the one cool-air rack on the market, so this is a real design constraint and not a footnote.</li>
+</ul>
+
+<h2>What to photograph</h2>
+<ul>
+  <li>The full bench setup with A, B and C visible in one frame, so the comparison is documented.</li>
+  <li>Each rod end-on, so the hole pattern and aim are readable.</li>
+  <li>The tissue-strip test, as short video clips, with and without fabric.</li>
+  <li>Each swatch on its rod at the start, midpoint and end.</li>
+  <li>Close-up of where fabric meets holes, with and without standoff ribs.</li>
+  <li>The scale display with the swatch on it, at each weighing. This is your raw data and it takes two seconds.</li>
+  <li>The hygrometer at each check.</li>
+  <li>Every failure. Split pipe, taped joint blowing off, fabric slipping, puddle on the table.</li>
+</ul>
+
+<h2>What would count as a result</h2>
+<p><strong>A real positive:</strong> A loses water measurably faster than C, in at least two runs, on at least two fabrics, and the tissue test shows air reaching the fabric along most of the rod length. That is worth building a full rack around.</p>
+<p><strong>A useful negative:</strong> A beats B but not C. That means the rack-integrated air path has no advantage over a desk fan, and the airflow track has to find a different justification (one object instead of two, evenness, footprint) or be dropped.</p>
+<p><strong>A hard negative:</strong> the fabric seals the holes, flow collapses, and A behaves like B. That kills the through-the-rod geometry specifically, though it does not kill air-in-the-structure generally. Try the standoff ribs before concluding.</p>
+<p><strong>The most interesting possible result</strong> is not about average speed at all. It is about <em>evenness</em>. The user complaint we found online is damp patches and going back to move things, not the average hour count. If A dries the contact surface as fast as the exposed surface and C does not, that is the finding worth presenting, even if the totals are similar. Weigh the swatch, but also check the contact side by hand and note it separately.</p>
+<p><strong>Not a result:</strong> anything that produces a percentage from one run, any number without the room conditions logged, any comparison to a heated airer we have not tested, or any dry-time figure for a real load. One tube is not a rack.</p>
+
+<h2>Safety</h2>
+<ul>
+  <li><strong>No heating element in version one.</strong> Unheated room air only. The fire risk in this product category comes from heating elements plus fabric, and the UK regulator recalled a heated winged airer in January 2025 for exactly that. We do not need heat to answer this question.</li>
+  <li><strong>Low voltage only.</strong> Use a fan that already has a plug or a USB connector and its own enclosure. Do not build a power supply, do not splice mains wire, do not open an appliance to get at the motor.</li>
+  <li><strong>Water below, electricity beside.</strong> Wet fabric drips. Put a tray under every swatch. Keep the fan and its adapter off the bench surface that gets wet and out of the drip line, and route the cord so water cannot follow it down.</li>
+  <li><strong>Ventilate.</strong> The published lab figure for a full indoor load is on the order of two litres of water going into the room air, fastest in the first couple of hours. Swatches are smaller than that, but do not run this in a sealed room, and log the humidity so the effect is visible in the data.</li>
+  <li><strong>Do not seal the manifold and let it sit wet.</strong> A damp closed plastic tube grows things. Drain it and open it after each session, and note this as a genuine product objection to raise in class rather than hiding it.</li>
+  <li><strong>Mechanical.</strong> Drilled PVC is weaker than undrilled PVC. Do not load a drilled rod with real laundry weight in this round, and do not stand anything tall enough to fall on someone. Deburr holes so they cannot mark or snag fabric. Wear eye protection when drilling, and clamp the pipe.</li>
+  <li><strong>Do not assume a heated airer is a model for this.</strong> A heated airer is a resistive element inside a bar. A fan in a tube is a different device with a different failure mode. Any safety reasoning borrowed from heated-airer guidance has to be relabelled, not copied.</li>
+</ul>
+
+<h2>Write-up</h2>
+<p>When the run is done, file a separate results page under making. Include the raw weight table, the room conditions, the number of runs, what the instruments were, and every failed run. If a run was botched, say so and keep it. Then update the agenda ticket and, if the result is strong either way, say plainly which of the two tracks it argues for.</p>

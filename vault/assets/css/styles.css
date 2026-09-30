@@ -96,11 +96,15 @@ h1 {
   padding-bottom: 48px;
 }
 .grid.four { grid-template-columns: repeat(2, 1fr); }
+.grid.shelves {
+  grid-template-columns: repeat(2, 1fr);
+}
 @media (min-width: 860px) {
   .grid.four { grid-template-columns: repeat(4, 1fr); }
+  .grid.shelves { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 700px) {
-  .grid, .grid.four { grid-template-columns: 1fr; }
+  .grid, .grid.four, .grid.shelves { grid-template-columns: 1fr; }
 }
 
 .card {

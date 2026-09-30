@@ -105,7 +105,7 @@
         <div class="grid">${projects}</div>
         <div class="how">
           <strong>How this stays alive.</strong>
-          Each idea gets its own page. Inside that page: precedents / inspo, research online, research in person, and making.
+          Each idea gets its own page. Inside that page: precedents / inspo, research online, research in person, making, and experiments.
           To add something, open <code>assets/js/data.js</code>, copy an entry, then add a matching file under
           <code>content/project-id/section-id/entry-id.html</code>.
         </div>
@@ -148,9 +148,9 @@
         </section>
         <div class="section-head">
           <h2>Inside this idea</h2>
-          <span class="count">4 shelves</span>
+          <span class="count">${V.sections.length} shelves</span>
         </div>
-        <div class="grid four">${sectionCards}</div>
+        <div class="grid shelves">${sectionCards}</div>
       </main>
       ${footer()}`;
   }

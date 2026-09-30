@@ -1,0 +1,41 @@
+<p>Synthesis of the 30 September 2026 precedent pass only. Seven new files, read together. Every number quoted here is sourced in its own precedent file, with official spec, seller claim and review kept apart there. Nothing in this file is measured by us.</p>
+<p>The question this pass was asked: how can a drying system actively improve the process of air-drying clothes through airflow, materials, geometry, or integrated mechanisms, while fitting naturally into someone’s living space?</p>
+
+<h2>How air is directed around or through clothing</h2>
+<p>Three products answer this, at three price points and three levels of sophistication, and they agree on direction of travel.</p>
+<p>Samsung’s AirDresser is the engineered case. Its own page says the cabinet uses a “Jet Air system and Air Hangers” to “blow powerful jets of air upwards and downwards,” and that it performs “low temperature drying using an upper JetAir and a lower HeatPump,” which “improve the internal circulation of air and dry clothes evenly.” Two directions, two devices, and evenness named as the goal rather than speed. Review and search-summary material also describes air passing through the hollow Air Hanger into the inside of the garment, which is the air-through-the-structure idea shipping at the hanger scale. That last point is flagged and unverified against the manual.</p>
+<p>The Dry:Soon Drying Pod is the crude case: a fan in the base heats air and blows it up through garments hanging inside a zip-fronted bag, on a three-hour timer, for £34.99. Air in at the bottom, out at the top. Same direction as Samsung’s lower JetAir, same direction warm air already wants to go.</p>
+<p>LG’s Styler answers it from the other side by moving the cloth instead of the air, with five hangers and “6 different motions,” described as a system that “gently shakes garments dry.” Motion is a designed variable, not a side effect of wrinkle removal.</p>
+<p>What all three are really attacking is the contact and shielding problem: the surface pressed against a rail and the item hidden behind another item. Samsung attacks it with two-direction air and a hollow hanger, LG with motion, Huff’s 1997 patent with ribs that hold fabric off the vents. Nobody attacks it with a bigger fan.</p>
+
+<h2>How airflow gets built into an object</h2>
+<p>The Dyson patent is the cleanest statement of the principle: a nozzle mounted on a base that houses the device creating the flow, with the impeller “preferably located in a base of the fan assembly,” and a Coanda surface shaping the exit. The machinery goes low and out of sight, the visible object is the air path, and entrainment recruits room air rather than the motor supplying all of it. The mouth outlet spacing is given as 0.5 mm to 10 mm, which is a slot.</p>
+<p>The 2024 bladeless-fan parametric study says that slot is where the performance lives: the discharge ratio “increases threefold for all MFRi when the slit thickness is reduced from 1.5 mm to 0.25 mm,” with radius behaving non-linearly and mass flow rate only changing the shape of the curve. Exit geometry beat the size of everything else.</p>
+<p>The duct engineering says the same thing in ratios rather than millimetres. Total hole area relative to bore is the master variable, with little maldistribution below an area ratio of 0.5 and serious maldistribution above 1, per practitioner guidance we have only as a forum summary. The filed fabric-diffuser patent puts effective open area at “preferably 10%,” in a range of “about 5% and 25%.” DuctSox argues that the entire run should be the diffuser, and that the alternative, zoned discharge into specific areas, is what “often causes drafting and hot or cold spots.” Hot and cold spots are damp patches by another name. Varying cross-section along the length is a published route to evenness, which is exactly the tapered bore Huff claimed for a drying bar, and drip irrigation instead compensates at every outlet to hold discharge variation to about 10% end to end.</p>
+<p>Read together: drill fewer holes than instinct says, choose the exit type deliberately, and either taper the bore or compensate at each outlet. Full detail and provenance in <code>precedents/perforated-duct.html</code> and <code>precedents/dyson-air-multiplier.html</code>.</p>
+
+<h2>The rod or bar as the thing that touches cloth</h2>
+<p>Two heated-structure products, Dry:Soon at 300W over 36 bars and the Costway 100W five-rod unit sold in the US as a towel warmer, prove that making the bar itself functional is commercially normal and that the user interaction stays identical: you hang laundry on a rod, the rod is just cleverer than it looks. That is the interaction model to copy, and it is the opposite of asking someone to reconfigure a frame per load.</p>
+<p>Both also prove the limit. Conduction reaches what touches the bar and nothing else, which is why every heated rack on the market sells a cover as the accessory that makes it work.</p>
+<p>We have no results of our own on rod shape, diameter, hole size, hole spacing or slot width, and this pass produced none. Those are agenda tickets A4, A5 and A6, and the bench plan is <code>experiments/airflow-experiment.html</code>. Do not present any rod geometry as decided.</p>
+
+<h2>Living around it</h2>
+<p>The premium products solve appearance by becoming furniture. The AirDresser is a mirrored cabinet, the Styler is a wardrobe, and the Sheila Maid is cast iron and kiln-dried timber that people install once and leave up for decades. The pod solves performance and loses the room entirely, a 146 cm blue zip-up cylinder that cannot stay out. Foxydry Air, filed in the previous pass, buys the ceiling with four anchor points and $599.70.</p>
+<p>The only liveability number anywhere on the shelf is the pod’s seller claim of “less than 52 decibels.” NuBreeze, Foxydry and the Styler publish nothing we could verify, and a roughly 40 dB figure for the Styler exists only as a search summary. This is why ticket A7 asks for our own uncalibrated reading at one metre plus the subjective version.</p>
+<p>The gap between Sheila Maid, which is beautiful and passive, and the pod, which works and is unsightly, is the clearest statement of the capstone opportunity this pass produced.</p>
+
+<h2>What cheap racks are not doing</h2>
+<ul>
+  <li>They have no air path at all. A $25 rack is a place to put cloth, and a desk fan next to it is zoned discharge into a room.</li>
+  <li>They lose their air. Nothing defines a volume, so most of the moving air never passes the laundry.</li>
+  <li>They attack the load from one direction, if at all, rather than from above and below.</li>
+  <li>They leave the garment in one fixed position against one fixed rail for the whole drying time.</li>
+  <li>They deliver nothing through the structure the clothes actually touch, which is where the damp patches are.</li>
+  <li>They treat spacing as the user’s problem, decided in ten seconds while holding a wet towel.</li>
+  <li>They are tolerated rather than chosen, so they get hidden, and a hidden dryer dries nothing.</li>
+</ul>
+
+<h2>Scope note</h2>
+<p>Affordability was not researched this week, on purpose. No bill of materials, no target retail, no cost comparison. Prices appear in the precedent files only to locate the category, which runs from a $59.99 heated towel rack to a $1,699 steam closet to a $1,599 clothing cabinet. Cost is not the first constraint at this stage. The priority is the strongest capstone opportunity, premium or affordable decided later.</p>
+<p>The dual track still stands. This pass strengthens track two, airflow, but it does not close track one. Nothing here answers whether reconfiguration is wanted, and the six-loads observation in <code>in-person/six-loads.html</code> remains the primary evidence for that question.</p>
+<p>See <code>online/change-from-last-week.html</code> for the assignment framing, <code>online/airflow-drying.html</code> for the earlier airflow pass, and <code>online/laundry-mode.html</code> for the living-with-it evidence.</p>

@@ -28,7 +28,12 @@ window.VAULT = {
     {
       id: "making",
       label: "Making",
-      blurb: "Things you produced. Mockups, slides, sketches, prototypes.",
+      blurb: "Things you produced that are not a test. Mockups, slides, sketches, talking notes.",
+    },
+    {
+      id: "experiments",
+      label: "Experiments",
+      blurb: "Tests. One card per test: the question, the build, what you measured, what you learned.",
     },
   ],
 
@@ -38,8 +43,8 @@ window.VAULT = {
       title: "Adaptable drying system",
       status: "active",
       course: "ATLAS 4000",
-      blurb: "One core drying rack that could adapt to the space it lives in and to what someone needs to dry.",
-      question: "How can one drying system adapt to different laundry loads and living spaces, instead of requiring several different racks?",
+      blurb: "One drying rack, two open questions: does it need to change shape for the load and the room, or does it need to get the laundry dry faster? Testing both before picking. Aiming at the best designed drying system, cost decided later.",
+      question: "What actually makes air-drying worth doing at home: a rack that changes to fit the load and the space, or a rack that dries the load faster so it stops taking over the room? Both tracks stay open, and the target is the best designed drying system, premium or affordable decided later.",
       entries: {
         precedents: [
           {
@@ -138,6 +143,78 @@ window.VAULT = {
             date: "2026-09-19",
             blurb: "Official Large strips: 15 lb for a flat picture, not a cantilevered wet rack.",
           },
+          {
+            id: "dry-soon",
+            title: "Dry:Soon Deluxe 3-Tier heated airer",
+            date: "2026-09-30",
+            blurb: "300W heated bars, about £200, no fan. Proves people pay for faster. Also proves heat alone leaves damp patches.",
+          },
+          {
+            id: "nubreeze",
+            title: "NuBreeze cool-air rack (Viatek)",
+            date: "2026-09-30",
+            blurb: "A fan in a rack already ships. Seller claims up to 50% faster than drip drying. Air goes around the load, not through the bars.",
+          },
+          {
+            id: "foxydry-air",
+            title: "Foxydry Air / Pro",
+            date: "2026-09-30",
+            blurb: "Ceiling airer with two 44W fans, $600 up. Premium airflow exists. It needs four anchor points in a ceiling.",
+          },
+          {
+            id: "dryguy-force-dry",
+            title: "DryGuy Force Dry DX",
+            date: "2026-09-30",
+            blurb: "Forced air up hollow posts into boots at 105 F. The mechanism, shipping, in a neighbouring category. A boot traps air; a shirt does not.",
+          },
+          {
+            id: "huff-air-bars",
+            title: "US 5,642,462: air out of perforated bars",
+            date: "2026-09-30",
+            blurb: "Patented 1997. Tapered bore and shortening slots for even flow, ribs to stop fabric sealing the vents. Never on a shelf.",
+          },
+          {
+            id: "dyson-air-multiplier",
+            title: "Dyson Air Multiplier (patent + parametric study)",
+            date: "2026-09-30",
+            blurb: "Impeller hidden in the base, the object is the air path. A 2024 study says slit thickness beats every other geometry variable.",
+          },
+          {
+            id: "samsung-airdresser",
+            title: "Samsung AirDresser",
+            date: "2026-09-30",
+            blurb: "Jet Air plus Air Hangers, jets of air up and down, upper JetAir and lower HeatPump. Samsung names evenness as the goal.",
+          },
+          {
+            id: "lg-styler",
+            title: "LG Styler moving hanger",
+            date: "2026-09-30",
+            blurb: "Five hangers, six motions, a system that gently shakes garments dry. Motion and spacing are designed. Also the loud way.",
+          },
+          {
+            id: "drying-pod",
+            title: "Dry:Soon Drying Pod (53211)",
+            date: "2026-09-30",
+            blurb: "1000W fan in the base, air up through hangers inside a zip-up bag. Containment is the cheap big idea. Looks like camping gear.",
+          },
+          {
+            id: "heated-airer-plus",
+            title: "Second heated structure (Costway 100W, US)",
+            date: "2026-09-30",
+            blurb: "A US heated rack exists, sold as a towel warmer. Functional rod, unchanged user habit. Still conduction only.",
+          },
+          {
+            id: "perforated-duct",
+            title: "Perforated duct and manifold engineering",
+            date: "2026-09-30",
+            blurb: "Hole area vs bore is the master ratio. Fabric diffusers run 5 to 25% open area. Taper the pipe, or compensate at each hole.",
+          },
+          {
+            id: "live-with-it",
+            title: "Sheila Maid ceiling airer",
+            date: "2026-09-30",
+            blurb: "Cast iron and kiln-dried timber on a pulley, about £83. People keep it out on purpose. It does nothing at all.",
+          },
         ],
         online: [
           {
@@ -200,6 +277,42 @@ window.VAULT = {
             blurb: "Working notes from the ATLAS 4000 draft pitch. Early concept, not locked.",
           },
           {
+            id: "chopra-feedback",
+            title: "Chopra feedback: two tracks, not one concept",
+            date: "2026-09-29",
+            blurb: "He questioned whether anyone wants to reconfigure, and opened active airflow. Observe, validate, experiment, then pick.",
+          },
+          {
+            id: "reconfiguration-skepticism",
+            title: "Does anyone actually reconfigure a rack?",
+            date: "2026-09-30",
+            blurb: "Real forum and tester language. People have a placement habit, not a configuration. Setup is 20 seconds. The rearranging they resent is mid-dry.",
+          },
+          {
+            id: "laundry-mode",
+            title: "Living in laundry mode",
+            date: "2026-09-30",
+            blurb: "Days, not minutes. Eyesore language, overflow onto curtain poles, and people already pointing desk fans at the washing.",
+          },
+          {
+            id: "airflow-drying",
+            title: "Active airflow: what exists, what is new",
+            date: "2026-09-30",
+            blurb: "Heated bars, fan racks, a 1997 patent for air out of perforated rods. Plus the physics, the Dyson answer, and prototype safety.",
+          },
+          {
+            id: "change-from-last-week",
+            title: "Did this change from last week?",
+            date: "2026-09-30",
+            blurb: "New research question. From modular configurations to making the drying system itself better. Cost is not the first constraint.",
+          },
+          {
+            id: "premium-airflow-precedents",
+            title: "Premium airflow precedents, synthesised",
+            date: "2026-09-30",
+            blurb: "Air around and through garments, airflow built into an object, the rod that touches cloth, and living around it. Not researching cost this week.",
+          },
+          {
             id: "how-to-save",
             title: "How to file online research",
             date: "2026-09-28",
@@ -213,6 +326,24 @@ window.VAULT = {
             date: "2026-09-28",
             blurb: "Interviews, store visits, watching someone air-dry.",
           },
+          {
+            id: "six-loads",
+            title: "Six loads: observation protocol",
+            date: "2026-09-30",
+            blurb: "Hang normally, photograph everything, log it. Six blocks to type into. Does imagined reconfiguration match real behaviour?",
+          },
+          {
+            id: "survey",
+            title: "Survey (does not say modular)",
+            date: "2026-09-30",
+            blurb: "Fifteen questions, ready for a Google Form. Asks for remembered moments, not preferences.",
+          },
+          {
+            id: "interview-script",
+            title: "Interview script, 10 questions",
+            date: "2026-09-30",
+            blurb: "Full laundry sequence first, living in the space second, layout ninth, speed last. Closes ticket U1.",
+          },
         ],
         making: [
           {
@@ -222,10 +353,30 @@ window.VAULT = {
             blurb: "Open-on-the-laptop notes: how the idea started, what already exists, space to catch his take.",
           },
           {
+            id: "mockups",
+            title: "AI mockups",
+            date: "2026-09-29",
+            blurb: "Four exploration sheets: catalog poster, install modules, geometry modes, core structures.",
+          },
+          {
             id: "how-to-file",
             title: "How to file something you made",
             date: "2026-09-28",
-            blurb: "Mockups, slides, sketches, prototypes. If you produced it, it lives here.",
+            blurb: "Mockups, slides, sketches. If you produced it and it is not a test, it lives here.",
+          },
+        ],
+        experiments: [
+          {
+            id: "how-to-file",
+            title: "How to file an experiment",
+            date: "2026-09-30",
+            blurb: "One card per test. Plan first, results in the same file when you have them.",
+          },
+          {
+            id: "airflow-experiment",
+            title: "Airflow: first bench test",
+            date: "2026-09-30",
+            blurb: "Fan, PVC, holes, wet swatches. Three-way test against a plain bar and a desk fan. Plan, not results.",
           },
         ],
       },
@@ -249,6 +400,7 @@ window.VAULT = {
         ],
         "in-person": [],
         making: [],
+        experiments: [],
       },
     },
   ],
