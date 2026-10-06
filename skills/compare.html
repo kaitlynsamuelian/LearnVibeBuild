@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compare with vs without a design skill</title>
+  <meta name="description" content="Run the same website prompt twice: once with no design skill, once with /website-look. Compare the two in this page." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232dd4bf' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M13 2L4 14h7l-1 8 9-12h-7l1-8z'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main id="main">
+    <header class="page-head">
+      <div class="container">
+        <span class="eyebrow">A fair A/B</span>
+        <h1>Same prompt. One skill. Side by side.</h1>
+        <p>Build a random little site twice. First chat: no design skill. Second chat: a design pack you picked (<span class="tag-inline">/impeccable</span>, <span class="tag-inline">/frontend-design</span>, or this repo’s <span class="tag-inline">/website-look</span>). How to get Impeccable: <a href="existing.html#impeccable">Existing skills</a>. Refresh this page after each build.</p>
+      </div>
+    </header>
+
+    <section>
+      <div class="container">
+        <div class="callout warn">
+          <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L12.7 3.9a2 2 0 00-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></span>
+          <p><strong>New Agent chats for both runs.</strong> This Skills-site thread already knows a teal design system. If you build the “without” version here, it is not a clean control. Also do not use <span class="tag-inline">/rewrite-in-my-words</span> or <span class="tag-inline">/learn-vibe-artifact</span> in those chats. <span class="tag-inline">/website-look</span> is slash-only on purpose so it cannot sneak into the control.</p>
+        </div>
+
+        <div class="steps reveal" style="margin-top:28px;">
+          <div class="step">
+            <span class="step-num"></span>
+            <div>
+              <h3>Chat A: without</h3>
+              <p>New Agent chat. Paste prompt A. Do not type any skill name. When it is done, the left iframe should show a burrito cart site instead of “Not built yet.”</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num"></span>
+            <div>
+              <h3>Chat B: with</h3>
+              <p>Another new Agent chat. Type <span class="tag-inline">/website-look</span>, then paste prompt B (same site, different folder). Look at type, color, texture, and whether it still feels like default AI UI.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num"></span>
+            <div>
+              <h3>Compare on this page</h3>
+              <p>Keep the prompt identical except the folder path. If you change the copy, you are no longer measuring the skill.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <h2>The prompt (copy this)</h2>
+        <p>Only the last line changes between A and B.</p>
+        <div class="window" style="margin-top:16px;">
+          <div class="window-bar">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <span class="window-title">prompt A · without skill</span>
+          </div>
+          <pre class="prompt-block" id="promptA">Make a one-page website for a late-night burrito cart that parks on The Hill in Boulder.
+
+Sections: the cart name and a one-line pitch, tonight's three burritos with prices, hours, a note that they take cash and Venmo, and a footer with a made-up Instagram handle.
+
+Static HTML and CSS only. No extra pages and no extra features. Do not use any skills.
+
+Put the site in skills/compare/without/ as index.html (replace what is there).</pre>
+        </div>
+        <div class="builder-actions">
+          <button type="button" class="btn btn-primary" id="copyPromptA">Copy prompt A</button>
+        </div>
+        <div class="window" style="margin-top:22px;">
+          <div class="window-bar">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <span class="window-title">prompt B · with /website-look</span>
+          </div>
+          <pre class="prompt-block" id="promptB">/website-look
+
+Make a one-page website for a late-night burrito cart that parks on The Hill in Boulder.
+
+Sections: the cart name and a one-line pitch, tonight's three burritos with prices, hours, a note that they take cash and Venmo, and a footer with a made-up Instagram handle.
+
+Static HTML and CSS only. No extra pages and no extra features.
+
+Put the site in skills/compare/with/ as index.html (replace what is there).</pre>
+        </div>
+        <div class="builder-actions">
+          <button type="button" class="btn btn-primary" id="copyPromptB">Copy prompt B</button>
+          <span class="toast" id="compareToast"></span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Side by side</h2>
+        <p>Empty slots say “Not built yet.” After both chats, you should see two burrito carts with the same info and different faces.</p>
+        <div class="compare-grid">
+          <div class="compare-pane">
+            <h3>Without <span class="pill">no skill</span></h3>
+            <iframe class="compare-frame" title="Website built without a design skill" src="compare/without/index.html"></iframe>
+            <p><a href="compare/without/index.html">Open full page</a></p>
+          </div>
+          <div class="compare-pane">
+            <h3>With <span class="pill accent">/website-look</span></h3>
+            <iframe class="compare-frame" title="Website built with the website-look skill" src="compare/with/index.html"></iframe>
+            <p><a href="compare/with/index.html">Open full page</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

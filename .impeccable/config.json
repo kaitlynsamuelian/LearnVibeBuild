@@ -1,0 +1,53 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-10-06T17:48:27.379Z",
+        "reason": "Incumbent hub identity predates this session; Test B only adds a tile. Contrast findings are pre-existing collection-page drift, not the Test B surface."
+      },
+      {
+        "rule": "icon-tile-stack",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-10-06T17:48:50.461Z",
+        "reason": "Incumbent Learn Vibe Build hub tile pattern; Test B adds one matching collection tile, not a redesign."
+      },
+      {
+        "rule": "hero-eyebrow-chip",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-10-06T17:48:50.478Z",
+        "reason": "Incumbent hub About tag above the Learn Vibe Build title; not this session's surface."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-10-06T17:48:50.493Z",
+        "reason": "Incumbent hub paper background; Test B only adds a tile."
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-10-06T17:48:50.509Z",
+        "reason": "Incumbent hub marquee wall; Test B only adds chips to it."
+      }
+    ]
+  }
+}

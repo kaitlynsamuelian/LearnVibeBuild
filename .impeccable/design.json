@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-06T18:02:00Z",
+  "title": "Design System: Test website B",
+  "extensions": {
+    "colorMeta": {
+      "iron": { "role": "primary", "displayName": "Oxidized iron", "canonical": "#161d14", "tonalRamp": ["#0c100b", "#161d14", "#2a3626", "#3f4a3a", "#5a6358", "#8eae93", "#c9dccb", "#e4eee3"] },
+      "glass": { "role": "neutral", "displayName": "Wet glass", "canonical": "#c9dccb", "tonalRamp": ["#4a6350", "#6e8f72", "#8eae93", "#a8c4ad", "#c9dccb", "#d5e4d6", "#e4eee3", "#f3f8f2"] },
+      "zinc": { "role": "accent", "displayName": "Zinc tag", "canonical": "#cfd6c8", "tonalRamp": ["#1a2218", "#3a4338", "#6e7568", "#8e9586", "#cfd6c8", "#dce2d6", "#e8eee4", "#f4f6f1"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Transom", "purpose": "Greenhouse iron lettering. Home title only." },
+      "heading": { "displayName": "Zinc tag", "purpose": "Flower names on plates." },
+      "body": { "displayName": "Bench note", "purpose": "Short descriptions on the dado." }
+    },
+    "shadows": [
+      { "name": "tag", "value": "3px 5px 8px #6e7568", "purpose": "Zinc plate lift." },
+      { "name": "pane", "value": "6px 10px 0 color-mix(in srgb, #161d14 85%, #000)", "purpose": "Iron frame thickness." }
+    ],
+    "motion": [
+      { "name": "drip", "value": "1.15s cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "One condensation drip when a bay arrives." }
+    ],
+    "breakpoints": [
+      { "name": "compact", "value": "780px" },
+      { "name": "narrow-pane", "value": "520px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Zinc tag",
+      "kind": "chip",
+      "refersTo": "zinc-tag",
+      "description": "Stamped nameplate for a flower or a ridge link.",
+      "html": "<span class=\"ds-zinc-tag\">ROSE</span>",
+      "css": ".ds-zinc-tag { display:inline-block; background:#cfd6c8; color:#1a2218; font-family:\"Big Shoulders Display\", sans-serif; font-weight:800; letter-spacing:0.04em; text-transform:uppercase; padding:8px 14px 6px; border:1px solid #8e9586; box-shadow:3px 5px 8px #6e7568; } .ds-zinc-tag:hover { background:#6e8f72; color:#161d14; }"
+    },
+    {
+      "name": "Walk latch",
+      "kind": "button",
+      "refersTo": "walk-link",
+      "description": "Primary action on the door: walk the aisle.",
+      "html": "<a class=\"ds-walk\" href=\"#rose\">Walk the aisle</a>",
+      "css": ".ds-walk { display:inline-block; background:#cfd6c8; color:#161d14; font-family:\"Big Shoulders Display\", sans-serif; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; font-size:0.95rem; padding:8px 12px; border:1px solid #8e9586; box-shadow:3px 5px 8px #6e7568; text-decoration:none; } .ds-walk:hover { background:#e4eee3; } .ds-walk:focus-visible { outline:2px solid #cfd6c8; outline-offset:3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Walk the conservatory aisle",
+    "overview": "Test website B is a public conservatory. Iron muntins divide wet glass. Each bay is one flower. Notes sit on a slat bench. This file is for that artifact, not the class hub.",
+    "keyCharacteristics": [
+      "Iron and glass as the page",
+      "Zinc tags for names and navigation",
+      "One flower per full-height bay"
+    ],
+    "rules": [
+      { "name": "The Bay Tint Rule", "body": "Neutral glass and iron carry the page. Saturated color belongs to the bloom in that bay.", "section": "colors" },
+      { "name": "The Transom Rule", "body": "Display type is industrial condensed. No kicker labels.", "section": "typography" }
+    ],
+    "dos": ["Keep Test A unchanged", "Let the bloom lead", "Tint iron from the current flower"],
+    "donts": ["Add kickers or numbered section labels", "Clone Test A's charcoal gallery", "Put cream plus a display serif on this surface"]
+  }
+}

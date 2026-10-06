@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Write a SKILL.md</title>
+  <meta name="description" content="How to write a Cursor Agent Skill: YAML frontmatter, a good description, steps, and what to leave out." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232dd4bf' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M13 2L4 14h7l-1 8 9-12h-7l1-8z'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main id="main">
+    <header class="page-head">
+      <div class="container">
+        <span class="eyebrow">Writing skills</span>
+        <h1>One folder. One SKILL.md. A clear “when.”</h1>
+        <p>If you remember nothing else: the <strong>description</strong> is how Agent decides this skill is relevant. Write what it does and when to use it, in words you would actually say in chat.</p>
+      </div>
+    </header>
+
+    <section>
+      <div class="container">
+        <div class="split reveal">
+          <div>
+            <h2>The file shape</h2>
+            <p>YAML at the top, between three dashes. Then markdown instructions. The <span class="tag-inline">name</span> must match the folder: lowercase letters, numbers, hyphens.</p>
+            <ul class="check-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Required:</strong> <span class="tag-inline">name</span> and <span class="tag-inline">description</span>.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Optional:</strong> <span class="tag-inline">paths</span> to limit which files wake it up.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Optional:</strong> <span class="tag-inline">disable-model-invocation: true</span> if it should only run when you type <span class="tag-inline">/name</span>.</span></li>
+            </ul>
+          </div>
+          <div>
+            <div class="window">
+              <div class="window-bar">
+                <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+                <span class="window-title">SKILL.md</span>
+              </div>
+              <div class="window-body">
+                <span class="code-line"><span class="kw">---</span></span>
+                <span class="code-line"><span class="fn">name:</span> sounding-board-notes</span>
+                <span class="code-line"><span class="fn">description:</span> <span class="str">Turns critique into a talking page. Use when the user pastes desk-crit notes or wants a sounding-board writeup, not a pitch.</span></span>
+                <span class="code-line"><span class="kw">---</span></span>
+                <span class="code-line">&nbsp;</span>
+                <span class="code-line"><span class="com"># Sounding-board notes</span></span>
+                <span class="code-line">&nbsp;</span>
+                <span class="code-line">Keep their language. Do not invent a brand.</span>
+                <span class="code-line">Separate what was said from what you inferred.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <h2>What belongs in the body</h2>
+        <div class="grid grid-2 reveal">
+          <div class="card">
+            <h3>Put in</h3>
+            <p>The sequence. House style for this job. What to ask before guessing. Where files go. Examples of good vs bad output. Links to templates in the same skill folder.</p>
+          </div>
+          <div class="card">
+            <h3>Leave out</h3>
+            <p>A second copy of the whole Cursor docs. Time-sensitive model names. Secrets. A novel. Cursor’s own guidance: keep the main file focused; park long reference material in a <span class="tag-inline">references/</span> file the agent can open only if needed.</p>
+          </div>
+        </div>
+        <div class="callout note">
+          <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+          <p><strong>Progressive disclosure.</strong> SKILL.md is the summary. Optional folders: <span class="tag-inline">scripts/</span> for commands the agent can run, <span class="tag-inline">references/</span> for deep notes, <span class="tag-inline">assets/</span> for templates. Point to them with relative paths.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>A class-sized example you can copy</h2>
+        <p>This is also saved as <span class="tag-inline">examples/class-cycle/SKILL.md</span> in this artifact folder. Copy the folder into <span class="tag-inline">.cursor/skills/</span> or <span class="tag-inline">~/.cursor/skills/</span> if you want it live. Do not drop it into <span class="tag-inline">skills-cursor</span>.</p>
+        <div class="window reveal">
+          <div class="window-bar">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <span class="window-title">examples/class-cycle/SKILL.md</span>
+          </div>
+          <div class="window-body">
+            <span class="code-line"><span class="kw">---</span></span>
+            <span class="code-line">name: class-cycle</span>
+            <span class="code-line">description: Helps pick and ship a small Learn, Vibe, Build cycle artifact. Use when the user mentions a studio cycle, weekly build, cycle check-in, or wants a small thing to make this week.</span>
+            <span class="code-line"><span class="kw">---</span></span>
+            <span class="code-line">&nbsp;</span>
+            <span class="code-line"># Class cycle</span>
+            <span class="code-line">&nbsp;</span>
+            <span class="code-line">1. Ask what they actually want to try, in one sentence</span>
+            <span class="code-line">2. Keep the build static HTML, CSS, and a little JavaScript unless they ask otherwise</span>
+            <span class="code-line">3. Match the hub pattern: own folder, README, tile on the root index</span>
+            <span class="code-line">4. Do not delete earlier research or artifacts</span>
+            <span class="code-line">5. Tell them how to open it with python3 serve.py on port 4321</span>
+          </div>
+        </div>
+        <p style="margin-top:22px;">The live skill already in this project is different on purpose: <span class="tag-inline">learn-vibe-artifact</span> is the “add a tile the right way” playbook. <span class="tag-inline">class-cycle</span> is the “what should we even make” playbook. You can have both.</p>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <h2>Description tips that actually matter</h2>
+        <div class="steps reveal">
+          <div class="step">
+            <span class="step-num"></span>
+            <div>
+              <h3>Include trigger words</h3>
+              <p>If you will type “cycle,” “desk crit,” or “degree audit,” those words should appear in the description. Agent matches on that text.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num"></span>
+            <div>
+              <h3>Say when not to use it</h3>
+              <p>A line like “Not for one-line CSS tweaks” keeps the skill from jumping into every chat.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num"></span>
+            <div>
+              <h3>Keep the main file short</h3>
+              <p>Long skills get skimmed. If you need a style bible, put it in <span class="tag-inline">references/</span> and tell the agent when to open it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2>Ideas that are worth a skill in this class</h2>
+          <p>These are the homemade kind. Cursor will not ship them for you. If you keep saying the same paragraph, save it. Broader buckets (voice, deploy, tests, review, and more) are on <a href="genres.html">Genres</a>.</p>
+        </div>
+        <div class="grid grid-2 reveal">
+          <div class="card">
+            <h3>Cycle / hub landing</h3>
+            <p>You already have this one live: <span class="tag-inline">/learn-vibe-artifact</span>. Same job as “put this on the shelf correctly.”</p>
+          </div>
+          <div class="card">
+            <h3>Desk-crit or sounding-board notes</h3>
+            <p>Paste messy feedback. Keep your language. Do not lock a product. The Skill Builder has a starter for this.</p>
+          </div>
+          <div class="card">
+            <h3>Assignment in your voice</h3>
+            <p>Turn research into the homework format without sounding like a brochure. Trigger words: “inspiration log,” “rewrite this,” “in my words.” This repo now has a live one: <span class="tag-inline">/rewrite-in-my-words</span>.</p>
+          </div>
+          <div class="card">
+            <h3>Ship-check before you present</h3>
+            <p>Hub tile, README, no broken links, theme is not a clone of the neighbor artifact, local server URL. A checklist skill, not a design opinion.</p>
+          </div>
+          <div class="card">
+            <h3>A website look</h3>
+            <p>The friend version: “design this like a print magazine / brutalist poster / candy shop, and do not use generic AI UI.” Put type, color, spacing, motion, and anti-patterns in the skill. Scope it with <span class="tag-inline">paths</span> to HTML and CSS if you only want it on UI files.</p>
+          </div>
+          <div class="card">
+            <h3>A tiny design system</h3>
+            <p>CSS variables, type scale, how cards and buttons are built. Same idea as Cursor’s React-patterns example. Use it as a Custom Mode while you style a whole artifact.</p>
+          </div>
+        </div>
+        <p style="margin-top:8px;">Outside class, the hits are the same shape: deploy, tests, PR text, component conventions, a brand voice. If it is a <em>pipeline</em>, it is a skill. If it is a <em>preference</em>, it is a rule. Named packs: <a href="existing.html">Existing skills</a>.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta-band">
+          <h2>Draft the file without fighting YAML</h2>
+          <p>The Skill Builder fills name, description, when, and steps, then gives you a file to copy or download.</p>
+          <a class="btn btn-primary" href="builder.html">Open the Skill Builder</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

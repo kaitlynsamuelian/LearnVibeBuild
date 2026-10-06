@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Use Agent Skills</title>
+  <meta name="description" content="Where Cursor skills live, how Agent picks them, slash commands, Custom Modes, and how to try one this week." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232dd4bf' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M13 2L4 14h7l-1 8 9-12h-7l1-8z'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main id="main">
+    <header class="page-head">
+      <div class="container">
+        <span class="eyebrow">Using skills</span>
+        <h1>You can ask, or you can invoke.</h1>
+        <p>Cursor finds skills when the app starts. Agent sees their names and descriptions, then decides if the current chat matches. You can also type <span class="tag-inline">/</span> and pick the skill yourself.</p>
+      </div>
+    </header>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2>Two ways a skill runs</h2>
+          <p>Most skills can do both. Some are slash-only on purpose.</p>
+        </div>
+        <div class="grid grid-2 reveal">
+          <div class="card">
+            <h3>Agent decides</h3>
+            <p>You talk normally. “Add a new artifact to the hub.” If a skill’s description matches, Agent can pull it in. This is the default.</p>
+          </div>
+          <div class="card">
+            <h3>You decide</h3>
+            <p>In Agent chat, type <span class="tag-inline">/skill-name</span>. That attaches the skill to that message. You can also attach one with <span class="tag-inline">@</span>.</p>
+          </div>
+        </div>
+        <div class="callout tip">
+          <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4z"/></svg></span>
+          <p><strong>Keep it on for the whole chat.</strong> A skill used as a Custom Mode stays in context for the session. On a Mac that is Option+Enter after you select the skill. On Windows it is Alt+Enter. An active mode shows a badge on the chat input.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <h2>Where the files live</h2>
+        <p>The folder that contains <span class="tag-inline">SKILL.md</span> is the skill’s name. Parent folders are only for organizing.</p>
+        <div class="table-wrap reveal">
+          <table>
+            <thead>
+              <tr>
+                <th>Location</th>
+                <th>Scope</th>
+                <th>Good for</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="tag-inline">.cursor/skills/</span> in this repo</td>
+                <td>This project</td>
+                <td>Studio conventions everyone cloning the repo should get</td>
+              </tr>
+              <tr>
+                <td><span class="tag-inline">~/.cursor/skills/</span></td>
+                <td>Your machine, all projects</td>
+                <td>Personal taste that is not class-specific</td>
+              </tr>
+              <tr>
+                <td><span class="tag-inline">.agents/skills/</span> and <span class="tag-inline">~/.agents/skills/</span></td>
+                <td>Same idea, other agent roots</td>
+                <td>Compatibility with the open Agent Skills layout</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout warn">
+          <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L12.7 3.9a2 2 0 00-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></span>
+          <p><strong>Do not put your skills in <span class="tag-inline">~/.cursor/skills-cursor/</span>.</strong> That folder is for Cursor’s built-in skills. Yours go in <span class="tag-inline">~/.cursor/skills/</span> or the project’s <span class="tag-inline">.cursor/skills/</span>.</p>
+        </div>
+        <p>Cursor also reads Claude and Codex skill folders if they exist. Nested <span class="tag-inline">.cursor/skills/</span> folders inside a monorepo are scoped to that part of the tree.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2>Try the one already in this repo</h2>
+          <p>You do not have to invent a skill to practice. This collection already ships one.</p>
+        </div>
+        <div class="steps reveal">
+          <div class="step">
+            <span class="step-num"></span>
+            <div>
+              <h3>Open Agent chat</h3>
+              <p>Not Ask mode. Skills are for Agent, the mode that can edit files and follow a procedure.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num"></span>
+            <div>
+              <h3>Type /learn-vibe-artifact</h3>
+              <p>That skill lives at <span class="tag-inline">.cursor/skills/learn-vibe-artifact/SKILL.md</span>. It knows how artifacts land on this hub: own folder, README, tile, count, about strip.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num"></span>
+            <div>
+              <h3>Give it a real job, or just talk</h3>
+              <p>You can say “walk me through how you’d add another game” without actually adding one. Or use it next cycle when you ship something new.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num"></span>
+            <div>
+              <h3>Confirm it showed up</h3>
+              <p>Open Customize in the sidebar and go to Skills. Project skills appear with the built-in ones. Cursor’s docs also mention them under Agent Decides with rules.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <h2>The fastest way to make a second one</h2>
+        <p>Type <span class="tag-inline">/create-skill</span> in Agent chat and describe the workflow. Cursor has a built-in skill that names the folder, writes <span class="tag-inline">SKILL.md</span>, and asks where to save it.</p>
+        <div class="callout note">
+          <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+          <p><strong>Cloud Agents are picky about personal skills.</strong> Files in <span class="tag-inline">~/.cursor/skills/</span> stay on your laptop until you turn on Sync Skills for Cloud Agents in Settings → Agents. Project skills in the repo travel with git. To share with a team, publish from Customize → Skills. That is different from sync.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="built-in">
+      <div class="container">
+        <h2>Built-in skills you might already have</h2>
+        <p>Cursor ships its own skills, including <span class="tag-inline">/create-skill</span>, <span class="tag-inline">/create-rule</span>, and others for automations, reviews, and settings. Type <span class="tag-inline">/</span> in Agent chat to see the current list. Names can change as Cursor updates.</p>
+        <p>These are the ones people reach for constantly, because they are already installed. You do not write them. You just type the slash name.</p>
+        <div class="table-wrap reveal" style="margin:22px 0 28px;">
+          <table>
+            <thead>
+              <tr>
+                <th>Skill</th>
+                <th>What people use it for</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="tag-inline">/create-skill</span></td>
+                <td>Make a new skill without hand-writing the folder. This is the usual first one.</td>
+              </tr>
+              <tr>
+                <td><span class="tag-inline">/create-rule</span></td>
+                <td>Turn a short standing preference into a rule (taste, not a whole procedure).</td>
+              </tr>
+              <tr>
+                <td><span class="tag-inline">/update-cursor-settings</span></td>
+                <td>Change an editor setting when you cannot remember where it lives.</td>
+              </tr>
+              <tr>
+                <td><span class="tag-inline">/canvas</span></td>
+                <td>Build a live visual next to the chat: a table, a little tool, something to look at.</td>
+              </tr>
+              <tr>
+                <td><span class="tag-inline">/review</span></td>
+                <td>Have Agent pick a review pass instead of you prompting “please look this over” from scratch.</td>
+              </tr>
+              <tr>
+                <td><span class="tag-inline">/review-bugbot</span></td>
+                <td>Look for bugs and regressions. Paired with <span class="tag-inline">/review-security</span> for a safety pass.</td>
+              </tr>
+              <tr>
+                <td><span class="tag-inline">/split-to-prs</span></td>
+                <td>Chop a huge change into smaller pull requests.</td>
+              </tr>
+              <tr>
+                <td><span class="tag-inline">/loop</span></td>
+                <td>Run a prompt or skill on a repeat (useful once you have a skill worth repeating).</td>
+              </tr>
+              <tr>
+                <td><span class="tag-inline">/automate</span></td>
+                <td>Set up a Cursor Automation from a schedule, Slack, GitHub, and similar triggers.</td>
+              </tr>
+              <tr>
+                <td><span class="tag-inline">/migrate-to-skills</span></td>
+                <td>Turn old Commands / some dynamic rules into skills if you had those already.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Also in the built-in set, if you need them: <span class="tag-inline">/create-hook</span>, <span class="tag-inline">/create-subagent</span>, <span class="tag-inline">/cursor-blame</span>, <span class="tag-inline">/sdk</span>, <span class="tag-inline">/shell</span>, <span class="tag-inline">/statusline</span>, <span class="tag-inline">/autopilot</span>, <span class="tag-inline">/update-cli-config</span>. Cursor can also auto-apply a built-in when your ask clearly matches it.</p>
+        <div class="callout note">
+          <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+          <p><strong>Homemade skills people write a lot</strong> look like: deploy to staging, write tests this repo’s way, draft the PR, apply a design system, convert critique notes, or land a page on a class hub. Design-look skills are in that pile too: “make the UI feel like X, not generic AI.” Official docs use deploy-app and file-scoped React patterns as the textbook examples. Full current built-in list is always behind <span class="tag-inline">/</span> and on <a href="https://cursor.com/docs/skills" target="_blank" rel="noopener">cursor.com/docs/skills</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="find-skills">
+      <div class="container">
+        <div class="section-head">
+          <h2>Where to find existing skills</h2>
+          <p>Cursor does not come with a giant public “design this site like a magazine” skill. Those live in plugins, GitHub folders, and other people’s laptops. This is the map of <em>places</em>. For named packs with install steps (Impeccable, frontend-design, and lists), go to <a href="existing.html">Existing skills</a>.</p>
+        </div>
+        <div class="steps reveal">
+          <div class="step">
+            <span class="step-num"></span>
+            <div>
+              <h3>Already on your machine</h3>
+              <p>Open <strong>Customize</strong> in the sidebar, then <strong>Skills</strong>. Built-ins, project skills, personal skills, and anything a plugin installed all show up here. Type <span class="tag-inline">/</span> in Agent chat for the live menu.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num"></span>
+            <div>
+              <h3>Cursor Marketplace (official plugins)</h3>
+              <p>Plugins can bundle skills. Browse <a href="https://cursor.com/marketplace" target="_blank" rel="noopener">cursor.com/marketplace</a>, or search in Customize. Official listings are reviewed. Install, then check Skills again.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num"></span>
+            <div>
+              <h3>Community plugins</h3>
+              <p>Cursor points community plugins and MCP servers at <a href="https://cursor.directory" target="_blank" rel="noopener">cursor.directory</a>. Read what a plugin actually contains before you install it. Skills from a plugin appear in Customize next to yours.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num"></span>
+            <div>
+              <h3>GitHub: copy the folder</h3>
+              <p>A skill is just a folder with <span class="tag-inline">SKILL.md</span>. Copy it into <span class="tag-inline">.cursor/skills/name/</span> (this project) or <span class="tag-inline">~/.cursor/skills/name/</span> (every project). Cursor also reads <span class="tag-inline">.claude/skills/</span>, so a Claude skill folder often works as-is.</p>
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-2" style="margin-top:28px;">
+          <div class="card">
+            <h3>Places people browse</h3>
+            <p><a href="https://github.com/anthropics/skills" target="_blank" rel="noopener">anthropics/skills</a> includes the well-known <span class="tag-inline">frontend-design</span> skill (distinctive UI, not generic AI look). Lists: <a href="https://github.com/VoltAgent/awesome-agent-skills" target="_blank" rel="noopener">awesome-agent-skills</a> and <a href="https://github.com/finfin/awesome-frontend-skills" target="_blank" rel="noopener">awesome-frontend-skills</a>. The open format lives at <a href="https://agentskills.io" target="_blank" rel="noopener">agentskills.io</a>.</p>
+          </div>
+          <div class="card">
+            <h3>A friend, or a team</h3>
+            <p>If someone says “I have a design skill,” ask them for the folder. Drop it in. On a Cursor Team plan they can also publish from Customize → Skills to a team marketplace, and you install it from there. That is different from syncing your personal skills to Cloud Agents.</p>
+          </div>
+        </div>
+        <div class="callout warn">
+          <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L12.7 3.9a2 2 0 00-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></span>
+          <p><strong>Treat a stranger’s skill like a stranger’s script.</strong> Open <span class="tag-inline">SKILL.md</span> before you trust it. Skills can tell Agent to run commands. Cursor’s official path for a whole GitHub repo is a plugin (the repo needs a marketplace/plugin manifest), then install from Customize. Copying one folder is the simple student version.</p>
+        </div>
+        <div class="accordion" style="margin-top:28px;">
+          <div class="acc-item">
+            <button class="acc-head" type="button" aria-expanded="false">What if Agent ignores my skill?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+            <div class="acc-body"><div class="acc-body-inner">
+              <p>Fix the description first. It has to say what the skill does <em>and</em> when to use it, with words you would actually type. Then invoke it with <span class="tag-inline">/name</span> so there is no guessing. If you set <span class="tag-inline">disable-model-invocation: true</span>, Agent will not auto-pick it at all.</p>
+            </div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-head" type="button" aria-expanded="false">Can I limit a skill to certain files?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+            <div class="acc-body"><div class="acc-body-inner">
+              <p>Yes. Add a <span class="tag-inline">paths</span> field in the YAML at the top, with glob patterns like <span class="tag-inline">**/*.css</span>. The skill only surfaces when Agent is working with matching files. Nested project skill folders also scope themselves to that directory.</p>
+            </div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-head" type="button" aria-expanded="false">Are skills the same as the old Commands?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+            <div class="acc-body"><div class="acc-body-inner">
+              <p>Skills replaced Commands. Cursor has a built-in <span class="tag-inline">/migrate-to-skills</span> helper (from version 2.4) that can convert eligible slash commands and some dynamic rules. Always-on rules and user rules are different and do not all migrate.</p>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

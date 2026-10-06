@@ -16,6 +16,9 @@ JavaScript) — nothing to install, no build step.
 | **Buff Trivia** | [`trivia/`](trivia/) | 8 CU Boulder questions, a score, and a roast at the end |
 | **Campus Thread** | [`thread/`](thread/) | ATLAS, Norlin, C4C, and the Flatirons in a group chat |
 | **My Boop** | [`boop/`](boop/) | A tiny virtual pet — feed, bathe, minigames, hats |
+| **Learn Agent Skills** | [`skills/`](skills/) | Cursor Agent Skills: what they are, how to invoke one, Skill Builder |
+| **Test website A** | [`test-a/`](test-a/) | Scrolling gallery of flower types, each with a short description |
+| **Test website B** | [`test-b/`](test-b/) | Same flower prompt with Impeccable: conservatory aisle gallery |
 
 Each folder has its own `README.md` with a full page-by-page breakdown, its own
 design system under `assets/`, and its own theme:
@@ -27,6 +30,9 @@ design system under `assets/`, and its own theme:
 - **Buff Trivia** — black + CU gold.
 - **Campus Thread** — night indigo, iMessage-ish.
 - **My Boop** — peach paper, a round blob, candy-pink chrome.
+- **Agent Skills** — dark teal instruction cards, gold accents.
+- **Test website A** — charcoal garden, snap-scroll flower gallery.
+- **Test website B** — greenhouse glass and iron, snap-scroll flower aisle.
 
 The guide sites cross-link to each other in their footers.
 
@@ -53,6 +59,9 @@ Then:
 - Buff Trivia: <http://localhost:4321/trivia/>
 - Campus Thread: <http://localhost:4321/thread/>
 - My Boop: <http://localhost:4321/boop/>
+- Agent Skills: <http://localhost:4321/skills/>
+- Test website A: <http://localhost:4321/test-a/>
+- Test website B: <http://localhost:4321/test-b/>
 
 ## Notes on accuracy
 

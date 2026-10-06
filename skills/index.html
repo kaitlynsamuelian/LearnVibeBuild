@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learn Agent Skills: reusable instructions for Cursor</title>
+  <meta name="description" content="A beginner guide to Cursor Agent Skills: what they are, how they differ from rules, and how to try one this class cycle." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232dd4bf' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M13 2L4 14h7l-1 8 9-12h-7l1-8z'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">For people who already chat with Cursor</span>
+        <h1>Skills are <span class="grad">recipes</span> you hand the agent.</h1>
+        <p class="lead">
+          A skill is a little folder with a <span class="tag-inline">SKILL.md</span> file.
+          It teaches Agent a repeatable way to do one job, so you do not re-explain the same process every chat.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="builder.html">
+            Open the Skill Builder
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="use.html">How to use one this week</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <div class="week-band reveal">
+          <span class="eyebrow" style="color: var(--accent-3); background: color-mix(in srgb, var(--accent-3) 14%, transparent); border-color: color-mix(in srgb, var(--accent-3) 30%, transparent);">This cycle</span>
+          <h2 style="margin-top:14px;">Try skills by actually running one.</h2>
+          <p class="muted" style="margin-bottom:0;">Reading is useful. Invoking a skill in Agent chat is the point of this artifact.</p>
+          <ol>
+            <li>This repo already has a project skill at <span class="tag-inline">.cursor/skills/learn-vibe-artifact/</span>. In Agent chat, type <span class="tag-inline">/learn-vibe-artifact</span>.</li>
+            <li>Or type <span class="tag-inline">/create-skill</span> and describe a workflow you keep repeating.</li>
+            <li>Or draft a <span class="tag-inline">SKILL.md</span> in the <a href="builder.html">Skill Builder</a>, then save it in the right folder.</li>
+            <li>Or run the <a href="compare.html">same-prompt A/B</a>: one burrito-cart site with no design skill, one with <span class="tag-inline">/website-look</span>.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="split reveal">
+          <div>
+            <span class="eyebrow">The honest version</span>
+            <h2 style="margin-top:16px;">Chat is a conversation. A skill is a playbook.</h2>
+            <p>
+              You can tell Cursor the same studio rules every week. That works until you forget a step.
+              A skill stores the steps. The agent reads them when the job matches, or when you type
+              <span class="tag-inline">/skill-name</span>.
+            </p>
+            <div class="callout note">
+              <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+              <p><strong>Skills are not magic extra models.</strong> They are files. Cursor still uses whatever model you already picked. The skill only changes how the agent approaches the task.</p>
+            </div>
+          </div>
+          <div class="split-media">
+            <div class="window">
+              <div class="window-bar">
+                <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+                <span class="window-title">.cursor/skills/class-cycle/SKILL.md</span>
+              </div>
+              <div class="window-body">
+                <span class="code-line"><span class="kw">---</span></span>
+                <span class="code-line"><span class="fn">name:</span> class-cycle</span>
+                <span class="code-line"><span class="fn">description:</span> <span class="str">Help ship a small weekly artifact...</span></span>
+                <span class="code-line"><span class="kw">---</span></span>
+                <span class="code-line">&nbsp;</span>
+                <span class="code-line"><span class="com"># Class cycle</span></span>
+                <span class="code-line">1. Ask what they want to try this week</span>
+                <span class="code-line">2. Keep it static HTML unless they say otherwise</span>
+                <span class="code-line">3. Land it on the hub</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <div class="section-head center">
+          <h2>Rules, skills, and just talking</h2>
+          <p>Pick the smallest tool that fits. Do not make a skill for “use TypeScript.”</p>
+        </div>
+        <div class="vs-grid reveal">
+          <div class="vs-card">
+            <h3>Just say it</h3>
+            <p>One-off asks. “Make the tile teal.” “Fix this typo.” No file needed.</p>
+            <p class="when"><strong>When:</strong> you will not need those steps again.</p>
+          </div>
+          <div class="vs-card">
+            <h3>A rule</h3>
+            <p>Short always-on taste. “No em dashes.” “Keep the hub static.” A few lines, not a procedure.</p>
+            <p class="when"><strong>When:</strong> a constraint should follow you around.</p>
+          </div>
+          <div class="vs-card">
+            <h3>A skill</h3>
+            <p>A multi-step workflow. Deploy. Audit. Add a new artifact the same way every time.</p>
+            <p class="when"><strong>When:</strong> you keep re-teaching the same process.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2>What a skill is actually useful for</h2>
+          <p>A skill earns its folder when you would otherwise paste the same 8 steps into chat again. Short taste (“no em dashes”) stays a rule. A procedure becomes a skill.</p>
+        </div>
+        <div class="grid grid-3 reveal">
+          <div class="card">
+            <span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h6"/></svg></span>
+            <h3>The same studio job, every week</h3>
+            <p>Add a hub artifact the same way. Ship a cycle build. Turn desk-crit notes into a talking page. That is this class in a nutshell, and why <span class="tag-inline">/learn-vibe-artifact</span> already lives in this repo.</p>
+          </div>
+          <div class="card">
+            <span class="card-icon c2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></span>
+            <h3>Your voice, on purpose</h3>
+            <p>Rewrite in how you actually talk. Keep a sounding-board tone. Format an assignment without inventing a brand. Skills are good when “how it should sound” is a process, not a vibe you hope the model remembers.</p>
+          </div>
+          <div class="card">
+            <span class="card-icon c3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span>
+            <h3>A checklist before you call it done</h3>
+            <p>Links work. Hub tile is wired. Contrast is readable. Nothing got deleted. People write skills for “ship checks” so Agent does the boring pass the same way every time.</p>
+          </div>
+          <div class="card">
+            <span class="card-icon c4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19h16M8 16V8l4 4 4-4v8"/></svg></span>
+            <h3>Tests, PRs, and “how we do this here”</h3>
+            <p>Write tests the repo’s way. Split a giant diff. Draft a PR. Run TDD. Cursor’s own docs use examples like deploy-to-staging and React component patterns, because those are procedures with a beginning, middle, and end.</p>
+          </div>
+          <div class="card">
+            <span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+            <h3>A careful review pass</h3>
+            <p>Security, bugs, “did the agent just hallucinate a button.” You can write your own review skill, and Cursor already ships ones people type a lot: <span class="tag-inline">/review</span>, <span class="tag-inline">/review-bugbot</span>, <span class="tag-inline">/review-security</span>.</p>
+          </div>
+          <div class="card">
+            <span class="card-icon c2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+            <h3>The tool itself</h3>
+            <p>Make a rule. Make another skill. Change a Cursor setting. Draw a canvas next to chat. You do not have to invent those. They are already installed. Type <span class="tag-inline">/</span> and they show up.</p>
+          </div>
+        </div>
+        <div class="callout tip" style="margin-top:28px;">
+          <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4z"/></svg></span>
+          <p><strong>Skip a skill when the job is tiny.</strong> “Make this heading smaller” is chat. “Every new page gets a README, a hub tile, and a distinct theme” is a skill. <a href="existing.html">Named skills (Impeccable, etc.)</a> · <a href="use.html#built-in">Built-in list</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <div class="section-head">
+          <h2>The design-skill kind (yes, that one)</h2>
+          <p>A lot of people keep a skill that is basically “design this website <em>this</em> way.” Not “make a site.” A look. Type, color, spacing, motion, what to refuse (generic AI purple gradients, Inter-on-white, three identical cards).</p>
+        </div>
+        <div class="vs-grid reveal">
+          <div class="vs-card">
+            <h3>A look</h3>
+            <p>Editorial magazine. Brutalist campus flyer. Candy-pink pet. 90s zine. The skill holds the aesthetic so Agent does not reinvent “clean startup” every chat.</p>
+            <p class="when"><strong>Famous public example:</strong> Anthropic’s <span class="tag-inline">frontend-design</span> skill, built to dodge generic AI UI.</p>
+          </div>
+          <div class="vs-card">
+            <h3>A system</h3>
+            <p>Tokens, type scale, button and card recipes, “only these CSS variables.” Cursor’s docs use React component patterns scoped to <span class="tag-inline">**/*.tsx</span> as the textbook version of this.</p>
+            <p class="when"><strong>When:</strong> you are building many pages that should feel like one product.</p>
+          </div>
+          <div class="vs-card">
+            <h3>This project’s face</h3>
+            <p>Hub tiles, paper background, no clone of the neighbor artifact. A class skill can say “new pages get their own palette” the same way a startup skill says “use our brand kit.”</p>
+            <p class="when"><strong>Tip:</strong> turn it into a Custom Mode so the look stays on for the whole design session.</p>
+          </div>
+        </div>
+        <p style="margin-top:22px;">Friends usually did not invent that from scratch. They copied a <span class="tag-inline">SKILL.md</span> folder, installed a plugin, or had someone drop a skill into <span class="tag-inline">~/.cursor/skills/</span>. Named ones (Impeccable, Anthropic frontend-design) are listed with how-to on <a href="existing.html">Existing skills</a>. Voice, deploy, tests, review, and the rest live on the <a href="genres.html">Genres</a> page.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2>The rest of the site</h2>
+          <p>Start wherever you are. The builder is the hands-on page for this cycle. Genres is the catalog of kinds besides a look.</p>
+        </div>
+        <div class="grid grid-2">
+          <a class="card reveal" href="use.html">
+            <span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19h16M7 16V8m5 8V5m5 11v-6"/></svg></span>
+            <h3>Use them</h3>
+            <p>Where skills live, how Agent finds them, slash commands, Custom Modes, built-in skills, and where to find design skills other people already wrote.</p>
+            <span class="card-more">How skills run <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="card reveal" href="existing.html">
+            <span class="card-icon c3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19h16M8 15V5h8v10M8 19v-2h8v2"/></svg></span>
+            <h3>Existing skills</h3>
+            <p>Impeccable, Anthropic frontend-design, Cursor built-ins, and lists to hunt more. Install steps, then what you type.</p>
+            <span class="card-more">Named packs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="card reveal" href="genres.html">
+            <span class="card-icon c2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h14"/></svg></span>
+            <h3>Genres</h3>
+            <p>Voice, deploy, tests, review, PRs, research, debugging, docs, accessibility, repo playbooks. Design-look stays on home.</p>
+            <span class="card-more">Other kinds of skills <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="card reveal" href="write.html">
+            <span class="card-icon c2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></span>
+            <h3>Write one</h3>
+            <p>The SKILL.md shape, a good description, what not to stuff in the file, and a copyable class example.</p>
+            <span class="card-more">Anatomy of a skill <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="card reveal" href="builder.html">
+            <span class="card-icon c3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h5"/></svg></span>
+            <h3>Skill Builder</h3>
+            <p>Fill in name, when, and steps. Get a SKILL.md you can copy or download. Starters included.</p>
+            <span class="card-more">Draft one now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="card reveal" href="https://cursor.com/docs/skills" target="_blank" rel="noopener">
+            <span class="card-icon c4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6M10 14L21 3"/></svg></span>
+            <h3>Official docs</h3>
+            <p>Cursor’s Agent Skills page is the source of truth. Menus and built-in skill names can shift.</p>
+            <span class="card-more">cursor.com/docs/skills <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <div class="cta-band">
+          <h2>This week’s smallest win</h2>
+          <p>Invoke <span class="tag-inline">/learn-vibe-artifact</span> once, or type <span class="tag-inline">/create-skill</span> and make something you will actually reuse.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="use.html">See how to invoke it</a>
+            <a class="btn btn-ghost" href="builder.html">Draft your own</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

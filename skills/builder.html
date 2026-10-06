@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skill Builder</title>
+  <meta name="description" content="Fill in a name, when, and steps. Get a SKILL.md you can copy into .cursor/skills/ or ~/.cursor/skills/." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232dd4bf' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M13 2L4 14h7l-1 8 9-12h-7l1-8z'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main id="main">
+    <header class="page-head">
+      <div class="container">
+        <span class="eyebrow">Hands-on</span>
+        <h1>Skill Builder</h1>
+        <p>This does not install a skill. It writes the markdown. You still save the file in a folder whose name matches <span class="tag-inline">name</span>.</p>
+      </div>
+    </header>
+
+    <section>
+      <div class="container">
+        <div class="callout tip">
+          <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4z"/></svg></span>
+          <p><strong>Where to put the download.</strong> Project: <span class="tag-inline">.cursor/skills/your-name/SKILL.md</span>. Personal: <span class="tag-inline">~/.cursor/skills/your-name/SKILL.md</span>. Then type <span class="tag-inline">/your-name</span> in Agent chat. Reloading the window can help if it does not appear right away.</p>
+        </div>
+
+        <p>
+          Starters:
+          <button type="button" class="btn btn-ghost" data-fill="cycle" style="padding:8px 14px; margin:4px;">Class cycle</button>
+          <button type="button" class="btn btn-ghost" data-fill="critique" style="padding:8px 14px; margin:4px;">Sounding-board notes</button>
+          <button type="button" class="btn btn-ghost" data-fill="design" style="padding:8px 14px; margin:4px;">Website look</button>
+          <button type="button" class="btn btn-ghost" data-fill="voice" style="padding:8px 14px; margin:4px;">My own words</button>
+        </p>
+
+        <div class="builder">
+          <form id="skillForm" class="card" style="transform:none;" onsubmit="return false;">
+            <div class="field">
+              <label for="skillName">Folder / skill name</label>
+              <input id="skillName" type="text" value="my-skill" autocomplete="off" />
+              <p class="hint">Lowercase, numbers, hyphens. Must match the folder name.</p>
+            </div>
+            <div class="field">
+              <label for="skillTitle">Title inside the file</label>
+              <input id="skillTitle" type="text" value="My skill" />
+            </div>
+            <div class="field">
+              <label for="skillDesc">Description (what + when)</label>
+              <textarea id="skillDesc" rows="4">Does one specific job for the agent. Use when the user mentions the trigger words you would actually type.</textarea>
+              <p class="hint">This is the line Agent uses to decide relevance.</p>
+            </div>
+            <div class="field">
+              <label for="skillWhen">When to use (one item per line)</label>
+              <textarea id="skillWhen">The user asks for this workflow
+They mention the trigger words in the description</textarea>
+            </div>
+            <div class="field">
+              <label for="skillSteps">Instructions (one step per line)</label>
+              <textarea id="skillSteps" rows="6">Ask what done looks like
+Do the work in small steps
+Stop and ask if a choice would lock them in</textarea>
+            </div>
+            <div class="field">
+              <label for="skillExtra">Extra notes (optional)</label>
+              <textarea id="skillExtra" rows="3"></textarea>
+            </div>
+            <div class="field">
+              <label for="skillPaths">paths (optional globs)</label>
+              <input id="skillPaths" type="text" placeholder='**/*.css, vault/**/*.html' />
+              <p class="hint">Leave blank if it should be available no matter which files are open.</p>
+            </div>
+            <label class="check">
+              <input id="skillSlash" type="checkbox" />
+              <span>Slash-only. Sets <span class="tag-inline">disable-model-invocation: true</span> so Agent will not auto-apply it.</span>
+            </label>
+          </form>
+
+          <div class="preview-wrap">
+            <div class="window">
+              <div class="window-bar">
+                <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+                <span class="window-title">SKILL.md preview</span>
+              </div>
+              <pre class="preview-code" id="skillPreview"></pre>
+            </div>
+            <div class="builder-actions">
+              <button type="button" class="btn btn-primary" id="copySkill">Copy SKILL.md</button>
+              <button type="button" class="btn btn-ghost" id="downloadSkill">Download SKILL.md</button>
+            </div>
+            <p class="toast" id="builderToast"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

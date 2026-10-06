@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Existing skills you can install</title>
+  <meta name="description" content="Named skills people actually use: Impeccable, Anthropic frontend-design, Cursor built-ins, and where to browse more. How to install and invoke each." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232dd4bf' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M13 2L4 14h7l-1 8 9-12h-7l1-8z'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main id="main">
+    <header class="page-head">
+      <div class="container">
+        <span class="eyebrow">Named skills, not buckets</span>
+        <h1>Skills you can actually install.</h1>
+        <p>Impeccable. Anthropic’s frontend-design. Cursor’s own <span class="tag-inline">/create-skill</span>. This page is the list with how to get them and what you type. Genres is still the “kinds of jobs.” <a href="use.html#find-skills">The map</a> is still where folders live.</p>
+      </div>
+    </header>
+
+    <section id="impeccable">
+      <div class="container">
+        <div class="section-head">
+          <h2>Design skills people mean when they say “a design skill”</h2>
+          <p>This is the friend-on-the-Hill version: a pack that fights generic AI UI.</p>
+        </div>
+
+        <div class="card reveal" style="margin-bottom:20px;">
+          <span class="pill accent">The one you named</span>
+          <h3 style="margin-top:12px;">Impeccable</h3>
+          <p>Paul Bakaus’s design skill pack. It is meant to make the agent better at real UI, not default “AI slop.” It is based on Anthropic’s frontend-design skill (Apache 2.0). Docs say it installs as one skill, <span class="tag-inline">/impeccable</span>, with commands hanging off that (init / teach, craft, and others). Confirm the current command list on their site. It changes.</p>
+          <ul class="check-list" style="margin-top:16px;">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Site:</strong> <a href="https://impeccable.style" target="_blank" rel="noopener">impeccable.style</a> · start here for current steps</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Repo:</strong> <a href="https://github.com/pbakaus/impeccable" target="_blank" rel="noopener">github.com/pbakaus/impeccable</a></span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Install (their recommended):</strong> from the project root run <span class="tag-inline">npx impeccable install</span>. It should detect Cursor and write into <span class="tag-inline">.cursor/skills/</span> (or ask project vs global). Reload Cursor.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Use:</strong> Agent chat, type <span class="tag-inline">/impeccable</span>. Their getting-started flow is often <span class="tag-inline">/impeccable init</span> (or teach) once, so the project has design context, then use it when you build UI.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Did it work?</strong> Customize → Skills, and <span class="tag-inline">/</span> should show <span class="tag-inline">impeccable</span>.</span></li>
+          </ul>
+          <div class="callout warn" style="margin:18px 0 0;">
+            <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L12.7 3.9a2 2 0 00-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></span>
+            <p><strong>For the A/B compare:</strong> Impeccable’s description is written to fire on “build a page / website.” If you install it <em>before</em> the no-skill run, Agent might use it anyway. Do the <a href="compare.html">without</a> chat first, then install, then the with chat. Or keep using this repo’s slash-only <span class="tag-inline">/website-look</span> for a cleaner control.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="card reveal">
+            <span class="pill">The original look pack</span>
+            <h3 style="margin-top:12px;">Anthropic frontend-design</h3>
+            <p>The well-known “distinctive UI, not generic AI” skill. Impeccable cites this as its base. Lives in <a href="https://github.com/anthropics/skills" target="_blank" rel="noopener">anthropics/skills</a> as a folder named <span class="tag-inline">frontend-design</span>.</p>
+            <p style="margin-top:12px;"><strong>Install:</strong> copy that folder to <span class="tag-inline">.cursor/skills/frontend-design/</span> or <span class="tag-inline">~/.cursor/skills/frontend-design/</span>. Cursor also reads <span class="tag-inline">.claude/skills/</span> if you already have it there.</p>
+            <p style="margin-top:12px;"><strong>Use:</strong> <span class="tag-inline">/frontend-design</span> in Agent chat, then ask it to build or restyle the page.</p>
+          </div>
+          <div class="card reveal">
+            <span class="pill">This class repo</span>
+            <h3 style="margin-top:12px;">/website-look</h3>
+            <p>A small slash-only design skill already in this project, for the compare experiment. It will not auto-run when you say “make a website.” That is the point.</p>
+            <p style="margin-top:12px;"><strong>Use:</strong> <span class="tag-inline">/website-look</span> then the burrito-cart prompt on <a href="compare.html">Compare</a>. Use Impeccable in Chat B instead if you want the real-world pack.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <h2>Already in Cursor (no install)</h2>
+        <p>These ship with the app. Type <span class="tag-inline">/</span>. Full table: <a href="use.html#built-in">built-in skills</a>.</p>
+        <div class="grid grid-3 reveal" style="margin-top:22px;">
+          <div class="card">
+            <h3>/create-skill</h3>
+            <p>Make a new skill without hand-writing the folder. Usual first one.</p>
+          </div>
+          <div class="card">
+            <h3>/canvas</h3>
+            <p>A live visual next to chat. Different from a design-look skill: it is a surface, not a taste pack.</p>
+          </div>
+          <div class="card">
+            <h3>/review family</h3>
+            <p><span class="tag-inline">/review</span>, <span class="tag-inline">/review-bugbot</span>, <span class="tag-inline">/review-security</span>. A pass, not a look.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Places to hunt more named skills</h2>
+        <p>Lists go stale. Open the repo, read the <span class="tag-inline">SKILL.md</span>, then copy or install. Treat a stranger’s skill like a stranger’s script.</p>
+        <div class="table-wrap reveal" style="margin-top:22px;">
+          <table>
+            <thead>
+              <tr>
+                <th>Place</th>
+                <th>What you’ll find</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://github.com/VoltAgent/awesome-agent-skills" target="_blank" rel="noopener">awesome-agent-skills</a></td>
+                <td>Huge curated list (Anthropic, Vercel, Figma, Stripe, community). Search “frontend” or “design.”</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/finfin/awesome-frontend-skills" target="_blank" rel="noopener">awesome-frontend-skills</a></td>
+                <td>Frontend-only. This is where Impeccable and other look/UI packs get linked with install one-liners.</td>
+              </tr>
+              <tr>
+                <td><a href="https://cursor.com/marketplace" target="_blank" rel="noopener">cursor.com/marketplace</a></td>
+                <td>Official Cursor plugins. Skills can arrive inside a plugin. Reviewed listings.</td>
+              </tr>
+              <tr>
+                <td><a href="https://cursor.directory" target="_blank" rel="noopener">cursor.directory</a></td>
+                <td>Community plugins and MCP. Cursor’s own docs point here for unofficial stuff.</td>
+              </tr>
+              <tr>
+                <td><a href="https://agentskills.io" target="_blank" rel="noopener">agentskills.io</a></td>
+                <td>The open skill format. Not a store. Explains why a Claude folder often works in Cursor.</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/anthropics/skills" target="_blank" rel="noopener">anthropics/skills</a></td>
+                <td>Official Anthropic examples beyond frontend-design (docs, pdf, etc.). Copy the folder you want.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout note" style="margin-top:22px;">
+          <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+          <p><strong>Simple install if there is no CLI.</strong> Copy the skill folder (the one that contains <span class="tag-inline">SKILL.md</span>) into <span class="tag-inline">.cursor/skills/the-name/</span>. Reload. Type <span class="tag-inline">/the-name</span>. Never drop it in <span class="tag-inline">~/.cursor/skills-cursor/</span>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <div class="cta-band">
+          <h2>Then run the same prompt twice</h2>
+          <p>Find a pack (Impeccable, frontend-design, or /website-look). Build once without it, once with it. That is the <a href="compare.html">Compare</a> page.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="compare.html">Open the A/B</a>
+            <a class="btn btn-ghost" href="https://impeccable.style" target="_blank" rel="noopener">Impeccable docs</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

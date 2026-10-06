@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learn, Vibe, Build — Kaitlyn's studio artifacts</title>
-  <meta name="description" content="A growing collection of things I build with AI for Learn, Vibe, Build (ATLAS, CU Boulder): guides, Audit Decoder, Buff Trivia, Campus Thread, and My Boop." />
+  <meta name="description" content="A growing collection of things I build with AI for Learn, Vibe, Build (ATLAS, CU Boulder): guides, Audit Decoder, Buff Trivia, Campus Thread, My Boop, and Agent Skills." />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237c5cff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 3l7 17 2.5-7L20 10z'/%3E%3C/svg%3E" />
   <style>
     :root{
       --paper:#efe7d6; --ink:#1c1a17; --ink2:#4a463d; --line:#1c1a17;
-      --cursor:#7c5cff; --claude:#d9614a; --audit:#f0b52e; --open:#2f9e6b; --assist:#c75b8a; --trivia:#1c1a17; --thread:#3a4fb0; --boop:#ee6b8a;
+      --cursor:#7c5cff; --claude:#d9614a; --audit:#f0b52e; --open:#2f9e6b; --assist:#c75b8a; --trivia:#1c1a17; --thread:#3a4fb0; --boop:#ee6b8a; --skills:#0f9d8e; --testa:#c8f542; --testb:#b7d4c4;
       --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     }
     *{box-sizing:border-box;margin:0;padding:0}
@@ -34,6 +34,9 @@
     .chip.t{background:var(--trivia);color:#cfb87c}
     .chip.n{background:var(--thread);color:#fff}
     .chip.b{background:var(--boop);color:#fff}
+    .chip.sk{background:var(--skills);color:#fff}
+    .chip.ta{background:var(--testa);color:#14160f}
+    .chip.tb{background:var(--testb);color:#161d14}
     .chip.k{background:transparent;color:var(--ink)}
     @media(prefers-reduced-motion:reduce){.track{animation:none}}
 
@@ -71,6 +74,9 @@
     .tile.trivia{background:var(--trivia);color:#cfb87c}
     .tile.thread{background:var(--thread);color:#fff}
     .tile.boop{background:var(--boop);color:#fff}
+    .tile.skills{background:var(--skills);color:#fff}
+    .tile.testa{background:var(--testa);color:#14160f}
+    .tile.testb{background:var(--testb);color:#161d14}
     .badge{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:999px;border:2.5px solid currentColor;
       display:grid;place-items:center;font-weight:900;font-size:.95rem}
     .kind{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.85;margin-bottom:auto}
@@ -112,7 +118,7 @@
 
   <div class="collhead">
     <h2>The collection</h2>
-    <span class="count">8 artifacts · more each cycle</span>
+    <span class="count">11 artifacts · more each cycle</span>
   </div>
 
   <main class="grid">
@@ -187,12 +193,39 @@
       <p>A tiny virtual pet. Feed it, bathe it, play games, buy hats. It remembers you.</p>
       <span class="open">Open artifact <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </a>
+
+    <a class="tile skills" href="skills/index.html">
+      <span class="badge">09</span>
+      <span class="kind">Guide</span>
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></span>
+      <h3>Agent Skills</h3>
+      <p>Reusable recipes for Cursor Agent. What they are, how to invoke one, and a builder that writes a SKILL.md.</p>
+      <span class="open">Open artifact <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <a class="tile testa" href="test-a/index.html">
+      <span class="badge">10</span>
+      <span class="kind">Experiment</span>
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h5"/></svg></span>
+      <h3>Test website A</h3>
+      <p>Kinds of flowers. Scroll a gallery: each screen is one bloom and a short description.</p>
+      <span class="open">Open artifact <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <a class="tile testb" href="test-b/index.html">
+      <span class="badge">11</span>
+      <span class="kind">Experiment</span>
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16"/><path d="M12 4v16M4 12h16"/></svg></span>
+      <h3>Test website B</h3>
+      <p>Same flower prompt, rebuilt with Impeccable. A conservatory aisle: one bloom per bay.</p>
+      <span class="open">Open artifact <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
   </main>
 
   <section class="note">
     <h2>About this shelf</h2>
     <p>This is my studio space for <b>Learn, Vibe, Build</b>, a class where I’ll be creating artifacts throughout the semester to grow my skills, experiment with AI, and learn through building.</p>
-    <p>Currently: 8 artifacts. Two are guides I created to better understand Cursor and Claude as tools and to keep as resources moving forward. The third, <b>Audit Decoder</b>, is a tool that takes a PDF export of your degree audit from Buff Portal and turns its messy, confusing text into a clear, digestible guide to your current degree progress. The fourth is a beginner guide to <b>open-source and local AI</b>. The fifth is about <b>personal AI assistants</b> — Muse, Hermes, OpenClaw, and Telegram agents that live in your chats and try to act, not only reply. The sixth is <b>Buff Trivia</b> — eight CU Boulder questions and a roast when you finish. The seventh is <b>Campus Thread</b> — ATLAS, Norlin, C4C, and the Flatirons in a group chat that will not help you. The eighth is <b>My Boop</b> — a tiny virtual pet you feed, bathe, dress, and play with.</p>
+    <p>Currently: 11 artifacts. Two are guides I created to better understand Cursor and Claude as tools and to keep as resources moving forward. The third, <b>Audit Decoder</b>, is a tool that takes a PDF export of your degree audit from Buff Portal and turns its messy, confusing text into a clear, digestible guide to your current degree progress. The fourth is a beginner guide to <b>open-source and local AI</b>. The fifth is about <b>personal AI assistants</b> — Muse, Hermes, OpenClaw, and Telegram agents that live in your chats and try to act, not only reply. The sixth is <b>Buff Trivia</b> — eight CU Boulder questions and a roast when you finish. The seventh is <b>Campus Thread</b> — ATLAS, Norlin, C4C, and the Flatirons in a group chat that will not help you. The eighth is <b>My Boop</b> — a tiny virtual pet you feed, bathe, dress, and play with. The ninth is <b>Agent Skills</b>: reusable recipes for Cursor Agent, plus a builder that writes a SKILL.md you can try this cycle. The tenth is <b>Test website A</b>: a scrolling gallery of flower types, each with a short description. The eleventh is <b>Test website B</b>: the same flower prompt, rebuilt with Impeccable as a conservatory aisle.</p>
     <p>New artifacts will land here as the semester goes on.</p>
   </section>
 
@@ -204,13 +237,13 @@
       ["Cursor","p"],["Vibe coding","k"],["Claude","c"],["Degree audits","k"],["Agents","p"],
       ["Prompting","k"],["Claude Code","c"],["PDF parsing","k"],["Audit Decoder","a"],["Tab, tab, tab","k"],
       ["MCP","p"],["Ollama","o"],["Open source","o"],["Muse","s"],["Hermes","s"],["Local-first","k"],["Studio cycles","c"],
-      ["Buff Trivia","t"],["Ralphie","t"],["Campus Thread","n"],["ATLAS","n"],["My Boop","b"],["Virtual pet","b"]
+      ["Buff Trivia","t"],["Ralphie","t"],["Campus Thread","n"],["ATLAS","n"],["My Boop","b"],["Virtual pet","b"],["Agent Skills","sk"],["SKILL.md","sk"],["Test website A","ta"],["Test website B","tb"]
     ];
     var wordsB = [
       ["Build","a"],["AI editor","k"],["What is a token?","p"],["Q&A","k"],["CU Boulder","c"],
       ["Guides","k"],["OpenClaw","s"],["Telegram agents","s"],["Learn","k"],["Ship it","a"],["ATLAS","c"],
       ["HuggingChat","o"],["Made in class","k"],["Try it →","p"],["Get weird","a"],["The Hill","t"],["Roast","t"],
-      ["Norlin","n"],["Let them talk","n"],["Boop","b"],["Feed it","b"]
+      ["Norlin","n"],["Let them talk","n"],["Boop","b"],["Feed it","b"],["/create-skill","sk"],["Recipes for Agent","sk"],["Website A","ta"],["Website B","tb"],["Impeccable","tb"]
     ];
     function fill(el, words){
       var html = words.map(function(w){ return '<span class="chip '+w[1]+'">'+w[0]+'</span>'; }).join("");
